@@ -13,28 +13,32 @@ namespace Terrarium
     public partial class MainForm : Form
     {
         int panelSettingsWidth;
-        bool panelSettingsHiden;
+        private bool panelSettingsHiden;
+        private bool isBtnSerialConnect;
+        private Properties.Settings ps = Properties.Settings.Default;
         public MainForm()
         {
             InitializeComponent();
             panelSettingsHiden = false;
             panelSettingsWidth = pnl_Settings.Width;
-
+            isBtnSerialConnect = false;
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_Settings_Click(object sender, EventArgs e)
         {
-            timer1.Start();
+            tmr_MenuSlide.Start();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+
+        private void tmr_MenuSlide_Tick(object sender, EventArgs e)
         {
             if (panelSettingsHiden == true)
             {
                 pnl_Settings.Width += 25;
                 if(pnl_Settings.Width >= panelSettingsWidth)
                 {
-                    timer1.Stop();
+                    tmr_MenuSlide.Stop();
                     panelSettingsHiden = false;
                     this.Refresh();
                 }
@@ -44,13 +48,33 @@ namespace Terrarium
                 pnl_Settings.Width -= 25;
                 if (pnl_Settings.Width <= 0)
                 {
-                    timer1.Stop();
+                    tmr_MenuSlide.Stop();
                     panelSettingsHiden = true;
                     this.Refresh();
                 }
             }
-           
+
+            this.Text = "Terrarium " + ps.SerialPortName;
+
         }
+
+        
+        private void btn_SerialConnect_Click(object sender, EventArgs e)
+        {
+            if (isBtnSerialConnect == true)
+            {
+                btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
+                
+            }
+            else
+            {
+                btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
+            }
+            isBtnSerialConnect ^= true;
+
+
+        }
+
     }
 }
 

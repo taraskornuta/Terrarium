@@ -118,36 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_Settings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAbpJREFUSEvd
-        lM0uA2EUhmchCOJn4+cGSLgDNt1WKlgM6d+kqy7cAjfAhlpZERIiYo0dazbYEm6gkVYaNuPneSenTUtL
-        26SJeJM3c855zznfd775Zpz/B9d1e+LxuA8/jH4ymew2uXnQaMoaLsdisRXZiURi0uT6Ub6bcDjcQaMM
-        fAmFQm2ibLguzdIqaqoiGo1OUPQKT+ASO7vn+c5Ody1FE+wpBu+UA5WrmnFL+Q7EM/hAwwueOtdLz/NG
-        TS5BMRa7spxz+AhPTa4EidOIOsuIfMYbLI7LJEPorqi4YqlUqrNoo89YbVh+Bdilh+BTfJxOp7ssrCnm
-        Yd4KxRw5syY7ylUNcdUmLVwJxAgskLAtn8VG8J/hAdeuj132Yx/CPPaw1ezAAgwmrQma3ZCUMXsB+013
-        ORABfq9iLO6avwmvA/EnkHQLg8Y8F6Ff3piGA4pJk69cbSYQa4Gk4Cjglny9HOwcLB0FTY7w6z8KCoKX
-        B/dp0m5hxeeINf/yCLbmugkIdX0g6GMsUt8HIrByaz5pgfF+/Qmx0EZDP6FqoFHxt7kK12QzSeO/za/Q
-        HaZZFj4Zs03t8I/DcT4Br7M/mQcNGzoAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAApFJREFUWEft
+        lr1rFFEUxRcFCxX86ATFrzSitSm0UIOohWgCy37DVmsnNn5Em5EE/RO09g/QRkFBCForGLvEQm2SaKGo
+        hWh0199Zzj50ZzPMbhhDIAcuO+/cc+997773Zie3hlWJSqXyAWt12YLd2aJYLO7qUbxjOy3LDuVyeczF
+        HprKVavVR+ZGTWWDKIrWUeSui02Y1pZMmrsjjenBwYqGsGksqtVqB8SR/Az2xoVa+M63xYDxaIfHZunS
+        KfGKZXwTe10oFPa3xWlAggd/JWwxnuG36fFbil9uNBobLVehTeLks6bpmJADu295Mkh2wgHfsHvYZ48X
+        KXI9n8+vtzQG+dDdwH45RrHKoVxayHFLe0MJKDLt4HFzG3hW+4+0RSlQKpWOKkaxGmvizvkqaQESXrBw
+        EVvySqE7if859sn2jNWN2R2Dr65yqgsN03HQ/kOI3ls4w3ivXQH4JrDOeei225YFkGcf/Kz97+jOQbt6
+        g9XtQPjSAfOMh+xS8RFMxX+Q+KoOog4gzxfhfsrHc9hnxcItYMr1QrntSgb7tJmAOQVSYNi0JqC2K9kV
+        UwFw4/ZNmVJHh83NaaKm04GgLwpmMttNiWuf5nq9vtVUgHTyKc5UTy41CPqqYFq6zVSYAIm3mAqQTj5s
+        +RMgUFswr2ASHzatCUw54SVTAXDX7HtqarAtSDqEnOCz5v85hIxVXIfwN/pjlvd/CEmW5hrewnpdwyYF
+        IssCyJP+GpKg3xfRd5ueR+yOIfWLiL1f2VexQNuX9WfkYoP9GXWAcOX+jgWSxT5IeD5NklQfJNKKVyzj
+        /j9IlsJ/+yRLglbuYo9NaQJPxNH2c6ayA1dqjycQMyaw27JsQRc+dhcXZ/caVhNyuT+QnV12JkxWkAAA
+        AABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="tmr_MenuSlide.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAGISURBVEhL7ZS9SgNBFIU3oiCIhYU/nWU6Fa0slIB5A1lwNxtZVtgHsDBitWUKW4u8gEUstBQS
-        fAHBYGMsRAttBC38RQNGv6s3JDEhJq5WeuAwc+899+zMMLPGPxpgWdZwEARdGv4cbNteSCQSp3A1mUwO
-        aTo8MB7F9BWW4TPcJDer5XDA7ByuY2gy5mDZcZwT4pRpmoMq6xwYbcE9DQ1MozBN7hrzJ+ZZxriW2weN
-        y5jcx2Kxbk29w3XdXmqL8IC6HFdRdgEHVNIa3IxpacRgXFMNwGyKegbdA7yVObkJLTeHrAxxCRbgzhfc
-        xfSI8RHKLvLE877v96hdFRVjVnDI2MyslnXG9OzDJa5qn9pVgXBGRBzJmKbqIGdPc+XGvMAretIwqpLm
-        QLgCbz6/QHkwNAfULqBsOycfkB2qpDUQb9OU1zBCHMcwS04ezB3zDJzUevug+RJuYJhiPIayugKx73le
-        v8o6A821T7qkK52jFPlQfBMYy0/oDMM1zm5E0+Hxa7/Nvw7DeANQqthZuJ3FSAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>32</value>
+    <value>29</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

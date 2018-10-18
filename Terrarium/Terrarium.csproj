@@ -68,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -84,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_Integrated_Circuit.ico" />
+    <None Include="Resorces\icons8_Sent_22px.png" />
+    <None Include="Resorces\icons8_Disconnected_32px.png" />
+    <None Include="Resorces\icons8_Connected_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
