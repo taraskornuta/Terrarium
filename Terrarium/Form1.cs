@@ -25,10 +25,7 @@ namespace Terrarium
             
         }
 
-        private void btn_Settings_Click(object sender, EventArgs e)
-        {
-            tmr_MenuSlide.Start();
-        }
+        private void btn_Settings_Click(object sender, EventArgs e) => tmr_MenuSlide.Start();
 
 
         private void tmr_MenuSlide_Tick(object sender, EventArgs e)
@@ -55,7 +52,6 @@ namespace Terrarium
             }
 
             this.Text = "Terrarium " + ps.SerialPortName;
-
         }
 
         
@@ -75,6 +71,10 @@ namespace Terrarium
 
         }
 
+        private void btn_CleanTxField_Click(object sender, EventArgs e) => rtb_Tx.Clear();
+
+        private void btn_CleanRxField_Click(object sender, EventArgs e) => rtb_Rx.Clear();
+        
     }
 }
 

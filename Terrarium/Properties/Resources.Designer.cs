@@ -83,9 +83,29 @@ namespace Terrarium.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Refresh_22px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Refresh_22px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Sent_22px {
             get {
                 object obj = ResourceManager.GetObject("icons8_Sent_22px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Trash_32px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Trash_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
