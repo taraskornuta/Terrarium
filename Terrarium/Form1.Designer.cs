@@ -38,6 +38,7 @@
             this.btn_SerialConnect = new System.Windows.Forms.Button();
             this.btn_Settings = new System.Windows.Forms.Button();
             this.pnl_Settings = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flattenCombo1 = new Terrarium.FlattenCombo();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,12 +49,11 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tb_TxString = new System.Windows.Forms.TextBox();
             this.btn_SerialSend = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_ToolBar
@@ -77,7 +77,7 @@
             this.btn_CleanRxField.FlatAppearance.BorderSize = 0;
             this.btn_CleanRxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanRxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_CleanRxField.Image = global::Terrarium.Properties.Resources.icons8_Trash_32px;
+            this.btn_CleanRxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanRxField.Image")));
             this.btn_CleanRxField.Location = new System.Drawing.Point(2, 397);
             this.btn_CleanRxField.Name = "btn_CleanRxField";
             this.btn_CleanRxField.Size = new System.Drawing.Size(37, 41);
@@ -91,7 +91,7 @@
             this.btn_CleanTxField.FlatAppearance.BorderSize = 0;
             this.btn_CleanTxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanTxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_CleanTxField.Image = global::Terrarium.Properties.Resources.icons8_Trash_32px;
+            this.btn_CleanTxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanTxField.Image")));
             this.btn_CleanTxField.Location = new System.Drawing.Point(2, 474);
             this.btn_CleanTxField.Name = "btn_CleanTxField";
             this.btn_CleanTxField.Size = new System.Drawing.Size(37, 41);
@@ -103,8 +103,9 @@
             // 
             this.lbl_ComNumber.AutoSize = true;
             this.lbl_ComNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_ComNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.lbl_ComNumber.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lbl_ComNumber.Location = new System.Drawing.Point(7, 62);
+            this.lbl_ComNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_ComNumber.Name = "lbl_ComNumber";
             this.lbl_ComNumber.Size = new System.Drawing.Size(21, 13);
             this.lbl_ComNumber.TabIndex = 3;
@@ -115,7 +116,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Location = new System.Drawing.Point(3, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
@@ -140,7 +141,7 @@
             this.btn_Settings.FlatAppearance.BorderSize = 0;
             this.btn_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Settings.Image = ((System.Drawing.Image)(resources.GetObject("btn_Settings.Image")));
+            this.btn_Settings.Image = global::Terrarium.Properties.Resources.icons8_Settings_32px;
             this.btn_Settings.Location = new System.Drawing.Point(2, 515);
             this.btn_Settings.Name = "btn_Settings";
             this.btn_Settings.Size = new System.Drawing.Size(37, 41);
@@ -158,6 +159,20 @@
             this.pnl_Settings.Size = new System.Drawing.Size(225, 561);
             this.pnl_Settings.TabIndex = 2;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.flattenCombo1);
+            this.groupBox1.Controls.Add(this.btn_SerialPortRefresh);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.groupBox1.Location = new System.Drawing.Point(0, 1);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(225, 61);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "COM PORT";
+            // 
             // flattenCombo1
             // 
             this.flattenCombo1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -166,7 +181,7 @@
             this.flattenCombo1.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
             this.flattenCombo1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.flattenCombo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.flattenCombo1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.flattenCombo1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.flattenCombo1.FormattingEnabled = true;
             this.flattenCombo1.Items.AddRange(new object[] {
             "COM25",
@@ -287,11 +302,11 @@
             // 
             // btn_SerialSend
             // 
-            this.btn_SerialSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.btn_SerialSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.btn_SerialSend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btn_SerialSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_SerialSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_SerialSend.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.btn_SerialSend.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_SerialSend.Image = global::Terrarium.Properties.Resources.icons8_Sent_22px;
             this.btn_SerialSend.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_SerialSend.Location = new System.Drawing.Point(502, 0);
@@ -301,20 +316,6 @@
             this.btn_SerialSend.TabIndex = 1;
             this.btn_SerialSend.Text = "Send";
             this.btn_SerialSend.UseVisualStyleBackColor = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.flattenCombo1);
-            this.groupBox1.Controls.Add(this.btn_SerialPortRefresh);
-            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.groupBox1.Location = new System.Drawing.Point(0, 1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(225, 61);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "COM PORT";
             // 
             // MainForm
             // 
@@ -335,10 +336,10 @@
             this.pnl_ToolBar.ResumeLayout(false);
             this.pnl_ToolBar.PerformLayout();
             this.pnl_Settings.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
