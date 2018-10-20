@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO.Ports;
+using System.Management;
 
 namespace Terrarium
 {
@@ -16,6 +18,9 @@ namespace Terrarium
         private bool panelSettingsHiden;
         private bool isBtnSerialConnect;
         private Properties.Settings ps = Properties.Settings.Default;
+        private string[] serialPortList;
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -25,6 +30,13 @@ namespace Terrarium
             
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            serialPortScan();
+        }
+
+        
+
         private void btn_Settings_Click(object sender, EventArgs e) => tmr_MenuSlide.Start();
 
 
@@ -32,7 +44,7 @@ namespace Terrarium
         {
             if (panelSettingsHiden == true)
             {
-                pnl_Settings.Width += 25;
+                pnl_Settings.Width += 50;
                 if(pnl_Settings.Width >= panelSettingsWidth)
                 {
                     tmr_MenuSlide.Stop();
@@ -42,7 +54,7 @@ namespace Terrarium
             }
             else
             {
-                pnl_Settings.Width -= 25;
+                pnl_Settings.Width -= 50;
                 if (pnl_Settings.Width <= 0)
                 {
                     tmr_MenuSlide.Stop();
@@ -50,8 +62,6 @@ namespace Terrarium
                     this.Refresh();
                 }
             }
-
-            this.Text = "Terrarium " + ps.SerialPortName;
         }
 
         
@@ -60,11 +70,12 @@ namespace Terrarium
             if (isBtnSerialConnect == true)
             {
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
-                
+                this.Text = "Terrarium ";
             }
             else
             {
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
+                this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
             }
             isBtnSerialConnect ^= true;
 
@@ -74,7 +85,38 @@ namespace Terrarium
         private void btn_CleanTxField_Click(object sender, EventArgs e) => rtb_Tx.Clear();
 
         private void btn_CleanRxField_Click(object sender, EventArgs e) => rtb_Rx.Clear();
-        
+
+        private void serialPortScan()
+        {
+            serialPortList = SerialPort.GetPortNames();
+            string tmpPortList = (string)cmb_SerialPortList.SelectedItem;
+
+            if (serialPortList.Contains(tmpPortList))
+            {
+                cmb_SerialPortList.Items.Clear();
+                foreach (string item in serialPortList)
+                {
+                    cmb_SerialPortList.Items.Add(item);
+                    cmb_SerialPortList.SelectedIndex = cmb_SerialPortList.Items.IndexOf(tmpPortList);
+                }
+            }
+            else
+            {
+                cmb_SerialPortList.Items.Clear();
+                foreach (string item in serialPortList)
+                {
+                    cmb_SerialPortList.Items.Add(item);
+                    cmb_SerialPortList.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private void btn_SerialPortRefresh_Click(object sender, EventArgs e)
+        {
+            serialPortScan();
+        }
+
+
     }
 }
 
