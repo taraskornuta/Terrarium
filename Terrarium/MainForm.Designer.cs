@@ -45,6 +45,7 @@
             this.rb_handshake_none = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.rb_stopBits_none = new System.Windows.Forms.RadioButton();
             this.rb_stopBits_2 = new System.Windows.Forms.RadioButton();
             this.rb_stopBits_1_5 = new System.Windows.Forms.RadioButton();
             this.rb_stopBits_1 = new System.Windows.Forms.RadioButton();
@@ -70,6 +71,7 @@
             this.rb_baudRate_128000 = new System.Windows.Forms.RadioButton();
             this.rb_baudRate_115200 = new System.Windows.Forms.RadioButton();
             this.rb_baudRate_57600 = new System.Windows.Forms.RadioButton();
+            this.rb_baudRate_56000 = new System.Windows.Forms.RadioButton();
             this.rb_baudRate_38400 = new System.Windows.Forms.RadioButton();
             this.rb_baudRate_28800 = new System.Windows.Forms.RadioButton();
             this.rb_baudRate_19200 = new System.Windows.Forms.RadioButton();
@@ -87,7 +89,6 @@
             this.tb_TxString = new System.Windows.Forms.TextBox();
             this.btn_SerialSend = new System.Windows.Forms.Button();
             this.cmb_SerialPortList = new Terrarium.FlattenCombo();
-            this.rb_baudRate_56000 = new System.Windows.Forms.RadioButton();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -281,6 +282,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.rb_stopBits_none);
             this.groupBox5.Controls.Add(this.rb_stopBits_2);
             this.groupBox5.Controls.Add(this.rb_stopBits_1_5);
             this.groupBox5.Controls.Add(this.rb_stopBits_1);
@@ -293,12 +295,24 @@
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
             // 
+            // rb_stopBits_none
+            // 
+            this.rb_stopBits_none.AutoSize = true;
+            this.rb_stopBits_none.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rb_stopBits_none.Location = new System.Drawing.Point(6, 18);
+            this.rb_stopBits_none.Name = "rb_stopBits_none";
+            this.rb_stopBits_none.Size = new System.Drawing.Size(49, 17);
+            this.rb_stopBits_none.TabIndex = 7;
+            this.rb_stopBits_none.Text = "none";
+            this.rb_stopBits_none.UseVisualStyleBackColor = true;
+            // 
             // rb_stopBits_2
             // 
             this.rb_stopBits_2.AutoSize = true;
-            this.rb_stopBits_2.Location = new System.Drawing.Point(6, 61);
+            this.rb_stopBits_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rb_stopBits_2.Location = new System.Drawing.Point(6, 81);
             this.rb_stopBits_2.Name = "rb_stopBits_2";
-            this.rb_stopBits_2.Size = new System.Drawing.Size(32, 17);
+            this.rb_stopBits_2.Size = new System.Drawing.Size(31, 17);
             this.rb_stopBits_2.TabIndex = 6;
             this.rb_stopBits_2.Text = "2";
             this.rb_stopBits_2.UseVisualStyleBackColor = true;
@@ -306,9 +320,10 @@
             // rb_stopBits_1_5
             // 
             this.rb_stopBits_1_5.AutoSize = true;
-            this.rb_stopBits_1_5.Location = new System.Drawing.Point(6, 40);
+            this.rb_stopBits_1_5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rb_stopBits_1_5.Location = new System.Drawing.Point(6, 60);
             this.rb_stopBits_1_5.Name = "rb_stopBits_1_5";
-            this.rb_stopBits_1_5.Size = new System.Drawing.Size(43, 17);
+            this.rb_stopBits_1_5.Size = new System.Drawing.Size(40, 17);
             this.rb_stopBits_1_5.TabIndex = 5;
             this.rb_stopBits_1_5.Text = "1.5";
             this.rb_stopBits_1_5.UseVisualStyleBackColor = true;
@@ -317,9 +332,10 @@
             // 
             this.rb_stopBits_1.AutoSize = true;
             this.rb_stopBits_1.Checked = true;
-            this.rb_stopBits_1.Location = new System.Drawing.Point(6, 19);
+            this.rb_stopBits_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rb_stopBits_1.Location = new System.Drawing.Point(6, 39);
             this.rb_stopBits_1.Name = "rb_stopBits_1";
-            this.rb_stopBits_1.Size = new System.Drawing.Size(32, 17);
+            this.rb_stopBits_1.Size = new System.Drawing.Size(31, 17);
             this.rb_stopBits_1.TabIndex = 4;
             this.rb_stopBits_1.TabStop = true;
             this.rb_stopBits_1.Text = "1";
@@ -589,6 +605,17 @@
             this.rb_baudRate_57600.Text = "57600";
             this.rb_baudRate_57600.UseVisualStyleBackColor = true;
             // 
+            // rb_baudRate_56000
+            // 
+            this.rb_baudRate_56000.AutoSize = true;
+            this.rb_baudRate_56000.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rb_baudRate_56000.Location = new System.Drawing.Point(68, 32);
+            this.rb_baudRate_56000.Name = "rb_baudRate_56000";
+            this.rb_baudRate_56000.Size = new System.Drawing.Size(55, 17);
+            this.rb_baudRate_56000.TabIndex = 6;
+            this.rb_baudRate_56000.Text = "56000";
+            this.rb_baudRate_56000.UseVisualStyleBackColor = true;
+            // 
             // rb_baudRate_38400
             // 
             this.rb_baudRate_38400.AutoSize = true;
@@ -808,17 +835,6 @@
             this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
             this.cmb_SerialPortList.TabIndex = 8;
             // 
-            // rb_baudRate_56000
-            // 
-            this.rb_baudRate_56000.AutoSize = true;
-            this.rb_baudRate_56000.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rb_baudRate_56000.Location = new System.Drawing.Point(68, 32);
-            this.rb_baudRate_56000.Name = "rb_baudRate_56000";
-            this.rb_baudRate_56000.Size = new System.Drawing.Size(55, 17);
-            this.rb_baudRate_56000.TabIndex = 6;
-            this.rb_baudRate_56000.Text = "56000";
-            this.rb_baudRate_56000.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -835,6 +851,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Terrarium";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnl_ToolBar.ResumeLayout(false);
             this.pnl_ToolBar.PerformLayout();
@@ -916,6 +933,7 @@
         private System.Windows.Forms.RadioButton rb_handshake_none;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rb_baudRate_56000;
+        private System.Windows.Forms.RadioButton rb_stopBits_none;
     }
 }
 

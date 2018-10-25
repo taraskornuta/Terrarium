@@ -37,13 +37,73 @@ namespace Terrarium.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string SerialPortBoude {
+        [global::System.Configuration.DefaultSettingValueAttribute("4800")]
+        public int SerialPortBoude {
             get {
-                return ((string)(this["SerialPortBoude"]));
+                return ((int)(this["SerialPortBoude"]));
             }
             set {
                 this["SerialPortBoude"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public int SerialDataBits {
+            get {
+                return ((int)(this["SerialDataBits"]));
+            }
+            set {
+                this["SerialDataBits"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string SerialPortParity {
+            get {
+                return ((string)(this["SerialPortParity"]));
+            }
+            set {
+                this["SerialPortParity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string SerialStopBits {
+            get {
+                return ((string)(this["SerialStopBits"]));
+            }
+            set {
+                this["SerialStopBits"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public string SerialHandshake {
+            get {
+                return ((string)(this["SerialHandshake"]));
+            }
+            set {
+                this["SerialHandshake"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("74600")]
+        public int SerialBaudCustome {
+            get {
+                return ((int)(this["SerialBaudCustome"]));
+            }
+            set {
+                this["SerialBaudCustome"] = value;
             }
         }
     }

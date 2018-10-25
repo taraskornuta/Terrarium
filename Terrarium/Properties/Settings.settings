@@ -5,8 +5,23 @@
     <Setting Name="SerialPortName" Type="System.String" Scope="User">
       <Value Profile="(Default)">COM1</Value>
     </Setting>
-    <Setting Name="SerialPortBoude" Type="System.String" Scope="User">
+    <Setting Name="SerialPortBoude" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">4800</Value>
+    </Setting>
+    <Setting Name="SerialDataBits" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="SerialPortParity" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SerialStopBits" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="SerialHandshake" Type="System.String" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SerialBaudCustome" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">74600</Value>
     </Setting>
   </Settings>
 </SettingsFile>

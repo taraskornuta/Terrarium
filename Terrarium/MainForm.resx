@@ -148,7 +148,7 @@ In the past, to communicate with a Serial Port using .NET 1.1, you had to either
 In the past, to communicate with a Serial Port using .NET 1.1, you had to either use the Windows API or a third-party control. With .NET 2.0 and above, Microsoft has added this support with the inclusion of the SerialPort class as part of the System.IO.Ports namespace. Implementation of the SerialPort class is very straight-forward. To create an instance of the SerialPort class, you simply pass the SerialPort options to the constructor of the class.</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>52</value>
+    <value>43</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

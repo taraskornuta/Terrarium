@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Management;
+using SerialPortListener;
 
 namespace Terrarium
 {
+
     public partial class MainForm : Form
     {
         int panelSettingsWidth;
@@ -20,13 +22,17 @@ namespace Terrarium
         private Properties.Settings ps = Properties.Settings.Default;
         private string[] serialPortList;
 
-        private SerialPort sp;
-        private int    com_baudRate;
-        private int    com_dataBits;
+        private string com_portName;
+        private int com_baudRate;
+        private int com_baudRateCustome;
+        private int com_dataBits;
         private Parity com_parity;
         private StopBits com_stopBits;
         private Handshake com_handshake;
-         
+        private SerialPort sp;
+
+
+        
 
         public MainForm()
         {
@@ -34,6 +40,8 @@ namespace Terrarium
             panelSettingsHiden = false;
             panelSettingsWidth = pnl_Settings.Width;
             isBtnSerialConnect = false;
+
+            //sp = new SerialPort(com_portName, com_baudRate, com_parity, com_dataBits, com_stopBits);
 
             rb_baudRate_4800.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
             rb_baudRate_9600.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
@@ -71,6 +79,145 @@ namespace Terrarium
 
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            serialPortScan();
+            GetSettings();
+            FillRadioBtnValues();
+
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void FillRadioBtnValues()
+        {
+            tb_baudRateCustome.Text = ps.SerialBaudCustome.ToString();
+
+            switch (ps.SerialPortBoude)
+            {
+                case 0:                                     //custome value
+                    rb_baudRate_custome.Checked = true;
+                    break;
+                case 4800:
+                    rb_baudRate_4800.Checked = true;
+                    break;
+                case 9600:
+                    rb_baudRate_9600.Checked = true;
+                    break;
+                case 14400:
+                    rb_baudRate_14400.Checked = true;
+                    break;
+                case 19200:
+                    rb_baudRate_19200.Checked = true;
+                    break;
+                case 28800:
+                    rb_baudRate_28800.Checked = true;
+                    break;
+                case 38400:
+                    rb_baudRate_38400.Checked = true;
+                    break;
+                case 56000:
+                    rb_baudRate_56000.Checked = true;
+                    break;
+                case 57600:
+                    rb_baudRate_57600.Checked = true;
+                    break;
+                case 115200:
+                    rb_baudRate_115200.Checked = true;
+                    break;
+                case 128000:
+                    rb_baudRate_128000.Checked = true;
+                    break;
+                case 256000:
+                    rb_baudRate_256000.Checked = true;
+                    break;
+                case 460800:
+                    rb_baudRate_460800.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (ps.SerialDataBits)
+            {
+                case 5:
+                    rb_dataBits_5.Checked = true;
+                    break;
+                case 6:
+                    rb_dataBits_6.Checked = true;
+                    break;
+                case 7:
+                    rb_dataBits_7.Checked = true;
+                    break;
+                case 8:
+                    rb_dataBits_8.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (ps.SerialPortParity)
+            {
+                case "None":
+                    rb_parity_none.Checked = true;
+                    break;
+                case "Odd":
+                    rb_parity_odd.Checked = true;
+                    break;
+                case "Even":
+                    rb_parity_even.Checked = true;
+                    break;
+                case "Mark":
+                    rb_parity_mark.Checked = true;
+                    break;
+                case "Space":
+                    rb_parity_space.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (ps.SerialStopBits)
+            {
+                case "None":
+                    rb_stopBits_none.Checked = true;
+                    break;
+                case "One":
+                    rb_stopBits_1.Checked = true;
+                    break;
+                case "Two":
+                    rb_stopBits_2.Checked = true;
+                    break;
+                case "OnePointFive":
+                    rb_stopBits_1_5.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+
+            switch (ps.SerialHandshake)
+            {
+                case "None":
+                    rb_handshake_none.Checked = true;
+                    break;
+                case "XOnXOff":
+                    rb_handshake_xon.Checked = true;
+                    break;
+                case "RequestToSend":
+                    rb_handshake_rts.Checked = true;
+                    break;
+                case "RequestToSendXOnXOff":
+                    rb_handshake_rts_xon.Checked = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
         private void radioButtons_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
@@ -87,7 +234,7 @@ namespace Terrarium
             if (rb_baudRate_128000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_128000.Text);
             if (rb_baudRate_256000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_256000.Text);
             if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
-            if (rb_baudRate_custome.Checked) com_baudRate = Convert.ToInt32(tb_baudRateCustome.Text);
+            if (rb_baudRate_custome.Checked) com_baudRate = 0;
 
             if (rb_dataBits_5.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_5.Text);
             if (rb_dataBits_6.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_6.Text);
@@ -100,6 +247,7 @@ namespace Terrarium
             if (rb_parity_mark.Checked) com_parity = Parity.Mark;
             if (rb_parity_space.Checked) com_parity = Parity.Space;
 
+            if (rb_stopBits_none.Checked) com_stopBits = StopBits.None;
             if (rb_stopBits_1.Checked) com_stopBits = StopBits.One;
             if (rb_stopBits_1_5.Checked) com_stopBits = StopBits.OnePointFive;
             if (rb_stopBits_2.Checked) com_stopBits = StopBits.Two;
@@ -108,14 +256,29 @@ namespace Terrarium
             if (rb_handshake_rts.Checked) com_handshake = Handshake.RequestToSend;
             if (rb_handshake_xon.Checked) com_handshake = Handshake.XOnXOff;
             if (rb_handshake_rts_xon.Checked) com_handshake = Handshake.RequestToSendXOnXOff;
-
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void SaveSettings()
         {
-            serialPortScan();
-            radioButtons_CheckedChanged(null, null);
+            ps.SerialPortBoude = com_baudRate;
+            ps.SerialBaudCustome = com_baudRateCustome;
+            ps.SerialDataBits = com_dataBits;
+            ps.SerialHandshake = Convert.ToString(com_handshake);
+            ps.SerialPortParity = Convert.ToString(com_parity);
+            ps.SerialStopBits = Convert.ToString(com_stopBits);
+            ps.Save();
         }
+
+        private void GetSettings()
+        {
+            com_baudRate = ps.SerialPortBoude;
+            com_dataBits = ps.SerialDataBits;
+            com_handshake = (Handshake)Enum.Parse(typeof(Handshake), ps.SerialHandshake);
+            com_parity = (Parity)Enum.Parse(typeof(Parity), ps.SerialPortParity);
+            com_stopBits = (StopBits)Enum.Parse(typeof(StopBits), ps.SerialStopBits);
+        }
+
+
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
         {
@@ -123,6 +286,10 @@ namespace Terrarium
             {
                 MessageBox.Show("Please enter only numbers.");
                 tb_baudRateCustome.Text = tb_baudRateCustome.Text.Remove(tb_baudRateCustome.Text.Length - 1);
+            }
+            else
+            {
+                com_baudRateCustome = Convert.ToInt32(tb_baudRateCustome.Text);
             }
         }
 
@@ -134,7 +301,7 @@ namespace Terrarium
             if (panelSettingsHiden == true)
             {
                 pnl_Settings.Width += 50;
-                if(pnl_Settings.Width >= panelSettingsWidth)
+                if (pnl_Settings.Width >= panelSettingsWidth)
                 {
                     tmr_MenuSlide.Stop();
                     panelSettingsHiden = false;
@@ -153,33 +320,33 @@ namespace Terrarium
             }
         }
 
-        
+
         private void btn_SerialConnect_Click(object sender, EventArgs e)
         {
-            if (isBtnSerialConnect == true)
+            try
             {
-                sp.Close();
-                btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
-                this.Text = "Terrarium ";
+                if (sp.IsOpen == false)
+                {
+                    sp.Open();
+                    SendTxtToTextBox("Serial is Open", Color.Aqua);
+                    btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
+                    this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
+                }
+                else
+                {
+                    sp.Close();
+                    SendTxtToTextBox("Serial is Close", Color.Aqua);
+                    btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
+                    this.Text = "Terrarium ";
+                }
             }
-            else
+            catch
             {
-                try
-                {
-                    sp = new SerialPort((string)cmb_SerialPortList.SelectedItem, com_baudRate, com_parity, com_dataBits, com_stopBits);
-                }
-                catch
-                {
-                    MessageBox.Show("Port not available");
-                    return;
-                }
-                btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
-                this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
+                SendTxtToTextBox("Serial port connection ERROR", Color.Red);
             }
-            isBtnSerialConnect ^= true;
-
-
         }
+
+
 
         private void btn_CleanTxField_Click(object sender, EventArgs e) => rtb_Tx.Clear();
 
@@ -215,9 +382,16 @@ namespace Terrarium
             serialPortScan();
         }
 
-
-
-
+        private void SendTxtToTextBox(string data, Color color)
+        {
+            rtb_Rx.SelectionStart = rtb_Rx.TextLength;
+            rtb_Rx.SelectionLength = 0;
+            rtb_Rx.SelectionColor = color;
+            rtb_Rx.SelectedText = string.Empty;
+            rtb_Rx.AppendText(data + "\r\n");
+            rtb_Rx.SelectionColor = rtb_Rx.ForeColor;
+            rtb_Rx.ScrollToCaret();
+        }
 
 
     }
