@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Management;
-using SerialPortListener;
+
 
 namespace Terrarium
 {
@@ -18,7 +18,6 @@ namespace Terrarium
     {
         int panelSettingsWidth;
         private bool panelSettingsHiden;
-        private bool isBtnSerialConnect;
         private Properties.Settings ps = Properties.Settings.Default;
         private string[] serialPortList;
 
@@ -29,7 +28,7 @@ namespace Terrarium
         private Parity com_parity;
         private StopBits com_stopBits;
         private Handshake com_handshake;
-        private SerialPort sp;
+        SerialClient serClient;
 
 
         
@@ -39,10 +38,7 @@ namespace Terrarium
             InitializeComponent();
             panelSettingsHiden = false;
             panelSettingsWidth = pnl_Settings.Width;
-            isBtnSerialConnect = false;
-
-            //sp = new SerialPort(com_portName, com_baudRate, com_parity, com_dataBits, com_stopBits);
-
+            
             rb_baudRate_4800.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
             rb_baudRate_9600.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
             rb_baudRate_14400.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
@@ -81,15 +77,27 @@ namespace Terrarium
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            serialPortScan();
-            GetSettings();
+            SettingsGet();
             FillRadioBtnValues();
+            SerialPortScan();
 
+
+            serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
+            serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(receiveHandler);
+            //if (!serClient.Open())
+            //{
+            //    MessageBox.Show(this, "The Port Cannot Be Opened", "Serial Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            SaveSettings();
+            SettingsSave();
+        }
+
+        private void receiveHandler(object sender, DataStreamEventArgs e)
+        {
+
         }
 
         private void FillRadioBtnValues()
@@ -258,8 +266,9 @@ namespace Terrarium
             if (rb_handshake_rts_xon.Checked) com_handshake = Handshake.RequestToSendXOnXOff;
         }
 
-        private void SaveSettings()
+        private void SettingsSave()
         {
+            ps.SerialPortName = com_portName;
             ps.SerialPortBoude = com_baudRate;
             ps.SerialBaudCustome = com_baudRateCustome;
             ps.SerialDataBits = com_dataBits;
@@ -269,8 +278,9 @@ namespace Terrarium
             ps.Save();
         }
 
-        private void GetSettings()
+        private void SettingsGet()
         {
+            com_portName = ps.SerialPortName;
             com_baudRate = ps.SerialPortBoude;
             com_dataBits = ps.SerialDataBits;
             com_handshake = (Handshake)Enum.Parse(typeof(Handshake), ps.SerialHandshake);
@@ -323,27 +333,27 @@ namespace Terrarium
 
         private void btn_SerialConnect_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (sp.IsOpen == false)
-                {
-                    sp.Open();
+            //try
+            //{
+               // if (serClient.IsOpen() == false)
+               // {
+                    serClient.Open();
                     SendTxtToTextBox("Serial is Open", Color.Aqua);
                     btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
                     this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
-                }
-                else
-                {
-                    sp.Close();
-                    SendTxtToTextBox("Serial is Close", Color.Aqua);
-                    btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
-                    this.Text = "Terrarium ";
-                }
-            }
-            catch
-            {
-                SendTxtToTextBox("Serial port connection ERROR", Color.Red);
-            }
+                //}
+                //else
+                //{
+                //    serClient.Close();
+                //    SendTxtToTextBox("Serial is Close", Color.Aqua);
+                //    btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
+                //    this.Text = "Terrarium ";
+                //}
+            //}
+            //catch
+            //{
+            //    SendTxtToTextBox("Serial port connection ERROR", Color.Red);
+            //}
         }
 
 
@@ -352,18 +362,18 @@ namespace Terrarium
 
         private void btn_CleanRxField_Click(object sender, EventArgs e) => rtb_Rx.Clear();
 
-        private void serialPortScan()
+        private void SerialPortScan()
         {
             serialPortList = SerialPort.GetPortNames();
-            string tmpPortList = (string)cmb_SerialPortList.SelectedItem;
+            string tmpPortName = (string)cmb_SerialPortList.SelectedItem;
 
-            if (serialPortList.Contains(tmpPortList))
+            if (serialPortList.Contains(tmpPortName))
             {
                 cmb_SerialPortList.Items.Clear();
                 foreach (string item in serialPortList)
                 {
                     cmb_SerialPortList.Items.Add(item);
-                    cmb_SerialPortList.SelectedIndex = cmb_SerialPortList.Items.IndexOf(tmpPortList);
+                    cmb_SerialPortList.SelectedIndex = cmb_SerialPortList.Items.IndexOf(tmpPortName);
                 }
             }
             else
@@ -379,10 +389,10 @@ namespace Terrarium
 
         private void btn_SerialPortRefresh_Click(object sender, EventArgs e)
         {
-            serialPortScan();
+            SerialPortScan();
         }
 
-        private void SendTxtToTextBox(string data, Color color)
+        public void SendTxtToTextBox(string data, Color color)
         {
             rtb_Rx.SelectionStart = rtb_Rx.TextLength;
             rtb_Rx.SelectionLength = 0;
