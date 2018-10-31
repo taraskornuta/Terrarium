@@ -43,7 +43,8 @@ namespace Terrarium
         private StopBits _portStopBits;
         private Handshake _portHandshake;
         private SerialPort _serialPort;
-
+        byte[] ReceiveBuffer;
+        private int RxByteCount;
         private Thread serThread;
         private double _PacketsRate;
         private DateTime _lastReceive;
@@ -62,9 +63,10 @@ namespace Terrarium
             _portHandshake = portHandshake;
             _lastReceive = DateTime.MinValue;
 
-            serThread = new Thread(new ThreadStart(SerialReceiving));
-            serThread.Priority = ThreadPriority.Normal;
-            serThread.Name = "SerialHandle" + serThread.ManagedThreadId;
+            if (_serialPort == null)
+            {
+                _serialPort = new SerialPort(_portName, _portBaudRate, _portParity);
+            }
         }
         #endregion
 
@@ -110,13 +112,11 @@ namespace Terrarium
 
         #region Methods
         #region Port Control
+
         public bool Open()
         {
             try
-            {
-                if (_serialPort == null)
-                    _serialPort = new SerialPort(_portName, _portBaudRate, _portParity, _portDataBits, _portStopBits);
-
+            {                                
                 if (_serialPort.IsOpen == false)
                 {
                     _serialPort.ReadTimeout = -1;
@@ -124,39 +124,51 @@ namespace Terrarium
 
                     _serialPort.Open();
 
-                    if (_serialPort.IsOpen == true)
+                    if (_serialPort.IsOpen == true)                      
+                    {
+                        serThread = new Thread(new ThreadStart(SerialReceiving));
+                        serThread.Priority = ThreadPriority.Normal;
+                        serThread.Name = "SerialHandle" + serThread.ManagedThreadId;
+
                         serThread.Start(); /*Start The Communication Thread*/
+                        //serThread.Resume();
+                    }                     
                 }
             }
             catch (Exception ex)
             {
                 return false;
             }
-
             return true;
         }
-        public bool Open(string port, int baudRate)
-        {
-            _portName = port;
-            _portBaudRate = baudRate;
 
-            return Open();
-        }
-        public void Close()
-        {
-            if (_serialPort != null && _serialPort.IsOpen)
-            {
-                serThread.Abort();
+        //public bool Open(string port, int baudRate)
+        //{
+        //    _portName = port;
+        //    _portBaudRate = baudRate;
 
-                if (serThread.ThreadState == ThreadState.Aborted)
-                    _serialPort.Close();
-            }
-        }
+        //    return Open();
+        //}
+
 
         public bool IsOpen()
         {
             return _serialPort.IsOpen;
         }
+
+        public void Close()
+        {
+            if (_serialPort != null && _serialPort.IsOpen)
+            {
+                serThread.Abort();
+                Thread.Sleep(10);
+                if (serThread.ThreadState == ThreadState.Aborted)
+                {
+                    _serialPort.Close();
+                }          
+            }
+        }
+
 
         public bool ResetPort()
         {
@@ -200,17 +212,18 @@ namespace Terrarium
         {
             _serialPort.Write(packet, 0, packet.Length);
         }
-        public int Receive(byte[] bytes, int offset, int count)
+
+        public bool Receive(byte[] bytes, int count)
         {
-            int readBytes = 0;
-
-            if (count > 0)
+            if (RxByteCount > 0)
             {
-                readBytes = _serialPort.Read(bytes, offset, count);
+                bytes = ReceiveBuffer;
+                count = RxByteCount;
+                return true;
             }
-
-            return readBytes;
+            return false;
         }
+
         #endregion
         #region IDisposable Methods
         public void Dispose()
@@ -226,46 +239,21 @@ namespace Terrarium
         #endregion
         #endregion
 
-        #region Threading Loops
+
         private void SerialReceiving()
         {
             while (true)
             {
-                int count = _serialPort.BytesToRead;
-
-                /*Get Sleep Inteval*/
-                TimeSpan tmpInterval = (DateTime.Now - _lastReceive);
-
-                /*Form The Packet in The Buffer*/
-                byte[] buf = new byte[count];
-                int readBytes = Receive(buf, 0, count);
-
-                if (readBytes > 0)
+                RxByteCount = _serialPort.BytesToRead;
+                ReceiveBuffer = new byte[RxByteCount];
+                if (RxByteCount > 0)
                 {
-                    OnSerialReceiving(buf);
-                }
-
-                #region Frequency Control
-                _PacketsRate = ((_PacketsRate + readBytes) / 2);
-
-                _lastReceive = DateTime.Now;
-
-                if ((double)(readBytes + _serialPort.BytesToRead) / 2 <= _PacketsRate)
-                {
-                    if (tmpInterval.Milliseconds > 0)
-                        Thread.Sleep(tmpInterval.Milliseconds > freqCriticalLimit ? freqCriticalLimit : tmpInterval.Milliseconds);
-
-                    /*Testing Threading Model*/
-                    Diagnostics.Debug.Write(tmpInterval.Milliseconds.ToString());
-                    Diagnostics.Debug.Write(" - ");
-                    Diagnostics.Debug.Write(readBytes.ToString());
-                    Diagnostics.Debug.Write("\r\n");
-                }
-                #endregion
+                    _serialPort.Read(ReceiveBuffer, 0, RxByteCount);
+                    OnSerialReceiving(ReceiveBuffer);
+                }  
             }
-
         }
-        #endregion
+
 
         #region Custom Events Invoke Functions
         private void OnSerialReceiving(byte[] res)
