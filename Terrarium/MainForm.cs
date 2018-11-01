@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Management;
-
+using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace Terrarium
 {
@@ -29,7 +30,7 @@ namespace Terrarium
         private StopBits com_stopBits;
         private Handshake com_handshake;
         SerialClient serClient;
-
+        private bool IsOpenBtnClicked = false;
 
         
 
@@ -79,7 +80,7 @@ namespace Terrarium
         private void MainForm_Load(object sender, EventArgs e)
         {
             SettingsGet();
-            FillRadioBtnValues();
+            FillControlValues();
             SerialPortScan();
 
 
@@ -90,25 +91,29 @@ namespace Terrarium
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             SettingsSave();
+            serClient.Close();
+
+            serClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(receiveHandler);
+            serClient.Dispose();
         }
 
         private void receiveHandler(object sender, DataStreamEventArgs e)
         {
-            byte[] buffer = new byte[50];
-            int Count = 0;
-
-            // if (serClient.Receive(buffer, Count) == true)
+            //foreach (byte buff in e.Response)
             //{
-            SetText( Convert.ToString(e.Response));
-            //}
 
+                //SetText( Convert.ToString(buff));
+                SetText(Encoding.ASCII.GetString(e.Response));
+            //}          
         }
+
+
+
 
         delegate void SetTextCallback(string text);
 
         private void SetText(string text)
         {
-
             if (this.rtb_Rx.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(SetText);
@@ -116,11 +121,11 @@ namespace Terrarium
             }
             else
             {
-                this.rtb_Rx.Text = text;
+                this.rtb_Rx.AppendText(text);
             }
         }
 
-        private void FillRadioBtnValues()
+        private void FillControlValues()
         {
             tb_baudRateCustome.Text = ps.SerialBaudCustome.ToString();
 
@@ -303,6 +308,7 @@ namespace Terrarium
             com_portName = ps.SerialPortName;
             com_baudRate = ps.SerialPortBoude;
             com_dataBits = ps.SerialDataBits;
+            com_baudRateCustome = ps.SerialBaudCustome;
             com_handshake = (Handshake)Enum.Parse(typeof(Handshake), ps.SerialHandshake);
             com_parity = (Parity)Enum.Parse(typeof(Parity), ps.SerialPortParity);
             com_stopBits = (StopBits)Enum.Parse(typeof(StopBits), ps.SerialStopBits);
@@ -353,20 +359,25 @@ namespace Terrarium
 
         private void btn_SerialConnect_Click(object sender, EventArgs e)
         {
-            if (serClient.IsOpen() == false)
+            if (IsOpenBtnClicked == false)
             {
-                serClient.SetPormName((string)cmb_SerialPortList.SelectedItem);
+                
                 if (serClient.Open() == true)
                 {
                     SendTxtToTextBox("Serial is Open", Color.Aqua);
                     btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
                     this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
+                    Match Match = Regex.Match(com_portName, "C:\"(?<COM>[^\"]+");
+
+                    lbl_ComNumber.Text = Match.Groups["COM"].Value;
+                    cmb_SerialPortList.Enabled = false;
                 }
                 else
                 {
                     serClient.Close();
                     SendTxtToTextBox("Serial port ERROR", Color.Red);
-                }
+                    cmb_SerialPortList.Enabled = true;
+                }               
             }
             else
             {
@@ -374,7 +385,9 @@ namespace Terrarium
                 SendTxtToTextBox("Serial is Close", Color.Aqua);
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 this.Text = "Terrarium ";
+                cmb_SerialPortList.Enabled = true;
             }
+            IsOpenBtnClicked ^= true; 
         }
 
 
@@ -383,10 +396,14 @@ namespace Terrarium
 
         private void btn_CleanRxField_Click(object sender, EventArgs e) => rtb_Rx.Clear();
 
+
+
         private void SerialPortScan()
         {
             serialPortList = SerialPort.GetPortNames();
-            string tmpPortName = (string)cmb_SerialPortList.SelectedItem;
+            Array.Sort(serialPortList, (x, y) => x.CompareTo(y));
+
+            string tmpPortName = com_portName;
 
             if (serialPortList.Contains(tmpPortName))
             {
@@ -425,7 +442,10 @@ namespace Terrarium
             rtb_Rx.ScrollToCaret();
         }
 
-
+        private void cmb_SerialPortList_SelectedValueChanged(object sender, EventArgs e)
+        {
+            com_portName = (string)cmb_SerialPortList.SelectedItem;
+        }
     }
 }
 

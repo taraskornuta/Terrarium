@@ -43,7 +43,6 @@ namespace Terrarium
         private StopBits _portStopBits;
         private Handshake _portHandshake;
         private SerialPort _serialPort;
-        byte[] ReceiveBuffer;
         private int RxByteCount;
         private Thread serThread;
         private double _PacketsRate;
@@ -65,7 +64,7 @@ namespace Terrarium
 
             if (_serialPort == null)
             {
-                _serialPort = new SerialPort(_portName, _portBaudRate, _portParity);
+                _serialPort = new SerialPort(_portName, _portBaudRate, _portParity, _portDataBits, _portStopBits);
             }
         }
         #endregion
@@ -116,7 +115,9 @@ namespace Terrarium
         public bool Open()
         {
             try
-            {                                
+            {
+                _serialPort = new SerialPort(_portName, _portBaudRate, _portParity, _portDataBits, _portStopBits);
+
                 if (_serialPort.IsOpen == false)
                 {
                     _serialPort.ReadTimeout = -1;
@@ -124,14 +125,13 @@ namespace Terrarium
 
                     _serialPort.Open();
 
-                    if (_serialPort.IsOpen == true)                      
+                    if (_serialPort.IsOpen == true)
                     {
                         serThread = new Thread(new ThreadStart(SerialReceiving));
                         serThread.Priority = ThreadPriority.Normal;
                         serThread.Name = "SerialHandle" + serThread.ManagedThreadId;
-
-                        serThread.Start(); /*Start The Communication Thread*/                      
-                    }                     
+                        serThread.Start(); /*Start The Communication Thread*/
+                    }
                 }
             }
             catch (Exception ex)
@@ -140,14 +140,6 @@ namespace Terrarium
             }
             return true;
         }
-
-        //public bool Open(string port, int baudRate)
-        //{
-        //    _portName = port;
-        //    _portBaudRate = baudRate;
-
-        //    return Open();
-        //}
 
 
         public bool IsOpen()
@@ -167,7 +159,6 @@ namespace Terrarium
                 }          
             }
         }
-
 
         public bool ResetPort()
         {
@@ -237,7 +228,6 @@ namespace Terrarium
             }
         }
         #endregion
-        #endregion
 
 
         private void SerialReceiving()
@@ -273,3 +263,4 @@ namespace Terrarium
     }
 
 }
+#endregion
