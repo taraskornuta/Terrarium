@@ -130,8 +130,7 @@ namespace Terrarium
                         serThread.Priority = ThreadPriority.Normal;
                         serThread.Name = "SerialHandle" + serThread.ManagedThreadId;
 
-                        serThread.Start(); /*Start The Communication Thread*/
-                        //serThread.Resume();
+                        serThread.Start(); /*Start The Communication Thread*/                      
                     }                     
                 }
             }
@@ -213,15 +212,16 @@ namespace Terrarium
             _serialPort.Write(packet, 0, packet.Length);
         }
 
-        public bool Receive(byte[] bytes, int count)
+        public int Receive(byte[] bytes, int offset, int count)
         {
-            if (RxByteCount > 0)
+            int readBytes = 0;
+
+            if (count > 0)
             {
-                bytes = ReceiveBuffer;
-                count = RxByteCount;
-                return true;
+                readBytes = _serialPort.Read(bytes, offset, count);
             }
-            return false;
+
+            return readBytes;
         }
 
         #endregion
@@ -244,13 +244,19 @@ namespace Terrarium
         {
             while (true)
             {
-                RxByteCount = _serialPort.BytesToRead;
-                ReceiveBuffer = new byte[RxByteCount];
-                if (RxByteCount > 0)
+                int count = _serialPort.BytesToRead;
+
+                /*Get Sleep Inteval*/
+                TimeSpan tmpInterval = (DateTime.Now - _lastReceive);
+
+                /*Form The Packet in The Buffer*/
+                byte[] buf = new byte[count];
+                int readBytes = Receive(buf, 0, count);
+
+                if (readBytes > 0)
                 {
-                    _serialPort.Read(ReceiveBuffer, 0, RxByteCount);
-                    OnSerialReceiving(ReceiveBuffer);
-                }  
+                    OnSerialReceiving(buf);
+                }
             }
         }
 

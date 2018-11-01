@@ -64,6 +64,7 @@ namespace Terrarium
             rb_parity_mark.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
             rb_parity_space.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
 
+            rb_stopBits_none.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
             rb_stopBits_1.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
             rb_stopBits_1_5.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
             rb_stopBits_2.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
@@ -98,7 +99,7 @@ namespace Terrarium
 
             // if (serClient.Receive(buffer, Count) == true)
             //{
-            SetText( Convert.ToString(e.Response[0]));
+            SetText( Convert.ToString(e.Response));
             //}
 
         }
