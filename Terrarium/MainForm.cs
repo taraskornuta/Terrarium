@@ -83,7 +83,10 @@ namespace Terrarium
             FillControlValues();
             SerialPortScan();
 
-
+            if (com_portName == null)
+            {
+                com_portName = "COM1";
+            }
             serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
             serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(receiveHandler);
         }
@@ -250,7 +253,6 @@ namespace Terrarium
             }
         }
 
-
         private void radioButtons_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
@@ -361,15 +363,22 @@ namespace Terrarium
         {
             if (IsOpenBtnClicked == false)
             {
-                
+               // serClient.SetPortName(com_portName);
+                serClient.SetBaudrate(com_baudRate);
+                serClient.SetParity(com_parity);
+                serClient.SetDataBits(com_dataBits);
+                serClient.SetStopBits(com_stopBits);
+                serClient.SetHandshake(com_handshake);
+
+                serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
+
                 if (serClient.Open() == true)
                 {
                     SendTxtToTextBox("Serial is Open", Color.Aqua);
                     btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
                     this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
-                    Match Match = Regex.Match(com_portName, "C:\"(?<COM>[^\"]+");
-
-                    lbl_ComNumber.Text = Match.Groups["COM"].Value;
+                    Match Match = Regex.Match(com_portName, "[0-9]");
+                    lbl_ComNumber.Text = Match.Value;
                     cmb_SerialPortList.Enabled = false;
                 }
                 else
@@ -377,6 +386,8 @@ namespace Terrarium
                     serClient.Close();
                     SendTxtToTextBox("Serial port ERROR", Color.Red);
                     cmb_SerialPortList.Enabled = true;
+                    IsOpenBtnClicked = false;
+                    return;
                 }               
             }
             else
@@ -387,7 +398,7 @@ namespace Terrarium
                 this.Text = "Terrarium ";
                 cmb_SerialPortList.Enabled = true;
             }
-            IsOpenBtnClicked ^= true; 
+            IsOpenBtnClicked ^= true;
         }
 
 
@@ -446,6 +457,7 @@ namespace Terrarium
         {
             com_portName = (string)cmb_SerialPortList.SelectedItem;
         }
+
     }
 }
 

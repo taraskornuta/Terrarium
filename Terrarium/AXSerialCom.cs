@@ -171,7 +171,7 @@ namespace Terrarium
             _serialPort.BaudRate = BaudRate;
         }
 
-        public void SetPormName(string PortName)
+        public void SetPortName(string PortName)
         {
             _serialPort.PortName = PortName;
         }
