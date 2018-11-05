@@ -102,12 +102,7 @@ namespace Terrarium
 
         private void receiveHandler(object sender, DataStreamEventArgs e)
         {
-            //foreach (byte buff in e.Response)
-            //{
-
-                //SetText( Convert.ToString(buff));
-                SetText(Encoding.ASCII.GetString(e.Response));
-            //}          
+            SetText(Encoding.ASCII.GetString(e.Response));
         }
 
 
@@ -371,6 +366,7 @@ namespace Terrarium
                 serClient.SetHandshake(com_handshake);
 
                 serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
+                serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(receiveHandler);
 
                 if (serClient.Open() == true)
                 {
@@ -408,7 +404,6 @@ namespace Terrarium
         private void btn_CleanRxField_Click(object sender, EventArgs e) => rtb_Rx.Clear();
 
 
-
         private void SerialPortScan()
         {
             serialPortList = SerialPort.GetPortNames();
@@ -439,7 +434,10 @@ namespace Terrarium
 
         private void btn_SerialPortRefresh_Click(object sender, EventArgs e)
         {
-            SerialPortScan();
+            if (serClient.IsOpen() == false)
+            {
+                SerialPortScan();
+            }
         }
 
         public void SendTxtToTextBox(string data, Color color)
@@ -458,6 +456,33 @@ namespace Terrarium
             com_portName = (string)cmb_SerialPortList.SelectedItem;
         }
 
+        private void rtb_Tx_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!char.IsControl(c))
+            {
+                byte[] buff = new byte[1]; 
+                buff[0] = Convert.ToByte(c);
+                serClient.Transmit(buff);
+            }
+            else
+            {
+                switch (Convert.ToByte(c))
+                {
+                    case 0x03:        //Ctrl+C
+                        Clipboard.SetText(rtb_Tx.SelectedText);
+                        break;
+
+                    case 0x16:        //Ctrl+V                      
+                        string tmp = Clipboard.GetText();
+                        byte[] buff = Encoding.UTF8.GetBytes(tmp);
+                        serClient.Transmit(buff);
+                        break;
+
+
+                }
+            }
+        }
     }
 }
 

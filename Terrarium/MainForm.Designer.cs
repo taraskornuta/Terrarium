@@ -755,7 +755,8 @@
             this.rtb_Tx.Name = "rtb_Tx";
             this.rtb_Tx.Size = new System.Drawing.Size(619, 75);
             this.rtb_Tx.TabIndex = 1;
-            this.rtb_Tx.Text = resources.GetString("rtb_Tx.Text");
+            this.rtb_Tx.Text = "";
+            this.rtb_Tx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtb_Tx_KeyPress);
             // 
             // rtb_Rx
             // 
@@ -767,9 +768,10 @@
             this.rtb_Rx.Location = new System.Drawing.Point(0, 0);
             this.rtb_Rx.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_Rx.Name = "rtb_Rx";
+            this.rtb_Rx.ReadOnly = true;
             this.rtb_Rx.Size = new System.Drawing.Size(619, 438);
             this.rtb_Rx.TabIndex = 0;
-            this.rtb_Rx.Text = resources.GetString("rtb_Rx.Text");
+            this.rtb_Rx.Text = "";
             // 
             // tableLayoutPanel1
             // 

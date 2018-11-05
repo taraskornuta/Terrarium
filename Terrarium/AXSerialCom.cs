@@ -254,10 +254,7 @@ namespace Terrarium
         #region Custom Events Invoke Functions
         private void OnSerialReceiving(byte[] res)
         {
-            if (OnReceiving != null)
-            {
-                OnReceiving(this, new DataStreamEventArgs(res));
-            }
+            OnReceiving?.Invoke(this, new DataStreamEventArgs(res));
         }
         #endregion
     }
