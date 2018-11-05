@@ -45,7 +45,6 @@
             this.rb_handshake_none = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.rb_stopBits_none = new System.Windows.Forms.RadioButton();
             this.rb_stopBits_2 = new System.Windows.Forms.RadioButton();
             this.rb_stopBits_1_5 = new System.Windows.Forms.RadioButton();
             this.rb_stopBits_1 = new System.Windows.Forms.RadioButton();
@@ -282,7 +281,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.rb_stopBits_none);
             this.groupBox5.Controls.Add(this.rb_stopBits_2);
             this.groupBox5.Controls.Add(this.rb_stopBits_1_5);
             this.groupBox5.Controls.Add(this.rb_stopBits_1);
@@ -295,22 +293,11 @@
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
             // 
-            // rb_stopBits_none
-            // 
-            this.rb_stopBits_none.AutoSize = true;
-            this.rb_stopBits_none.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rb_stopBits_none.Location = new System.Drawing.Point(6, 18);
-            this.rb_stopBits_none.Name = "rb_stopBits_none";
-            this.rb_stopBits_none.Size = new System.Drawing.Size(49, 17);
-            this.rb_stopBits_none.TabIndex = 7;
-            this.rb_stopBits_none.Text = "none";
-            this.rb_stopBits_none.UseVisualStyleBackColor = true;
-            // 
             // rb_stopBits_2
             // 
             this.rb_stopBits_2.AutoSize = true;
             this.rb_stopBits_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rb_stopBits_2.Location = new System.Drawing.Point(6, 81);
+            this.rb_stopBits_2.Location = new System.Drawing.Point(6, 80);
             this.rb_stopBits_2.Name = "rb_stopBits_2";
             this.rb_stopBits_2.Size = new System.Drawing.Size(31, 17);
             this.rb_stopBits_2.TabIndex = 6;
@@ -321,7 +308,7 @@
             // 
             this.rb_stopBits_1_5.AutoSize = true;
             this.rb_stopBits_1_5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rb_stopBits_1_5.Location = new System.Drawing.Point(6, 60);
+            this.rb_stopBits_1_5.Location = new System.Drawing.Point(6, 50);
             this.rb_stopBits_1_5.Name = "rb_stopBits_1_5";
             this.rb_stopBits_1_5.Size = new System.Drawing.Size(40, 17);
             this.rb_stopBits_1_5.TabIndex = 5;
@@ -333,7 +320,7 @@
             this.rb_stopBits_1.AutoSize = true;
             this.rb_stopBits_1.Checked = true;
             this.rb_stopBits_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rb_stopBits_1.Location = new System.Drawing.Point(6, 39);
+            this.rb_stopBits_1.Location = new System.Drawing.Point(6, 22);
             this.rb_stopBits_1.Name = "rb_stopBits_1";
             this.rb_stopBits_1.Size = new System.Drawing.Size(31, 17);
             this.rb_stopBits_1.TabIndex = 4;
@@ -820,6 +807,7 @@
             this.tb_TxString.Name = "tb_TxString";
             this.tb_TxString.Size = new System.Drawing.Size(502, 24);
             this.tb_TxString.TabIndex = 0;
+            this.tb_TxString.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_TxString_KeyPress);
             // 
             // btn_SerialSend
             // 
@@ -837,6 +825,7 @@
             this.btn_SerialSend.TabIndex = 1;
             this.btn_SerialSend.Text = "Send";
             this.btn_SerialSend.UseVisualStyleBackColor = false;
+            this.btn_SerialSend.Click += new System.EventHandler(this.btn_SerialSend_Click);
             // 
             // MainForm
             // 
@@ -936,7 +925,6 @@
         private System.Windows.Forms.RadioButton rb_handshake_none;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rb_baudRate_56000;
-        private System.Windows.Forms.RadioButton rb_stopBits_none;
     }
 }
 

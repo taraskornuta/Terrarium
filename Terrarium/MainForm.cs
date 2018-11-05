@@ -32,50 +32,160 @@ namespace Terrarium
         SerialClient serClient;
         private bool IsOpenBtnClicked = false;
 
-        
+
 
         public MainForm()
         {
             InitializeComponent();
             panelSettingsHiden = false;
             panelSettingsWidth = pnl_Settings.Width;
-            
-            rb_baudRate_4800.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_9600.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_14400.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_19200.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_28800.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_38400.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_56000.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_57600.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_115200.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_128000.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_256000.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_460800.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_baudRate_custome.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
 
-            rb_dataBits_5.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_dataBits_6.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_dataBits_7.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_dataBits_8.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
+            rb_baudRate_4800.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_9600.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_14400.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_19200.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_28800.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_38400.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_56000.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_57600.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_115200.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_128000.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_256000.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_460800.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
+            rb_baudRate_custome.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
 
-            rb_parity_none.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_parity_odd.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_parity_even.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_parity_mark.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_parity_space.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
+            rb_dataBits_5.CheckedChanged += new EventHandler(rb_dataBits_CheckedChanged);
+            rb_dataBits_6.CheckedChanged += new EventHandler(rb_dataBits_CheckedChanged);
+            rb_dataBits_7.CheckedChanged += new EventHandler(rb_dataBits_CheckedChanged);
+            rb_dataBits_8.CheckedChanged += new EventHandler(rb_dataBits_CheckedChanged);
 
-            rb_stopBits_none.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_stopBits_1.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_stopBits_1_5.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_stopBits_2.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
+            rb_parity_none.CheckedChanged += new EventHandler(rb_parity_CheckedChanged);
+            rb_parity_odd.CheckedChanged += new EventHandler(rb_parity_CheckedChanged);
+            rb_parity_even.CheckedChanged += new EventHandler(rb_parity_CheckedChanged);
+            rb_parity_mark.CheckedChanged += new EventHandler(rb_parity_CheckedChanged);
+            rb_parity_space.CheckedChanged += new EventHandler(rb_parity_CheckedChanged);
 
-            rb_handshake_none.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_handshake_rts.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_handshake_xon.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
-            rb_handshake_rts_xon.CheckedChanged += new EventHandler(radioButtons_CheckedChanged);
+            rb_stopBits_1.CheckedChanged += new EventHandler(rb_stopBits_CheckedChanged);
+            rb_stopBits_1_5.CheckedChanged += new EventHandler(rb_stopBits_CheckedChanged);
+            rb_stopBits_2.CheckedChanged += new EventHandler(rb_stopBits_CheckedChanged);
+
+            rb_handshake_none.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
+            rb_handshake_rts.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
+            rb_handshake_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
+            rb_handshake_rts_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
 
         }
+
+        private void rb_baudRate_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+
+                    if (rb_baudRate_4800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_4800.Text);
+                    if (rb_baudRate_9600.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_9600.Text);
+                    if (rb_baudRate_14400.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_14400.Text);
+                    if (rb_baudRate_19200.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_19200.Text);
+                    if (rb_baudRate_28800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_28800.Text);
+                    if (rb_baudRate_38400.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_38400.Text);
+                    if (rb_baudRate_56000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_56000.Text);
+                    if (rb_baudRate_57600.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_57600.Text);
+                    if (rb_baudRate_115200.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_115200.Text);
+                    if (rb_baudRate_128000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_128000.Text);
+                    if (rb_baudRate_256000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_256000.Text);
+                    if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
+                    if (rb_baudRate_custome.Checked) com_baudRate = 0;
+
+                    if (serClient != null)
+                    {
+                        serClient.SetBaudrate(com_baudRate);
+                    }
+                }
+            }
+        }
+
+        private void rb_dataBits_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    if (rb_dataBits_5.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_5.Text);
+                    if (rb_dataBits_6.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_6.Text);
+                    if (rb_dataBits_7.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_7.Text);
+                    if (rb_dataBits_8.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_8.Text);
+
+                    if (serClient != null)
+                    {
+                        serClient.SetDataBits(com_dataBits);
+                    }
+                }
+            }
+        }
+
+        private void rb_parity_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    if (rb_parity_none.Checked) com_parity = Parity.None;
+                    if (rb_parity_odd.Checked) com_parity = Parity.Odd;
+                    if (rb_parity_even.Checked) com_parity = Parity.Even;
+                    if (rb_parity_mark.Checked) com_parity = Parity.Mark;
+                    if (rb_parity_space.Checked) com_parity = Parity.Space;
+
+                    if (serClient != null)
+                    {
+                        serClient.SetParity(com_parity);
+                    }
+                }
+            }
+        }
+
+        private void rb_stopBits_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    if (rb_stopBits_1.Checked) com_stopBits = StopBits.One;
+                    if (rb_stopBits_1_5.Checked) com_stopBits = StopBits.OnePointFive;
+                    if (rb_stopBits_2.Checked) com_stopBits = StopBits.Two;
+
+                    if (serClient != null)
+                    {
+                        serClient.SetStopBits(com_stopBits);
+                    }
+                }
+            }
+        }
+
+        private void rb_handshake_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+            if (rb != null)
+            {
+                if (rb.Checked)
+                {
+                    if (rb_handshake_none.Checked) com_handshake = Handshake.None;
+                    if (rb_handshake_rts.Checked) com_handshake = Handshake.RequestToSend;
+                    if (rb_handshake_xon.Checked) com_handshake = Handshake.XOnXOff;
+                    if (rb_handshake_rts_xon.Checked) com_handshake = Handshake.RequestToSendXOnXOff;
+
+                    if (serClient != null)
+                    {
+                        serClient.SetHandshake(com_handshake);
+                    }
+                }
+            }
+        }
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -104,8 +214,6 @@ namespace Terrarium
         {
             SetText(Encoding.ASCII.GetString(e.Response));
         }
-
-
 
 
         delegate void SetTextCallback(string text);
@@ -212,10 +320,7 @@ namespace Terrarium
             }
 
             switch (ps.SerialStopBits)
-            {
-                case "None":
-                    rb_stopBits_none.Checked = true;
-                    break;
+            {               
                 case "One":
                     rb_stopBits_1.Checked = true;
                     break;
@@ -248,45 +353,6 @@ namespace Terrarium
             }
         }
 
-        private void radioButtons_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton radioButton = sender as RadioButton;
-
-            if (rb_baudRate_4800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_4800.Text);
-            if (rb_baudRate_9600.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_9600.Text);
-            if (rb_baudRate_14400.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_14400.Text);
-            if (rb_baudRate_19200.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_19200.Text);
-            if (rb_baudRate_28800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_28800.Text);
-            if (rb_baudRate_38400.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_38400.Text);
-            if (rb_baudRate_56000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_56000.Text);
-            if (rb_baudRate_57600.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_57600.Text);
-            if (rb_baudRate_115200.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_115200.Text);
-            if (rb_baudRate_128000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_128000.Text);
-            if (rb_baudRate_256000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_256000.Text);
-            if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
-            if (rb_baudRate_custome.Checked) com_baudRate = 0;
-
-            if (rb_dataBits_5.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_5.Text);
-            if (rb_dataBits_6.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_6.Text);
-            if (rb_dataBits_7.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_7.Text);
-            if (rb_dataBits_8.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_8.Text);
-
-            if (rb_parity_none.Checked) com_parity = Parity.None;
-            if (rb_parity_odd.Checked) com_parity = Parity.Odd;
-            if (rb_parity_even.Checked) com_parity = Parity.Even;
-            if (rb_parity_mark.Checked) com_parity = Parity.Mark;
-            if (rb_parity_space.Checked) com_parity = Parity.Space;
-
-            if (rb_stopBits_none.Checked) com_stopBits = StopBits.None;
-            if (rb_stopBits_1.Checked) com_stopBits = StopBits.One;
-            if (rb_stopBits_1_5.Checked) com_stopBits = StopBits.OnePointFive;
-            if (rb_stopBits_2.Checked) com_stopBits = StopBits.Two;
-
-            if (rb_handshake_none.Checked) com_handshake = Handshake.None;
-            if (rb_handshake_rts.Checked) com_handshake = Handshake.RequestToSend;
-            if (rb_handshake_xon.Checked) com_handshake = Handshake.XOnXOff;
-            if (rb_handshake_rts_xon.Checked) com_handshake = Handshake.RequestToSendXOnXOff;
-        }
 
         private void SettingsSave()
         {
@@ -294,9 +360,10 @@ namespace Terrarium
             ps.SerialPortBoude = com_baudRate;
             ps.SerialBaudCustome = com_baudRateCustome;
             ps.SerialDataBits = com_dataBits;
+            ps.SerialStopBits = Convert.ToString(com_stopBits);
             ps.SerialHandshake = Convert.ToString(com_handshake);
             ps.SerialPortParity = Convert.ToString(com_parity);
-            ps.SerialStopBits = Convert.ToString(com_stopBits);
+
             ps.Save();
         }
 
@@ -306,9 +373,10 @@ namespace Terrarium
             com_baudRate = ps.SerialPortBoude;
             com_dataBits = ps.SerialDataBits;
             com_baudRateCustome = ps.SerialBaudCustome;
+            com_stopBits = (StopBits)Enum.Parse(typeof(StopBits), ps.SerialStopBits);
             com_handshake = (Handshake)Enum.Parse(typeof(Handshake), ps.SerialHandshake);
             com_parity = (Parity)Enum.Parse(typeof(Parity), ps.SerialPortParity);
-            com_stopBits = (StopBits)Enum.Parse(typeof(StopBits), ps.SerialStopBits);
+
         }
 
 
@@ -358,7 +426,7 @@ namespace Terrarium
         {
             if (IsOpenBtnClicked == false)
             {
-               // serClient.SetPortName(com_portName);
+                serClient.SetPortName(com_portName);
                 serClient.SetBaudrate(com_baudRate);
                 serClient.SetParity(com_parity);
                 serClient.SetDataBits(com_dataBits);
@@ -384,7 +452,7 @@ namespace Terrarium
                     cmb_SerialPortList.Enabled = true;
                     IsOpenBtnClicked = false;
                     return;
-                }               
+                }
             }
             else
             {
@@ -456,12 +524,12 @@ namespace Terrarium
             com_portName = (string)cmb_SerialPortList.SelectedItem;
         }
 
-        private void rtb_Tx_KeyPress(object sender, KeyPressEventArgs e)
+        private void rtb_Tx_KeyPress(object sender, KeyPressEventArgs e)  //used for greping chars from rtb_Tx
         {
             char c = e.KeyChar;
             if (!char.IsControl(c))
             {
-                byte[] buff = new byte[1]; 
+                byte[] buff = new byte[1];
                 buff[0] = Convert.ToByte(c);
                 serClient.Transmit(buff);
             }
@@ -481,6 +549,21 @@ namespace Terrarium
 
 
                 }
+            }
+        }
+
+
+        private void btn_SerialSend_Click(object sender, EventArgs e)
+        {
+            serClient.Transmit(Encoding.UTF8.GetBytes(tb_TxString.Text));
+        }
+
+        private void tb_TxString_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                btn_SerialSend.PerformClick();
             }
         }
     }

@@ -65,6 +65,7 @@ namespace Terrarium
             if (_serialPort == null)
             {
                 _serialPort = new SerialPort(_portName, _portBaudRate, _portParity, _portDataBits, _portStopBits);
+                //_serialPort = new SerialPort(_portName, _portBaudRate, _portParity);
             }
         }
         #endregion
