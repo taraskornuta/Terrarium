@@ -157,6 +157,7 @@ namespace Terrarium
                 if (serThread.ThreadState == ThreadState.Aborted)
                 {
                     _serialPort.Close();
+                    while (_serialPort.IsOpen == true) { }
                 }          
             }
         }
@@ -174,7 +175,10 @@ namespace Terrarium
 
         public void SetPortName(string PortName)
         {
-            _serialPort.PortName = PortName;
+            if(_serialPort.IsOpen != true)
+            {
+                 _serialPort.PortName = PortName;
+            }           
         }
 
         public void SetDataBits(int DataBits)

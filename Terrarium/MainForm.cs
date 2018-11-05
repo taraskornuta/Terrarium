@@ -11,6 +11,7 @@ using System.IO.Ports;
 using System.Management;
 using System.Collections;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace Terrarium
 {
@@ -441,15 +442,18 @@ namespace Terrarium
                     SendTxtToTextBox("Serial is Open", Color.Aqua);
                     btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
                     this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
-                    Match Match = Regex.Match(com_portName, "[0-9]");
+                    Match Match = Regex.Match(com_portName, "[0-99]");
                     lbl_ComNumber.Text = Match.Value;
                     cmb_SerialPortList.Enabled = false;
+                    btn_SerialConnect.Enabled = true;
                 }
                 else
                 {
                     serClient.Close();
+
                     SendTxtToTextBox("Serial port ERROR", Color.Red);
                     cmb_SerialPortList.Enabled = true;
+                    btn_SerialConnect.Enabled = true;
                     IsOpenBtnClicked = false;
                     return;
                 }
@@ -457,10 +461,12 @@ namespace Terrarium
             else
             {
                 serClient.Close();
+
                 SendTxtToTextBox("Serial is Close", Color.Aqua);
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 this.Text = "Terrarium ";
                 cmb_SerialPortList.Enabled = true;
+                btn_SerialConnect.Enabled = true;
             }
             IsOpenBtnClicked ^= true;
         }
@@ -531,20 +537,29 @@ namespace Terrarium
             {
                 byte[] buff = new byte[1];
                 buff[0] = Convert.ToByte(c);
-                serClient.Transmit(buff);
+                if (serClient != null && serClient.IsOpen() == true)
+                {
+                    serClient.Transmit(buff);
+                }
             }
             else
             {
                 switch (Convert.ToByte(c))
                 {
                     case 0x03:        //Ctrl+C
-                        Clipboard.SetText(rtb_Tx.SelectedText);
+                        if(rtb_Tx.SelectedText.Length > 0)
+                        {
+                            Clipboard.SetText(rtb_Tx.SelectedText);
+                        } 
                         break;
 
                     case 0x16:        //Ctrl+V                      
                         string tmp = Clipboard.GetText();
                         byte[] buff = Encoding.UTF8.GetBytes(tmp);
-                        serClient.Transmit(buff);
+                        if (serClient != null && serClient.IsOpen() == true)
+                        {
+                            serClient.Transmit(buff);
+                        }                       
                         break;
 
 
@@ -565,6 +580,12 @@ namespace Terrarium
                 e.Handled = true;
                 btn_SerialSend.PerformClick();
             }
+        }
+
+        private void rtb_Rx_TextChanged(object sender, EventArgs e)
+        {
+            rtb_Rx.SelectionStart = rtb_Rx.Text.Length;
+            rtb_Rx.ScrollToCaret();
         }
     }
 }
