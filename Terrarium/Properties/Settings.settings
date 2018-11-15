@@ -23,5 +23,11 @@
     <Setting Name="SerialBaudCustome" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">74600</Value>
     </Setting>
+    <Setting Name="sidePannelHide" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="rtb_Rx_AutoScroll" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

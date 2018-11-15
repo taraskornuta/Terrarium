@@ -13,13 +13,15 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using System.Threading;
 
+
 namespace Terrarium
 {
 
     public partial class MainForm : Form
     {
-        int panelSettingsWidth;
+        private int panelSettingsWidth;
         private bool panelSettingsHiden;
+
         private Properties.Settings ps = Properties.Settings.Default;
         private string[] serialPortList;
 
@@ -38,8 +40,8 @@ namespace Terrarium
         public MainForm()
         {
             InitializeComponent();
-            panelSettingsHiden = false;
             panelSettingsWidth = pnl_Settings.Width;
+            SettingsGet();
 
             rb_baudRate_4800.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
             rb_baudRate_9600.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
@@ -178,26 +180,21 @@ namespace Terrarium
                     if (rb_handshake_rts.Checked) com_handshake = Handshake.RequestToSend;
                     if (rb_handshake_xon.Checked) com_handshake = Handshake.XOnXOff;
                     if (rb_handshake_rts_xon.Checked) com_handshake = Handshake.RequestToSendXOnXOff;
-
-                    if (serClient != null)
-                    {
-                        serClient.SetHandshake(com_handshake);
-                    }
+                    if (serClient != null)serClient.SetHandshake(com_handshake);
                 }
             }
         }
 
-
         private void MainForm_Load(object sender, EventArgs e)
-        {
-            SettingsGet();
+        {      
             FillControlValues();
-            SerialPortScan();
 
-            if (com_portName == null)
-            {
-                com_portName = "COM1";
-            }
+            int portCount = SerialPortScan();
+            if (portCount == 0) SendTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
+            else SendTxtToStatusLable("FOUND PORTS " + portCount, Color.WhiteSmoke);
+
+            if (com_portName == null)com_portName = "COM1";
+
             serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
             serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(receiveHandler);
         }
@@ -216,7 +213,6 @@ namespace Terrarium
             SetText(Encoding.ASCII.GetString(e.Response));
         }
 
-
         delegate void SetTextCallback(string text);
 
         private void SetText(string text)
@@ -228,7 +224,11 @@ namespace Terrarium
             }
             else
             {
-                this.rtb_Rx.AppendText(text);
+                if (cb_RxAutoscroll.Checked == true)
+                {
+                    rtb_Rx.Autoscroll = true;
+                }
+                this.rtb_Rx.AppendText(text);             
             }
         }
 
@@ -352,8 +352,14 @@ namespace Terrarium
                 default:
                     break;
             }
-        }
 
+            if (ps.sidePannelHide == true)
+            {
+                pnl_Settings.Width = 0;
+            }
+
+            cb_RxAutoscroll.Checked = ps.rtb_Rx_AutoScroll;
+        }
 
         private void SettingsSave()
         {
@@ -364,7 +370,8 @@ namespace Terrarium
             ps.SerialStopBits = Convert.ToString(com_stopBits);
             ps.SerialHandshake = Convert.ToString(com_handshake);
             ps.SerialPortParity = Convert.ToString(com_parity);
-
+            ps.sidePannelHide = panelSettingsHiden;
+            ps.rtb_Rx_AutoScroll = cb_RxAutoscroll.Checked;
             ps.Save();
         }
 
@@ -377,10 +384,8 @@ namespace Terrarium
             com_stopBits = (StopBits)Enum.Parse(typeof(StopBits), ps.SerialStopBits);
             com_handshake = (Handshake)Enum.Parse(typeof(Handshake), ps.SerialHandshake);
             com_parity = (Parity)Enum.Parse(typeof(Parity), ps.SerialPortParity);
-
+            panelSettingsHiden = ps.sidePannelHide;            
         }
-
-
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
         {
@@ -397,7 +402,6 @@ namespace Terrarium
 
         private void btn_Settings_Click(object sender, EventArgs e) => tmr_MenuSlide.Start();
 
-
         private void tmr_MenuSlide_Tick(object sender, EventArgs e)
         {
             if (panelSettingsHiden == true)
@@ -405,6 +409,7 @@ namespace Terrarium
                 pnl_Settings.Width += 50;
                 if (pnl_Settings.Width >= panelSettingsWidth)
                 {
+                    pnl_Settings.Width = panelSettingsWidth;
                     tmr_MenuSlide.Stop();
                     panelSettingsHiden = false;
                     this.Refresh();
@@ -415,6 +420,7 @@ namespace Terrarium
                 pnl_Settings.Width -= 50;
                 if (pnl_Settings.Width <= 0)
                 {
+                    pnl_Settings.Width = 0;
                     tmr_MenuSlide.Stop();
                     panelSettingsHiden = true;
                     this.Refresh();
@@ -422,9 +428,14 @@ namespace Terrarium
             }
         }
 
-
         private void btn_SerialConnect_Click(object sender, EventArgs e)
         {
+            if (serialPortList.Length == 0)
+            {
+                SendTxtToStatusLable("CHOSE PORT FIRST", Color.Red);
+                return;
+            }
+
             if (IsOpenBtnClicked == false)
             {
                 serClient.SetPortName(com_portName);
@@ -439,7 +450,7 @@ namespace Terrarium
 
                 if (serClient.Open() == true)
                 {
-                    SendTxtToTextBox("Serial is Open", Color.Aqua);
+                    SendTxtToStatusLable("SERIAL OPENED", Color.Aqua);
                     btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
                     this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
                     Match Match = Regex.Match(com_portName, "[0-99]");
@@ -451,7 +462,7 @@ namespace Terrarium
                 {
                     serClient.Close();
 
-                    SendTxtToTextBox("Serial port ERROR", Color.Red);
+                    SendTxtToStatusLable("SERIAL ERROR", Color.Red);
                     cmb_SerialPortList.Enabled = true;
                     btn_SerialConnect.Enabled = true;
                     IsOpenBtnClicked = false;
@@ -461,8 +472,7 @@ namespace Terrarium
             else
             {
                 serClient.Close();
-
-                SendTxtToTextBox("Serial is Close", Color.Aqua);
+                SendTxtToStatusLable("SERIAL CLOSED", Color.Aqua);
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 this.Text = "Terrarium ";
                 cmb_SerialPortList.Enabled = true;
@@ -471,14 +481,15 @@ namespace Terrarium
             IsOpenBtnClicked ^= true;
         }
 
-
-
-        private void btn_CleanTxField_Click(object sender, EventArgs e) => rtb_Tx.Clear();
+        private void btn_CleanTxField_Click(object sender, EventArgs e)
+        {
+            rtb_Tx.Clear();
+            tb_TxString.Clear();
+        }
 
         private void btn_CleanRxField_Click(object sender, EventArgs e) => rtb_Rx.Clear();
 
-
-        private void SerialPortScan()
+        private int SerialPortScan()
         {
             serialPortList = SerialPort.GetPortNames();
             Array.Sort(serialPortList, (x, y) => x.CompareTo(y));
@@ -504,13 +515,16 @@ namespace Terrarium
                 }
             }
             com_portName = (string)cmb_SerialPortList.SelectedItem;
+            return serialPortList.Length;
         }
 
         private void btn_SerialPortRefresh_Click(object sender, EventArgs e)
         {
             if (serClient.IsOpen() == false)
             {
-                SerialPortScan();
+                int portCount = SerialPortScan();
+                if (portCount == 0)SendTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
+                else SendTxtToStatusLable("FOUND PORTS " + portCount, Color.WhiteSmoke);                      
             }
         }
 
@@ -523,6 +537,12 @@ namespace Terrarium
             rtb_Rx.AppendText(data + "\r\n");
             rtb_Rx.SelectionColor = rtb_Rx.ForeColor;
             rtb_Rx.ScrollToCaret();
+        }
+
+        public void SendTxtToStatusLable(string data, Color color)
+        {
+            lbl_Status.ForeColor = color;
+            lbl_Status.Text = data;
         }
 
         private void cmb_SerialPortList_SelectedValueChanged(object sender, EventArgs e)
@@ -547,10 +567,10 @@ namespace Terrarium
                 switch (Convert.ToByte(c))
                 {
                     case 0x03:        //Ctrl+C
-                        if(rtb_Tx.SelectedText.Length > 0)
+                        if (rtb_Tx.SelectedText.Length > 0)
                         {
                             Clipboard.SetText(rtb_Tx.SelectedText);
-                        } 
+                        }
                         break;
 
                     case 0x16:        //Ctrl+V                      
@@ -559,18 +579,22 @@ namespace Terrarium
                         if (serClient != null && serClient.IsOpen() == true)
                         {
                             serClient.Transmit(buff);
-                        }                       
+                        }
                         break;
-
-
                 }
             }
         }
 
-
         private void btn_SerialSend_Click(object sender, EventArgs e)
         {
-            serClient.Transmit(Encoding.UTF8.GetBytes(tb_TxString.Text));
+            if (serClient.IsOpen() == true)
+            {
+                serClient.Transmit(Encoding.UTF8.GetBytes(tb_TxString.Text));
+            }
+            else
+            {
+                SendTxtToStatusLable("OPEN PORT FIRST", Color.Red);
+            }
         }
 
         private void tb_TxString_KeyPress(object sender, KeyPressEventArgs e)
@@ -587,6 +611,7 @@ namespace Terrarium
             rtb_Rx.SelectionStart = rtb_Rx.Text.Length;
             rtb_Rx.ScrollToCaret();
         }
+
     }
 }
 

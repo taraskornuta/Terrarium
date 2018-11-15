@@ -106,5 +106,29 @@ namespace Terrarium.Properties {
                 this["SerialBaudCustome"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool sidePannelHide {
+            get {
+                return ((bool)(this["sidePannelHide"]));
+            }
+            set {
+                this["sidePannelHide"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool rtb_Rx_AutoScroll {
+            get {
+                return ((bool)(this["rtb_Rx_AutoScroll"]));
+            }
+            set {
+                this["rtb_Rx_AutoScroll"] = value;
+            }
+        }
     }
 }

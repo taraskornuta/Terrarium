@@ -38,6 +38,9 @@
             this.btn_SerialConnect = new System.Windows.Forms.Button();
             this.btn_Settings = new System.Windows.Forms.Button();
             this.pnl_Settings = new System.Windows.Forms.Panel();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cb_RxAutoscroll = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.rb_handshake_rts_xon = new System.Windows.Forms.RadioButton();
             this.rb_handshake_xon = new System.Windows.Forms.RadioButton();
@@ -80,22 +83,27 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_Status = new System.Windows.Forms.Label();
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
-            this.rtb_Rx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tb_TxString = new System.Windows.Forms.TextBox();
             this.btn_SerialSend = new System.Windows.Forms.Button();
+            this.rtb_Rx = new Terrarium.MyRichTextBox();
             this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -199,6 +207,7 @@
             // pnl_Settings
             // 
             this.pnl_Settings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.pnl_Settings.Controls.Add(this.groupBox7);
             this.pnl_Settings.Controls.Add(this.groupBox6);
             this.pnl_Settings.Controls.Add(this.groupBox5);
             this.pnl_Settings.Controls.Add(this.groupBox4);
@@ -210,6 +219,40 @@
             this.pnl_Settings.Name = "pnl_Settings";
             this.pnl_Settings.Size = new System.Drawing.Size(225, 561);
             this.pnl_Settings.TabIndex = 2;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.cb_RxAutoscroll);
+            this.groupBox7.Controls.Add(this.label8);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox7.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox7.Location = new System.Drawing.Point(0, 367);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(144, 92);
+            this.groupBox7.TabIndex = 14;
+            this.groupBox7.TabStop = false;
+            // 
+            // cb_RxAutoscroll
+            // 
+            this.cb_RxAutoscroll.AutoSize = true;
+            this.cb_RxAutoscroll.Checked = true;
+            this.cb_RxAutoscroll.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_RxAutoscroll.Location = new System.Drawing.Point(7, 19);
+            this.cb_RxAutoscroll.Name = "cb_RxAutoscroll";
+            this.cb_RxAutoscroll.Size = new System.Drawing.Size(82, 17);
+            this.cb_RxAutoscroll.TabIndex = 2;
+            this.cb_RxAutoscroll.Text = "Autoscroll";
+            this.cb_RxAutoscroll.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(20, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Receive";
             // 
             // groupBox6
             // 
@@ -290,9 +333,9 @@
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox5.Location = new System.Drawing.Point(160, 166);
+            this.groupBox5.Location = new System.Drawing.Point(150, 166);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(65, 110);
+            this.groupBox5.Size = new System.Drawing.Size(75, 110);
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
             // 
@@ -435,7 +478,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox3.Location = new System.Drawing.Point(0, 166);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(57, 110);
+            this.groupBox3.Size = new System.Drawing.Size(66, 110);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             // 
@@ -706,11 +749,47 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.lbl_Status);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 537);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(619, 24);
             this.panel1.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label7.Location = new System.Drawing.Point(212, 5);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Tx: 0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.Location = new System.Drawing.Point(139, 5);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Rx: 0";
+            // 
+            // lbl_Status
+            // 
+            this.lbl_Status.AutoSize = true;
+            this.lbl_Status.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_Status.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_Status.Location = new System.Drawing.Point(3, 5);
+            this.lbl_Status.Name = "lbl_Status";
+            this.lbl_Status.Size = new System.Drawing.Size(43, 13);
+            this.lbl_Status.TabIndex = 0;
+            this.lbl_Status.Text = "Status";
             // 
             // tmr_MenuSlide
             // 
@@ -732,30 +811,15 @@
             this.rtb_Tx.Text = "";
             this.rtb_Tx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtb_Tx_KeyPress);
             // 
-            // rtb_Rx
-            // 
-            this.rtb_Rx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.rtb_Rx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_Rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_Rx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rtb_Rx.ForeColor = System.Drawing.Color.White;
-            this.rtb_Rx.Location = new System.Drawing.Point(0, 0);
-            this.rtb_Rx.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_Rx.Name = "rtb_Rx";
-            this.rtb_Rx.Size = new System.Drawing.Size(619, 438);
-            this.rtb_Rx.TabIndex = 0;
-            this.rtb_Rx.Text = "";
-            this.rtb_Rx.TextChanged += new System.EventHandler(this.rtb_Rx_TextChanged);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.rtb_Rx, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rtb_Tx, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.rtb_Tx, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.rtb_Rx, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -814,6 +878,21 @@
             this.btn_SerialSend.UseVisualStyleBackColor = false;
             this.btn_SerialSend.Click += new System.EventHandler(this.btn_SerialSend_Click);
             // 
+            // rtb_Rx
+            // 
+            this.rtb_Rx.Autoscroll = false;
+            this.rtb_Rx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.rtb_Rx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_Rx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_Rx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.rtb_Rx.ForeColor = System.Drawing.Color.White;
+            this.rtb_Rx.Location = new System.Drawing.Point(0, 0);
+            this.rtb_Rx.Margin = new System.Windows.Forms.Padding(0);
+            this.rtb_Rx.Name = "rtb_Rx";
+            this.rtb_Rx.Size = new System.Drawing.Size(619, 438);
+            this.rtb_Rx.TabIndex = 3;
+            this.rtb_Rx.Text = "";
+            // 
             // cmb_SerialPortList
             // 
             this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -851,6 +930,8 @@
             this.pnl_ToolBar.ResumeLayout(false);
             this.pnl_ToolBar.PerformLayout();
             this.pnl_Settings.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -862,6 +943,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -876,7 +959,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer tmr_MenuSlide;
         private System.Windows.Forms.RichTextBox rtb_Tx;
-        private System.Windows.Forms.RichTextBox rtb_Rx;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TextBox tb_TxString;
@@ -928,6 +1010,13 @@
         private System.Windows.Forms.RadioButton rb_handshake_none;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rb_baudRate_56000;
+        private System.Windows.Forms.Label lbl_Status;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.CheckBox cb_RxAutoscroll;
+        private System.Windows.Forms.Label label8;
+        private MyRichTextBox rtb_Rx;
     }
 }
 
