@@ -83,8 +83,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_TxCounter = new System.Windows.Forms.Label();
+            this.lbl_RxCounter = new System.Windows.Forms.Label();
             this.lbl_Status = new System.Windows.Forms.Label();
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
@@ -92,6 +92,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tb_TxString = new System.Windows.Forms.TextBox();
             this.btn_SerialSend = new System.Windows.Forms.Button();
+            this.cb_Rx_Hex = new System.Windows.Forms.CheckBox();
             this.rtb_Rx = new Terrarium.MyRichTextBox();
             this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.pnl_ToolBar.SuspendLayout();
@@ -222,13 +223,14 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.cb_Rx_Hex);
             this.groupBox7.Controls.Add(this.cb_RxAutoscroll);
             this.groupBox7.Controls.Add(this.label8);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox7.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox7.Location = new System.Drawing.Point(0, 367);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(144, 92);
+            this.groupBox7.Size = new System.Drawing.Size(144, 71);
             this.groupBox7.TabIndex = 14;
             this.groupBox7.TabStop = false;
             // 
@@ -237,9 +239,10 @@
             this.cb_RxAutoscroll.AutoSize = true;
             this.cb_RxAutoscroll.Checked = true;
             this.cb_RxAutoscroll.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_RxAutoscroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_RxAutoscroll.Location = new System.Drawing.Point(7, 19);
             this.cb_RxAutoscroll.Name = "cb_RxAutoscroll";
-            this.cb_RxAutoscroll.Size = new System.Drawing.Size(82, 17);
+            this.cb_RxAutoscroll.Size = new System.Drawing.Size(72, 17);
             this.cb_RxAutoscroll.TabIndex = 2;
             this.cb_RxAutoscroll.Text = "Autoscroll";
             this.cb_RxAutoscroll.UseVisualStyleBackColor = true;
@@ -589,9 +592,9 @@
             this.rb_baudRate_custome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rb_baudRate_custome.Location = new System.Drawing.Point(139, 50);
             this.rb_baudRate_custome.Name = "rb_baudRate_custome";
-            this.rb_baudRate_custome.Size = new System.Drawing.Size(65, 17);
+            this.rb_baudRate_custome.Size = new System.Drawing.Size(66, 17);
             this.rb_baudRate_custome.TabIndex = 11;
-            this.rb_baudRate_custome.Text = "custome";
+            this.rb_baudRate_custome.Text = "Custome";
             this.rb_baudRate_custome.UseVisualStyleBackColor = true;
             // 
             // rb_baudRate_256000
@@ -749,8 +752,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.lbl_TxCounter);
+            this.panel1.Controls.Add(this.lbl_RxCounter);
             this.panel1.Controls.Add(this.lbl_Status);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 537);
@@ -758,27 +761,29 @@
             this.panel1.Size = new System.Drawing.Size(619, 24);
             this.panel1.TabIndex = 3;
             // 
-            // label7
+            // lbl_TxCounter
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Location = new System.Drawing.Point(212, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Tx: 0";
+            this.lbl_TxCounter.AutoSize = true;
+            this.lbl_TxCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_TxCounter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_TxCounter.Location = new System.Drawing.Point(212, 5);
+            this.lbl_TxCounter.Name = "lbl_TxCounter";
+            this.lbl_TxCounter.Size = new System.Drawing.Size(36, 13);
+            this.lbl_TxCounter.TabIndex = 2;
+            this.lbl_TxCounter.Text = "Tx: 0";
+            this.lbl_TxCounter.DoubleClick += new System.EventHandler(this.lbl_TxCounter_DoubleClick);
             // 
-            // label6
+            // lbl_RxCounter
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Location = new System.Drawing.Point(139, 5);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Rx: 0";
+            this.lbl_RxCounter.AutoSize = true;
+            this.lbl_RxCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_RxCounter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_RxCounter.Location = new System.Drawing.Point(139, 5);
+            this.lbl_RxCounter.Name = "lbl_RxCounter";
+            this.lbl_RxCounter.Size = new System.Drawing.Size(37, 13);
+            this.lbl_RxCounter.TabIndex = 1;
+            this.lbl_RxCounter.Text = "Rx: 0";
+            this.lbl_RxCounter.DoubleClick += new System.EventHandler(this.lbl_RxCounter_DoubleClick);
             // 
             // lbl_Status
             // 
@@ -878,6 +883,19 @@
             this.btn_SerialSend.UseVisualStyleBackColor = false;
             this.btn_SerialSend.Click += new System.EventHandler(this.btn_SerialSend_Click);
             // 
+            // cb_Rx_Hex
+            // 
+            this.cb_Rx_Hex.AutoSize = true;
+            this.cb_Rx_Hex.Checked = true;
+            this.cb_Rx_Hex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_Rx_Hex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cb_Rx_Hex.Location = new System.Drawing.Point(7, 37);
+            this.cb_Rx_Hex.Name = "cb_Rx_Hex";
+            this.cb_Rx_Hex.Size = new System.Drawing.Size(48, 17);
+            this.cb_Rx_Hex.TabIndex = 3;
+            this.cb_Rx_Hex.Text = "HEX";
+            this.cb_Rx_Hex.UseVisualStyleBackColor = true;
+            // 
             // rtb_Rx
             // 
             this.rtb_Rx.Autoscroll = false;
@@ -889,6 +907,7 @@
             this.rtb_Rx.Location = new System.Drawing.Point(0, 0);
             this.rtb_Rx.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_Rx.Name = "rtb_Rx";
+            this.rtb_Rx.ReadOnly = true;
             this.rtb_Rx.Size = new System.Drawing.Size(619, 438);
             this.rtb_Rx.TabIndex = 3;
             this.rtb_Rx.Text = "";
@@ -1011,12 +1030,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rb_baudRate_56000;
         private System.Windows.Forms.Label lbl_Status;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl_TxCounter;
+        private System.Windows.Forms.Label lbl_RxCounter;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.CheckBox cb_RxAutoscroll;
         private System.Windows.Forms.Label label8;
         private MyRichTextBox rtb_Rx;
+        private System.Windows.Forms.CheckBox cb_Rx_Hex;
     }
 }
 

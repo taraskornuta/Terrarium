@@ -43,9 +43,7 @@ namespace Terrarium
         private StopBits _portStopBits;
         private Handshake _portHandshake;
         private SerialPort _serialPort;
-        private int RxByteCount;
         private Thread serThread;
-        private double _PacketsRate;
         private DateTime _lastReceive;
         /*The Critical Frequency of Communication to Avoid Any Lag*/
         private const int freqCriticalLimit = 20;

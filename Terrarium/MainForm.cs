@@ -24,7 +24,6 @@ namespace Terrarium
 
         private Properties.Settings ps = Properties.Settings.Default;
         private string[] serialPortList;
-
         private string com_portName;
         private int com_baudRate;
         private int com_baudRateCustome;
@@ -32,7 +31,9 @@ namespace Terrarium
         private Parity com_parity;
         private StopBits com_stopBits;
         private Handshake com_handshake;
-        SerialClient serClient;
+        private SerialClient serClient;
+        private int RxDataCounter = 0;
+        private int TxDataCounter = 0;
         private bool IsOpenBtnClicked = false;
 
 
@@ -217,18 +218,25 @@ namespace Terrarium
 
         private void SetText(string text)
         {
-            if (this.rtb_Rx.InvokeRequired)
+            if (rtb_Rx.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(SetText);
                 this.Invoke(d, new object[] { text });
             }
             else
             {
-                if (cb_RxAutoscroll.Checked == true)
+                if (cb_Rx_Hex.Checked)
                 {
-                    rtb_Rx.Autoscroll = true;
+                    rtb_Rx.AppendHex(text);
                 }
-                this.rtb_Rx.AppendText(text);             
+                else
+                {
+                    rtb_Rx.AppendTxt(text);
+                }
+                
+                rtb_Rx.Autoscroll = cb_RxAutoscroll.Checked ? true : false;
+                RxDataCounter += text.Length;
+                lbl_RxCounter.Text="Rx: " + RxDataCounter.ToString();
             }
         }
 
@@ -353,12 +361,10 @@ namespace Terrarium
                     break;
             }
 
-            if (ps.sidePannelHide == true)
-            {
-                pnl_Settings.Width = 0;
-            }
+            if (ps.sidePannelHide == true)pnl_Settings.Width = 0;
 
             cb_RxAutoscroll.Checked = ps.rtb_Rx_AutoScroll;
+            cb_Rx_Hex.Checked = ps.cb_Rx_Hex;
         }
 
         private void SettingsSave()
@@ -372,6 +378,7 @@ namespace Terrarium
             ps.SerialPortParity = Convert.ToString(com_parity);
             ps.sidePannelHide = panelSettingsHiden;
             ps.rtb_Rx_AutoScroll = cb_RxAutoscroll.Checked;
+            ps.cb_Rx_Hex = cb_Rx_Hex.Checked;
             ps.Save();
         }
 
@@ -384,7 +391,7 @@ namespace Terrarium
             com_stopBits = (StopBits)Enum.Parse(typeof(StopBits), ps.SerialStopBits);
             com_handshake = (Handshake)Enum.Parse(typeof(Handshake), ps.SerialHandshake);
             com_parity = (Parity)Enum.Parse(typeof(Parity), ps.SerialPortParity);
-            panelSettingsHiden = ps.sidePannelHide;            
+            panelSettingsHiden = ps.sidePannelHide;           
         }
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
@@ -553,43 +560,27 @@ namespace Terrarium
         private void rtb_Tx_KeyPress(object sender, KeyPressEventArgs e)  //used for greping chars from rtb_Tx
         {
             char c = e.KeyChar;
-            if (!char.IsControl(c))
-            {
-                byte[] buff = new byte[1];
-                buff[0] = Convert.ToByte(c);
-                if (serClient != null && serClient.IsOpen() == true)
-                {
-                    serClient.Transmit(buff);
-                }
-            }
-            else
-            {
-                switch (Convert.ToByte(c))
-                {
-                    case 0x03:        //Ctrl+C
-                        if (rtb_Tx.SelectedText.Length > 0)
-                        {
-                            Clipboard.SetText(rtb_Tx.SelectedText);
-                        }
-                        break;
 
-                    case 0x16:        //Ctrl+V                      
-                        string tmp = Clipboard.GetText();
-                        byte[] buff = Encoding.UTF8.GetBytes(tmp);
-                        if (serClient != null && serClient.IsOpen() == true)
-                        {
-                            serClient.Transmit(buff);
-                        }
-                        break;
-                }
+            byte[] buff = new byte[1];
+            buff[0] = Convert.ToByte(c);
+            if (serClient != null && serClient.IsOpen() == true)
+            {
+                serClient.Transmit(buff);
+                TxDataCounter += buff.Length;
+                lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }
         }
+
 
         private void btn_SerialSend_Click(object sender, EventArgs e)
         {
             if (serClient.IsOpen() == true)
             {
-                serClient.Transmit(Encoding.UTF8.GetBytes(tb_TxString.Text));
+                byte[] buff = Encoding.ASCII.GetBytes(tb_TxString.Text);
+                serClient.Transmit(buff);
+
+                TxDataCounter += buff.Length;
+                lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }
             else
             {
@@ -612,6 +603,17 @@ namespace Terrarium
             rtb_Rx.ScrollToCaret();
         }
 
+        private void lbl_RxCounter_DoubleClick(object sender, EventArgs e)
+        {
+            RxDataCounter = 0;
+            lbl_RxCounter.Text = "Rx: 0";
+        }
+
+        private void lbl_TxCounter_DoubleClick(object sender, EventArgs e)
+        {
+            TxDataCounter = 0;
+            lbl_TxCounter.Text = "Tx: 0";
+        }
     }
 }
 

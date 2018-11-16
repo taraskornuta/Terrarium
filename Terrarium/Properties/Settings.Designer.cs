@@ -130,5 +130,17 @@ namespace Terrarium.Properties {
                 this["rtb_Rx_AutoScroll"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool cb_Rx_Hex {
+            get {
+                return ((bool)(this["cb_Rx_Hex"]));
+            }
+            set {
+                this["cb_Rx_Hex"] = value;
+            }
+        }
     }
 }
