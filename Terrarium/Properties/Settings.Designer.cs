@@ -142,5 +142,40 @@ namespace Terrarium.Properties {
                 this["cb_Rx_Hex"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color rtb_Rx_FontColor {
+            get {
+                return ((global::System.Drawing.Color)(this["rtb_Rx_FontColor"]));
+            }
+            set {
+                this["rtb_Rx_FontColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 8.25pt")]
+        public global::System.Drawing.Font rtb_Rx_FontProperty {
+            get {
+                return ((global::System.Drawing.Font)(this["rtb_Rx_FontProperty"]));
+            }
+            set {
+                this["rtb_Rx_FontProperty"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50,50,50\r\n")]
+        public string rtb_Rx_BackgroundColor {
+            get {
+                return ((string)(this["rtb_Rx_BackgroundColor"]));
+            }
+            set {
+                this["rtb_Rx_BackgroundColor"] = value;
+            }
+        }
     }
 }

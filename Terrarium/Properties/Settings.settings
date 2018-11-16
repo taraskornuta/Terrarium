@@ -32,5 +32,15 @@
     <Setting Name="cb_Rx_Hex" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="rtb_Rx_FontColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="rtb_Rx_FontProperty" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 8.25pt</Value>
+    </Setting>
+    <Setting Name="rtb_Rx_BackgroundColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">50,50,50
+</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

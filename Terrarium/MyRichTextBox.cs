@@ -9,9 +9,11 @@ namespace Terrarium
     class MyRichTextBox : RichTextBox
     {
         private bool autoscroll = false;
-        ContextMenuStrip cm = new ContextMenuStrip();
-        ToolStripMenuItem ts_Copy = new ToolStripMenuItem();
-        ToolStripMenuItem ts_Property = new ToolStripMenuItem();
+        private ContextMenuStrip cm = new ContextMenuStrip();
+        private ToolStripMenuItem ts_Copy = new ToolStripMenuItem();
+        private ToolStripMenuItem ts_Font = new ToolStripMenuItem();
+        private ToolStripMenuItem ts_FontColor = new ToolStripMenuItem();
+
 
 
         public MyRichTextBox()
@@ -20,9 +22,13 @@ namespace Terrarium
             ts_Copy.Text = "Copy";
             cm.Items.Add(ts_Copy);
 
-            ts_Property.Name = "Property";
-            ts_Property.Text = "Property";
-            cm.Items.Add(ts_Property);
+            ts_FontColor.Name = "Font Color";
+            ts_FontColor.Text = "Font Color";
+            cm.Items.Add(ts_FontColor);
+
+            ts_Font.Name = "Font Property";
+            ts_Font.Text = "Font Property";
+            cm.Items.Add(ts_Font);           
 
             cm.ItemClicked += new ToolStripItemClickedEventHandler(ContextMenuStrip_ItemClicked);
 
@@ -64,6 +70,7 @@ namespace Terrarium
             if (e.Button == MouseButtons.Right)
             {               
                 cm.Show(this, new Point(e.X, e.Y));
+                
             }
         }
 
@@ -73,14 +80,35 @@ namespace Terrarium
             switch (e.ClickedItem.Text)
             {
                 case "Copy":
-                    MessageBox.Show(e.ClickedItem.Text);
+                    cm.Hide();
+                    if (this.SelectedText != "") //null check
+                    {
+                        Clipboard.SetText(this.SelectedText);
+                    }                    
                     break;
-                case "Property":
-                    MessageBox.Show(e.ClickedItem.Text);
+
+                case "Font Property":
+                    cm.Hide();
+                    FontDialog fd = new FontDialog();
+                    if (fd.ShowDialog() == DialogResult.OK)
+                    {
+                        this.Font = fd.Font;
+                    }
+                    break;
+                case "Font Color":
+                    cm.Hide();
+                    ColorDialog cd = new ColorDialog();
+                    if (cd.ShowDialog() == DialogResult.OK)
+                    {
+                        this.ForeColor = cd.Color;
+                    }
+                    break;
+
+                default:
                     break;
             }
 
-            //MessageBox.Show(e.ClickedItem.Text);
+            
         }
 
 

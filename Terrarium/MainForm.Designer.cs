@@ -82,7 +82,6 @@
             this.rb_baudRate_9600 = new System.Windows.Forms.RadioButton();
             this.rb_baudRate_4800 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_TxCounter = new System.Windows.Forms.Label();
@@ -94,10 +93,15 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tb_TxString = new System.Windows.Forms.TextBox();
             this.btn_SerialSend = new System.Windows.Forms.Button();
-            this.rtb_Rx = new Terrarium.MyRichTextBox();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cb_LinesNum = new System.Windows.Forms.CheckBox();
+            this.cb_Loging = new System.Windows.Forms.CheckBox();
+            this.cb_Sort = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.rtb_Rx = new Terrarium.MyRichTextBox();
+            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -226,6 +230,10 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.cb_Sort);
+            this.groupBox7.Controls.Add(this.cb_Loging);
+            this.groupBox7.Controls.Add(this.cb_LinesNum);
             this.groupBox7.Controls.Add(this.cb_Rx_Hex);
             this.groupBox7.Controls.Add(this.cb_RxAutoscroll);
             this.groupBox7.Controls.Add(this.label8);
@@ -233,7 +241,7 @@
             this.groupBox7.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox7.Location = new System.Drawing.Point(0, 367);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(144, 71);
+            this.groupBox7.Size = new System.Drawing.Size(144, 115);
             this.groupBox7.TabIndex = 14;
             this.groupBox7.TabStop = false;
             // 
@@ -750,22 +758,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "COM port";
             // 
-            // cmb_SerialPortList
-            // 
-            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cmb_SerialPortList.FormattingEnabled = true;
-            this.cmb_SerialPortList.Location = new System.Drawing.Point(6, 19);
-            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
-            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
-            this.cmb_SerialPortList.TabIndex = 8;
-            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
-            // 
             // btn_SerialPortRefresh
             // 
             this.btn_SerialPortRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -915,6 +907,67 @@
             this.btn_SerialSend.UseVisualStyleBackColor = false;
             this.btn_SerialSend.Click += new System.EventHandler(this.btn_SerialSend_Click);
             // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // propertysToolStripMenuItem
+            // 
+            this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
+            this.propertysToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // copyToolStripMenuItem1
+            // 
+            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
+            // 
+            // cb_LinesNum
+            // 
+            this.cb_LinesNum.AutoSize = true;
+            this.cb_LinesNum.Checked = true;
+            this.cb_LinesNum.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_LinesNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cb_LinesNum.Location = new System.Drawing.Point(7, 55);
+            this.cb_LinesNum.Name = "cb_LinesNum";
+            this.cb_LinesNum.Size = new System.Drawing.Size(91, 17);
+            this.cb_LinesNum.TabIndex = 4;
+            this.cb_LinesNum.Text = "Lines Number";
+            this.cb_LinesNum.UseVisualStyleBackColor = true;
+            // 
+            // cb_Loging
+            // 
+            this.cb_Loging.AutoSize = true;
+            this.cb_Loging.Checked = true;
+            this.cb_Loging.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_Loging.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cb_Loging.Location = new System.Drawing.Point(7, 72);
+            this.cb_Loging.Name = "cb_Loging";
+            this.cb_Loging.Size = new System.Drawing.Size(44, 17);
+            this.cb_Loging.TabIndex = 5;
+            this.cb_Loging.Text = "Log";
+            this.cb_Loging.UseVisualStyleBackColor = true;
+            // 
+            // cb_Sort
+            // 
+            this.cb_Sort.AutoSize = true;
+            this.cb_Sort.Checked = true;
+            this.cb_Sort.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cb_Sort.Location = new System.Drawing.Point(55, 37);
+            this.cb_Sort.Name = "cb_Sort";
+            this.cb_Sort.Size = new System.Drawing.Size(45, 17);
+            this.cb_Sort.TabIndex = 6;
+            this.cb_Sort.Text = "Sort";
+            this.cb_Sort.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(97, 35);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(43, 20);
+            this.textBox1.TabIndex = 7;
+            // 
             // rtb_Rx
             // 
             this.rtb_Rx.Autoscroll = false;
@@ -930,6 +983,22 @@
             this.rtb_Rx.Size = new System.Drawing.Size(619, 438);
             this.rtb_Rx.TabIndex = 3;
             this.rtb_Rx.Text = "";
+            // 
+            // cmb_SerialPortList
+            // 
+            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cmb_SerialPortList.FormattingEnabled = true;
+            this.cmb_SerialPortList.Location = new System.Drawing.Point(6, 19);
+            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
+            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
+            this.cmb_SerialPortList.TabIndex = 8;
+            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
             // 
             // MainForm
             // 
@@ -1043,6 +1112,10 @@
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem propertysToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox cb_Sort;
+        private System.Windows.Forms.CheckBox cb_Loging;
+        private System.Windows.Forms.CheckBox cb_LinesNum;
     }
 }
 
