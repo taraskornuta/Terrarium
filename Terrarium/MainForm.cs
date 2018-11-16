@@ -36,8 +36,6 @@ namespace Terrarium
         private int TxDataCounter = 0;
         private bool IsOpenBtnClicked = false;
 
-
-
         public MainForm()
         {
             InitializeComponent();
@@ -614,6 +612,8 @@ namespace Terrarium
             TxDataCounter = 0;
             lbl_TxCounter.Text = "Tx: 0";
         }
+
+       
     }
 }
 

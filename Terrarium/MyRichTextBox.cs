@@ -9,6 +9,26 @@ namespace Terrarium
     class MyRichTextBox : RichTextBox
     {
         private bool autoscroll = false;
+        ContextMenuStrip cm = new ContextMenuStrip();
+        ToolStripMenuItem ts_Copy = new ToolStripMenuItem();
+        ToolStripMenuItem ts_Property = new ToolStripMenuItem();
+
+
+        public MyRichTextBox()
+        {
+            ts_Copy.Name = "Copy";
+            ts_Copy.Text = "Copy";
+            cm.Items.Add(ts_Copy);
+
+            ts_Property.Name = "Property";
+            ts_Property.Text = "Property";
+            cm.Items.Add(ts_Property);
+
+            cm.ItemClicked += new ToolStripItemClickedEventHandler(ContextMenuStrip_ItemClicked);
+
+
+        }
+
 
         [Category("Appearance")]
         public bool Autoscroll
@@ -39,6 +59,32 @@ namespace Terrarium
             if (autoscroll == true) ScrollToCaret();
         }
 
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {               
+                cm.Show(this, new Point(e.X, e.Y));
+            }
+        }
+
+        private void ContextMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+            switch (e.ClickedItem.Text)
+            {
+                case "Copy":
+                    MessageBox.Show(e.ClickedItem.Text);
+                    break;
+                case "Property":
+                    MessageBox.Show(e.ClickedItem.Text);
+                    break;
+            }
+
+            //MessageBox.Show(e.ClickedItem.Text);
+        }
+
+
     }
+
 }
 
