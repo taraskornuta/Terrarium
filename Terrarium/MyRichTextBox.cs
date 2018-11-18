@@ -6,15 +6,14 @@ using System.Windows.Forms;
 
 namespace Terrarium
 {
-    class MyRichTextBox : RichTextBox
+    
+    public class MyRichTextBox : RichTextBox
     {
         private bool autoscroll = false;
         private ContextMenuStrip cm = new ContextMenuStrip();
         private ToolStripMenuItem ts_Copy = new ToolStripMenuItem();
         private ToolStripMenuItem ts_Font = new ToolStripMenuItem();
         private ToolStripMenuItem ts_FontColor = new ToolStripMenuItem();
-
-
 
         public MyRichTextBox()
         {
@@ -106,13 +105,8 @@ namespace Terrarium
 
                 default:
                     break;
-            }
-
-            
+            }           
         }
-
-
     }
-
 }
 

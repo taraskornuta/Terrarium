@@ -458,8 +458,7 @@ namespace Terrarium
                     SendTxtToStatusLable("SERIAL OPENED", Color.Aqua);
                     btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
                     this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
-                    Match Match = Regex.Match(com_portName, "[0-99]");
-                    lbl_ComNumber.Text = Match.Value;
+                    
                     cmb_SerialPortList.Enabled = false;
                     btn_SerialConnect.Enabled = true;
                 }
