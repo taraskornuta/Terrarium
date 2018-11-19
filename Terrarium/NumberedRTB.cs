@@ -94,9 +94,10 @@ namespace AboControls.UserControls
                 ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
 
             this.Size = new Size(10, 10);
-            base.BackColor = Color.White;
+            //base.BackColor = Color.White;
+            base.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             base.Dock = DockStyle.Left;
-            this.OffsetColor = Color.PapayaWhip;
+            //this.OffsetColor = Color.PapayaWhip;
             this.Style = LineNumberStyle.OffsetColors;
 
             _fontBrush = new SolidBrush(base.ForeColor);
@@ -106,16 +107,16 @@ namespace AboControls.UserControls
             this.SendToBack();
         }
 
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            base.OnMouseDown(e);
+        //protected override void OnMouseDown(MouseEventArgs e)
+        //{
+        //    base.OnMouseDown(e);
 
-            if (e.Button.Equals(MouseButtons.Left) && _scrollingLineIncrement != 0)
-            {
-                _lastYPos = Cursor.Position.Y;
-                this.Cursor = Cursors.NoMoveVert;
-            }
-        }
+        //    if (e.Button.Equals(MouseButtons.Left) && _scrollingLineIncrement != 0)
+        //    {
+        //        _lastYPos = Cursor.Position.Y;
+        //        this.Cursor = Cursors.NoMoveVert;
+        //    }
+        //}
 
         protected override void OnParentChanged(EventArgs e)
         {
@@ -123,34 +124,34 @@ namespace AboControls.UserControls
             SetControlWidth();
         }
 
-        protected override void OnMouseUp(MouseEventArgs e)
-        {
-            base.OnMouseUp(e);
-            this.Cursor = Cursors.Default;
-        }
+        //protected override void OnMouseUp(MouseEventArgs e)
+        //{
+        //    base.OnMouseUp(e);
+        //    this.Cursor = Cursors.Default;
+        //}
 
-        protected override void OnMouseMove(MouseEventArgs e)
-        {
-            if (e.Button.Equals(MouseButtons.Left) && _scrollingLineIncrement != 0)
-            {
-                _dragDistance += Cursor.Position.Y - _lastYPos;
+        //protected override void OnMouseMove(MouseEventArgs e)
+        //{
+        //    if (e.Button.Equals(MouseButtons.Left) && _scrollingLineIncrement != 0)
+        //    {
+        //        _dragDistance += Cursor.Position.Y - _lastYPos;
 
-                if (_dragDistance > _fontHeight)
-                {
-                    int selectionStart = _richTextBox.GetFirstCharIndexFromLine(NextLineDown);
-                    _richTextBox.Select(selectionStart, 0);
-                    _dragDistance = 0;
-                }
-                else if (_dragDistance < _fontHeight * -1)
-                {
-                    int selectionStart = _richTextBox.GetFirstCharIndexFromLine(NextLineUp);
-                    _richTextBox.Select(selectionStart, 0);
-                    _dragDistance = 0;
-                }
+        //        if (_dragDistance > _fontHeight)
+        //        {
+        //            int selectionStart = _richTextBox.GetFirstCharIndexFromLine(NextLineDown);
+        //            _richTextBox.Select(selectionStart, 0);
+        //            _dragDistance = 0;
+        //        }
+        //        else if (_dragDistance < _fontHeight * -1)
+        //        {
+        //            int selectionStart = _richTextBox.GetFirstCharIndexFromLine(NextLineUp);
+        //            _richTextBox.Select(selectionStart, 0);
+        //            _dragDistance = 0;
+        //        }
 
-                _lastYPos = Cursor.Position.Y;
-            }
-        }
+        //        _lastYPos = Cursor.Position.Y;
+        //    }
+        //}
 
         #region Functions
         private void UpdateBackBuffer()
