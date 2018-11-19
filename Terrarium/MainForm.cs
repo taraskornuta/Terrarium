@@ -216,7 +216,7 @@ namespace Terrarium
 
         private void SetText(string text)
         {
-            if (rtb_Rx.InvokeRequired)
+            if (nrtb_Rx.RichTextBox.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(SetText);
                 this.Invoke(d, new object[] { text });
@@ -225,16 +225,16 @@ namespace Terrarium
             {
                 if (cb_Rx_Hex.Checked)
                 {
-                    rtb_Rx.AppendHex(text);
+                    nrtb_Rx.AppendHex(text);
                 }
                 else
                 {
-                    rtb_Rx.AppendTxt(text);
+                    nrtb_Rx.AppendText(text);
                 }
-                
-                rtb_Rx.Autoscroll = cb_RxAutoscroll.Checked ? true : false;
+
+                nrtb_Rx.Autoscroll = cb_RxAutoscroll.Checked ? true : false;
                 RxDataCounter += text.Length;
-                lbl_RxCounter.Text="Rx: " + RxDataCounter.ToString();
+                lbl_RxCounter.Text = "Rx: " + RxDataCounter.ToString();
             }
         }
 
@@ -491,7 +491,7 @@ namespace Terrarium
             tb_TxString.Clear();
         }
 
-        private void btn_CleanRxField_Click(object sender, EventArgs e) => rtb_Rx.Clear();
+        private void btn_CleanRxField_Click(object sender, EventArgs e) => nrtb_Rx.RichTextBox.Clear();
 
         private int SerialPortScan()
         {
@@ -532,16 +532,6 @@ namespace Terrarium
             }
         }
 
-        public void SendTxtToTextBox(string data, Color color)
-        {
-            rtb_Rx.SelectionStart = rtb_Rx.TextLength;
-            rtb_Rx.SelectionLength = 0;
-            rtb_Rx.SelectionColor = color;
-            rtb_Rx.SelectedText = string.Empty;
-            rtb_Rx.AppendText(data + "\r\n");
-            rtb_Rx.SelectionColor = rtb_Rx.ForeColor;
-            rtb_Rx.ScrollToCaret();
-        }
 
         public void SendTxtToStatusLable(string data, Color color)
         {
@@ -596,8 +586,8 @@ namespace Terrarium
 
         private void rtb_Rx_TextChanged(object sender, EventArgs e)
         {
-            rtb_Rx.SelectionStart = rtb_Rx.Text.Length;
-            rtb_Rx.ScrollToCaret();
+            //rtb_Rx.SelectionStart = rtb_Rx.Text.Length;
+            //rtb_Rx.ScrollToCaret();
         }
 
         private void lbl_RxCounter_DoubleClick(object sender, EventArgs e)
@@ -612,7 +602,6 @@ namespace Terrarium
             lbl_TxCounter.Text = "Tx: 0";
         }
 
-       
     }
 }
 
