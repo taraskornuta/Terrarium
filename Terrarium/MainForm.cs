@@ -98,7 +98,7 @@ namespace Terrarium
                     if (rb_baudRate_128000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_128000.Text);
                     if (rb_baudRate_256000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_256000.Text);
                     if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
-                    if (rb_baudRate_custome.Checked) com_baudRate = 0;
+                    if (rb_baudRate_custome.Checked) com_baudRate = Convert.ToInt32(tb_baudRateCustome.Text);
 
                     if (serClient != null)
                     {
@@ -232,7 +232,7 @@ namespace Terrarium
                     nrtb_Rx.AppendText(text);
                 }
 
-                nrtb_Rx.Autoscroll = cb_RxAutoscroll.Checked ? true : false;
+                nrtb_Rx.NumStripAutoscroll = cb_RxAutoscroll.Checked ? true : false;
                 RxDataCounter += text.Length;
                 lbl_RxCounter.Text = "Rx: " + RxDataCounter.ToString();
             }
@@ -602,6 +602,10 @@ namespace Terrarium
             lbl_TxCounter.Text = "Tx: 0";
         }
 
+        private void cb_Loging_CheckedChanged(object sender, EventArgs e)
+        {
+            nrtb_Rx.NumStripVisible ^= true;
+        }
     }
 }
 

@@ -47,7 +47,7 @@ namespace AboControls.UserControls
         }
 
         [Category("Appearance")]
-        public bool Autoscroll
+        public bool NumStripAutoscroll
         {
             get { return _autoscroll; }
             set
@@ -57,6 +57,16 @@ namespace AboControls.UserControls
             }
         }
 
+        [Category("Appearance")]
+        public bool NumStripVisible
+        {
+            get { return _strip.Visible; }
+            set
+            {
+                _strip.Visible = value;
+                Invalidate();
+            }
+        }
 
     }
 
@@ -75,9 +85,8 @@ namespace AboControls.UserControls
         private const float _FONT_MODIFIER = 0.09f;
         private bool _hideWhenNoLines, _speedBump;
         private const int _DRAWING_OFFSET = 1;
-        private int _lastYPos = -1, _dragDistance, _lastLineCount;
+        private int _lastLineCount;
         private int _scrollingLineIncrement = 5, _numPadding = 3;
-       
 
         /// <summary>
         /// We need to pass in the MainForm so we can check the form state, Do not
@@ -94,29 +103,18 @@ namespace AboControls.UserControls
                 ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
 
             this.Size = new Size(10, 10);
-            //base.BackColor = Color.White;
             base.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             base.Dock = DockStyle.Left;
-            //this.OffsetColor = Color.PapayaWhip;
+            this.OffsetColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.Style = LineNumberStyle.OffsetColors;
-
+            base.ForeColor = Color.Green;
             _fontBrush = new SolidBrush(base.ForeColor);
+
 
             SetFontHeight();
             UpdateBackBuffer();
             this.SendToBack();
         }
-
-        //protected override void OnMouseDown(MouseEventArgs e)
-        //{
-        //    base.OnMouseDown(e);
-
-        //    if (e.Button.Equals(MouseButtons.Left) && _scrollingLineIncrement != 0)
-        //    {
-        //        _lastYPos = Cursor.Position.Y;
-        //        this.Cursor = Cursors.NoMoveVert;
-        //    }
-        //}
 
         protected override void OnParentChanged(EventArgs e)
         {
@@ -124,35 +122,7 @@ namespace AboControls.UserControls
             SetControlWidth();
         }
 
-        //protected override void OnMouseUp(MouseEventArgs e)
-        //{
-        //    base.OnMouseUp(e);
-        //    this.Cursor = Cursors.Default;
-        //}
-
-        //protected override void OnMouseMove(MouseEventArgs e)
-        //{
-        //    if (e.Button.Equals(MouseButtons.Left) && _scrollingLineIncrement != 0)
-        //    {
-        //        _dragDistance += Cursor.Position.Y - _lastYPos;
-
-        //        if (_dragDistance > _fontHeight)
-        //        {
-        //            int selectionStart = _richTextBox.GetFirstCharIndexFromLine(NextLineDown);
-        //            _richTextBox.Select(selectionStart, 0);
-        //            _dragDistance = 0;
-        //        }
-        //        else if (_dragDistance < _fontHeight * -1)
-        //        {
-        //            int selectionStart = _richTextBox.GetFirstCharIndexFromLine(NextLineUp);
-        //            _richTextBox.Select(selectionStart, 0);
-        //            _dragDistance = 0;
-        //        }
-
-        //        _lastYPos = Cursor.Position.Y;
-        //    }
-        //}
-
+       
         #region Functions
         private void UpdateBackBuffer()
         {
@@ -292,26 +262,26 @@ namespace AboControls.UserControls
         #endregion
 
         #region Properties
-        private int NextLineDown
-        {
-            get
-            {
-                int yPos = _richTextBox.ClientSize.Height + (int)(_fontHeight * ScrollSpeed + 0.5f);
-                Point topPos = new Point(0, yPos);
-                int index = _richTextBox.GetCharIndexFromPosition(topPos);
-                return _richTextBox.GetLineFromCharIndex(index);
-            }
-        }
+        //private int NextLineDown
+        //{
+        //    get
+        //    {
+        //        int yPos = _richTextBox.ClientSize.Height + (int)(_fontHeight * ScrollSpeed + 0.5f);
+        //        Point topPos = new Point(0, yPos);
+        //        int index = _richTextBox.GetCharIndexFromPosition(topPos);
+        //        return _richTextBox.GetLineFromCharIndex(index);
+        //    }
+        //}
 
-        private int NextLineUp
-        {
-            get
-            {
-                Point topPos = new Point(0, (int)(_fontHeight * (ScrollSpeed * -1) + -0.5f));
-                int index = _richTextBox.GetCharIndexFromPosition(topPos);
-                return _richTextBox.GetLineFromCharIndex(index);
-            }
-        }
+        //private int NextLineUp
+        //{
+        //    get
+        //    {
+        //        Point topPos = new Point(0, (int)(_fontHeight * (ScrollSpeed * -1) + -0.5f));
+        //        int index = _richTextBox.GetCharIndexFromPosition(topPos);
+        //        return _richTextBox.GetLineFromCharIndex(index);
+        //    }
+        //}
 
         /// <summary>
         /// Gets the width of the widest number on the strip
@@ -340,8 +310,6 @@ namespace AboControls.UserControls
             set { this.Dock = (value) ? DockStyle.Right : DockStyle.Left; }
         }
 
-       
-
         [Category("Layout")]
         [Description("Gets or sets the spacing from the left and right of the numbers to the let and right of the control")]
         public int NumberPadding
@@ -369,7 +337,7 @@ namespace AboControls.UserControls
             }
         }
 
-                [Category("Appearance")]
+        [Category("Appearance")]
         public Color BoxedLineColor
         {
             get { return _penBoxedLine.Color; }
@@ -380,7 +348,7 @@ namespace AboControls.UserControls
             }
         }
 
-                [Category("Appearance")]
+        [Category("Appearance")]
         public Color OffsetColor
         {
             get { return new Pen(_offsetBrush).Color; }
@@ -391,12 +359,14 @@ namespace AboControls.UserControls
             }
         }
 
+
         [Category("Behavior")]
         public bool HideWhenNoLines
         {
             get { return _hideWhenNoLines; }
             set { _hideWhenNoLines = value; }
         }
+
 
         /// <summary>
         /// Hide this, The right to left layout property will determine 
@@ -413,12 +383,14 @@ namespace AboControls.UserControls
         /// Gets or sets the scrolling speed in the number of lines
         /// to increment or decrement
         /// </summary>
-                [Category("Behavior")]
+        [Category("Behavior")]
         public int ScrollSpeed
         {
             get { return _scrollingLineIncrement; }
             set { _scrollingLineIncrement = value; }
         }
+
+
         #endregion
     }
 }

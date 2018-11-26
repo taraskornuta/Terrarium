@@ -246,6 +246,7 @@
             this.cb_Loging.TabIndex = 5;
             this.cb_Loging.Text = "Log";
             this.cb_Loging.UseVisualStyleBackColor = true;
+            this.cb_Loging.CheckedChanged += new System.EventHandler(this.cb_Loging_CheckedChanged);
             // 
             // cb_LinesNum
             // 
@@ -940,14 +941,15 @@
             // 
             // nrtb_Rx
             // 
-            this.nrtb_Rx.Autoscroll = false;
-            this.nrtb_Rx.BackColor = System.Drawing.SystemColors.Window;
+            this.nrtb_Rx.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.nrtb_Rx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nrtb_Rx.Location = new System.Drawing.Point(0, 0);
             this.nrtb_Rx.Margin = new System.Windows.Forms.Padding(0);
             this.nrtb_Rx.Name = "nrtb_Rx";
+            this.nrtb_Rx.NumStripAutoscroll = false;
+            this.nrtb_Rx.NumStripVisible = true;
             this.nrtb_Rx.Size = new System.Drawing.Size(619, 438);
-            this.nrtb_Rx.TabIndex = 3;     
+            this.nrtb_Rx.TabIndex = 3;
             // 
             // copyToolStripMenuItem
             // 
