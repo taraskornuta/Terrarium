@@ -262,27 +262,7 @@ namespace AboControls.UserControls
         #endregion
 
         #region Properties
-        //private int NextLineDown
-        //{
-        //    get
-        //    {
-        //        int yPos = _richTextBox.ClientSize.Height + (int)(_fontHeight * ScrollSpeed + 0.5f);
-        //        Point topPos = new Point(0, yPos);
-        //        int index = _richTextBox.GetCharIndexFromPosition(topPos);
-        //        return _richTextBox.GetLineFromCharIndex(index);
-        //    }
-        //}
-
-        //private int NextLineUp
-        //{
-        //    get
-        //    {
-        //        Point topPos = new Point(0, (int)(_fontHeight * (ScrollSpeed * -1) + -0.5f));
-        //        int index = _richTextBox.GetCharIndexFromPosition(topPos);
-        //        return _richTextBox.GetLineFromCharIndex(index);
-        //    }
-        //}
-
+        
         /// <summary>
         /// Gets the width of the widest number on the strip
         /// </summary>
