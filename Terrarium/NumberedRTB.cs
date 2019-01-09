@@ -68,6 +68,14 @@ namespace AboControls.UserControls
             }
         }
 
+        private void beckgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog color = new ColorDialog();
+            if (color.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                richTextBox.BackColor = color.Color;
+            }
+        }
     }
 
     public enum LineNumberStyle { None, OffsetColors, Boxed };
