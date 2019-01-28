@@ -51,6 +51,7 @@ namespace Terrarium
         #endregion
 
         #region Constructors
+
         public SerialClient(string portName, int portBaudRate, int portDataBits, Parity portParity, StopBits portStopBits, Handshake portHandshake)
         {
             _portName = portName;
@@ -64,13 +65,14 @@ namespace Terrarium
             if (_serialPort == null)
             {
                 _serialPort = new SerialPort(_portName, _portBaudRate, _portParity, _portDataBits, _portStopBits);
-                //_serialPort = new SerialPort(_portName, _portBaudRate, _portParity);
+
             }
         }
         #endregion
 
         #region Custom Events
         public event EventHandler<DataStreamEventArgs> OnReceiving;
+        
         #endregion
 
         #region Properties
@@ -233,6 +235,7 @@ namespace Terrarium
         }
         #endregion
 
+
         private void SerialReceiving()
         {
             while (true)
@@ -244,8 +247,9 @@ namespace Terrarium
                 }
                 catch(UnauthorizedAccessException)
                 {
-                    _serialPort.Close();                   
-                    serThread.Abort();
+                    _serialPort.Close();
+                    OnSerialErrorAccure(EventArgs.Empty);
+                    serThread.Abort();                   
                 }
 
                 /*Get Sleep Inteval*/
@@ -268,6 +272,13 @@ namespace Terrarium
         {
             OnReceiving?.Invoke(this, new DataStreamEventArgs(res));
         }
+
+        public event EventHandler serialError;
+        private void OnSerialErrorAccure(EventArgs e)
+        {
+            serialError?.Invoke(this, e);
+        }
+
         #endregion
     }
 

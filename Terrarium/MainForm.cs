@@ -31,7 +31,7 @@ namespace Terrarium
         private Parity com_parity;
         private StopBits com_stopBits;
         private Handshake com_handshake;
-        private SerialClient serClient;
+        private SerialClient serClient = new SerialClient();
         private int RxDataCounter = 0;
         private int TxDataCounter = 0;
         private bool IsOpenBtnClicked = false;
@@ -76,6 +76,7 @@ namespace Terrarium
             rb_handshake_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
             rb_handshake_rts_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
 
+            serClient.serialError += new EventHandler(SerialPortError);
         }
 
         private void rb_baudRate_CheckedChanged(object sender, EventArgs e)
@@ -184,7 +185,7 @@ namespace Terrarium
             }
         }
 
-        private void serialPortError(object sender, EventArgs e)
+        protected void SerialPortError(object sender, EventArgs e)
         {
             SendTxtToStatusLable("PORT ERROR", Color.Red);
         }
