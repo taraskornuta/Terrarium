@@ -45,6 +45,7 @@ namespace Terrarium
         private SerialPort _serialPort;
         private Thread serThread;
         private DateTime _lastReceive;
+
         /*The Critical Frequency of Communication to Avoid Any Lag*/
         private const int freqCriticalLimit = 20;
         #endregion
@@ -133,7 +134,7 @@ namespace Terrarium
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -232,12 +233,20 @@ namespace Terrarium
         }
         #endregion
 
-
         private void SerialReceiving()
         {
             while (true)
             {
-                int count = _serialPort.BytesToRead;
+                int count = 0;
+                try
+                {
+                   count = _serialPort.BytesToRead;
+                }
+                catch(UnauthorizedAccessException)
+                {
+                    _serialPort.Close();                   
+                    serThread.Abort();
+                }
 
                 /*Get Sleep Inteval*/
                 TimeSpan tmpInterval = (DateTime.Now - _lastReceive);

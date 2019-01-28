@@ -184,6 +184,11 @@ namespace Terrarium
             }
         }
 
+        private void serialPortError(object sender, EventArgs e)
+        {
+            SendTxtToStatusLable("PORT ERROR", Color.Red);
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {      
             FillControlValues();
