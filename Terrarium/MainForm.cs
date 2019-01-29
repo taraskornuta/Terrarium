@@ -174,10 +174,19 @@ namespace Terrarium
         {
             serClient.Close();
 
-            SetTextStatusLable("PORT ERROR", Color.Red);
+            SetTxtToStatusLable("PORT ERROR", Color.Red);
+            this.Invoke(new Action(() => {
+                btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
+                cmb_SerialPortList.Enabled = true;
+                btn_SerialConnect.Enabled = true;
+                IsOpenBtnClicked = false;
+
+            }));
+
+
             //cmb_SerialPortList.Enabled = true;
             //btn_SerialConnect.Enabled = true;
-            //IsOpenBtnClicked = false;
+            IsOpenBtnClicked = false;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -185,8 +194,8 @@ namespace Terrarium
             FillControlValues();
 
             int portCount = SerialPortScan();
-            if (portCount == 0) SendTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
-            else SendTxtToStatusLable("FOUND PORTS " + portCount, Color.WhiteSmoke);
+            if (portCount == 0) SetTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
+            else SetTxtToStatusLable("FOUND PORTS " + portCount, Color.WhiteSmoke);
 
             if (com_portName == null)com_portName = "COM1";
 
@@ -433,7 +442,7 @@ namespace Terrarium
         {
             if (serialPortList.Length == 0)
             {
-                SendTxtToStatusLable("CHOSE PORT FIRST", Color.Red);
+                SetTxtToStatusLable("CHOSE PORT FIRST", Color.Red);
                 return;
             }
 
@@ -452,7 +461,7 @@ namespace Terrarium
 
                 if (serClient.Open() == true)
                 {
-                    SendTxtToStatusLable("SERIAL OPENED", Color.Aqua);
+                    SetTxtToStatusLable("SERIAL OPENED", Color.Aqua);
                     btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
                     this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
                     
@@ -463,7 +472,7 @@ namespace Terrarium
                 {
                     serClient.Close();
 
-                    SendTxtToStatusLable("SERIAL ERROR", Color.Red);
+                    SetTxtToStatusLable("SERIAL ERROR", Color.Red);
                     cmb_SerialPortList.Enabled = true;
                     btn_SerialConnect.Enabled = true;
                     IsOpenBtnClicked = false;
@@ -473,7 +482,7 @@ namespace Terrarium
             else
             {
                 serClient.Close();
-                SendTxtToStatusLable("SERIAL CLOSED", Color.Aqua);
+                SetTxtToStatusLable("SERIAL CLOSED", Color.Aqua);
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 this.Text = "Terrarium ";
                 cmb_SerialPortList.Enabled = true;
@@ -524,31 +533,27 @@ namespace Terrarium
             if (serClient.IsOpen() == false)
             {
                 int portCount = SerialPortScan();
-                if (portCount == 0)SendTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
-                else SendTxtToStatusLable("FOUND PORTS " + portCount, Color.WhiteSmoke);                      
+                if (portCount == 0)SetTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
+                else SetTxtToStatusLable("FOUND PORTS " + portCount, Color.WhiteSmoke);                      
             }
         }
 
         delegate void SetTextStatusLableCallback(string text, Color color);
 
-        private void SetTextStatusLable(string text, Color color)
+        public void SetTxtToStatusLable(string data, Color color)
         {
             if (lbl_Status.InvokeRequired)
             {
-                SetTextStatusLableCallback d = new SetTextStatusLableCallback(SetTextStatusLable);
-                this.Invoke(d, new object[] { text, color });
+                SetTextStatusLableCallback d = new SetTextStatusLableCallback(SetTxtToStatusLable);
+                this.Invoke(d, new object[] { data, color });
             }
             else
             {
-                SendTxtToStatusLable(text, color);
+                lbl_Status.ForeColor = color;
+                lbl_Status.Text = data;
             }
         }
 
-        public void SendTxtToStatusLable(string data, Color color)
-        {
-            lbl_Status.ForeColor = color;
-            lbl_Status.Text = data;
-        }
 
         private void cmb_SerialPortList_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -582,7 +587,7 @@ namespace Terrarium
             }
             else
             {
-                SendTxtToStatusLable("OPEN PORT FIRST", Color.Red);
+                SetTxtToStatusLable("OPEN PORT FIRST", Color.Red);
             }
         }
 

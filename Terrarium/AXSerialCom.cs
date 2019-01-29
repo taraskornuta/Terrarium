@@ -65,7 +65,7 @@ namespace Terrarium
 
         #region Custom Events
         public event EventHandler<DataStreamEventArgs> OnReceiving;
-        
+
         #endregion
 
         #region Properties
@@ -151,7 +151,7 @@ namespace Terrarium
                 {
                     _serialPort.Close();
                     while (_serialPort.IsOpen == true) { }
-                }          
+                }
             }
         }
 
@@ -168,10 +168,10 @@ namespace Terrarium
 
         public void SetPortName(string PortName)
         {
-            if(_serialPort.IsOpen != true)
+            if (_serialPort.IsOpen != true)
             {
-                 _serialPort.PortName = PortName;
-            }           
+                _serialPort.PortName = PortName;
+            }
         }
 
         public void SetDataBits(int DataBits)
@@ -235,13 +235,16 @@ namespace Terrarium
                 int count = 0;
                 try
                 {
-                   count = _serialPort.BytesToRead;
+                    count = _serialPort.BytesToRead;
                 }
-                catch(UnauthorizedAccessException)
+                catch (Exception ex)
                 {
-                    OnSerialErrorAccure(EventArgs.Empty);
-                    serThread.Abort();
-                }
+                    if (ex is System.IO.IOException || ex is UnauthorizedAccessException)
+                    {
+                        OnSerialErrorAccure(EventArgs.Empty);
+                        serThread.Abort();
+                    }
+                }       
 
                 /*Get Sleep Inteval*/
                 TimeSpan tmpInterval = (DateTime.Now - _lastReceive);
