@@ -5,13 +5,6 @@ using Diagnostics = System.Diagnostics;
 
 namespace Terrarium
 {
-    /* This AX-Fast Serial Library
-    Developer: Ahmed Mubarak - RoofMan
-
-    This Library Provide The Fastest & Efficient Serial Communication
-    Over The Standard C# Serial Component
-    */
-
     public class DataStreamEventArgs : EventArgs
     {
         #region Defines
@@ -51,6 +44,7 @@ namespace Terrarium
         #endregion
 
         #region Constructors
+
         public SerialClient(string portName, int portBaudRate, int portDataBits, Parity portParity, StopBits portStopBits, Handshake portHandshake)
         {
             _portName = portName;
@@ -64,13 +58,14 @@ namespace Terrarium
             if (_serialPort == null)
             {
                 _serialPort = new SerialPort(_portName, _portBaudRate, _portParity, _portDataBits, _portStopBits);
-                //_serialPort = new SerialPort(_portName, _portBaudRate, _portParity);
+
             }
         }
         #endregion
 
         #region Custom Events
         public event EventHandler<DataStreamEventArgs> OnReceiving;
+        
         #endregion
 
         #region Properties
@@ -140,7 +135,6 @@ namespace Terrarium
             }
             return true;
         }
-
 
         public bool IsOpen()
         {
@@ -233,6 +227,7 @@ namespace Terrarium
         }
         #endregion
 
+
         private void SerialReceiving()
         {
             while (true)
@@ -244,7 +239,7 @@ namespace Terrarium
                 }
                 catch(UnauthorizedAccessException)
                 {
-                    _serialPort.Close();                   
+                    OnSerialErrorAccure(EventArgs.Empty);
                     serThread.Abort();
                 }
 
@@ -268,6 +263,13 @@ namespace Terrarium
         {
             OnReceiving?.Invoke(this, new DataStreamEventArgs(res));
         }
+
+        public event EventHandler serialError;
+        private void OnSerialErrorAccure(EventArgs e)
+        {
+            serialError?.Invoke(this, e);
+        }
+
         #endregion
     }
 
