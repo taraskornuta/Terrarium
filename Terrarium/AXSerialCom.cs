@@ -5,13 +5,6 @@ using Diagnostics = System.Diagnostics;
 
 namespace Terrarium
 {
-    /* This AX-Fast Serial Library
-    Developer: Ahmed Mubarak - RoofMan
-
-    This Library Provide The Fastest & Efficient Serial Communication
-    Over The Standard C# Serial Component
-    */
-
     public class DataStreamEventArgs : EventArgs
     {
         #region Defines
@@ -143,7 +136,6 @@ namespace Terrarium
             return true;
         }
 
-
         public bool IsOpen()
         {
             return _serialPort.IsOpen;
@@ -247,9 +239,8 @@ namespace Terrarium
                 }
                 catch(UnauthorizedAccessException)
                 {
-                    _serialPort.Close();
                     OnSerialErrorAccure(EventArgs.Empty);
-                    serThread.Abort();                   
+                    serThread.Abort();
                 }
 
                 /*Get Sleep Inteval*/

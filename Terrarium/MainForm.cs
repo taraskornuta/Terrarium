@@ -31,7 +31,7 @@ namespace Terrarium
         private Parity com_parity;
         private StopBits com_stopBits;
         private Handshake com_handshake;
-        private SerialClient serClient = new SerialClient();
+        private SerialClient serClient;
         private int RxDataCounter = 0;
         private int TxDataCounter = 0;
         private bool IsOpenBtnClicked = false;
@@ -75,8 +75,6 @@ namespace Terrarium
             rb_handshake_rts.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
             rb_handshake_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
             rb_handshake_rts_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
-
-            serClient.serialError += new EventHandler(SerialPortError);
         }
 
         private void rb_baudRate_CheckedChanged(object sender, EventArgs e)
@@ -86,7 +84,6 @@ namespace Terrarium
             {
                 if (rb.Checked)
                 {
-
                     if (rb_baudRate_4800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_4800.Text);
                     if (rb_baudRate_9600.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_9600.Text);
                     if (rb_baudRate_14400.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_14400.Text);
@@ -101,10 +98,7 @@ namespace Terrarium
                     if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
                     if (rb_baudRate_custome.Checked) com_baudRate = Convert.ToInt32(tb_baudRateCustome.Text);
 
-                    if (serClient != null)
-                    {
-                        serClient.SetBaudrate(com_baudRate);
-                    }
+                    serClient?.SetBaudrate(com_baudRate);
                 }
             }
         }
@@ -121,10 +115,7 @@ namespace Terrarium
                     if (rb_dataBits_7.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_7.Text);
                     if (rb_dataBits_8.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_8.Text);
 
-                    if (serClient != null)
-                    {
-                        serClient.SetDataBits(com_dataBits);
-                    }
+                    serClient?.SetDataBits(com_dataBits);                   
                 }
             }
         }
@@ -142,10 +133,7 @@ namespace Terrarium
                     if (rb_parity_mark.Checked) com_parity = Parity.Mark;
                     if (rb_parity_space.Checked) com_parity = Parity.Space;
 
-                    if (serClient != null)
-                    {
-                        serClient.SetParity(com_parity);
-                    }
+                    serClient?.SetParity(com_parity);   
                 }
             }
         }
@@ -161,10 +149,7 @@ namespace Terrarium
                     if (rb_stopBits_1_5.Checked) com_stopBits = StopBits.OnePointFive;
                     if (rb_stopBits_2.Checked) com_stopBits = StopBits.Two;
 
-                    if (serClient != null)
-                    {
-                        serClient.SetStopBits(com_stopBits);
-                    }
+                    serClient?.SetStopBits(com_stopBits);
                 }
             }
         }
@@ -187,7 +172,12 @@ namespace Terrarium
 
         protected void SerialPortError(object sender, EventArgs e)
         {
-            SendTxtToStatusLable("PORT ERROR", Color.Red);
+            serClient.Close();
+
+            SetTextStatusLable("PORT ERROR", Color.Red);
+            //cmb_SerialPortList.Enabled = true;
+            //btn_SerialConnect.Enabled = true;
+            //IsOpenBtnClicked = false;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -458,6 +448,7 @@ namespace Terrarium
 
                 serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
                 serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(receiveHandler);
+                serClient.serialError += new EventHandler(SerialPortError);
 
                 if (serClient.Open() == true)
                 {
@@ -538,6 +529,20 @@ namespace Terrarium
             }
         }
 
+        delegate void SetTextStatusLableCallback(string text, Color color);
+
+        private void SetTextStatusLable(string text, Color color)
+        {
+            if (lbl_Status.InvokeRequired)
+            {
+                SetTextStatusLableCallback d = new SetTextStatusLableCallback(SetTextStatusLable);
+                this.Invoke(d, new object[] { text, color });
+            }
+            else
+            {
+                SendTxtToStatusLable(text, color);
+            }
+        }
 
         public void SendTxtToStatusLable(string data, Color color)
         {
