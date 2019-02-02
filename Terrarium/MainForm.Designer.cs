@@ -37,7 +37,6 @@
             this.btn_Settings = new System.Windows.Forms.Button();
             this.pnl_Settings = new System.Windows.Forms.Panel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cb_Sort = new System.Windows.Forms.CheckBox();
             this.cb_Loging = new System.Windows.Forms.CheckBox();
             this.cb_LinesNum = new System.Windows.Forms.CheckBox();
@@ -100,6 +99,7 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nmn_ByteSort = new System.Windows.Forms.NumericUpDown();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -112,6 +112,7 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmn_ByteSort)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_ToolBar
@@ -199,7 +200,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.textBox1);
+            this.groupBox7.Controls.Add(this.nmn_ByteSort);
             this.groupBox7.Controls.Add(this.cb_Sort);
             this.groupBox7.Controls.Add(this.cb_Loging);
             this.groupBox7.Controls.Add(this.cb_LinesNum);
@@ -210,16 +211,9 @@
             this.groupBox7.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox7.Location = new System.Drawing.Point(0, 367);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(144, 115);
+            this.groupBox7.Size = new System.Drawing.Size(144, 143);
             this.groupBox7.TabIndex = 14;
             this.groupBox7.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(97, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(43, 20);
-            this.textBox1.TabIndex = 7;
             // 
             // cb_Sort
             // 
@@ -227,12 +221,13 @@
             this.cb_Sort.Checked = true;
             this.cb_Sort.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.cb_Sort.Location = new System.Drawing.Point(55, 37);
+            this.cb_Sort.Location = new System.Drawing.Point(7, 89);
             this.cb_Sort.Name = "cb_Sort";
             this.cb_Sort.Size = new System.Drawing.Size(45, 17);
             this.cb_Sort.TabIndex = 6;
             this.cb_Sort.Text = "Sort";
             this.cb_Sort.UseVisualStyleBackColor = true;
+            this.cb_Sort.CheckedChanged += new System.EventHandler(this.cb_Sort_CheckedChanged);
             // 
             // cb_Loging
             // 
@@ -246,7 +241,6 @@
             this.cb_Loging.TabIndex = 5;
             this.cb_Loging.Text = "Log";
             this.cb_Loging.UseVisualStyleBackColor = true;
-            this.cb_Loging.CheckedChanged += new System.EventHandler(this.cb_Loging_CheckedChanged);
             // 
             // cb_LinesNum
             // 
@@ -260,6 +254,7 @@
             this.cb_LinesNum.TabIndex = 4;
             this.cb_LinesNum.Text = "Lines Number";
             this.cb_LinesNum.UseVisualStyleBackColor = true;
+            this.cb_LinesNum.CheckedChanged += new System.EventHandler(this.cb_LinesNum_CheckedChanged);
             // 
             // cb_Rx_Hex
             // 
@@ -966,6 +961,32 @@
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
             this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
             // 
+            // nmn_ByteSort
+            // 
+            this.nmn_ByteSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.nmn_ByteSort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nmn_ByteSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nmn_ByteSort.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.nmn_ByteSort.Location = new System.Drawing.Point(59, 88);
+            this.nmn_ByteSort.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nmn_ByteSort.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmn_ByteSort.Name = "nmn_ByteSort";
+            this.nmn_ByteSort.Size = new System.Drawing.Size(62, 17);
+            this.nmn_ByteSort.TabIndex = 16;
+            this.nmn_ByteSort.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1004,6 +1025,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmn_ByteSort)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1074,11 +1096,11 @@
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem propertysToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox cb_Sort;
         private System.Windows.Forms.CheckBox cb_Loging;
         private System.Windows.Forms.CheckBox cb_LinesNum;
         private AboControls.UserControls.NumberedRTB nrtb_Rx;
+        private System.Windows.Forms.NumericUpDown nmn_ByteSort;
     }
 }
 

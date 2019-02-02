@@ -219,6 +219,7 @@ namespace Terrarium
 
         delegate void SetTextCallback(byte[] data);
 
+        private int byteCounterIndex = 0;
         private void SetText(byte[] data)
         {
             if (nrtb_Rx.RichTextBox.InvokeRequired)
@@ -230,11 +231,31 @@ namespace Terrarium
             {
                 if (cb_Rx_Hex.Checked)
                 {
-                    nrtb_Rx.AppendHex(data);
+                    if (cb_Sort.Checked == true)
+                    {                       
+                        if ((byteCounterIndex >= nmn_ByteSort.Value) || (data.Length >= nmn_ByteSort.Value))
+                        {
+                            byteCounterIndex = 0;
+                            nrtb_Rx.RichTextBox.Text += "\n";
+                        }
+                        byteCounterIndex++;
+                        nrtb_Rx.AppendHex(data);
+                    }
+                    else
+                    {
+                        nrtb_Rx.AppendHex(data);
+                    }                    
                 }
                 else
                 {
-                    nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
+                    if (cb_Sort.Checked == true)
+                    {
+                        nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
+                    }
+                    else
+                    {
+                        nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
+                    }                       
                 }
 
                 nrtb_Rx.NumStripAutoscroll = cb_RxAutoscroll.Checked ? true : false;
@@ -609,18 +630,23 @@ namespace Terrarium
         private void lbl_RxCounter_DoubleClick(object sender, EventArgs e)
         {
             RxDataCounter = 0;
-            lbl_RxCounter.Text = "Rx: 0";
+            lbl_RxCounter.Text = "Rx: " + RxDataCounter;
         }
 
         private void lbl_TxCounter_DoubleClick(object sender, EventArgs e)
         {
             TxDataCounter = 0;
-            lbl_TxCounter.Text = "Tx: 0";
+            lbl_TxCounter.Text = "Tx: " + TxDataCounter;
         }
 
-        private void cb_Loging_CheckedChanged(object sender, EventArgs e)
+        private void cb_LinesNum_CheckedChanged(object sender, EventArgs e)
         {
             nrtb_Rx.NumStripVisible ^= true;
+        }
+
+        private void cb_Sort_CheckedChanged(object sender, EventArgs e)
+        {
+            nmn_ByteSort.Enabled ^= true;
         }
     }
 }
