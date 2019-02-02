@@ -37,9 +37,8 @@ namespace AboControls.UserControls
             if (_autoscroll == true) richTextBox.ScrollToCaret();
         }
 
-        public void AppendHex(string hex)
+        public void AppendHex(byte[] data)
         {
-            byte[] data = Encoding.Default.GetBytes(hex);
             string hexString = BitConverter.ToString(data);
             hexString = hexString.Replace("-", " ");
             richTextBox.AppendText(hexString + " ");

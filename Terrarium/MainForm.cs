@@ -214,31 +214,31 @@ namespace Terrarium
 
         private void receiveHandler(object sender, DataStreamEventArgs e)
         {
-            SetText(Encoding.ASCII.GetString(e.Response));
+            SetText(e.Response);
         }
 
-        delegate void SetTextCallback(string text);
+        delegate void SetTextCallback(byte[] data);
 
-        private void SetText(string text)
+        private void SetText(byte[] data)
         {
             if (nrtb_Rx.RichTextBox.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(SetText);
-                this.Invoke(d, new object[] { text });
+                this.Invoke(d, new object[] { data });
             }
             else
             {
                 if (cb_Rx_Hex.Checked)
                 {
-                    nrtb_Rx.AppendHex(text);
+                    nrtb_Rx.AppendHex(data);
                 }
                 else
                 {
-                    nrtb_Rx.AppendText(text);
+                    nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
                 }
 
                 nrtb_Rx.NumStripAutoscroll = cb_RxAutoscroll.Checked ? true : false;
-                RxDataCounter += text.Length;
+                RxDataCounter += data.Length;
                 lbl_RxCounter.Text = "Rx: " + RxDataCounter.ToString();
             }
         }
