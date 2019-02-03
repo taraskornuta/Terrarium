@@ -42,5 +42,11 @@
       <Value Profile="(Default)">50,50,50
 </Value>
     </Setting>
+    <Setting Name="cb_Sort" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="nmn_ByteSort" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

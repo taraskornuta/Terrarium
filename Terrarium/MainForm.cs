@@ -200,7 +200,7 @@ namespace Terrarium
             if (com_portName == null)com_portName = "COM1";
 
             serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
-            serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(receiveHandler);
+            serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -208,18 +208,18 @@ namespace Terrarium
             SettingsSave();
             serClient.Close();
 
-            serClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(receiveHandler);
+            serClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(ReceiveHandler);
+            serClient.serialError -= new EventHandler(SerialPortError);
             serClient.Dispose();
         }
 
-        private void receiveHandler(object sender, DataStreamEventArgs e)
+        private void ReceiveHandler(object sender, DataStreamEventArgs e)
         {
             SetText(e.Response);
         }
 
         delegate void SetTextCallback(byte[] data);
 
-        private int byteCounterIndex = 0;
         private void SetText(byte[] data)
         {
             if (nrtb_Rx.RichTextBox.InvokeRequired)
@@ -232,13 +232,9 @@ namespace Terrarium
                 if (cb_Rx_Hex.Checked)
                 {
                     if (cb_Sort.Checked == true)
-                    {                       
-                        if ((byteCounterIndex >= nmn_ByteSort.Value) || (data.Length >= nmn_ByteSort.Value))
-                        {
-                            byteCounterIndex = 0;
-                            nrtb_Rx.RichTextBox.Text += "\n";
-                        }
-                        byteCounterIndex++;
+                    {
+                        nrtb_Rx.RichTextBox.Text += "\n";
+
                         nrtb_Rx.AppendHex(data);
                     }
                     else
@@ -389,6 +385,8 @@ namespace Terrarium
 
             cb_RxAutoscroll.Checked = ps.rtb_Rx_AutoScroll;
             cb_Rx_Hex.Checked = ps.cb_Rx_Hex;
+            cb_Sort.Checked = ps.cb_Sort;
+            nmn_ByteSort.Value = ps.nmn_ByteSort;
         }
 
         private void SettingsSave()
@@ -403,6 +401,8 @@ namespace Terrarium
             ps.sidePannelHide = panelSettingsHiden;
             ps.rtb_Rx_AutoScroll = cb_RxAutoscroll.Checked;
             ps.cb_Rx_Hex = cb_Rx_Hex.Checked;
+            ps.cb_Sort = cb_Sort.Checked;
+            ps.nmn_ByteSort = nmn_ByteSort.Value;
             ps.Save();
         }
 
@@ -477,7 +477,7 @@ namespace Terrarium
                 serClient.SetHandshake(com_handshake);
 
                 serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
-                serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(receiveHandler);
+                serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
                 serClient.serialError += new EventHandler(SerialPortError);
 
                 if (serClient.Open() == true)
