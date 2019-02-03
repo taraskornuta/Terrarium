@@ -119,6 +119,8 @@ namespace Terrarium
                     _serialPort.WriteTimeout = -1;
 
                     _serialPort.Open();
+                    _serialPort.DiscardInBuffer();    //Fix problem of received data in buffer befor port was opened
+                    _serialPort.DiscardOutBuffer();
 
                     if (_serialPort.IsOpen == true)
                     {
@@ -146,12 +148,8 @@ namespace Terrarium
             if (_serialPort != null && _serialPort.IsOpen)
             {
                 serThread.Abort();
-                Thread.Sleep(10);
-                if (serThread.ThreadState == ThreadState.Aborted)
-                {
-                    _serialPort.Close();
-                    while (_serialPort.IsOpen == true) { }
-                }
+                serThread.Join();
+                _serialPort.Close();               
             }
         }
 
@@ -230,33 +228,41 @@ namespace Terrarium
 
         private void SerialReceiving()
         {
-            while (true)
+            try
             {
-                int count = 0;
-                try
+                while (true)
                 {
-                    count = _serialPort.BytesToRead;
-                }
-                catch (Exception ex)
-                {
-                    if (ex is System.IO.IOException || ex is UnauthorizedAccessException)
+                    int count = 0;
+                    try
                     {
-                        OnSerialErrorAccure(EventArgs.Empty);
-                        serThread.Abort();
+                        count = _serialPort.BytesToRead;
                     }
-                }       
+                    catch (Exception ex)
+                    {
+                        if (ex is System.IO.IOException || ex is UnauthorizedAccessException)
+                        {
+                            OnSerialErrorAccure(EventArgs.Empty);
+                            serThread.Abort();
+                            serThread.Join();
+                        }
+                    }
 
-                /*Get Sleep Inteval*/
-                TimeSpan tmpInterval = (DateTime.Now - _lastReceive);
+                    /*Get Sleep Inteval*/
+                    TimeSpan tmpInterval = (DateTime.Now - _lastReceive);
 
-                /*Form The Packet in The Buffer*/
-                byte[] buf = new byte[count];
-                int readBytes = Receive(buf, 0, count);
+                    /*Form The Packet in The Buffer*/
+                    byte[] buf = new byte[count];
+                    int readBytes = Receive(buf, 0, count);
 
-                if (readBytes > 0)
-                {
-                    OnSerialReceiving(buf);
+                    if (readBytes > 0)
+                    {
+                        OnSerialReceiving(buf);
+                    }
                 }
+            }
+            catch (ThreadAbortException)
+            {
+                Thread.ResetAbort();
             }
         }
 

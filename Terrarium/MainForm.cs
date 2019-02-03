@@ -200,7 +200,7 @@ namespace Terrarium
             if (com_portName == null)com_portName = "COM1";
 
             serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
-            serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(receiveHandler);
+            serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -208,11 +208,12 @@ namespace Terrarium
             SettingsSave();
             serClient.Close();
 
-            serClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(receiveHandler);
+            serClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(ReceiveHandler);
+            serClient.serialError -= new EventHandler(SerialPortError);
             serClient.Dispose();
         }
 
-        private void receiveHandler(object sender, DataStreamEventArgs e)
+        private void ReceiveHandler(object sender, DataStreamEventArgs e)
         {
             SetText(e.Response);
         }
@@ -230,11 +231,27 @@ namespace Terrarium
             {
                 if (cb_Rx_Hex.Checked)
                 {
-                    nrtb_Rx.AppendHex(data);
+                    if (cb_Sort.Checked == true)
+                    {
+                        nrtb_Rx.RichTextBox.Text += "\n";
+
+                        nrtb_Rx.AppendHex(data);
+                    }
+                    else
+                    {
+                        nrtb_Rx.AppendHex(data);
+                    }                    
                 }
                 else
                 {
-                    nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
+                    if (cb_Sort.Checked == true)
+                    {
+                        nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
+                    }
+                    else
+                    {
+                        nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
+                    }                       
                 }
 
                 nrtb_Rx.NumStripAutoscroll = cb_RxAutoscroll.Checked ? true : false;
@@ -368,6 +385,8 @@ namespace Terrarium
 
             cb_RxAutoscroll.Checked = ps.rtb_Rx_AutoScroll;
             cb_Rx_Hex.Checked = ps.cb_Rx_Hex;
+            cb_Sort.Checked = ps.cb_Sort;
+            nmn_ByteSort.Value = ps.nmn_ByteSort;
         }
 
         private void SettingsSave()
@@ -382,6 +401,8 @@ namespace Terrarium
             ps.sidePannelHide = panelSettingsHiden;
             ps.rtb_Rx_AutoScroll = cb_RxAutoscroll.Checked;
             ps.cb_Rx_Hex = cb_Rx_Hex.Checked;
+            ps.cb_Sort = cb_Sort.Checked;
+            ps.nmn_ByteSort = nmn_ByteSort.Value;
             ps.Save();
         }
 
@@ -456,7 +477,7 @@ namespace Terrarium
                 serClient.SetHandshake(com_handshake);
 
                 serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
-                serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(receiveHandler);
+                serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
                 serClient.serialError += new EventHandler(SerialPortError);
 
                 if (serClient.Open() == true)
@@ -609,18 +630,23 @@ namespace Terrarium
         private void lbl_RxCounter_DoubleClick(object sender, EventArgs e)
         {
             RxDataCounter = 0;
-            lbl_RxCounter.Text = "Rx: 0";
+            lbl_RxCounter.Text = "Rx: " + RxDataCounter;
         }
 
         private void lbl_TxCounter_DoubleClick(object sender, EventArgs e)
         {
             TxDataCounter = 0;
-            lbl_TxCounter.Text = "Tx: 0";
+            lbl_TxCounter.Text = "Tx: " + TxDataCounter;
         }
 
-        private void cb_Loging_CheckedChanged(object sender, EventArgs e)
+        private void cb_LinesNum_CheckedChanged(object sender, EventArgs e)
         {
             nrtb_Rx.NumStripVisible ^= true;
+        }
+
+        private void cb_Sort_CheckedChanged(object sender, EventArgs e)
+        {
+            nmn_ByteSort.Enabled ^= true;
         }
     }
 }
