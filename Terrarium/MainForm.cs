@@ -22,6 +22,8 @@ namespace Terrarium
         private int panelSettingsWidth;
         private bool panelSettingsHiden;
 
+        private bool panelMacroHiden;
+
         private Properties.Settings ps = Properties.Settings.Default;
         private string[] serialPortList;
         private string com_portName;
@@ -399,6 +401,7 @@ namespace Terrarium
             ps.SerialHandshake = Convert.ToString(com_handshake);
             ps.SerialPortParity = Convert.ToString(com_parity);
             ps.sidePannelHide = panelSettingsHiden;
+            ps.panelMacroStatus = panelMacroHiden;
             ps.rtb_Rx_AutoScroll = cb_RxAutoscroll.Checked;
             ps.cb_Rx_Hex = cb_Rx_Hex.Checked;
             ps.cb_Sort = cb_Sort.Checked;
@@ -415,7 +418,8 @@ namespace Terrarium
             com_stopBits = (StopBits)Enum.Parse(typeof(StopBits), ps.SerialStopBits);
             com_handshake = (Handshake)Enum.Parse(typeof(Handshake), ps.SerialHandshake);
             com_parity = (Parity)Enum.Parse(typeof(Parity), ps.SerialPortParity);
-            panelSettingsHiden = ps.sidePannelHide;           
+            panelSettingsHiden = ps.sidePannelHide;
+            panelMacroHiden = ps.panelMacroStatus;
         }
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
@@ -647,6 +651,21 @@ namespace Terrarium
         private void cb_Sort_CheckedChanged(object sender, EventArgs e)
         {
             nmn_ByteSort.Enabled ^= true;
+        }
+
+        private void cb_TxMacroSend_CheckedChanged(object sender, EventArgs e)
+        {
+            if (panelMacroHiden == true)
+            {
+                tableLayoutPanel1.RowStyles[3].SizeType = SizeType.Absolute;
+                tableLayoutPanel1.RowStyles[3].Height = 0F;
+            }
+            else
+            {
+                tableLayoutPanel1.RowStyles[3].SizeType = SizeType.Absolute;
+                tableLayoutPanel1.RowStyles[3].Height = 79F;
+            }
+            panelMacroHiden ^= true;
         }
     }
 }

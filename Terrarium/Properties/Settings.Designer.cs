@@ -201,5 +201,17 @@ namespace Terrarium.Properties {
                 this["nmn_ByteSort"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool panelMacroStatus {
+            get {
+                return ((bool)(this["panelMacroStatus"]));
+            }
+            set {
+                this["panelMacroStatus"] = value;
+            }
+        }
     }
 }
