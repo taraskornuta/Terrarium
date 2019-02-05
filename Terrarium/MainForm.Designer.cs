@@ -36,6 +36,9 @@
             this.btn_SerialConnect = new System.Windows.Forms.Button();
             this.btn_Settings = new System.Windows.Forms.Button();
             this.pnl_Settings = new System.Windows.Forms.Panel();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.cb_TxMacroSend = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.nmn_ByteSort = new System.Windows.Forms.NumericUpDown();
             this.cb_Sort = new System.Windows.Forms.CheckBox();
@@ -93,19 +96,14 @@
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tb_TxString = new System.Windows.Forms.TextBox();
-            this.btn_SerialSend = new System.Windows.Forms.Button();
             this.nrtb_Rx = new AboControls.UserControls.NumberedRTB();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.macroPannel1 = new Terrarium.MacroPannel();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cb_TxMacroSend = new System.Windows.Forms.CheckBox();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmn_ByteSort)).BeginInit();
             this.groupBox6.SuspendLayout();
@@ -116,8 +114,6 @@
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_ToolBar
@@ -128,9 +124,9 @@
             this.pnl_ToolBar.Controls.Add(this.btn_SerialConnect);
             this.pnl_ToolBar.Controls.Add(this.btn_Settings);
             this.pnl_ToolBar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_ToolBar.Location = new System.Drawing.Point(844, 0);
+            this.pnl_ToolBar.Location = new System.Drawing.Point(991, 0);
             this.pnl_ToolBar.Name = "pnl_ToolBar";
-            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 561);
+            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 574);
             this.pnl_ToolBar.TabIndex = 1;
             // 
             // btn_CleanRxField
@@ -140,7 +136,7 @@
             this.btn_CleanRxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanRxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanRxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanRxField.Image")));
-            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 397);
+            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 410);
             this.btn_CleanRxField.Name = "btn_CleanRxField";
             this.btn_CleanRxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanRxField.TabIndex = 5;
@@ -154,7 +150,7 @@
             this.btn_CleanTxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanTxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanTxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanTxField.Image")));
-            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 474);
+            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 487);
             this.btn_CleanTxField.Name = "btn_CleanTxField";
             this.btn_CleanTxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanTxField.TabIndex = 4;
@@ -180,7 +176,7 @@
             this.btn_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_Settings.Image = global::Terrarium.Properties.Resources.icons8_Settings_32px;
-            this.btn_Settings.Location = new System.Drawing.Point(2, 515);
+            this.btn_Settings.Location = new System.Drawing.Point(2, 528);
             this.btn_Settings.Name = "btn_Settings";
             this.btn_Settings.Size = new System.Drawing.Size(37, 41);
             this.btn_Settings.TabIndex = 0;
@@ -199,10 +195,46 @@
             this.pnl_Settings.Controls.Add(this.groupBox2);
             this.pnl_Settings.Controls.Add(this.groupBox1);
             this.pnl_Settings.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Settings.Location = new System.Drawing.Point(619, 0);
+            this.pnl_Settings.Location = new System.Drawing.Point(766, 0);
             this.pnl_Settings.Name = "pnl_Settings";
-            this.pnl_Settings.Size = new System.Drawing.Size(225, 561);
+            this.pnl_Settings.Size = new System.Drawing.Size(225, 574);
             this.pnl_Settings.TabIndex = 2;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.cb_TxMacroSend);
+            this.groupBox8.Controls.Add(this.label1);
+            this.groupBox8.Location = new System.Drawing.Point(0, 484);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(144, 74);
+            this.groupBox8.TabIndex = 15;
+            this.groupBox8.TabStop = false;
+            // 
+            // cb_TxMacroSend
+            // 
+            this.cb_TxMacroSend.AutoSize = true;
+            this.cb_TxMacroSend.Checked = true;
+            this.cb_TxMacroSend.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_TxMacroSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cb_TxMacroSend.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cb_TxMacroSend.Location = new System.Drawing.Point(7, 14);
+            this.cb_TxMacroSend.Name = "cb_TxMacroSend";
+            this.cb_TxMacroSend.Size = new System.Drawing.Size(56, 17);
+            this.cb_TxMacroSend.TabIndex = 3;
+            this.cb_TxMacroSend.Text = "Macro";
+            this.cb_TxMacroSend.UseVisualStyleBackColor = true;
+            this.cb_TxMacroSend.CheckedChanged += new System.EventHandler(this.cb_TxMacroSend_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label1.Location = new System.Drawing.Point(17, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Transmit";
             // 
             // groupBox7
             // 
@@ -839,9 +871,9 @@
             this.panel1.Controls.Add(this.lbl_RxCounter);
             this.panel1.Controls.Add(this.lbl_Status);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 537);
+            this.panel1.Location = new System.Drawing.Point(0, 550);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(619, 24);
+            this.panel1.Size = new System.Drawing.Size(766, 24);
             this.panel1.TabIndex = 3;
             // 
             // lbl_TxCounter
@@ -891,10 +923,10 @@
             this.rtb_Tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_Tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rtb_Tx.ForeColor = System.Drawing.Color.White;
-            this.rtb_Tx.Location = new System.Drawing.Point(0, 359);
+            this.rtb_Tx.Location = new System.Drawing.Point(0, 374);
             this.rtb_Tx.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_Tx.Name = "rtb_Tx";
-            this.rtb_Tx.Size = new System.Drawing.Size(619, 74);
+            this.rtb_Tx.Size = new System.Drawing.Size(766, 69);
             this.rtb_Tx.TabIndex = 1;
             this.rtb_Tx.Text = "";
             this.rtb_Tx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtb_Tx_KeyPress);
@@ -904,68 +936,19 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.nrtb_Rx, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.rtb_Tx, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.macroPannel1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.macroPannel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 79F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 537);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 69F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 107F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(766, 550);
             this.tableLayoutPanel1.TabIndex = 4;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 117F));
-            this.tableLayoutPanel2.Controls.Add(this.tb_TxString, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btn_SerialSend, 1, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 433);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(619, 25);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // tb_TxString
-            // 
-            this.tb_TxString.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.tb_TxString.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tb_TxString.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tb_TxString.ForeColor = System.Drawing.Color.White;
-            this.tb_TxString.Location = new System.Drawing.Point(0, 0);
-            this.tb_TxString.Margin = new System.Windows.Forms.Padding(0);
-            this.tb_TxString.Name = "tb_TxString";
-            this.tb_TxString.Size = new System.Drawing.Size(502, 24);
-            this.tb_TxString.TabIndex = 0;
-            this.tb_TxString.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_TxString_KeyPress);
-            // 
-            // btn_SerialSend
-            // 
-            this.btn_SerialSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.btn_SerialSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SerialSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_SerialSend.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_SerialSend.Image = global::Terrarium.Properties.Resources.icons8_Sent_22px;
-            this.btn_SerialSend.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_SerialSend.Location = new System.Drawing.Point(502, 0);
-            this.btn_SerialSend.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.btn_SerialSend.Name = "btn_SerialSend";
-            this.btn_SerialSend.Size = new System.Drawing.Size(116, 25);
-            this.btn_SerialSend.TabIndex = 1;
-            this.btn_SerialSend.Text = "Send";
-            this.btn_SerialSend.UseVisualStyleBackColor = false;
-            this.btn_SerialSend.Click += new System.EventHandler(this.btn_SerialSend_Click);
             // 
             // nrtb_Rx
             // 
@@ -976,7 +959,7 @@
             this.nrtb_Rx.Name = "nrtb_Rx";
             this.nrtb_Rx.NumStripAutoscroll = false;
             this.nrtb_Rx.NumStripVisible = true;
-            this.nrtb_Rx.Size = new System.Drawing.Size(619, 359);
+            this.nrtb_Rx.Size = new System.Drawing.Size(766, 374);
             this.nrtb_Rx.TabIndex = 3;
             // 
             // copyToolStripMenuItem
@@ -996,57 +979,20 @@
             // 
             // macroPannel1
             // 
-            this.macroPannel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.macroPannel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.macroPannel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.macroPannel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.macroPannel1.Location = new System.Drawing.Point(0, 458);
+            this.macroPannel1.Location = new System.Drawing.Point(0, 443);
             this.macroPannel1.Margin = new System.Windows.Forms.Padding(0);
             this.macroPannel1.Name = "macroPannel1";
-            this.macroPannel1.Size = new System.Drawing.Size(619, 79);
+            this.macroPannel1.Size = new System.Drawing.Size(766, 107);
             this.macroPannel1.TabIndex = 4;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.cb_TxMacroSend);
-            this.groupBox8.Controls.Add(this.label1);
-            this.groupBox8.Location = new System.Drawing.Point(0, 484);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(144, 74);
-            this.groupBox8.TabIndex = 15;
-            this.groupBox8.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(17, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Transmit";
-            // 
-            // cb_TxMacroSend
-            // 
-            this.cb_TxMacroSend.AutoSize = true;
-            this.cb_TxMacroSend.Checked = true;
-            this.cb_TxMacroSend.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_TxMacroSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.cb_TxMacroSend.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_TxMacroSend.Location = new System.Drawing.Point(7, 14);
-            this.cb_TxMacroSend.Name = "cb_TxMacroSend";
-            this.cb_TxMacroSend.Size = new System.Drawing.Size(56, 17);
-            this.cb_TxMacroSend.TabIndex = 3;
-            this.cb_TxMacroSend.Text = "Macro";
-            this.cb_TxMacroSend.UseVisualStyleBackColor = true;
-            this.cb_TxMacroSend.CheckedChanged += new System.EventHandler(this.cb_TxMacroSend_CheckedChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1031, 574);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnl_Settings);
@@ -1061,6 +1007,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.pnl_ToolBar.ResumeLayout(false);
             this.pnl_Settings.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmn_ByteSort)).EndInit();
@@ -1078,10 +1026,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1094,9 +1038,6 @@
         private System.Windows.Forms.Timer tmr_MenuSlide;
         private System.Windows.Forms.RichTextBox rtb_Tx;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TextBox tb_TxString;
-        private System.Windows.Forms.Button btn_SerialSend;
         private System.Windows.Forms.Button btn_SerialConnect;
         private System.Windows.Forms.Button btn_CleanTxField;
         private System.Windows.Forms.Button btn_CleanRxField;
@@ -1157,10 +1098,10 @@
         private System.Windows.Forms.CheckBox cb_LinesNum;
         private AboControls.UserControls.NumberedRTB nrtb_Rx;
         private System.Windows.Forms.NumericUpDown nmn_ByteSort;
-        private MacroPannel macroPannel1;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cb_TxMacroSend;
+        private MacroPannel macroPannel1;
     }
 }
 

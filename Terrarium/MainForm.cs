@@ -519,7 +519,7 @@ namespace Terrarium
         private void btn_CleanTxField_Click(object sender, EventArgs e)
         {
             rtb_Tx.Clear();
-            tb_TxString.Clear();
+            //tb_TxString.Clear();
         }
 
         private void btn_CleanRxField_Click(object sender, EventArgs e) => nrtb_Rx.RichTextBox.Clear();
@@ -604,11 +604,11 @@ namespace Terrarium
         {
             if (serClient.IsOpen() == true)
             {
-                byte[] buff = Encoding.ASCII.GetBytes(tb_TxString.Text);
-                serClient.Transmit(buff);
+                //byte[] buff = Encoding.ASCII.GetBytes(tb_TxString.Text);
+                //serClient.Transmit(buff);
 
-                TxDataCounter += buff.Length;
-                lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
+                //TxDataCounter += buff.Length;
+                //lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }
             else
             {
@@ -621,7 +621,7 @@ namespace Terrarium
             if (e.KeyChar == (char)Keys.Enter)
             {
                 e.Handled = true;
-                btn_SerialSend.PerformClick();
+               // btn_SerialSend.PerformClick();
             }
         }
 
