@@ -49,12 +49,12 @@
             this.btn_m3 = new System.Windows.Forms.Button();
             this.btn_m2 = new System.Windows.Forms.Button();
             this.btn_m1 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.mainLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_Botom = new System.Windows.Forms.Panel();
             this.pnl_Top = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.button1 = new System.Windows.Forms.Button();
+            this.mainLayoutPanel.SuspendLayout();
             this.pnl_Botom.SuspendLayout();
             this.pnl_Top.SuspendLayout();
             this.SuspendLayout();
@@ -331,25 +331,26 @@
             this.btn_m1.TabIndex = 0;
             this.btn_m1.Text = "M1";
             this.btn_m1.UseVisualStyleBackColor = false;
-            this.btn_m1.Click += new System.EventHandler(this.btn_m1_Click);
             // 
-            // tableLayoutPanel1
+            // mainLayoutPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 619F));
-            this.tableLayoutPanel1.Controls.Add(this.pnl_Botom, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pnl_Top, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 100);
-            this.tableLayoutPanel1.TabIndex = 20;
+            this.mainLayoutPanel.ColumnCount = 1;
+            this.mainLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 619F));
+            this.mainLayoutPanel.Controls.Add(this.pnl_Botom, 0, 1);
+            this.mainLayoutPanel.Controls.Add(this.pnl_Top, 0, 0);
+            this.mainLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.mainLayoutPanel.Name = "mainLayoutPanel";
+            this.mainLayoutPanel.RowCount = 2;
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.mainLayoutPanel.Size = new System.Drawing.Size(844, 100);
+            this.mainLayoutPanel.TabIndex = 20;
             // 
             // pnl_Botom
             // 
+            this.pnl_Botom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_Botom.Controls.Add(this.btn_m2);
             this.pnl_Botom.Controls.Add(this.btn_MacroSettings);
             this.pnl_Botom.Controls.Add(this.btn_m10);
@@ -379,49 +380,51 @@
             // 
             // pnl_Top
             // 
+            this.pnl_Top.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_Top.ColumnCount = 2;
             this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
-            this.pnl_Top.Controls.Add(this.button1, 1, 0);
+            this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111F));
             this.pnl_Top.Controls.Add(this.textBox1, 0, 0);
+            this.pnl_Top.Controls.Add(this.button1, 1, 0);
             this.pnl_Top.Location = new System.Drawing.Point(0, 0);
             this.pnl_Top.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Top.Name = "pnl_Top";
             this.pnl_Top.RowCount = 1;
             this.pnl_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnl_Top.Size = new System.Drawing.Size(618, 25);
+            this.pnl_Top.Size = new System.Drawing.Size(844, 25);
             this.pnl_Top.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(506, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 25);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(3, 0);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 1);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(503, 17);
+            this.textBox1.Size = new System.Drawing.Size(730, 24);
             this.textBox1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.Location = new System.Drawing.Point(733, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 25);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MacroPannel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.mainLayoutPanel);
             this.Name = "MacroPannel";
-            this.Size = new System.Drawing.Size(644, 100);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(844, 100);
+            this.mainLayoutPanel.ResumeLayout(false);
             this.pnl_Botom.ResumeLayout(false);
             this.pnl_Top.ResumeLayout(false);
             this.pnl_Top.PerformLayout();
@@ -451,7 +454,7 @@
         private System.Windows.Forms.Button btn_m2;
         private System.Windows.Forms.Button btn_m1;
         private System.Windows.Forms.Button btn_MacroSettings;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel mainLayoutPanel;
         private System.Windows.Forms.Panel pnl_Botom;
         private System.Windows.Forms.TableLayoutPanel pnl_Top;
         private System.Windows.Forms.Button button1;

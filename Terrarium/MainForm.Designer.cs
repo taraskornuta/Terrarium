@@ -87,7 +87,6 @@
             this.rb_baudRate_9600 = new System.Windows.Forms.RadioButton();
             this.rb_baudRate_4800 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_TxCounter = new System.Windows.Forms.Label();
@@ -96,10 +95,11 @@
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.nrtb_Rx = new AboControls.UserControls.NumberedRTB();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nrtb_Rx = new AboControls.UserControls.NumberedRTB();
+            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.macroPannel1 = new Terrarium.MacroPannel();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
@@ -833,22 +833,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "COM port";
             // 
-            // cmb_SerialPortList
-            // 
-            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cmb_SerialPortList.FormattingEnabled = true;
-            this.cmb_SerialPortList.Location = new System.Drawing.Point(6, 19);
-            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
-            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
-            this.cmb_SerialPortList.TabIndex = 8;
-            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
-            // 
             // btn_SerialPortRefresh
             // 
             this.btn_SerialPortRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -950,18 +934,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(766, 550);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // nrtb_Rx
-            // 
-            this.nrtb_Rx.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.nrtb_Rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nrtb_Rx.Location = new System.Drawing.Point(0, 0);
-            this.nrtb_Rx.Margin = new System.Windows.Forms.Padding(0);
-            this.nrtb_Rx.Name = "nrtb_Rx";
-            this.nrtb_Rx.NumStripAutoscroll = false;
-            this.nrtb_Rx.NumStripVisible = true;
-            this.nrtb_Rx.Size = new System.Drawing.Size(766, 374);
-            this.nrtb_Rx.TabIndex = 3;
-            // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
@@ -977,14 +949,44 @@
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
             this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
             // 
+            // nrtb_Rx
+            // 
+            this.nrtb_Rx.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.nrtb_Rx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nrtb_Rx.Location = new System.Drawing.Point(0, 0);
+            this.nrtb_Rx.Margin = new System.Windows.Forms.Padding(0);
+            this.nrtb_Rx.Name = "nrtb_Rx";
+            this.nrtb_Rx.NumStripAutoscroll = false;
+            this.nrtb_Rx.NumStripVisible = true;
+            this.nrtb_Rx.Size = new System.Drawing.Size(766, 374);
+            this.nrtb_Rx.TabIndex = 3;
+            // 
+            // cmb_SerialPortList
+            // 
+            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cmb_SerialPortList.FormattingEnabled = true;
+            this.cmb_SerialPortList.Location = new System.Drawing.Point(6, 19);
+            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
+            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
+            this.cmb_SerialPortList.TabIndex = 8;
+            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
+            // 
             // macroPannel1
             // 
+            this.macroPannel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.macroPannel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroPannel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.macroPannel1.Location = new System.Drawing.Point(0, 443);
-            this.macroPannel1.Margin = new System.Windows.Forms.Padding(0);
+            this.macroPannel1.Location = new System.Drawing.Point(3, 446);
+            this.macroPannel1.MinimumSize = new System.Drawing.Size(619, 100);
             this.macroPannel1.Name = "macroPannel1";
-            this.macroPannel1.Size = new System.Drawing.Size(766, 107);
+            this.macroPannel1.Size = new System.Drawing.Size(760, 101);
             this.macroPannel1.TabIndex = 4;
             // 
             // MainForm

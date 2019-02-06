@@ -17,9 +17,21 @@ namespace Terrarium
             InitializeComponent();
         }
 
-        private void btn_m1_Click(object sender, EventArgs e)
+        private Size minSize = new Size(619, 100);
+        public override Size MinimumSize
         {
+            get { return base.MinimumSize; }
+            set { base.MinimumSize = minSize; }
+        }
 
+        public bool ShouldSerializeMaximumSize()
+        {
+            return false;
+        }
+
+        private void ResetMaximumSize()
+        {
+            base.MaximumSize = minSize;
         }
     }
 }
