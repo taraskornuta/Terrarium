@@ -12,12 +12,14 @@ namespace Terrarium
 {
     public partial class MacroPannel : UserControl
     {
+        private bool VisibleBotomPanel = false;
+        private Size minSize = new Size(619, 100);
+
         public MacroPannel()
         {
             InitializeComponent();
         }
-
-        private Size minSize = new Size(619, 100);
+       
         public override Size MinimumSize
         {
             get { return base.MinimumSize; }
@@ -33,5 +35,33 @@ namespace Terrarium
         {
             base.MaximumSize = minSize;
         }
+
+        public bool VisibleMacroButtons
+        {   
+            get {return VisibleBotomPanel; }
+                         
+            set
+            {
+                VisibleBotomPanel = value;
+                if (VisibleBotomPanel == true)
+                {
+                    mainLayoutPanel.RowStyles[1].SizeType = SizeType.Absolute;
+                    mainLayoutPanel.RowStyles[1].Height = 0F;
+                    mainLayoutPanel.Height = 25;
+                    MinimumSize = new Size(619, 25);
+
+                }
+                else
+                {
+                    mainLayoutPanel.RowStyles[1].SizeType = SizeType.Absolute;
+                    mainLayoutPanel.RowStyles[1].Height = 75F;
+                    mainLayoutPanel.Height = 100;
+                    MinimumSize = new Size(619, 100);
+
+                }
+
+            }
+        }
+
     }
 }
