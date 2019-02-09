@@ -14,10 +14,12 @@ namespace Terrarium
     {
         private bool VisibleBotomPanel = false;
         private Size minSize = new Size(619, 100);
+        private Size minSizeTopPanel = new Size(619, 25);
 
         public MacroPannel()
         {
             InitializeComponent();
+
         }
        
         public override Size MinimumSize
@@ -47,16 +49,18 @@ namespace Terrarium
                 {
                     mainLayoutPanel.RowStyles[1].SizeType = SizeType.Absolute;
                     mainLayoutPanel.RowStyles[1].Height = 0F;
-                    mainLayoutPanel.Height = 25;
-                    MinimumSize = new Size(619, 25);
+                    pnl_Botom.Size = new Size(619, 0);
+                    base.MinimumSize = new Size(619, 25);
+                    base.Size = new Size(619, 25);
 
                 }
                 else
                 {
                     mainLayoutPanel.RowStyles[1].SizeType = SizeType.Absolute;
                     mainLayoutPanel.RowStyles[1].Height = 75F;
-                    mainLayoutPanel.Height = 100;
-                    MinimumSize = new Size(619, 100);
+                    pnl_Botom.Size = new Size(619, 75);
+                    base.MinimumSize = new Size(619, 100);
+                    base.Size = new Size(619, 100);
 
                 }
 

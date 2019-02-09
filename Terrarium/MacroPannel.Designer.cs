@@ -334,19 +334,21 @@
             // 
             // mainLayoutPanel
             // 
-            this.mainLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.mainLayoutPanel.ColumnCount = 1;
             this.mainLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 619F));
             this.mainLayoutPanel.Controls.Add(this.pnl_Botom, 0, 1);
             this.mainLayoutPanel.Controls.Add(this.pnl_Top, 0, 0);
+            this.mainLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainLayoutPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.mainLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.mainLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.mainLayoutPanel.MaximumSize = new System.Drawing.Size(0, 100);
+            this.mainLayoutPanel.MinimumSize = new System.Drawing.Size(619, 25);
             this.mainLayoutPanel.Name = "mainLayoutPanel";
             this.mainLayoutPanel.RowCount = 2;
-            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.mainLayoutPanel.Size = new System.Drawing.Size(783, 100);
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.mainLayoutPanel.Size = new System.Drawing.Size(619, 100);
             this.mainLayoutPanel.TabIndex = 20;
             // 
             // pnl_Botom
@@ -381,8 +383,7 @@
             // 
             // pnl_Top
             // 
-            this.pnl_Top.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.pnl_Top.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_Top.ColumnCount = 2;
             this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -391,26 +392,29 @@
             this.pnl_Top.Controls.Add(this.button1, 1, 0);
             this.pnl_Top.Location = new System.Drawing.Point(0, 0);
             this.pnl_Top.Margin = new System.Windows.Forms.Padding(0);
+            this.pnl_Top.MaximumSize = new System.Drawing.Size(0, 25);
+            this.pnl_Top.MinimumSize = new System.Drawing.Size(619, 25);
             this.pnl_Top.Name = "pnl_Top";
             this.pnl_Top.RowCount = 1;
             this.pnl_Top.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.pnl_Top.Size = new System.Drawing.Size(783, 25);
+            this.pnl_Top.Size = new System.Drawing.Size(619, 25);
             this.pnl_Top.TabIndex = 1;
             // 
             // textBox1
             // 
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(3, 0);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 0, 1, 1);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(667, 24);
+            this.textBox1.Size = new System.Drawing.Size(503, 24);
             this.textBox1.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(671, 0);
+            this.button1.Location = new System.Drawing.Point(507, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 25);
@@ -425,8 +429,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.Controls.Add(this.mainLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(0);
+            this.MaximumSize = new System.Drawing.Size(0, 100);
+            this.MinimumSize = new System.Drawing.Size(619, 25);
             this.Name = "MacroPannel";
-            this.Size = new System.Drawing.Size(783, 100);
+            this.Size = new System.Drawing.Size(619, 100);
             this.mainLayoutPanel.ResumeLayout(false);
             this.pnl_Botom.ResumeLayout(false);
             this.pnl_Top.ResumeLayout(false);
