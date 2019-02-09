@@ -41,6 +41,7 @@ namespace Terrarium
         public MainForm()
         {
             InitializeComponent();
+
             panelSettingsWidth = pnl_Settings.Width;
             SettingsGet();
 
@@ -79,6 +80,7 @@ namespace Terrarium
             rb_handshake_rts_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
 
             macroPannel1.BtnSendClick += new EventHandler(btn_SerialSend_Click);
+            macroPannel1.ButtonSendEvent += new EventHandler(btn_SerialSend_Click); // need to catch presed Enter key 
         }
 
         
@@ -217,6 +219,7 @@ namespace Terrarium
 
             serClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(ReceiveHandler);
             serClient.serialError -= new EventHandler(SerialPortError);
+
             serClient.Dispose();
         }
 
@@ -584,7 +587,6 @@ namespace Terrarium
             }
         }
 
-
         private void cmb_SerialPortList_SelectedValueChanged(object sender, EventArgs e)
         {
             com_portName = (string)cmb_SerialPortList.SelectedItem;
@@ -604,7 +606,6 @@ namespace Terrarium
             }
         }
 
-
         private void btn_SerialSend_Click(object sender, EventArgs e)
         {
             if (serClient.IsOpen() == true)
@@ -618,15 +619,6 @@ namespace Terrarium
             else
             {
                 SetTxtToStatusLable("OPEN PORT FIRST", Color.Red);
-            }
-        }
-
-        private void tb_TxString_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-               // btn_SerialSend.PerformClick();
             }
         }
 
@@ -665,16 +657,13 @@ namespace Terrarium
             {
                 tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
                 tableLayoutPanel1.RowStyles[2].Height = 25F;
-
             }
             else
             {
                 tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
                 tableLayoutPanel1.RowStyles[2].Height = 100F;
-            }
-            
+            }           
         }
-
     }
 }
 

@@ -432,7 +432,7 @@
             this.tb_Tx.Name = "tb_Tx";
             this.tb_Tx.Size = new System.Drawing.Size(503, 24);
             this.tb_Tx.TabIndex = 1;
-            //this.tb_Tx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Tx_KeyPress);
+            this.tb_Tx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Tx_KeyPress);
             // 
             // btn_Send
             // 

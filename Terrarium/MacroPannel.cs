@@ -14,7 +14,6 @@ namespace Terrarium
     {
         private bool VisibleBotomPanel = false;
         private Size minSize = new Size(619, 100);
-        private Size minSizeTopPanel = new Size(619, 25);
 
         public event EventHandler BtnSendClick;
         public event EventHandler BtnMacroSettingsClick;
@@ -38,11 +37,12 @@ namespace Terrarium
         public event EventHandler BtnM18Click;
         public event EventHandler BtnM19Click;
         public event EventHandler BtnM20Click;
-       // public event KeyPressEventArgs TbKeyPress;
 
         public MacroPannel()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint,true);
+            this.UpdateStyles();
         }
 
         public override Size MinimumSize
@@ -63,7 +63,7 @@ namespace Terrarium
 
         public bool VisibleMacroButtons
         {
-            get { return VisibleBotomPanel; }
+            get =>  VisibleBotomPanel; 
 
             set
             {
@@ -75,7 +75,6 @@ namespace Terrarium
                     pnl_Botom.Size = new Size(619, 0);
                     base.MinimumSize = new Size(619, 25);
                     base.Size = new Size(619, 25);
-
                 }
                 else
                 {
@@ -84,9 +83,7 @@ namespace Terrarium
                     pnl_Botom.Size = new Size(619, 75);
                     base.MinimumSize = new Size(619, 100);
                     base.Size = new Size(619, 100);
-
                 }
-
             }
         }
 
@@ -209,74 +206,58 @@ namespace Terrarium
             set => btn_m20.Text = value;
         }
 
-
         protected void btn_Send_Click(object sender, EventArgs e) => this.BtnSendClick?.Invoke(this, e);
-
 
         private void btn_MacroSettings_Click(object sender, EventArgs e) => this.BtnMacroSettingsClick?.Invoke(this, e);
 
-
         private void btn_m1_Click(object sender, EventArgs e) => this.BtnM1Click?.Invoke(this, e);
-
 
         private void btn_m2_Click(object sender, EventArgs e) => this.BtnM2Click?.Invoke(this, e);
 
-
         private void btn_m3_Click(object sender, EventArgs e) => this.BtnM3Click?.Invoke(this, e);
-
 
         private void btn_m4_Click(object sender, EventArgs e) => this.BtnM4Click?.Invoke(this, e);
 
-
         private void btn_m5_Click(object sender, EventArgs e) => this.BtnM5Click?.Invoke(this, e);
-
 
         private void btn_m6_Click(object sender, EventArgs e) => this.BtnM6Click?.Invoke(this, e);
 
-
         private void btn_m7_Click(object sender, EventArgs e) => this.BtnM7Click?.Invoke(this, e);
-
 
         private void btn_m8_Click(object sender, EventArgs e) => this.BtnM8Click?.Invoke(this, e);
 
-
         private void btn_m9_Click(object sender, EventArgs e) => this.BtnM9Click?.Invoke(this, e);
-
 
         private void btn_m10_Click(object sender, EventArgs e) => this.BtnM10Click?.Invoke(this, e);
 
-
         private void btn_m11_Click(object sender, EventArgs e) => this.BtnM11Click?.Invoke(this, e);
-
 
         private void btn_m12_Click(object sender, EventArgs e) => this.BtnM12Click?.Invoke(this, e);
 
-
         private void btn_m13_Click(object sender, EventArgs e) => this.BtnM13Click?.Invoke(this, e);
-
 
         private void btn_m14_Click(object sender, EventArgs e) => this.BtnM14Click?.Invoke(this, e);
 
-
         private void btn_m15_Click(object sender, EventArgs e) => this.BtnM15Click?.Invoke(this, e);
-
 
         private void btn_m16_Click(object sender, EventArgs e) => this.BtnM16Click?.Invoke(this, e);
 
-
         private void btn_m17_Click(object sender, EventArgs e) => this.BtnM17Click?.Invoke(this, e);
-
 
         private void btn_m18_Click(object sender, EventArgs e) => this.BtnM18Click?.Invoke(this, e);
 
-
         private void btn_m19_Click(object sender, EventArgs e) => this.BtnM19Click?.Invoke(this, e);
-
 
         private void btn_m20_Click(object sender, EventArgs e) => this.BtnM20Click?.Invoke(this, e);
 
-       // private void tb_Tx_KeyPress(object sender, KeyPressEventArgs e) => this.TbKeyPress?.Invoke(this, e);
-
-       
+        public event EventHandler ButtonSendEvent;
+        private void tb_Tx_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                ButtonSendEvent?.Invoke(this, e);
+            }
+        }
     }
 }
