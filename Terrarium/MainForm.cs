@@ -22,6 +22,8 @@ namespace Terrarium
         private int panelSettingsWidth;
         private bool panelSettingsHiden;
 
+        private bool panelMacroHiden;
+
         private Properties.Settings ps = Properties.Settings.Default;
         private string[] serialPortList;
         private string com_portName;
@@ -39,6 +41,7 @@ namespace Terrarium
         public MainForm()
         {
             InitializeComponent();
+
             panelSettingsWidth = pnl_Settings.Width;
             SettingsGet();
 
@@ -75,7 +78,13 @@ namespace Terrarium
             rb_handshake_rts.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
             rb_handshake_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
             rb_handshake_rts_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
+
+            macroPannel1.BtnSendClick += new EventHandler(btn_SerialSend_Click);
+            macroPannel1.ButtonSendEvent += new EventHandler(btn_SerialSend_Click); // need to catch presed Enter key 
         }
+
+        
+
 
         private void rb_baudRate_CheckedChanged(object sender, EventArgs e)
         {
@@ -210,6 +219,7 @@ namespace Terrarium
 
             serClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(ReceiveHandler);
             serClient.serialError -= new EventHandler(SerialPortError);
+
             serClient.Dispose();
         }
 
@@ -399,6 +409,7 @@ namespace Terrarium
             ps.SerialHandshake = Convert.ToString(com_handshake);
             ps.SerialPortParity = Convert.ToString(com_parity);
             ps.sidePannelHide = panelSettingsHiden;
+            ps.panelMacroStatus = panelMacroHiden;
             ps.rtb_Rx_AutoScroll = cb_RxAutoscroll.Checked;
             ps.cb_Rx_Hex = cb_Rx_Hex.Checked;
             ps.cb_Sort = cb_Sort.Checked;
@@ -415,7 +426,8 @@ namespace Terrarium
             com_stopBits = (StopBits)Enum.Parse(typeof(StopBits), ps.SerialStopBits);
             com_handshake = (Handshake)Enum.Parse(typeof(Handshake), ps.SerialHandshake);
             com_parity = (Parity)Enum.Parse(typeof(Parity), ps.SerialPortParity);
-            panelSettingsHiden = ps.sidePannelHide;           
+            panelSettingsHiden = ps.sidePannelHide;
+            panelMacroHiden = ps.panelMacroStatus;
         }
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
@@ -515,7 +527,7 @@ namespace Terrarium
         private void btn_CleanTxField_Click(object sender, EventArgs e)
         {
             rtb_Tx.Clear();
-            tb_TxString.Clear();
+            macroPannel1.tb_Tx.Clear();
         }
 
         private void btn_CleanRxField_Click(object sender, EventArgs e) => nrtb_Rx.RichTextBox.Clear();
@@ -575,7 +587,6 @@ namespace Terrarium
             }
         }
 
-
         private void cmb_SerialPortList_SelectedValueChanged(object sender, EventArgs e)
         {
             com_portName = (string)cmb_SerialPortList.SelectedItem;
@@ -595,12 +606,11 @@ namespace Terrarium
             }
         }
 
-
         private void btn_SerialSend_Click(object sender, EventArgs e)
         {
             if (serClient.IsOpen() == true)
             {
-                byte[] buff = Encoding.ASCII.GetBytes(tb_TxString.Text);
+                byte[] buff = Encoding.ASCII.GetBytes(macroPannel1.tb_Tx.Text);
                 serClient.Transmit(buff);
 
                 TxDataCounter += buff.Length;
@@ -609,15 +619,6 @@ namespace Terrarium
             else
             {
                 SetTxtToStatusLable("OPEN PORT FIRST", Color.Red);
-            }
-        }
-
-        private void tb_TxString_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-                btn_SerialSend.PerformClick();
             }
         }
 
@@ -647,6 +648,21 @@ namespace Terrarium
         private void cb_Sort_CheckedChanged(object sender, EventArgs e)
         {
             nmn_ByteSort.Enabled ^= true;
+        }
+
+        private void cb_TxMacroSend_CheckedChanged(object sender, EventArgs e)
+        {           
+            macroPannel1.VisibleMacroButtons ^= true;
+            if (macroPannel1.VisibleMacroButtons == true)
+            {
+                tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
+                tableLayoutPanel1.RowStyles[2].Height = 25F;
+            }
+            else
+            {
+                tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
+                tableLayoutPanel1.RowStyles[2].Height = 100F;
+            }           
         }
     }
 }
