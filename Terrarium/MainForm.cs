@@ -592,6 +592,17 @@ namespace Terrarium
             com_portName = (string)cmb_SerialPortList.SelectedItem;
         }
 
+        private static byte[] FromHex(string hex)
+        {          
+            hex = hex.Replace(" ", "");
+            byte[] raw = new byte[hex.Length / 2];
+            for (int i = 0; i < raw.Length; i++)
+            {
+                 raw[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
+            }
+            return raw;                      
+        }
+
         private void rtb_Tx_KeyPress(object sender, KeyPressEventArgs e)  //used for greping chars from rtb_Tx
         {
             char c = e.KeyChar;
@@ -609,10 +620,22 @@ namespace Terrarium
         private void btn_SerialSend_Click(object sender, EventArgs e)
         {
             if (serClient.IsOpen() == true)
-            {
-                byte[] buff = Encoding.ASCII.GetBytes(macroPannel1.tb_Tx.Text);
-                serClient.Transmit(buff);
-
+            {               
+                byte[] buff;
+                if (cb_Tx_Hex.Checked == true)
+                {
+                    if (System.Text.RegularExpressions.Regex.IsMatch(macroPannel1.tb_Tx.Text, "[^0-9a-fA-F ]"))
+                    {
+                        MessageBox.Show("Please enter only numbers in HEX format XX");
+                        return;
+                    }
+                    buff = FromHex(macroPannel1.tb_Tx.Text);
+                }
+                else
+                {
+                    buff = Encoding.UTF8.GetBytes(macroPannel1.tb_Tx.Text);                    
+                }
+                serClient.Transmit(buff);               
                 TxDataCounter += buff.Length;
                 lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }
