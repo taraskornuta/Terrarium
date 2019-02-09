@@ -654,19 +654,22 @@ namespace Terrarium
         }
 
         private void cb_TxMacroSend_CheckedChanged(object sender, EventArgs e)
-        {
-            if (panelMacroHiden == true)
+        {           
+            macroPannel1.VisibleMacroButtons ^= true;
+            if (macroPannel1.VisibleMacroButtons == true)
             {
-                tableLayoutPanel1.RowStyles[3].SizeType = SizeType.Absolute;
-                tableLayoutPanel1.RowStyles[3].Height = 0F;
+                tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
+                tableLayoutPanel1.RowStyles[2].Height = 25F;
+
             }
             else
             {
-                tableLayoutPanel1.RowStyles[3].SizeType = SizeType.Absolute;
-                tableLayoutPanel1.RowStyles[3].Height = 79F;
+                tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
+                tableLayoutPanel1.RowStyles[2].Height = 100F;
             }
-            panelMacroHiden ^= true;
+            
         }
+
     }
 }
 
