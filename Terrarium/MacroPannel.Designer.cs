@@ -52,8 +52,8 @@
             this.mainLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_Botom = new System.Windows.Forms.Panel();
             this.pnl_Top = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.tb_Tx = new System.Windows.Forms.TextBox();
+            this.btn_Send = new System.Windows.Forms.Button();
             this.mainLayoutPanel.SuspendLayout();
             this.pnl_Botom.SuspendLayout();
             this.pnl_Top.SuspendLayout();
@@ -65,12 +65,14 @@
             this.btn_MacroSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_MacroSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_MacroSettings.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_MacroSettings.Location = new System.Drawing.Point(3, 20);
+            this.btn_MacroSettings.Location = new System.Drawing.Point(3, 2);
+            this.btn_MacroSettings.Margin = new System.Windows.Forms.Padding(0);
             this.btn_MacroSettings.Name = "btn_MacroSettings";
-            this.btn_MacroSettings.Size = new System.Drawing.Size(59, 35);
+            this.btn_MacroSettings.Size = new System.Drawing.Size(62, 72);
             this.btn_MacroSettings.TabIndex = 19;
             this.btn_MacroSettings.Text = "Macro\r\n Set";
             this.btn_MacroSettings.UseVisualStyleBackColor = false;
+            this.btn_MacroSettings.Click += new System.EventHandler(this.btn_MacroSettings_Click);
             // 
             // btn_m20
             // 
@@ -84,6 +86,7 @@
             this.btn_m20.TabIndex = 18;
             this.btn_m20.Text = "M20";
             this.btn_m20.UseVisualStyleBackColor = false;
+            this.btn_m20.Click += new System.EventHandler(this.btn_m20_Click);
             // 
             // btn_m19
             // 
@@ -97,6 +100,7 @@
             this.btn_m19.TabIndex = 17;
             this.btn_m19.Text = "M19";
             this.btn_m19.UseVisualStyleBackColor = false;
+            this.btn_m19.Click += new System.EventHandler(this.btn_m19_Click);
             // 
             // btn_m18
             // 
@@ -110,6 +114,7 @@
             this.btn_m18.TabIndex = 16;
             this.btn_m18.Text = "M18";
             this.btn_m18.UseVisualStyleBackColor = false;
+            this.btn_m18.Click += new System.EventHandler(this.btn_m18_Click);
             // 
             // btn_m17
             // 
@@ -123,6 +128,7 @@
             this.btn_m17.TabIndex = 15;
             this.btn_m17.Text = "M17";
             this.btn_m17.UseVisualStyleBackColor = false;
+            this.btn_m17.Click += new System.EventHandler(this.btn_m17_Click);
             // 
             // btn_m16
             // 
@@ -136,6 +142,7 @@
             this.btn_m16.TabIndex = 14;
             this.btn_m16.Text = "M16";
             this.btn_m16.UseVisualStyleBackColor = false;
+            this.btn_m16.Click += new System.EventHandler(this.btn_m16_Click);
             // 
             // btn_m15
             // 
@@ -149,6 +156,7 @@
             this.btn_m15.TabIndex = 13;
             this.btn_m15.Text = "M15";
             this.btn_m15.UseVisualStyleBackColor = false;
+            this.btn_m15.Click += new System.EventHandler(this.btn_m15_Click);
             // 
             // btn_m14
             // 
@@ -162,6 +170,7 @@
             this.btn_m14.TabIndex = 12;
             this.btn_m14.Text = "M14";
             this.btn_m14.UseVisualStyleBackColor = false;
+            this.btn_m14.Click += new System.EventHandler(this.btn_m14_Click);
             // 
             // btn_m13
             // 
@@ -175,6 +184,7 @@
             this.btn_m13.TabIndex = 11;
             this.btn_m13.Text = "M13";
             this.btn_m13.UseVisualStyleBackColor = false;
+            this.btn_m13.Click += new System.EventHandler(this.btn_m13_Click);
             // 
             // btn_m12
             // 
@@ -188,6 +198,7 @@
             this.btn_m12.TabIndex = 10;
             this.btn_m12.Text = "M12";
             this.btn_m12.UseVisualStyleBackColor = false;
+            this.btn_m12.Click += new System.EventHandler(this.btn_m12_Click);
             // 
             // btn_m11
             // 
@@ -201,6 +212,7 @@
             this.btn_m11.TabIndex = 9;
             this.btn_m11.Text = "M11";
             this.btn_m11.UseVisualStyleBackColor = false;
+            this.btn_m11.Click += new System.EventHandler(this.btn_m11_Click);
             // 
             // btn_m10
             // 
@@ -214,6 +226,7 @@
             this.btn_m10.TabIndex = 8;
             this.btn_m10.Text = "M10";
             this.btn_m10.UseVisualStyleBackColor = false;
+            this.btn_m10.Click += new System.EventHandler(this.btn_m10_Click);
             // 
             // btn_m9
             // 
@@ -227,6 +240,7 @@
             this.btn_m9.TabIndex = 7;
             this.btn_m9.Text = "M9";
             this.btn_m9.UseVisualStyleBackColor = false;
+            this.btn_m9.Click += new System.EventHandler(this.btn_m9_Click);
             // 
             // btn_m8
             // 
@@ -240,6 +254,7 @@
             this.btn_m8.TabIndex = 7;
             this.btn_m8.Text = "M8";
             this.btn_m8.UseVisualStyleBackColor = false;
+            this.btn_m8.Click += new System.EventHandler(this.btn_m8_Click);
             // 
             // btn_m7
             // 
@@ -253,6 +268,7 @@
             this.btn_m7.TabIndex = 6;
             this.btn_m7.Text = "M7";
             this.btn_m7.UseVisualStyleBackColor = false;
+            this.btn_m7.Click += new System.EventHandler(this.btn_m7_Click);
             // 
             // btn_m6
             // 
@@ -266,6 +282,7 @@
             this.btn_m6.TabIndex = 5;
             this.btn_m6.Text = "M6";
             this.btn_m6.UseVisualStyleBackColor = false;
+            this.btn_m6.Click += new System.EventHandler(this.btn_m6_Click);
             // 
             // btn_m5
             // 
@@ -279,6 +296,7 @@
             this.btn_m5.TabIndex = 4;
             this.btn_m5.Text = "M5";
             this.btn_m5.UseVisualStyleBackColor = false;
+            this.btn_m5.Click += new System.EventHandler(this.btn_m5_Click);
             // 
             // btn_m4
             // 
@@ -292,6 +310,7 @@
             this.btn_m4.TabIndex = 3;
             this.btn_m4.Text = "M4";
             this.btn_m4.UseVisualStyleBackColor = false;
+            this.btn_m4.Click += new System.EventHandler(this.btn_m4_Click);
             // 
             // btn_m3
             // 
@@ -305,6 +324,7 @@
             this.btn_m3.TabIndex = 2;
             this.btn_m3.Text = "M3";
             this.btn_m3.UseVisualStyleBackColor = false;
+            this.btn_m3.Click += new System.EventHandler(this.btn_m3_Click);
             // 
             // btn_m2
             // 
@@ -318,6 +338,7 @@
             this.btn_m2.TabIndex = 1;
             this.btn_m2.Text = "M2";
             this.btn_m2.UseVisualStyleBackColor = false;
+            this.btn_m2.Click += new System.EventHandler(this.btn_m2_Click);
             // 
             // btn_m1
             // 
@@ -331,6 +352,7 @@
             this.btn_m1.TabIndex = 0;
             this.btn_m1.Text = "M1";
             this.btn_m1.UseVisualStyleBackColor = false;
+            this.btn_m1.Click += new System.EventHandler(this.btn_m1_Click);
             // 
             // mainLayoutPanel
             // 
@@ -388,8 +410,8 @@
             this.pnl_Top.ColumnCount = 2;
             this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnl_Top.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
-            this.pnl_Top.Controls.Add(this.textBox1, 0, 0);
-            this.pnl_Top.Controls.Add(this.button1, 1, 0);
+            this.pnl_Top.Controls.Add(this.tb_Tx, 0, 0);
+            this.pnl_Top.Controls.Add(this.btn_Send, 1, 0);
             this.pnl_Top.Location = new System.Drawing.Point(0, 0);
             this.pnl_Top.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Top.MaximumSize = new System.Drawing.Size(0, 25);
@@ -400,27 +422,36 @@
             this.pnl_Top.Size = new System.Drawing.Size(619, 25);
             this.pnl_Top.TabIndex = 1;
             // 
-            // textBox1
+            // tb_Tx
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.tb_Tx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(3, 0);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 0, 1, 1);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(503, 24);
-            this.textBox1.TabIndex = 1;
+            this.tb_Tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tb_Tx.Location = new System.Drawing.Point(3, 0);
+            this.tb_Tx.Margin = new System.Windows.Forms.Padding(3, 0, 1, 1);
+            this.tb_Tx.Name = "tb_Tx";
+            this.tb_Tx.Size = new System.Drawing.Size(503, 24);
+            this.tb_Tx.TabIndex = 1;
+            //this.tb_Tx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Tx_KeyPress);
             // 
-            // button1
+            // btn_Send
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(507, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 25);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Send.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.btn_Send.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btn_Send.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_Send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Send.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_Send.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_Send.Image = global::Terrarium.Properties.Resources.icons8_Sent_22px;
+            this.btn_Send.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Send.Location = new System.Drawing.Point(508, 0);
+            this.btn_Send.Margin = new System.Windows.Forms.Padding(1, 0, 3, 0);
+            this.btn_Send.Name = "btn_Send";
+            this.btn_Send.Size = new System.Drawing.Size(108, 25);
+            this.btn_Send.TabIndex = 0;
+            this.btn_Send.Text = "Send";
+            this.btn_Send.UseVisualStyleBackColor = false;
+            this.btn_Send.Click += new System.EventHandler(this.btn_Send_Click);
             // 
             // MacroPannel
             // 
@@ -466,7 +497,7 @@
         private System.Windows.Forms.TableLayoutPanel mainLayoutPanel;
         private System.Windows.Forms.Panel pnl_Botom;
         private System.Windows.Forms.TableLayoutPanel pnl_Top;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btn_Send;
+        public System.Windows.Forms.TextBox tb_Tx;
     }
 }

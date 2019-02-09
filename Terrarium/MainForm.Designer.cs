@@ -124,9 +124,9 @@
             this.pnl_ToolBar.Controls.Add(this.btn_SerialConnect);
             this.pnl_ToolBar.Controls.Add(this.btn_Settings);
             this.pnl_ToolBar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_ToolBar.Location = new System.Drawing.Point(1137, 0);
+            this.pnl_ToolBar.Location = new System.Drawing.Point(844, 0);
             this.pnl_ToolBar.Name = "pnl_ToolBar";
-            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 622);
+            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 561);
             this.pnl_ToolBar.TabIndex = 1;
             // 
             // btn_CleanRxField
@@ -136,7 +136,7 @@
             this.btn_CleanRxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanRxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanRxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanRxField.Image")));
-            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 458);
+            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 397);
             this.btn_CleanRxField.Name = "btn_CleanRxField";
             this.btn_CleanRxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanRxField.TabIndex = 5;
@@ -150,7 +150,7 @@
             this.btn_CleanTxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanTxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanTxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanTxField.Image")));
-            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 535);
+            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 474);
             this.btn_CleanTxField.Name = "btn_CleanTxField";
             this.btn_CleanTxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanTxField.TabIndex = 4;
@@ -176,7 +176,7 @@
             this.btn_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_Settings.Image = global::Terrarium.Properties.Resources.icons8_Settings_32px;
-            this.btn_Settings.Location = new System.Drawing.Point(2, 576);
+            this.btn_Settings.Location = new System.Drawing.Point(2, 515);
             this.btn_Settings.Name = "btn_Settings";
             this.btn_Settings.Size = new System.Drawing.Size(37, 41);
             this.btn_Settings.TabIndex = 0;
@@ -195,9 +195,9 @@
             this.pnl_Settings.Controls.Add(this.groupBox2);
             this.pnl_Settings.Controls.Add(this.groupBox1);
             this.pnl_Settings.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Settings.Location = new System.Drawing.Point(912, 0);
+            this.pnl_Settings.Location = new System.Drawing.Point(619, 0);
             this.pnl_Settings.Name = "pnl_Settings";
-            this.pnl_Settings.Size = new System.Drawing.Size(225, 622);
+            this.pnl_Settings.Size = new System.Drawing.Size(225, 561);
             this.pnl_Settings.TabIndex = 2;
             // 
             // groupBox8
@@ -855,9 +855,9 @@
             this.panel1.Controls.Add(this.lbl_RxCounter);
             this.panel1.Controls.Add(this.lbl_Status);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 598);
+            this.panel1.Location = new System.Drawing.Point(0, 537);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(912, 24);
+            this.panel1.Size = new System.Drawing.Size(619, 24);
             this.panel1.TabIndex = 3;
             // 
             // lbl_TxCounter
@@ -907,10 +907,10 @@
             this.rtb_Tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_Tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rtb_Tx.ForeColor = System.Drawing.Color.White;
-            this.rtb_Tx.Location = new System.Drawing.Point(0, 428);
+            this.rtb_Tx.Location = new System.Drawing.Point(0, 367);
             this.rtb_Tx.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_Tx.Name = "rtb_Tx";
-            this.rtb_Tx.Size = new System.Drawing.Size(912, 70);
+            this.rtb_Tx.Size = new System.Drawing.Size(619, 70);
             this.rtb_Tx.TabIndex = 1;
             this.rtb_Tx.Text = "";
             this.rtb_Tx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtb_Tx_KeyPress);
@@ -931,7 +931,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(912, 598);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 537);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // copyToolStripMenuItem
@@ -958,7 +958,7 @@
             this.nrtb_Rx.Name = "nrtb_Rx";
             this.nrtb_Rx.NumStripAutoscroll = false;
             this.nrtb_Rx.NumStripVisible = true;
-            this.nrtb_Rx.Size = new System.Drawing.Size(912, 428);
+            this.nrtb_Rx.Size = new System.Drawing.Size(619, 367);
             this.nrtb_Rx.TabIndex = 3;
             // 
             // macroPannel1
@@ -967,12 +967,32 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.macroPannel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroPannel1.Location = new System.Drawing.Point(0, 498);
+            this.macroPannel1.BtnM10Text = "M10";
+            this.macroPannel1.BtnM11Text = "M11";
+            this.macroPannel1.BtnM12Text = "M12";
+            this.macroPannel1.BtnM13Text = "M13";
+            this.macroPannel1.BtnM14Text = "M14";
+            this.macroPannel1.BtnM15Text = "M15";
+            this.macroPannel1.BtnM16Text = "M16";
+            this.macroPannel1.BtnM17Text = "M17";
+            this.macroPannel1.BtnM18Text = "M18";
+            this.macroPannel1.BtnM19Text = "M19";
+            this.macroPannel1.BtnM1Text = "M1";
+            this.macroPannel1.BtnM20Text = "M20";
+            this.macroPannel1.BtnM2Text = "M2";
+            this.macroPannel1.BtnM3Text = "M3";
+            this.macroPannel1.BtnM4Text = "M4";
+            this.macroPannel1.BtnM5Text = "M5";
+            this.macroPannel1.BtnM6Text = "M6";
+            this.macroPannel1.BtnM7Text = "M7";
+            this.macroPannel1.BtnM8Text = "M8";
+            this.macroPannel1.BtnM9Text = "M9";
+            this.macroPannel1.Location = new System.Drawing.Point(0, 437);
             this.macroPannel1.Margin = new System.Windows.Forms.Padding(0);
             this.macroPannel1.MaximumSize = new System.Drawing.Size(0, 100);
             this.macroPannel1.MinimumSize = new System.Drawing.Size(619, 100);
             this.macroPannel1.Name = "macroPannel1";
-            this.macroPannel1.Size = new System.Drawing.Size(912, 100);
+            this.macroPannel1.Size = new System.Drawing.Size(619, 100);
             this.macroPannel1.TabIndex = 4;
             this.macroPannel1.VisibleMacroButtons = false;
             // 
@@ -997,7 +1017,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(1177, 622);
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnl_Settings);

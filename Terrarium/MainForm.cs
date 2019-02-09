@@ -77,7 +77,12 @@ namespace Terrarium
             rb_handshake_rts.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
             rb_handshake_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
             rb_handshake_rts_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
+
+            macroPannel1.BtnSendClick += new EventHandler(btn_SerialSend_Click);
         }
+
+        
+
 
         private void rb_baudRate_CheckedChanged(object sender, EventArgs e)
         {
@@ -519,7 +524,7 @@ namespace Terrarium
         private void btn_CleanTxField_Click(object sender, EventArgs e)
         {
             rtb_Tx.Clear();
-            //tb_TxString.Clear();
+            macroPannel1.tb_Tx.Clear();
         }
 
         private void btn_CleanRxField_Click(object sender, EventArgs e) => nrtb_Rx.RichTextBox.Clear();
@@ -604,11 +609,11 @@ namespace Terrarium
         {
             if (serClient.IsOpen() == true)
             {
-                //byte[] buff = Encoding.ASCII.GetBytes(tb_TxString.Text);
-                //serClient.Transmit(buff);
+                byte[] buff = Encoding.ASCII.GetBytes(macroPannel1.tb_Tx.Text);
+                serClient.Transmit(buff);
 
-                //TxDataCounter += buff.Length;
-                //lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
+                TxDataCounter += buff.Length;
+                lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }
             else
             {
