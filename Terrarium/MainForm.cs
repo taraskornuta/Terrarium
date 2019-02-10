@@ -81,6 +81,7 @@ namespace Terrarium
 
             macroPannel1.BtnSendClick += new EventHandler(btn_SerialSend_Click);
             macroPannel1.ButtonSendEvent += new EventHandler(btn_SerialSend_Click); // need to catch presed Enter key 
+            macroPannel1.BtnMacroSettingsClick += new EventHandler(btn_MacroPanelWizard_Click);
         }
 
         
@@ -675,6 +676,12 @@ namespace Terrarium
                 tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
                 tableLayoutPanel1.RowStyles[2].Height = 100F;
             }           
+        }
+
+        private void btn_MacroPanelWizard_Click(object sender, EventArgs e)
+        {
+            MacroPanelWizard macroWizard = new MacroPanelWizard();
+            macroWizard.Show();
         }
     }
 }
