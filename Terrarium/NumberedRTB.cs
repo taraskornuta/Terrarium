@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Text;
 
-namespace AboControls.UserControls
+namespace Terrarium
 {
     public partial class NumberedRTB : UserControl
     {
@@ -39,9 +39,7 @@ namespace AboControls.UserControls
 
         public void AppendHex(byte[] data)
         {
-            string hexString = BitConverter.ToString(data);
-            hexString = hexString.Replace("-", " ");
-            richTextBox.AppendText(hexString + " ");
+            richTextBox.AppendText(TextHelper.HexToString(data) + " ");
             if (_autoscroll == true) richTextBox.ScrollToCaret();
         }
 

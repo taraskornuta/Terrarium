@@ -87,6 +87,7 @@
             this.rb_baudRate_9600 = new System.Windows.Forms.RadioButton();
             this.rb_baudRate_4800 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_TxCounter = new System.Windows.Forms.Label();
@@ -95,12 +96,12 @@
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.nrtb_Rx = new NumberedRTB();
+            this.macroPannel1 = new Terrarium.MacroPannel();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.nrtb_Rx = new AboControls.UserControls.NumberedRTB();
-            this.macroPannel1 = new Terrarium.MacroPannel();
-            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
+            this.cb_Tx_Hex = new System.Windows.Forms.CheckBox();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -202,6 +203,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.cb_Tx_Hex);
             this.groupBox8.Controls.Add(this.cb_TxMacroSend);
             this.groupBox8.Controls.Add(this.label1);
             this.groupBox8.Location = new System.Drawing.Point(0, 484);
@@ -833,6 +835,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "COM port";
             // 
+            // cmb_SerialPortList
+            // 
+            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cmb_SerialPortList.FormattingEnabled = true;
+            this.cmb_SerialPortList.Location = new System.Drawing.Point(6, 19);
+            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
+            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
+            this.cmb_SerialPortList.TabIndex = 8;
+            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
+            // 
             // btn_SerialPortRefresh
             // 
             this.btn_SerialPortRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -934,21 +952,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 537);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // propertysToolStripMenuItem
-            // 
-            this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
-            this.propertysToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // copyToolStripMenuItem1
-            // 
-            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
-            // 
             // nrtb_Rx
             // 
             this.nrtb_Rx.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
@@ -996,21 +999,34 @@
             this.macroPannel1.TabIndex = 4;
             this.macroPannel1.VisibleMacroButtons = false;
             // 
-            // cmb_SerialPortList
+            // copyToolStripMenuItem
             // 
-            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cmb_SerialPortList.FormattingEnabled = true;
-            this.cmb_SerialPortList.Location = new System.Drawing.Point(6, 19);
-            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
-            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
-            this.cmb_SerialPortList.TabIndex = 8;
-            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // propertysToolStripMenuItem
+            // 
+            this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
+            this.propertysToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // copyToolStripMenuItem1
+            // 
+            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
+            // 
+            // cb_Tx_Hex
+            // 
+            this.cb_Tx_Hex.AutoSize = true;
+            this.cb_Tx_Hex.Checked = true;
+            this.cb_Tx_Hex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_Tx_Hex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cb_Tx_Hex.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cb_Tx_Hex.Location = new System.Drawing.Point(7, 31);
+            this.cb_Tx_Hex.Name = "cb_Tx_Hex";
+            this.cb_Tx_Hex.Size = new System.Drawing.Size(48, 17);
+            this.cb_Tx_Hex.TabIndex = 4;
+            this.cb_Tx_Hex.Text = "HEX";
+            this.cb_Tx_Hex.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -1121,12 +1137,13 @@
         private System.Windows.Forms.CheckBox cb_Sort;
         private System.Windows.Forms.CheckBox cb_Loging;
         private System.Windows.Forms.CheckBox cb_LinesNum;
-        private AboControls.UserControls.NumberedRTB nrtb_Rx;
+        private NumberedRTB nrtb_Rx;
         private System.Windows.Forms.NumericUpDown nmn_ByteSort;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cb_TxMacroSend;
         private MacroPannel macroPannel1;
+        private System.Windows.Forms.CheckBox cb_Tx_Hex;
     }
 }
 

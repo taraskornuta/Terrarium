@@ -15,6 +15,7 @@ namespace Terrarium
         private bool VisibleBotomPanel = false;
         private Size minSize = new Size(619, 100);
 
+        public event EventHandler ButtonSendEvent;
         public event EventHandler BtnSendClick;
         public event EventHandler BtnMacroSettingsClick;
         public event EventHandler BtnM1Click;
@@ -249,8 +250,7 @@ namespace Terrarium
         private void btn_m19_Click(object sender, EventArgs e) => this.BtnM19Click?.Invoke(this, e);
 
         private void btn_m20_Click(object sender, EventArgs e) => this.BtnM20Click?.Invoke(this, e);
-
-        public event EventHandler ButtonSendEvent;
+       
         private void tb_Tx_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -260,4 +260,7 @@ namespace Terrarium
             }
         }
     }
+
+
+
 }

@@ -1,4 +1,4 @@
-﻿namespace AboControls.UserControls
+﻿namespace Terrarium
 {
     partial class NumberedRTB
     {

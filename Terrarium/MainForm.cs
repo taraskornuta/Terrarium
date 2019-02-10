@@ -81,6 +81,7 @@ namespace Terrarium
 
             macroPannel1.BtnSendClick += new EventHandler(btn_SerialSend_Click);
             macroPannel1.ButtonSendEvent += new EventHandler(btn_SerialSend_Click); // need to catch presed Enter key 
+            macroPannel1.BtnMacroSettingsClick += new EventHandler(btn_MacroPanelWizard_Click);
         }
 
         
@@ -432,7 +433,7 @@ namespace Terrarium
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(tb_baudRateCustome.Text, "[^0-9]"))
+            if (TextHelper.IsNumberEntered(tb_baudRateCustome.Text))
             {
                 MessageBox.Show("Please enter only numbers.");
                 tb_baudRateCustome.Text = tb_baudRateCustome.Text.Remove(tb_baudRateCustome.Text.Length - 1);
@@ -609,10 +610,22 @@ namespace Terrarium
         private void btn_SerialSend_Click(object sender, EventArgs e)
         {
             if (serClient.IsOpen() == true)
-            {
-                byte[] buff = Encoding.ASCII.GetBytes(macroPannel1.tb_Tx.Text);
-                serClient.Transmit(buff);
-
+            {               
+                byte[] buff;
+                if (cb_Tx_Hex.Checked == true)
+                {
+                    if (TextHelper.IsHexEntered(macroPannel1.tb_Tx.Text))
+                    {
+                        MessageBox.Show("Please enter only numbers in HEX format XX");
+                        return;
+                    }
+                    buff = TextHelper.StringToHex(macroPannel1.tb_Tx.Text);
+                }
+                else
+                {
+                    buff = Encoding.UTF8.GetBytes(macroPannel1.tb_Tx.Text);                    
+                }
+                serClient.Transmit(buff);               
                 TxDataCounter += buff.Length;
                 lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }
@@ -663,6 +676,12 @@ namespace Terrarium
                 tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
                 tableLayoutPanel1.RowStyles[2].Height = 100F;
             }           
+        }
+
+        private void btn_MacroPanelWizard_Click(object sender, EventArgs e)
+        {
+            MacroPanelWizard macroWizard = new MacroPanelWizard();
+            macroWizard.Show();
         }
     }
 }
