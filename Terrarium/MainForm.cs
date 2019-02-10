@@ -432,7 +432,7 @@ namespace Terrarium
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
         {
-            if (System.Text.RegularExpressions.Regex.IsMatch(tb_baudRateCustome.Text, "[^0-9]"))
+            if (TextHelper.IsNumberEntered(tb_baudRateCustome.Text))
             {
                 MessageBox.Show("Please enter only numbers.");
                 tb_baudRateCustome.Text = tb_baudRateCustome.Text.Remove(tb_baudRateCustome.Text.Length - 1);
@@ -592,17 +592,6 @@ namespace Terrarium
             com_portName = (string)cmb_SerialPortList.SelectedItem;
         }
 
-        private static byte[] FromHex(string hex)
-        {          
-            hex = hex.Replace(" ", "");
-            byte[] raw = new byte[hex.Length / 2];
-            for (int i = 0; i < raw.Length; i++)
-            {
-                 raw[i] = Convert.ToByte(hex.Substring(i * 2, 2), 16);
-            }
-            return raw;                      
-        }
-
         private void rtb_Tx_KeyPress(object sender, KeyPressEventArgs e)  //used for greping chars from rtb_Tx
         {
             char c = e.KeyChar;
@@ -624,12 +613,12 @@ namespace Terrarium
                 byte[] buff;
                 if (cb_Tx_Hex.Checked == true)
                 {
-                    if (System.Text.RegularExpressions.Regex.IsMatch(macroPannel1.tb_Tx.Text, "[^0-9a-fA-F ]"))
+                    if (TextHelper.IsHexEntered(macroPannel1.tb_Tx.Text))
                     {
                         MessageBox.Show("Please enter only numbers in HEX format XX");
                         return;
                     }
-                    buff = FromHex(macroPannel1.tb_Tx.Text);
+                    buff = TextHelper.StringToHex(macroPannel1.tb_Tx.Text);
                 }
                 else
                 {

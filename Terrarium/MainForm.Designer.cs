@@ -96,7 +96,7 @@
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.nrtb_Rx = new AboControls.UserControls.NumberedRTB();
+            this.nrtb_Rx = new NumberedRTB();
             this.macroPannel1 = new Terrarium.MacroPannel();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1137,7 +1137,7 @@
         private System.Windows.Forms.CheckBox cb_Sort;
         private System.Windows.Forms.CheckBox cb_Loging;
         private System.Windows.Forms.CheckBox cb_LinesNum;
-        private AboControls.UserControls.NumberedRTB nrtb_Rx;
+        private NumberedRTB nrtb_Rx;
         private System.Windows.Forms.NumericUpDown nmn_ByteSort;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label1;
