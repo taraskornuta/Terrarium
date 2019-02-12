@@ -15,6 +15,13 @@ namespace Terrarium
         public MacroPanelWizard()
         {
             InitializeComponent();
+            macroField1.btnClickEvent += new EventHandler(Button_Click);
+        }
+
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Btn Presed");
         }
     }
 }

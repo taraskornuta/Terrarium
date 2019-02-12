@@ -33,7 +33,7 @@
             // 
             // btn
             // 
-            this.btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(73)))), ((int)(((byte)(85)))));
             this.btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn.Location = new System.Drawing.Point(0, 0);
@@ -43,6 +43,8 @@
             this.btn.TabIndex = 0;
             this.btn.Text = "button";
             this.btn.UseVisualStyleBackColor = false;
+            this.btn.TextChanged += new System.EventHandler(this.btn_TextChanged);
+            this.btn.Click += new System.EventHandler(this.btn_Click);
             this.btn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btn_MouseUp);
             // 
             // ButtonTextbox

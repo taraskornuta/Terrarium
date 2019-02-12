@@ -13,7 +13,9 @@ namespace textboxInsideButton
     public partial class ButtonTextbox : UserControl
     {
         private TextBox tb = new TextBox();
-
+        protected int btnClickCounter = 0;
+        public event EventHandler BtnClickEvent;
+        public event EventHandler ButtonTextChangeEvent;
 
         public ButtonTextbox()
         {
@@ -33,13 +35,7 @@ namespace textboxInsideButton
             btn.Controls.Add(tb);
             tb.KeyPress += new KeyPressEventHandler(tb_KeyPress);
         }
-
-        protected void CloseTextBox()
-        {
-            btn.Controls.Remove(tb);
-        }
-
-        protected int btnClickCounter = 0;
+      
         private void btn_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -59,8 +55,12 @@ namespace textboxInsideButton
             {
                 e.Handled = true;
                 btn.Text = tb.Text;
-                CloseTextBox();
+                btn.Controls.Remove(tb);
             }
         }
+
+        private void btn_TextChanged(object sender, EventArgs e) => ButtonTextChangeEvent?.Invoke(this, e);
+        private void btn_Click(object sender, EventArgs e) => BtnClickEvent?.Invoke(this, e);
+
     }
 }
