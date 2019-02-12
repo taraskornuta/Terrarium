@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.tb_MacroData = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_m1 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.buttonTextbox1 = new textboxInsideButton.ButtonTextbox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,11 +45,33 @@
             this.tb_MacroData.Size = new System.Drawing.Size(284, 24);
             this.tb_MacroData.TabIndex = 2;
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(322, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(62, 24);
+            this.textBox1.TabIndex = 3;
+            // 
+            // btn_m1
+            // 
+            this.btn_m1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.btn_m1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_m1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_m1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_m1.Location = new System.Drawing.Point(491, 3);
+            this.btn_m1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.btn_m1.Name = "btn_m1";
+            this.btn_m1.Size = new System.Drawing.Size(85, 24);
+            this.btn_m1.TabIndex = 4;
+            this.btn_m1.Text = "M1";
+            this.btn_m1.UseVisualStyleBackColor = false;
+            // 
             // numericUpDown1
             // 
             this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown1.Location = new System.Drawing.Point(320, 3);
+            this.numericUpDown1.Location = new System.Drawing.Point(389, 3);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(69, 23);
             this.numericUpDown1.TabIndex = 5;
@@ -58,7 +81,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox1.Location = new System.Drawing.Point(395, 8);
+            this.checkBox1.Location = new System.Drawing.Point(464, 8);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 6;
@@ -75,29 +98,22 @@
             this.checkBox2.TabIndex = 7;
             this.checkBox2.UseVisualStyleBackColor = false;
             // 
-            // buttonTextbox1
-            // 
-            this.buttonTextbox1.Location = new System.Drawing.Point(422, 3);
-            this.buttonTextbox1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.buttonTextbox1.MaximumSize = new System.Drawing.Size(85, 24);
-            this.buttonTextbox1.MinimumSize = new System.Drawing.Size(85, 24);
-            this.buttonTextbox1.Name = "buttonTextbox1";
-            this.buttonTextbox1.Size = new System.Drawing.Size(85, 24);
-            this.buttonTextbox1.TabIndex = 8;
-            // 
             // MacroField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Red;
-            this.Controls.Add(this.buttonTextbox1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.btn_m1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tb_MacroData);
             this.DoubleBuffered = true;
+            this.MaximumSize = new System.Drawing.Size(580, 30);
+            this.MinimumSize = new System.Drawing.Size(580, 30);
             this.Name = "MacroField";
-            this.Size = new System.Drawing.Size(510, 30);
+            this.Size = new System.Drawing.Size(580, 30);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -107,9 +123,10 @@
         #endregion
 
         public System.Windows.Forms.TextBox tb_MacroData;
+        public System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btn_m1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
-        private textboxInsideButton.ButtonTextbox buttonTextbox1;
     }
 }
