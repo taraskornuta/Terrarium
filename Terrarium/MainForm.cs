@@ -147,13 +147,7 @@ namespace Terrarium
             macroWizard.BtnM18Click += new EventHandler(btn_m18_Click);
             macroWizard.BtnM19Click += new EventHandler(btn_m19_Click);
             macroWizard.BtnM20Click += new EventHandler(btn_m20_Click);
-
-
-
-
         }
-
-
 
 
         private void rb_baudRate_CheckedChanged(object sender, EventArgs e)
@@ -678,7 +672,6 @@ namespace Terrarium
         }
 
         private void btn_SerialSend_Click(object sender, EventArgs e) => SerialSendHelper(macroPannel.tb_Tx.Text, cb_Tx_Hex.Checked);
-
 
 
         public void SerialSendHelper(string tbData, bool cbHex)

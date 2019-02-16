@@ -49,9 +49,24 @@
             this.numBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.numBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.numBox.Location = new System.Drawing.Point(318, 3);
+            this.numBox.Maximum = new decimal(new int[] {
+            600000,
+            0,
+            0,
+            0});
+            this.numBox.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numBox.Name = "numBox";
             this.numBox.Size = new System.Drawing.Size(69, 23);
             this.numBox.TabIndex = 5;
+            this.numBox.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // cb_Repeat
             // 

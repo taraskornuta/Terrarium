@@ -15,8 +15,6 @@ namespace Terrarium
         public event EventHandler btnTextChangeEvent;
         public event EventHandler btnClickEvent;
 
-        
-
         public MacroField()
         {
             InitializeComponent();
@@ -37,6 +35,7 @@ namespace Terrarium
             set => numBox.Value = value;
 
         }
+
         public bool HexMode
         {
             get => cb_HEX.Checked;
@@ -54,8 +53,7 @@ namespace Terrarium
             get => btntb_Send.btn.Text;
             set => btntb_Send.btn.Text = value;
         }
-
-  
+ 
         private void btn_TextChanged(object sender, EventArgs e) => btnTextChangeEvent?.Invoke(this, e);
         private void btn_Click(object sender, EventArgs e) => btnClickEvent?.Invoke(this, e);
 
