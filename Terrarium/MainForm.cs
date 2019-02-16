@@ -23,7 +23,7 @@ namespace Terrarium
         private bool panelSettingsHiden;
 
         private bool panelMacroHiden;
-
+        private MacroPanelWizard macroWizard = new MacroPanelWizard();
         private Properties.Settings ps = Properties.Settings.Default;
         private string[] serialPortList;
         private string com_portName;
@@ -37,6 +37,8 @@ namespace Terrarium
         private int RxDataCounter = 0;
         private int TxDataCounter = 0;
         private bool IsOpenBtnClicked = false;
+
+        public SerialClient SerClient { get => serClient; set => serClient = value; }
 
         public MainForm()
         {
@@ -79,12 +81,73 @@ namespace Terrarium
             rb_handshake_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
             rb_handshake_rts_xon.CheckedChanged += new EventHandler(rb_handshake_CheckedChanged);
 
-            macroPannel1.BtnSendClick += new EventHandler(btn_SerialSend_Click);
-            macroPannel1.ButtonSendEvent += new EventHandler(btn_SerialSend_Click); // need to catch presed Enter key 
-            macroPannel1.BtnMacroSettingsClick += new EventHandler(btn_MacroPanelWizard_Click);
-        }
+            macroPannel.BtnSendClick += new EventHandler(btn_SerialSend_Click);
+            macroPannel.ButtonSendEvent += new EventHandler(btn_SerialSend_Click); // need to catch presed Enter key 
+            macroPannel.BtnMacroSettingsClick += new EventHandler(btn_MacroPanelWizard_Click);
 
-        
+            macroPannel.BtnM1Click += new EventHandler(btn_m1_Click);
+            macroPannel.BtnM2Click += new EventHandler(btn_m2_Click);
+            macroPannel.BtnM3Click += new EventHandler(btn_m3_Click);
+            macroPannel.BtnM4Click += new EventHandler(btn_m4_Click);
+            macroPannel.BtnM5Click += new EventHandler(btn_m5_Click);
+            macroPannel.BtnM6Click += new EventHandler(btn_m6_Click);
+            macroPannel.BtnM7Click += new EventHandler(btn_m7_Click);
+            macroPannel.BtnM8Click += new EventHandler(btn_m8_Click);
+            macroPannel.BtnM9Click += new EventHandler(btn_m9_Click);
+            macroPannel.BtnM10Click += new EventHandler(btn_m10_Click);
+            macroPannel.BtnM11Click += new EventHandler(btn_m11_Click);
+            macroPannel.BtnM12Click += new EventHandler(btn_m12_Click);
+            macroPannel.BtnM13Click += new EventHandler(btn_m13_Click);
+            macroPannel.BtnM14Click += new EventHandler(btn_m14_Click);
+            macroPannel.BtnM15Click += new EventHandler(btn_m15_Click);
+            macroPannel.BtnM16Click += new EventHandler(btn_m16_Click);
+            macroPannel.BtnM17Click += new EventHandler(btn_m17_Click);
+            macroPannel.BtnM18Click += new EventHandler(btn_m18_Click);
+            macroPannel.BtnM19Click += new EventHandler(btn_m19_Click);
+            macroPannel.BtnM20Click += new EventHandler(btn_m20_Click);
+
+            macroWizard.BtnM1TextChange += new EventHandler(btn_m1_TextChange);
+            macroWizard.BtnM2TextChange += new EventHandler(btn_m2_TextChange);
+            macroWizard.BtnM3TextChange += new EventHandler(btn_m3_TextChange);
+            macroWizard.BtnM4TextChange += new EventHandler(btn_m4_TextChange);
+            macroWizard.BtnM5TextChange += new EventHandler(btn_m5_TextChange);
+            macroWizard.BtnM6TextChange += new EventHandler(btn_m6_TextChange);
+            macroWizard.BtnM7TextChange += new EventHandler(btn_m7_TextChange);
+            macroWizard.BtnM8TextChange += new EventHandler(btn_m8_TextChange);
+            macroWizard.BtnM9TextChange += new EventHandler(btn_m9_TextChange);
+            macroWizard.BtnM10TextChange += new EventHandler(btn_m10_TextChange);
+            macroWizard.BtnM11TextChange += new EventHandler(btn_m11_TextChange);
+            macroWizard.BtnM12TextChange += new EventHandler(btn_m12_TextChange);
+            macroWizard.BtnM13TextChange += new EventHandler(btn_m13_TextChange);
+            macroWizard.BtnM14TextChange += new EventHandler(btn_m14_TextChange);
+            macroWizard.BtnM15TextChange += new EventHandler(btn_m15_TextChange);
+            macroWizard.BtnM16TextChange += new EventHandler(btn_m16_TextChange);
+            macroWizard.BtnM17TextChange += new EventHandler(btn_m17_TextChange);
+            macroWizard.BtnM18TextChange += new EventHandler(btn_m18_TextChange);
+            macroWizard.BtnM19TextChange += new EventHandler(btn_m19_TextChange);
+            macroWizard.BtnM20TextChange += new EventHandler(btn_m20_TextChange);
+
+            macroWizard.BtnM1Click += new EventHandler(btn_m1_Click);
+            macroWizard.BtnM2Click += new EventHandler(btn_m2_Click);
+            macroWizard.BtnM3Click += new EventHandler(btn_m3_Click);
+            macroWizard.BtnM4Click += new EventHandler(btn_m4_Click);
+            macroWizard.BtnM5Click += new EventHandler(btn_m5_Click);
+            macroWizard.BtnM6Click += new EventHandler(btn_m6_Click);
+            macroWizard.BtnM7Click += new EventHandler(btn_m7_Click);
+            macroWizard.BtnM8Click += new EventHandler(btn_m8_Click);
+            macroWizard.BtnM9Click += new EventHandler(btn_m9_Click);
+            macroWizard.BtnM10Click += new EventHandler(btn_m10_Click);
+            macroWizard.BtnM11Click += new EventHandler(btn_m11_Click);
+            macroWizard.BtnM12Click += new EventHandler(btn_m12_Click);
+            macroWizard.BtnM13Click += new EventHandler(btn_m13_Click);
+            macroWizard.BtnM14Click += new EventHandler(btn_m14_Click);
+            macroWizard.BtnM15Click += new EventHandler(btn_m15_Click);
+            macroWizard.BtnM16Click += new EventHandler(btn_m16_Click);
+            macroWizard.BtnM17Click += new EventHandler(btn_m17_Click);
+            macroWizard.BtnM18Click += new EventHandler(btn_m18_Click);
+            macroWizard.BtnM19Click += new EventHandler(btn_m19_Click);
+            macroWizard.BtnM20Click += new EventHandler(btn_m20_Click);
+        }
 
 
         private void rb_baudRate_CheckedChanged(object sender, EventArgs e)
@@ -108,7 +171,7 @@ namespace Terrarium
                     if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
                     if (rb_baudRate_custome.Checked) com_baudRate = Convert.ToInt32(tb_baudRateCustome.Text);
 
-                    serClient?.SetBaudrate(com_baudRate);
+                    SerClient?.SetBaudrate(com_baudRate);
                 }
             }
         }
@@ -125,7 +188,7 @@ namespace Terrarium
                     if (rb_dataBits_7.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_7.Text);
                     if (rb_dataBits_8.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_8.Text);
 
-                    serClient?.SetDataBits(com_dataBits);                   
+                    SerClient?.SetDataBits(com_dataBits);
                 }
             }
         }
@@ -143,7 +206,7 @@ namespace Terrarium
                     if (rb_parity_mark.Checked) com_parity = Parity.Mark;
                     if (rb_parity_space.Checked) com_parity = Parity.Space;
 
-                    serClient?.SetParity(com_parity);   
+                    SerClient?.SetParity(com_parity);
                 }
             }
         }
@@ -159,7 +222,7 @@ namespace Terrarium
                     if (rb_stopBits_1_5.Checked) com_stopBits = StopBits.OnePointFive;
                     if (rb_stopBits_2.Checked) com_stopBits = StopBits.Two;
 
-                    serClient?.SetStopBits(com_stopBits);
+                    SerClient?.SetStopBits(com_stopBits);
                 }
             }
         }
@@ -175,17 +238,18 @@ namespace Terrarium
                     if (rb_handshake_rts.Checked) com_handshake = Handshake.RequestToSend;
                     if (rb_handshake_xon.Checked) com_handshake = Handshake.XOnXOff;
                     if (rb_handshake_rts_xon.Checked) com_handshake = Handshake.RequestToSendXOnXOff;
-                    if (serClient != null)serClient.SetHandshake(com_handshake);
+                    if (SerClient != null) SerClient.SetHandshake(com_handshake);
                 }
             }
         }
 
         protected void SerialPortError(object sender, EventArgs e)
         {
-            serClient.Close();
+            SerClient.Close();
 
             SetTxtToStatusLable("PORT ERROR", Color.Red);
-            this.Invoke(new Action(() => {
+            this.Invoke(new Action(() =>
+            {
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 cmb_SerialPortList.Enabled = true;
                 btn_SerialConnect.Enabled = true;
@@ -200,28 +264,28 @@ namespace Terrarium
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {      
+        {
             FillControlValues();
 
             int portCount = SerialPortScan();
             if (portCount == 0) SetTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
             else SetTxtToStatusLable("FOUND PORTS " + portCount, Color.WhiteSmoke);
 
-            if (com_portName == null)com_portName = "COM1";
+            if (com_portName == null) com_portName = "COM1";
 
-            serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
-            serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
+            SerClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
+            SerClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             SettingsSave();
-            serClient.Close();
+            SerClient.Close();
 
-            serClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(ReceiveHandler);
-            serClient.serialError -= new EventHandler(SerialPortError);
+            SerClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(ReceiveHandler);
+            SerClient.serialError -= new EventHandler(SerialPortError);
 
-            serClient.Dispose();
+            SerClient.Dispose();
         }
 
         private void ReceiveHandler(object sender, DataStreamEventArgs e)
@@ -251,7 +315,7 @@ namespace Terrarium
                     else
                     {
                         nrtb_Rx.AppendHex(data);
-                    }                    
+                    }
                 }
                 else
                 {
@@ -262,7 +326,7 @@ namespace Terrarium
                     else
                     {
                         nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
-                    }                       
+                    }
                 }
 
                 nrtb_Rx.NumStripAutoscroll = cb_RxAutoscroll.Checked ? true : false;
@@ -360,7 +424,7 @@ namespace Terrarium
             }
 
             switch (ps.SerialStopBits)
-            {               
+            {
                 case "One":
                     rb_stopBits_1.Checked = true;
                     break;
@@ -392,7 +456,7 @@ namespace Terrarium
                     break;
             }
 
-            if (ps.sidePannelHide == true)pnl_Settings.Width = 0;
+            if (ps.sidePannelHide == true) pnl_Settings.Width = 0;
 
             cb_RxAutoscroll.Checked = ps.rtb_Rx_AutoScroll;
             cb_Rx_Hex.Checked = ps.cb_Rx_Hex;
@@ -482,29 +546,29 @@ namespace Terrarium
 
             if (IsOpenBtnClicked == false)
             {
-                serClient.SetPortName(com_portName);
-                serClient.SetBaudrate(com_baudRate);
-                serClient.SetParity(com_parity);
-                serClient.SetDataBits(com_dataBits);
-                serClient.SetStopBits(com_stopBits);
-                serClient.SetHandshake(com_handshake);
+                SerClient.SetPortName(com_portName);
+                SerClient.SetBaudrate(com_baudRate);
+                SerClient.SetParity(com_parity);
+                SerClient.SetDataBits(com_dataBits);
+                SerClient.SetStopBits(com_stopBits);
+                SerClient.SetHandshake(com_handshake);
 
-                serClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
-                serClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
-                serClient.serialError += new EventHandler(SerialPortError);
+                SerClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
+                SerClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
+                SerClient.serialError += new EventHandler(SerialPortError);
 
-                if (serClient.Open() == true)
+                if (SerClient.Open() == true)
                 {
                     SetTxtToStatusLable("SERIAL OPENED", Color.Aqua);
                     btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
                     this.Text = "Terrarium " + (string)cmb_SerialPortList.SelectedItem;
-                    
+
                     cmb_SerialPortList.Enabled = false;
                     btn_SerialConnect.Enabled = true;
                 }
                 else
                 {
-                    serClient.Close();
+                    SerClient.Close();
 
                     SetTxtToStatusLable("SERIAL ERROR", Color.Red);
                     cmb_SerialPortList.Enabled = true;
@@ -515,7 +579,7 @@ namespace Terrarium
             }
             else
             {
-                serClient.Close();
+                SerClient.Close();
                 SetTxtToStatusLable("SERIAL CLOSED", Color.Aqua);
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 this.Text = "Terrarium ";
@@ -528,7 +592,7 @@ namespace Terrarium
         private void btn_CleanTxField_Click(object sender, EventArgs e)
         {
             rtb_Tx.Clear();
-            macroPannel1.tb_Tx.Clear();
+            macroPannel.tb_Tx.Clear();
         }
 
         private void btn_CleanRxField_Click(object sender, EventArgs e) => nrtb_Rx.RichTextBox.Clear();
@@ -564,11 +628,11 @@ namespace Terrarium
 
         private void btn_SerialPortRefresh_Click(object sender, EventArgs e)
         {
-            if (serClient.IsOpen() == false)
+            if (SerClient.IsOpen() == false)
             {
                 int portCount = SerialPortScan();
-                if (portCount == 0)SetTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
-                else SetTxtToStatusLable("FOUND PORTS " + portCount, Color.WhiteSmoke);                      
+                if (portCount == 0) SetTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
+                else SetTxtToStatusLable("FOUND PORTS " + portCount, Color.WhiteSmoke);
             }
         }
 
@@ -599,33 +663,36 @@ namespace Terrarium
 
             byte[] buff = new byte[1];
             buff[0] = Convert.ToByte(c);
-            if (serClient != null && serClient.IsOpen() == true)
+            if (SerClient != null && SerClient.IsOpen() == true)
             {
-                serClient.Transmit(buff);
+                SerClient.Transmit(buff);
                 TxDataCounter += buff.Length;
                 lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }
         }
 
-        private void btn_SerialSend_Click(object sender, EventArgs e)
+        private void btn_SerialSend_Click(object sender, EventArgs e) => SerialSendHelper(macroPannel.tb_Tx.Text, cb_Tx_Hex.Checked);
+
+
+        public void SerialSendHelper(string tbData, bool cbHex)
         {
-            if (serClient.IsOpen() == true)
-            {               
+            if (SerClient.IsOpen() == true)
+            {
                 byte[] buff;
-                if (cb_Tx_Hex.Checked == true)
+                if (cbHex == true)
                 {
-                    if (TextHelper.IsHexEntered(macroPannel1.tb_Tx.Text))
+                    if (TextHelper.IsHexEntered(tbData))
                     {
                         MessageBox.Show("Please enter only numbers in HEX format XX");
                         return;
                     }
-                    buff = TextHelper.StringToHex(macroPannel1.tb_Tx.Text);
+                    buff = TextHelper.StringToHex(tbData);
                 }
                 else
                 {
-                    buff = Encoding.UTF8.GetBytes(macroPannel1.tb_Tx.Text);                    
+                    buff = Encoding.UTF8.GetBytes(tbData);
                 }
-                serClient.Transmit(buff);               
+                SerClient.Transmit(buff);
                 TxDataCounter += buff.Length;
                 lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }
@@ -634,6 +701,7 @@ namespace Terrarium
                 SetTxtToStatusLable("OPEN PORT FIRST", Color.Red);
             }
         }
+
 
         private void rtb_Rx_TextChanged(object sender, EventArgs e)
         {
@@ -664,9 +732,9 @@ namespace Terrarium
         }
 
         private void cb_TxMacroSend_CheckedChanged(object sender, EventArgs e)
-        {           
-            macroPannel1.VisibleMacroButtons ^= true;
-            if (macroPannel1.VisibleMacroButtons == true)
+        {
+            macroPannel.VisibleMacroButtons ^= true;
+            if (macroPannel.VisibleMacroButtons == true)
             {
                 tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
                 tableLayoutPanel1.RowStyles[2].Height = 25F;
@@ -675,14 +743,55 @@ namespace Terrarium
             {
                 tableLayoutPanel1.RowStyles[2].SizeType = SizeType.Absolute;
                 tableLayoutPanel1.RowStyles[2].Height = 100F;
-            }           
+            }
         }
 
-        private void btn_MacroPanelWizard_Click(object sender, EventArgs e)
-        {
-            MacroPanelWizard macroWizard = new MacroPanelWizard();
-            macroWizard.Show();
-        }
+        private void btn_MacroPanelWizard_Click(object sender, EventArgs e) => macroWizard.Show();
+
+
+        private void btn_m1_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP1_Text, macroWizard.MP1_HexMode);
+        private void btn_m2_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP2_Text, macroWizard.MP2_HexMode);
+        private void btn_m3_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP3_Text, macroWizard.MP3_HexMode);
+        private void btn_m4_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP4_Text, macroWizard.MP4_HexMode);
+        private void btn_m5_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP5_Text, macroWizard.MP5_HexMode);
+        private void btn_m6_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP6_Text, macroWizard.MP6_HexMode);
+        private void btn_m7_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP7_Text, macroWizard.MP7_HexMode);
+        private void btn_m8_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP8_Text, macroWizard.MP8_HexMode);
+        private void btn_m9_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP9_Text, macroWizard.MP9_HexMode);
+        private void btn_m10_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP10_Text, macroWizard.MP10_HexMode);
+        private void btn_m11_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP11_Text, macroWizard.MP11_HexMode);
+        private void btn_m12_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP12_Text, macroWizard.MP12_HexMode);
+        private void btn_m13_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP13_Text, macroWizard.MP13_HexMode);
+        private void btn_m14_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP14_Text, macroWizard.MP14_HexMode);
+        private void btn_m15_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP15_Text, macroWizard.MP15_HexMode);
+        private void btn_m16_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP16_Text, macroWizard.MP16_HexMode);
+        private void btn_m17_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP17_Text, macroWizard.MP17_HexMode);
+        private void btn_m18_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP18_Text, macroWizard.MP18_HexMode);
+        private void btn_m19_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP19_Text, macroWizard.MP19_HexMode);
+        private void btn_m20_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP20_Text, macroWizard.MP20_HexMode);
+
+
+        private void btn_m1_TextChange(object sender, EventArgs e) => macroPannel.btn_m1.Text = macroWizard.MP1_ButtonText;
+        private void btn_m2_TextChange(object sender, EventArgs e) => macroPannel.btn_m2.Text = macroWizard.MP2_ButtonText;
+        private void btn_m3_TextChange(object sender, EventArgs e) => macroPannel.btn_m3.Text = macroWizard.MP3_ButtonText;
+        private void btn_m4_TextChange(object sender, EventArgs e) => macroPannel.btn_m4.Text = macroWizard.MP4_ButtonText;
+        private void btn_m5_TextChange(object sender, EventArgs e) => macroPannel.btn_m5.Text = macroWizard.MP5_ButtonText;
+        private void btn_m6_TextChange(object sender, EventArgs e) => macroPannel.btn_m6.Text = macroWizard.MP6_ButtonText;
+        private void btn_m7_TextChange(object sender, EventArgs e) => macroPannel.btn_m7.Text = macroWizard.MP7_ButtonText;
+        private void btn_m8_TextChange(object sender, EventArgs e) => macroPannel.btn_m8.Text = macroWizard.MP8_ButtonText;
+        private void btn_m9_TextChange(object sender, EventArgs e) => macroPannel.btn_m9.Text = macroWizard.MP9_ButtonText;
+        private void btn_m10_TextChange(object sender, EventArgs e) => macroPannel.btn_m10.Text = macroWizard.MP10_ButtonText;
+        private void btn_m11_TextChange(object sender, EventArgs e) => macroPannel.btn_m11.Text = macroWizard.MP11_ButtonText;
+        private void btn_m12_TextChange(object sender, EventArgs e) => macroPannel.btn_m12.Text = macroWizard.MP12_ButtonText;
+        private void btn_m13_TextChange(object sender, EventArgs e) => macroPannel.btn_m13.Text = macroWizard.MP13_ButtonText;
+        private void btn_m14_TextChange(object sender, EventArgs e) => macroPannel.btn_m14.Text = macroWizard.MP14_ButtonText;
+        private void btn_m15_TextChange(object sender, EventArgs e) => macroPannel.btn_m15.Text = macroWizard.MP15_ButtonText;
+        private void btn_m16_TextChange(object sender, EventArgs e) => macroPannel.btn_m16.Text = macroWizard.MP16_ButtonText;
+        private void btn_m17_TextChange(object sender, EventArgs e) => macroPannel.btn_m17.Text = macroWizard.MP17_ButtonText;
+        private void btn_m18_TextChange(object sender, EventArgs e) => macroPannel.btn_m18.Text = macroWizard.MP18_ButtonText;
+        private void btn_m19_TextChange(object sender, EventArgs e) => macroPannel.btn_m19.Text = macroWizard.MP19_ButtonText;
+        private void btn_m20_TextChange(object sender, EventArgs e) => macroPannel.btn_m20.Text = macroWizard.MP20_ButtonText;
+
     }
 }
 

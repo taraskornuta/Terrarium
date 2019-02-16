@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Terrarium
 {
-    public partial class MacroPannel : UserControl
+    public partial class MacroPanel : UserControl
     {
         private bool VisibleBotomPanel = false;
         private Size minSize = new Size(619, 100);
@@ -39,7 +39,7 @@ namespace Terrarium
         public event EventHandler BtnM19Click;
         public event EventHandler BtnM20Click;
 
-        public MacroPannel()
+        public MacroPanel()
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint,true);

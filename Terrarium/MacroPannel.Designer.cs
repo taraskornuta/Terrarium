@@ -1,6 +1,6 @@
 ﻿namespace Terrarium
 {
-    partial class MacroPannel
+    partial class MacroPanel
     {
         /// <summary> 
         /// Required designer variable.
@@ -453,16 +453,17 @@
             this.btn_Send.UseVisualStyleBackColor = false;
             this.btn_Send.Click += new System.EventHandler(this.btn_Send_Click);
             // 
-            // MacroPannel
+            // MacroPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.Controls.Add(this.mainLayoutPanel);
+            this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.MaximumSize = new System.Drawing.Size(0, 100);
             this.MinimumSize = new System.Drawing.Size(619, 25);
-            this.Name = "MacroPannel";
+            this.Name = "MacroPanel";
             this.Size = new System.Drawing.Size(619, 100);
             this.mainLayoutPanel.ResumeLayout(false);
             this.pnl_Botom.ResumeLayout(false);
@@ -473,31 +474,32 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btn_m20;
-        private System.Windows.Forms.Button btn_m19;
-        private System.Windows.Forms.Button btn_m18;
-        private System.Windows.Forms.Button btn_m17;
-        private System.Windows.Forms.Button btn_m16;
-        private System.Windows.Forms.Button btn_m15;
-        private System.Windows.Forms.Button btn_m14;
-        private System.Windows.Forms.Button btn_m13;
-        private System.Windows.Forms.Button btn_m12;
-        private System.Windows.Forms.Button btn_m11;
-        private System.Windows.Forms.Button btn_m10;
-        private System.Windows.Forms.Button btn_m9;
-        private System.Windows.Forms.Button btn_m8;       
-        private System.Windows.Forms.Button btn_m7;
-        private System.Windows.Forms.Button btn_m6;
-        private System.Windows.Forms.Button btn_m5;
-        private System.Windows.Forms.Button btn_m4;
-        private System.Windows.Forms.Button btn_m3;
-        private System.Windows.Forms.Button btn_m2;
-        private System.Windows.Forms.Button btn_m1;
+        public System.Windows.Forms.Button btn_m20;
+        public System.Windows.Forms.Button btn_m19;
+        public System.Windows.Forms.Button btn_m18;
+        public System.Windows.Forms.Button btn_m17;
+        public System.Windows.Forms.Button btn_m16;
+        public System.Windows.Forms.Button btn_m15;
+        public System.Windows.Forms.Button btn_m14;
+        public System.Windows.Forms.Button btn_m13;
+        public System.Windows.Forms.Button btn_m12;
+        public System.Windows.Forms.Button btn_m11;
+        public System.Windows.Forms.Button btn_m10;
+        public System.Windows.Forms.Button btn_m9;
+        public System.Windows.Forms.Button btn_m8;
+        public System.Windows.Forms.Button btn_m7;
+        public System.Windows.Forms.Button btn_m6;
+        public System.Windows.Forms.Button btn_m5;
+        public System.Windows.Forms.Button btn_m4;
+        public System.Windows.Forms.Button btn_m3;
+        public System.Windows.Forms.Button btn_m2;
+        public System.Windows.Forms.Button btn_m1;
         private System.Windows.Forms.Button btn_MacroSettings;
         private System.Windows.Forms.TableLayoutPanel mainLayoutPanel;
         private System.Windows.Forms.Panel pnl_Botom;
         private System.Windows.Forms.TableLayoutPanel pnl_Top;
         private System.Windows.Forms.Button btn_Send;
         public System.Windows.Forms.TextBox tb_Tx;
+        
     }
 }
