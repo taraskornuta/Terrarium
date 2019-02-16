@@ -97,7 +97,7 @@
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.nrtb_Rx = new NumberedRTB();
-            this.macroPannel1 = new Terrarium.MacroPannel();
+            this.macroPannel = new Terrarium.MacroPanel();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -940,7 +940,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.nrtb_Rx, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.rtb_Tx, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.macroPannel1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.macroPannel, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -964,40 +964,40 @@
             this.nrtb_Rx.Size = new System.Drawing.Size(619, 367);
             this.nrtb_Rx.TabIndex = 3;
             // 
-            // macroPannel1
+            // macroPannel
             // 
-            this.macroPannel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.macroPannel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.macroPannel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroPannel1.BtnM10Text = "M10";
-            this.macroPannel1.BtnM11Text = "M11";
-            this.macroPannel1.BtnM12Text = "M12";
-            this.macroPannel1.BtnM13Text = "M13";
-            this.macroPannel1.BtnM14Text = "M14";
-            this.macroPannel1.BtnM15Text = "M15";
-            this.macroPannel1.BtnM16Text = "M16";
-            this.macroPannel1.BtnM17Text = "M17";
-            this.macroPannel1.BtnM18Text = "M18";
-            this.macroPannel1.BtnM19Text = "M19";
-            this.macroPannel1.BtnM1Text = "M1";
-            this.macroPannel1.BtnM20Text = "M20";
-            this.macroPannel1.BtnM2Text = "M2";
-            this.macroPannel1.BtnM3Text = "M3";
-            this.macroPannel1.BtnM4Text = "M4";
-            this.macroPannel1.BtnM5Text = "M5";
-            this.macroPannel1.BtnM6Text = "M6";
-            this.macroPannel1.BtnM7Text = "M7";
-            this.macroPannel1.BtnM8Text = "M8";
-            this.macroPannel1.BtnM9Text = "M9";
-            this.macroPannel1.Location = new System.Drawing.Point(0, 437);
-            this.macroPannel1.Margin = new System.Windows.Forms.Padding(0);
-            this.macroPannel1.MaximumSize = new System.Drawing.Size(0, 100);
-            this.macroPannel1.MinimumSize = new System.Drawing.Size(619, 100);
-            this.macroPannel1.Name = "macroPannel1";
-            this.macroPannel1.Size = new System.Drawing.Size(619, 100);
-            this.macroPannel1.TabIndex = 4;
-            this.macroPannel1.VisibleMacroButtons = false;
+            this.macroPannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.macroPannel.BtnM10Text = "M10";
+            this.macroPannel.BtnM11Text = "M11";
+            this.macroPannel.BtnM12Text = "M12";
+            this.macroPannel.BtnM13Text = "M13";
+            this.macroPannel.BtnM14Text = "M14";
+            this.macroPannel.BtnM15Text = "M15";
+            this.macroPannel.BtnM16Text = "M16";
+            this.macroPannel.BtnM17Text = "M17";
+            this.macroPannel.BtnM18Text = "M18";
+            this.macroPannel.BtnM19Text = "M19";
+            this.macroPannel.BtnM1Text = "M1";
+            this.macroPannel.BtnM20Text = "M20";
+            this.macroPannel.BtnM2Text = "M2";
+            this.macroPannel.BtnM3Text = "M3";
+            this.macroPannel.BtnM4Text = "M4";
+            this.macroPannel.BtnM5Text = "M5";
+            this.macroPannel.BtnM6Text = "M6";
+            this.macroPannel.BtnM7Text = "M7";
+            this.macroPannel.BtnM8Text = "M8";
+            this.macroPannel.BtnM9Text = "M9";
+            this.macroPannel.Location = new System.Drawing.Point(0, 437);
+            this.macroPannel.Margin = new System.Windows.Forms.Padding(0);
+            this.macroPannel.MaximumSize = new System.Drawing.Size(0, 100);
+            this.macroPannel.MinimumSize = new System.Drawing.Size(619, 100);
+            this.macroPannel.Name = "macroPannel";
+            this.macroPannel.Size = new System.Drawing.Size(619, 100);
+            this.macroPannel.TabIndex = 4;
+            this.macroPannel.VisibleMacroButtons = false;
             // 
             // copyToolStripMenuItem
             // 
@@ -1142,7 +1142,7 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cb_TxMacroSend;
-        private MacroPannel macroPannel1;
+        private MacroPanel macroPannel;
         private System.Windows.Forms.CheckBox cb_Tx_Hex;
     }
 }
