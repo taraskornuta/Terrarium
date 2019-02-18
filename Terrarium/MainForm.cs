@@ -24,6 +24,7 @@ namespace Terrarium
 
         private bool panelMacroHiden;
         private MacroPanelWizard macroWizard = new MacroPanelWizard();
+        private ConfigManager macroWizardConf = new ConfigManager();
         private Properties.Settings ps = Properties.Settings.Default;
         private string[] serialPortList;
         private string com_portName;
@@ -147,6 +148,10 @@ namespace Terrarium
             macroWizard.BtnM18Click += new EventHandler(btn_m18_Click);
             macroWizard.BtnM19Click += new EventHandler(btn_m19_Click);
             macroWizard.BtnM20Click += new EventHandler(btn_m20_Click);
+
+            macroWizard.BtnSaveConfigClick += new EventHandler(btn_SaveConfig_Click);
+            macroWizard.BtnLoadConfigClick += new EventHandler(btn_LoadConfig_Click);
+
         }
 
 
@@ -770,6 +775,87 @@ namespace Terrarium
         private void btn_m19_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP19_Text, macroWizard.MP19_HexMode);
         private void btn_m20_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP20_Text, macroWizard.MP20_HexMode);
 
+        private void btn_SaveConfig_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "Terrarium macro(*.tmc)|*.tmc|All files(*.*)|*.*";
+            saveFileDialog1.ShowDialog();
+            string[] text = new string[20];
+            text[0] = macroWizard.MP1_Text;
+            text[1] = macroWizard.MP2_Text;
+            text[2] = macroWizard.MP3_Text;
+            text[3] = macroWizard.MP4_Text;
+            text[4] = macroWizard.MP5_Text;
+            text[5] = macroWizard.MP6_Text;
+            text[6] = macroWizard.MP7_Text;
+            text[7] = macroWizard.MP8_Text;
+            text[8] = macroWizard.MP9_Text;
+            text[9] = macroWizard.MP10_Text;
+            text[10] = macroWizard.MP11_Text;
+            text[11] = macroWizard.MP12_Text;
+            text[12] = macroWizard.MP13_Text;
+            text[13] = macroWizard.MP14_Text;
+            text[14] = macroWizard.MP15_Text;
+            text[15] = macroWizard.MP16_Text;
+            text[16] = macroWizard.MP17_Text;
+            text[17] = macroWizard.MP18_Text;
+            text[18] = macroWizard.MP19_Text;
+            text[19] = macroWizard.MP20_Text;
+            macroWizardConf.Config.FieldData = text;
+
+            string[] buttonText = new string[20];
+            buttonText[0] = macroWizard.MP1_ButtonText;
+            buttonText[1] = macroWizard.MP2_ButtonText;
+            buttonText[2] = macroWizard.MP3_ButtonText;
+            buttonText[3] = macroWizard.MP4_ButtonText;
+            buttonText[4] = macroWizard.MP5_ButtonText;
+            buttonText[5] = macroWizard.MP6_ButtonText;
+            buttonText[6] = macroWizard.MP7_ButtonText;
+            buttonText[7] = macroWizard.MP8_ButtonText;
+            buttonText[8] = macroWizard.MP9_ButtonText;
+            buttonText[9] = macroWizard.MP10_ButtonText;
+            buttonText[10] = macroWizard.MP11_ButtonText;
+            buttonText[11] = macroWizard.MP12_ButtonText;
+            buttonText[12] = macroWizard.MP13_ButtonText;
+            buttonText[13] = macroWizard.MP14_ButtonText;
+            buttonText[14] = macroWizard.MP15_ButtonText;
+            buttonText[15] = macroWizard.MP16_ButtonText;
+            buttonText[16] = macroWizard.MP17_ButtonText;
+            buttonText[17] = macroWizard.MP18_ButtonText;
+            buttonText[18] = macroWizard.MP19_ButtonText;
+            buttonText[19] = macroWizard.MP20_ButtonText;
+            macroWizardConf.Config.ButtonText = buttonText;
+
+            bool[] hexMode = new bool[20];
+            hexMode[0] = macroWizard.MP1_HexMode;
+            hexMode[1] = macroWizard.MP2_HexMode;
+            hexMode[2] = macroWizard.MP3_HexMode;
+            hexMode[3] = macroWizard.MP4_HexMode;
+            hexMode[4] = macroWizard.MP5_HexMode;
+            hexMode[5] = macroWizard.MP6_HexMode;
+            hexMode[6] = macroWizard.MP7_HexMode;
+            hexMode[7] = macroWizard.MP8_HexMode;
+            hexMode[8] = macroWizard.MP9_HexMode;
+            hexMode[9] = macroWizard.MP10_HexMode;
+            hexMode[10] = macroWizard.MP11_HexMode;
+            hexMode[11] = macroWizard.MP12_HexMode;
+            hexMode[12] = macroWizard.MP13_HexMode;
+            hexMode[13] = macroWizard.MP14_HexMode;
+            hexMode[14] = macroWizard.MP15_HexMode;
+            hexMode[15] = macroWizard.MP16_HexMode;
+            hexMode[16] = macroWizard.MP17_HexMode;
+            hexMode[17] = macroWizard.MP18_HexMode;
+            hexMode[18] = macroWizard.MP19_HexMode;
+            hexMode[19] = macroWizard.MP20_HexMode;
+            macroWizardConf.Config.HexMode = hexMode;
+
+            macroWizardConf.SaveConfig(saveFileDialog1.FileName);
+        }
+
+        private void btn_LoadConfig_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void btn_m1_TextChange(object sender, EventArgs e) => macroPannel.btn_m1.Text = macroWizard.MP1_ButtonText;
         private void btn_m2_TextChange(object sender, EventArgs e) => macroPannel.btn_m2.Text = macroWizard.MP2_ButtonText;
@@ -792,6 +878,7 @@ namespace Terrarium
         private void btn_m19_TextChange(object sender, EventArgs e) => macroPannel.btn_m19.Text = macroWizard.MP19_ButtonText;
         private void btn_m20_TextChange(object sender, EventArgs e) => macroPannel.btn_m20.Text = macroWizard.MP20_ButtonText;
 
+        
     }
 }
 

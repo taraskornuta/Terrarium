@@ -32,7 +32,11 @@ namespace Terrarium
         public decimal RepeatTimeValue
         {
             get => numBox.Value;
-            set => numBox.Value = value;
+            set
+            {
+                if (value == 0) value = 1;
+                numBox.Value = value;
+            } 
 
         }
 
