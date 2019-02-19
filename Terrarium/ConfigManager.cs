@@ -32,9 +32,7 @@ namespace Terrarium
 
     class ConfigManager
     {
-        //private string m_sConfigFileName = System.IO.Path.GetFileNameWithoutExtension(System.Windows.Forms.Application.ExecutablePath) + ".tmc";
         private MacroPanelConfig macroFieldConfig = new MacroPanelConfig();
-
         public MacroPanelConfig Config
         {
             get { return macroFieldConfig; }

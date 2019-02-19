@@ -34,8 +34,10 @@ namespace textboxInsideButton
             tb.Dock = DockStyle.None;
             btn.Controls.Add(tb);
             tb.KeyPress += new KeyPressEventHandler(tb_KeyPress);
+            tb.MouseDoubleClick += new MouseEventHandler(tb_MouseDoubleClick);
         }
-      
+
+
         private void btn_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -45,8 +47,14 @@ namespace textboxInsideButton
                 {
                     btnClickCounter = 0;
                     OpenTextBox();
+                    tb.Select();
                 }
-            } 
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                btnClickCounter = 0;
+                btn.Controls.Remove(tb);
+            }
         }
 
         private void tb_KeyPress(object sender, KeyPressEventArgs e)
@@ -57,6 +65,13 @@ namespace textboxInsideButton
                 btn.Text = tb.Text;
                 btn.Controls.Remove(tb);
             }
+        }
+
+        private void tb_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            btn.Text = tb.Text;
+            btnClickCounter = 0;
+            btn.Controls.Remove(tb);
         }
 
         private void btn_TextChanged(object sender, EventArgs e) => ButtonTextChangeEvent?.Invoke(this, e);
