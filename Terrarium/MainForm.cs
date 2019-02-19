@@ -12,7 +12,7 @@ using System.Management;
 using System.Collections;
 using System.Text.RegularExpressions;
 using System.Threading;
-
+using System.IO;
 
 namespace Terrarium
 {
@@ -25,6 +25,8 @@ namespace Terrarium
         private bool panelMacroHiden;
         private MacroPanelWizard macroWizard = new MacroPanelWizard();
         private ConfigManager macroWizardConf = new ConfigManager();
+        private SaveFileDialog saveFileDialog = new SaveFileDialog();
+        private OpenFileDialog openFileDialog = new OpenFileDialog();
         private Properties.Settings ps = Properties.Settings.Default;
         private string[] serialPortList;
         private string com_portName;
@@ -280,6 +282,13 @@ namespace Terrarium
 
             SerClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
             SerClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
+
+            if (ps.macroPanelConfFileLocation != null && File.Exists(ps.macroPanelConfFileLocation) == true)
+            {
+                macroWizardConf.LoadConfig(ps.macroPanelConfFileLocation);
+                macroWizardFillConfigs();
+            }
+
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -777,8 +786,8 @@ namespace Terrarium
 
         private void btn_SaveConfig_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Filter = "Terrarium macro(*.tmc)|*.tmc|All files(*.*)|*.*";
-            saveFileDialog1.ShowDialog();
+            saveFileDialog.Filter = "Terrarium macro(*.tmc)|*.tmc|All files(*.*)|*.*";
+            saveFileDialog.ShowDialog();
             string[] text = new string[20];
             text[0] = macroWizard.MP1_Text;
             text[1] = macroWizard.MP2_Text;
@@ -848,11 +857,91 @@ namespace Terrarium
             hexMode[19] = macroWizard.MP20_HexMode;
             macroWizardConf.Config.HexMode = hexMode;
 
-            macroWizardConf.SaveConfig(saveFileDialog1.FileName);
+            macroWizardConf.SaveConfig(saveFileDialog.FileName);
+            ps.macroPanelConfFileLocation = saveFileDialog.FileName;
+        }
+
+        private void macroWizardFillConfigs()
+        {
+            string[] text = new string[20];
+            text = macroWizardConf.Config.FieldData;
+            macroWizard.MP1_Text = text[0];
+            macroWizard.MP2_Text = text[1];
+            macroWizard.MP3_Text = text[2];
+            macroWizard.MP4_Text = text[3];
+            macroWizard.MP5_Text = text[4];
+            macroWizard.MP6_Text = text[5];
+            macroWizard.MP7_Text = text[6];
+            macroWizard.MP8_Text = text[7];
+            macroWizard.MP9_Text = text[8];
+            macroWizard.MP10_Text = text[9];
+            macroWizard.MP11_Text = text[10];
+            macroWizard.MP12_Text = text[11];
+            macroWizard.MP13_Text = text[12];
+            macroWizard.MP14_Text = text[13];
+            macroWizard.MP15_Text = text[14];
+            macroWizard.MP16_Text = text[15];
+            macroWizard.MP17_Text = text[16];
+            macroWizard.MP18_Text = text[17];
+            macroWizard.MP19_Text = text[18];
+            macroWizard.MP20_Text = text[19];
+
+            string[] buttonText = new string[20];
+            buttonText = macroWizardConf.Config.ButtonText;
+            macroPannel.btn_m1.Text = macroWizard.MP1_ButtonText = buttonText[0];
+            macroPannel.btn_m2.Text = macroWizard.MP2_ButtonText = buttonText[1];
+            macroPannel.btn_m3.Text = macroWizard.MP3_ButtonText = buttonText[2];
+            macroPannel.btn_m4.Text = macroWizard.MP4_ButtonText = buttonText[3];
+            macroPannel.btn_m5.Text = macroWizard.MP5_ButtonText = buttonText[4];
+            macroPannel.btn_m6.Text = macroWizard.MP6_ButtonText = buttonText[5];
+            macroPannel.btn_m7.Text = macroWizard.MP7_ButtonText = buttonText[6];
+            macroPannel.btn_m8.Text = macroWizard.MP8_ButtonText = buttonText[7];
+            macroPannel.btn_m9.Text = macroWizard.MP9_ButtonText = buttonText[8];
+            macroPannel.btn_m10.Text = macroWizard.MP10_ButtonText = buttonText[9];
+            macroPannel.btn_m11.Text = macroWizard.MP11_ButtonText = buttonText[10];
+            macroPannel.btn_m12.Text = macroWizard.MP12_ButtonText = buttonText[11];
+            macroPannel.btn_m13.Text = macroWizard.MP13_ButtonText = buttonText[12];
+            macroPannel.btn_m14.Text = macroWizard.MP14_ButtonText = buttonText[13];
+            macroPannel.btn_m15.Text = macroWizard.MP15_ButtonText = buttonText[14];
+            macroPannel.btn_m16.Text = macroWizard.MP16_ButtonText = buttonText[15];
+            macroPannel.btn_m17.Text = macroWizard.MP17_ButtonText = buttonText[16];
+            macroPannel.btn_m18.Text = macroWizard.MP18_ButtonText = buttonText[17];
+            macroPannel.btn_m19.Text = macroWizard.MP19_ButtonText = buttonText[18];
+            macroPannel.btn_m20.Text = macroWizard.MP20_ButtonText = buttonText[19];
+
+            bool[] hexMode = new bool[20];
+            hexMode = macroWizardConf.Config.HexMode;
+            macroWizard.MP1_HexMode = hexMode[0];
+            macroWizard.MP2_HexMode = hexMode[1];
+            macroWizard.MP3_HexMode = hexMode[2];
+            macroWizard.MP4_HexMode = hexMode[3];
+            macroWizard.MP5_HexMode = hexMode[4];
+            macroWizard.MP6_HexMode = hexMode[5];
+            macroWizard.MP7_HexMode = hexMode[6];
+            macroWizard.MP8_HexMode = hexMode[7];
+            macroWizard.MP9_HexMode = hexMode[8];
+            macroWizard.MP10_HexMode = hexMode[9];
+            macroWizard.MP11_HexMode = hexMode[10];
+            macroWizard.MP12_HexMode = hexMode[11];
+            macroWizard.MP13_HexMode = hexMode[12];
+            macroWizard.MP14_HexMode = hexMode[13];
+            macroWizard.MP15_HexMode = hexMode[14];
+            macroWizard.MP16_HexMode = hexMode[15];
+            macroWizard.MP17_HexMode = hexMode[16];
+            macroWizard.MP18_HexMode = hexMode[17];
+            macroWizard.MP19_HexMode = hexMode[18];
+            macroWizard.MP20_HexMode = hexMode[19];
         }
 
         private void btn_LoadConfig_Click(object sender, EventArgs e)
         {
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            ps.macroPanelConfFileLocation = openFileDialog.FileName;
+            ps.Save();
+            macroWizardConf.LoadConfig(ps.macroPanelConfFileLocation);
+            macroWizardFillConfigs();
 
         }
 
