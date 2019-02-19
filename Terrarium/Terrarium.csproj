@@ -57,6 +57,7 @@
     <Compile Include="ButtonTextbox.Designer.cs">
       <DependentUpon>ButtonTextbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigManager.cs" />
     <Compile Include="FlattenCombo.cs">
       <SubType>Component</SubType>
     </Compile>

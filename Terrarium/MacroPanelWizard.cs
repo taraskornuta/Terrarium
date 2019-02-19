@@ -32,6 +32,8 @@ namespace Terrarium
         public event EventHandler BtnM18Click;
         public event EventHandler BtnM19Click;
         public event EventHandler BtnM20Click;
+        public event EventHandler BtnSaveConfigClick;
+        public event EventHandler BtnLoadConfigClick;
 
         public event EventHandler BtnM1TextChange;
         public event EventHandler BtnM2TextChange;
@@ -117,6 +119,8 @@ namespace Terrarium
             macroField20.btnClickEvent += new EventHandler(btn_m20_Click);
             macroField20.btnTextChangeEvent += new EventHandler(btn_m20_TextChanged);
 
+            btn_SaveSettings.Click += new System.EventHandler(btn_SaveSettings_Click);
+            btn_LoadSettings.Click += new System.EventHandler(btn_LoadSettings_Click);
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)   // hide form but not close it
@@ -131,8 +135,6 @@ namespace Terrarium
 
             this.Hide();
         }
-
-
 
         #region Geters Setters
         public string MP1_Text { get => macroField1.tb_MacroData.Text; set => macroField1.tb_MacroData.Text = value; }
@@ -317,9 +319,9 @@ namespace Terrarium
         private void btn_m20_Click(object sender, EventArgs e) => this.BtnM20Click?.Invoke(this, e);
         private void btn_m20_TextChanged(object sender, EventArgs e) => this.BtnM20TextChange?.Invoke(this, e);
 
-
+        private void btn_SaveSettings_Click(object sender, EventArgs e) => this.BtnSaveConfigClick?.Invoke(this, e);
+        private void btn_LoadSettings_Click(object sender, EventArgs e) => this.BtnLoadConfigClick?.Invoke(this, e);
 
         #endregion
-
     }
 }

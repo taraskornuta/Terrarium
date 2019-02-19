@@ -37,6 +37,7 @@
             this.btn_Settings = new System.Windows.Forms.Button();
             this.pnl_Settings = new System.Windows.Forms.Panel();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.cb_Tx_Hex = new System.Windows.Forms.CheckBox();
             this.cb_TxMacroSend = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -96,12 +97,11 @@
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.nrtb_Rx = new NumberedRTB();
+            this.nrtb_Rx = new Terrarium.NumberedRTB();
             this.macroPannel = new Terrarium.MacroPanel();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cb_Tx_Hex = new System.Windows.Forms.CheckBox();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -211,6 +211,20 @@
             this.groupBox8.Size = new System.Drawing.Size(144, 74);
             this.groupBox8.TabIndex = 15;
             this.groupBox8.TabStop = false;
+            // 
+            // cb_Tx_Hex
+            // 
+            this.cb_Tx_Hex.AutoSize = true;
+            this.cb_Tx_Hex.Checked = true;
+            this.cb_Tx_Hex.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_Tx_Hex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cb_Tx_Hex.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cb_Tx_Hex.Location = new System.Drawing.Point(7, 31);
+            this.cb_Tx_Hex.Name = "cb_Tx_Hex";
+            this.cb_Tx_Hex.Size = new System.Drawing.Size(48, 17);
+            this.cb_Tx_Hex.TabIndex = 4;
+            this.cb_Tx_Hex.Text = "HEX";
+            this.cb_Tx_Hex.UseVisualStyleBackColor = true;
             // 
             // cb_TxMacroSend
             // 
@@ -1013,20 +1027,6 @@
             // 
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
             this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
-            // 
-            // cb_Tx_Hex
-            // 
-            this.cb_Tx_Hex.AutoSize = true;
-            this.cb_Tx_Hex.Checked = true;
-            this.cb_Tx_Hex.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_Tx_Hex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.cb_Tx_Hex.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_Tx_Hex.Location = new System.Drawing.Point(7, 31);
-            this.cb_Tx_Hex.Name = "cb_Tx_Hex";
-            this.cb_Tx_Hex.Size = new System.Drawing.Size(48, 17);
-            this.cb_Tx_Hex.TabIndex = 4;
-            this.cb_Tx_Hex.Text = "HEX";
-            this.cb_Tx_Hex.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
