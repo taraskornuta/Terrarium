@@ -225,5 +225,17 @@ namespace Terrarium.Properties {
                 this["macroPanelConfFileLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool cb_TxMacroSend {
+            get {
+                return ((bool)(this["cb_TxMacroSend"]));
+            }
+            set {
+                this["cb_TxMacroSend"] = value;
+            }
+        }
     }
 }

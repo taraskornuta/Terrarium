@@ -144,7 +144,7 @@
             // macroField20
             // 
             this.macroField20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField20.ButtonText = "button";
+            this.macroField20.ButtonText = "M20";
             this.macroField20.HexMode = false;
             this.macroField20.Location = new System.Drawing.Point(0, 620);
             this.macroField20.MaximumSize = new System.Drawing.Size(510, 30);
@@ -163,7 +163,7 @@
             // macroField19
             // 
             this.macroField19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField19.ButtonText = "button";
+            this.macroField19.ButtonText = "M19";
             this.macroField19.HexMode = false;
             this.macroField19.Location = new System.Drawing.Point(0, 590);
             this.macroField19.MaximumSize = new System.Drawing.Size(510, 30);
@@ -182,7 +182,7 @@
             // macroField18
             // 
             this.macroField18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField18.ButtonText = "button";
+            this.macroField18.ButtonText = "M18";
             this.macroField18.HexMode = false;
             this.macroField18.Location = new System.Drawing.Point(0, 560);
             this.macroField18.MaximumSize = new System.Drawing.Size(510, 30);
@@ -201,7 +201,7 @@
             // macroField17
             // 
             this.macroField17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField17.ButtonText = "button";
+            this.macroField17.ButtonText = "M17";
             this.macroField17.HexMode = false;
             this.macroField17.Location = new System.Drawing.Point(0, 530);
             this.macroField17.MaximumSize = new System.Drawing.Size(510, 30);
@@ -220,7 +220,7 @@
             // macroField16
             // 
             this.macroField16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField16.ButtonText = "button";
+            this.macroField16.ButtonText = "M16";
             this.macroField16.HexMode = false;
             this.macroField16.Location = new System.Drawing.Point(0, 500);
             this.macroField16.MaximumSize = new System.Drawing.Size(510, 30);
@@ -239,7 +239,7 @@
             // macroField15
             // 
             this.macroField15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField15.ButtonText = "button";
+            this.macroField15.ButtonText = "M15";
             this.macroField15.HexMode = false;
             this.macroField15.Location = new System.Drawing.Point(0, 470);
             this.macroField15.MaximumSize = new System.Drawing.Size(510, 30);
@@ -258,7 +258,7 @@
             // macroField14
             // 
             this.macroField14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField14.ButtonText = "button";
+            this.macroField14.ButtonText = "M14";
             this.macroField14.HexMode = false;
             this.macroField14.Location = new System.Drawing.Point(0, 440);
             this.macroField14.MaximumSize = new System.Drawing.Size(510, 30);
@@ -277,7 +277,7 @@
             // macroField13
             // 
             this.macroField13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField13.ButtonText = "button";
+            this.macroField13.ButtonText = "M13";
             this.macroField13.HexMode = false;
             this.macroField13.Location = new System.Drawing.Point(0, 410);
             this.macroField13.MaximumSize = new System.Drawing.Size(510, 30);
@@ -296,7 +296,7 @@
             // macroField12
             // 
             this.macroField12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField12.ButtonText = "button";
+            this.macroField12.ButtonText = "M12";
             this.macroField12.HexMode = false;
             this.macroField12.Location = new System.Drawing.Point(0, 380);
             this.macroField12.MaximumSize = new System.Drawing.Size(510, 30);
@@ -315,7 +315,7 @@
             // macroField11
             // 
             this.macroField11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField11.ButtonText = "button";
+            this.macroField11.ButtonText = "M11";
             this.macroField11.HexMode = false;
             this.macroField11.Location = new System.Drawing.Point(0, 350);
             this.macroField11.MaximumSize = new System.Drawing.Size(510, 30);
@@ -334,7 +334,7 @@
             // macroField10
             // 
             this.macroField10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField10.ButtonText = "button";
+            this.macroField10.ButtonText = "M10";
             this.macroField10.HexMode = false;
             this.macroField10.Location = new System.Drawing.Point(0, 320);
             this.macroField10.MaximumSize = new System.Drawing.Size(510, 30);
@@ -353,7 +353,7 @@
             // macroField9
             // 
             this.macroField9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField9.ButtonText = "button";
+            this.macroField9.ButtonText = "M9";
             this.macroField9.HexMode = false;
             this.macroField9.Location = new System.Drawing.Point(0, 290);
             this.macroField9.MaximumSize = new System.Drawing.Size(510, 30);
@@ -372,7 +372,7 @@
             // macroField8
             // 
             this.macroField8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField8.ButtonText = "button";
+            this.macroField8.ButtonText = "M8";
             this.macroField8.HexMode = false;
             this.macroField8.Location = new System.Drawing.Point(0, 260);
             this.macroField8.MaximumSize = new System.Drawing.Size(510, 30);
@@ -391,7 +391,7 @@
             // macroField7
             // 
             this.macroField7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField7.ButtonText = "button";
+            this.macroField7.ButtonText = "M7";
             this.macroField7.HexMode = false;
             this.macroField7.Location = new System.Drawing.Point(0, 230);
             this.macroField7.MaximumSize = new System.Drawing.Size(510, 30);
@@ -410,7 +410,7 @@
             // macroField6
             // 
             this.macroField6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField6.ButtonText = "button";
+            this.macroField6.ButtonText = "M6";
             this.macroField6.HexMode = false;
             this.macroField6.Location = new System.Drawing.Point(0, 200);
             this.macroField6.MaximumSize = new System.Drawing.Size(510, 30);
@@ -429,7 +429,7 @@
             // macroField5
             // 
             this.macroField5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField5.ButtonText = "button";
+            this.macroField5.ButtonText = "M5";
             this.macroField5.HexMode = false;
             this.macroField5.Location = new System.Drawing.Point(0, 170);
             this.macroField5.MaximumSize = new System.Drawing.Size(510, 30);
@@ -448,7 +448,7 @@
             // macroField4
             // 
             this.macroField4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField4.ButtonText = "button";
+            this.macroField4.ButtonText = "M4";
             this.macroField4.HexMode = false;
             this.macroField4.Location = new System.Drawing.Point(0, 140);
             this.macroField4.MaximumSize = new System.Drawing.Size(510, 30);
@@ -467,7 +467,7 @@
             // macroField3
             // 
             this.macroField3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField3.ButtonText = "button";
+            this.macroField3.ButtonText = "M3";
             this.macroField3.HexMode = false;
             this.macroField3.Location = new System.Drawing.Point(0, 110);
             this.macroField3.MaximumSize = new System.Drawing.Size(510, 30);
@@ -486,7 +486,7 @@
             // macroField2
             // 
             this.macroField2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField2.ButtonText = "button";
+            this.macroField2.ButtonText = "M2";
             this.macroField2.HexMode = false;
             this.macroField2.Location = new System.Drawing.Point(0, 80);
             this.macroField2.MaximumSize = new System.Drawing.Size(510, 30);
@@ -505,7 +505,7 @@
             // macroField1
             // 
             this.macroField1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroField1.ButtonText = "button";
+            this.macroField1.ButtonText = "M1";
             this.macroField1.HexMode = false;
             this.macroField1.Location = new System.Drawing.Point(0, 50);
             this.macroField1.MaximumSize = new System.Drawing.Size(510, 30);
@@ -547,10 +547,14 @@
             this.Controls.Add(this.macroField3);
             this.Controls.Add(this.macroField2);
             this.Controls.Add(this.macroField1);
+            this.DoubleBuffered = true;
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(526, 689);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(526, 120);
             this.Name = "MacroPanelWizard";
-            this.Text = "MacroPanelWizard";
+            this.ShowIcon = false;
+            this.Text = "Macros Wizard";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

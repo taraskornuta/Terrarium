@@ -476,6 +476,7 @@ namespace Terrarium
             cb_Rx_Hex.Checked = ps.cb_Rx_Hex;
             cb_Sort.Checked = ps.cb_Sort;
             nmn_ByteSort.Value = ps.nmn_ByteSort;
+            cb_TxMacroSend.Checked = ps.cb_TxMacroSend;
         }
 
         private void SettingsSave()
@@ -493,6 +494,7 @@ namespace Terrarium
             ps.cb_Rx_Hex = cb_Rx_Hex.Checked;
             ps.cb_Sort = cb_Sort.Checked;
             ps.nmn_ByteSort = nmn_ByteSort.Value;
+            ps.cb_TxMacroSend = cb_TxMacroSend.Checked;
             ps.Save();
         }
 
@@ -518,8 +520,12 @@ namespace Terrarium
             }
             else
             {
-                com_baudRateCustome = Convert.ToInt32(tb_baudRateCustome.Text);
-            }
+                try
+                {
+                    com_baudRateCustome = Convert.ToInt32(tb_baudRateCustome.Text);
+                }
+                catch (Exception) { }
+             }   
         }
 
         private void btn_Settings_Click(object sender, EventArgs e) => tmr_MenuSlide.Start();
