@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Terrarium
 {
-    class SerialCom
+    class SerialCom : IDisposable
     {
         private string portName;
         private int portBaudRate;
@@ -85,7 +85,9 @@ namespace Terrarium
             if (serialPort != null && serialPort.IsOpen)
             {
                 serialPort.Close();
+                
             }
+            serialPort.DataReceived -= DataReceivedHandler;
             return serialPort.IsOpen;
         }
 

@@ -295,8 +295,8 @@ namespace Terrarium
             SettingsSave();
             serClient.Close();
 
-            serClient.OnSerialReceiving -= new EventHandler<DataStreamEventArgs>(ReceiveHandler);
-            serClient.OnSerialError -= new EventHandler(SerialPortError);
+            //serClient.OnSerialReceiving -= ReceiveHandler;
+            //serClient.OnSerialError -= SerialPortError;
 
             serClient.Dispose();
         }
@@ -590,6 +590,8 @@ namespace Terrarium
                 else
                 {
                     serClient.Close();
+                    serClient.OnSerialReceiving -= ReceiveHandler;
+                    serClient.OnSerialError -= SerialPortError;
 
                     SetTxtToStatusLable("SERIAL ERROR", Color.Red);
                     cmb_SerialPortList.Enabled = true;
@@ -601,6 +603,8 @@ namespace Terrarium
             else
             {
                 serClient.Close();
+                serClient.OnSerialReceiving -= ReceiveHandler;
+                serClient.OnSerialError -= SerialPortError;
                 SetTxtToStatusLable("SERIAL CLOSED", Color.Aqua);
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 this.Text = "Terrarium ";

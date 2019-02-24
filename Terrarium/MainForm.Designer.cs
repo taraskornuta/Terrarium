@@ -273,6 +273,7 @@
             // 
             this.nmn_ByteSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
             this.nmn_ByteSort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nmn_ByteSort.Enabled = false;
             this.nmn_ByteSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nmn_ByteSort.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.nmn_ByteSort.Location = new System.Drawing.Point(59, 88);
@@ -294,12 +295,14 @@
             0,
             0,
             0});
+            this.nmn_ByteSort.Visible = false;
             // 
             // cb_Sort
             // 
             this.cb_Sort.AutoSize = true;
             this.cb_Sort.Checked = true;
             this.cb_Sort.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_Sort.Enabled = false;
             this.cb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_Sort.Location = new System.Drawing.Point(7, 89);
             this.cb_Sort.Name = "cb_Sort";
@@ -314,6 +317,7 @@
             this.cb_Loging.AutoSize = true;
             this.cb_Loging.Checked = true;
             this.cb_Loging.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_Loging.Enabled = false;
             this.cb_Loging.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_Loging.Location = new System.Drawing.Point(7, 72);
             this.cb_Loging.Name = "cb_Loging";
