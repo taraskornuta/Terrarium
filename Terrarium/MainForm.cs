@@ -323,7 +323,6 @@ namespace Terrarium
                     if (cb_Sort.Checked == true)
                     {
                         nrtb_Rx.RichTextBox.Text += "\n";
-
                         nrtb_Rx.AppendHex(data);
                     }
                     else
@@ -335,7 +334,11 @@ namespace Terrarium
                 {
                     if (cb_Sort.Checked == true)
                     {
-                        nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
+                        string[] str = TextHelper.StringSplit(Encoding.ASCII.GetString(data), (int)nmn_ByteSort.Value);
+                        foreach (string tmp in str)
+                        {
+                            nrtb_Rx.AppendText(tmp + "\n");
+                        }                       
                     }
                     else
                     {

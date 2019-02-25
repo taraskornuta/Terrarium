@@ -146,7 +146,6 @@
     <Content Include="icons8_Integrated_Circuit.ico" />
     <None Include="Resorces\icons8_Settings_32px.png" />
     <None Include="Resorces\icons8_Refresh_22px.png" />
-    <None Include="Resorces\icons8_Refresh_32px.png" />
     <None Include="Resorces\icons8_Trash_32px.png" />
     <None Include="Resorces\icons8_Sent_22px.png" />
     <None Include="Resorces\icons8_Disconnected_32px.png" />
