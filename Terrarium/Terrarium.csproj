@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AXSerialCom.cs" />
     <Compile Include="ButtonTextbox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +95,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerialCom.cs" />
     <Compile Include="TextHelper.cs" />
     <EmbeddedResource Include="ButtonTextbox.resx">
       <DependentUpon>ButtonTextbox.cs</DependentUpon>
@@ -146,7 +146,6 @@
     <Content Include="icons8_Integrated_Circuit.ico" />
     <None Include="Resorces\icons8_Settings_32px.png" />
     <None Include="Resorces\icons8_Refresh_22px.png" />
-    <None Include="Resorces\icons8_Refresh_32px.png" />
     <None Include="Resorces\icons8_Trash_32px.png" />
     <None Include="Resorces\icons8_Sent_22px.png" />
     <None Include="Resorces\icons8_Disconnected_32px.png" />

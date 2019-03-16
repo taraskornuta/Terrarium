@@ -23,6 +23,7 @@ namespace Terrarium
         private bool panelSettingsHiden;
 
         private bool panelMacroHiden;
+        private SerialCom serClient = new SerialCom("COM1");
         private MacroPanelWizard macroWizard = new MacroPanelWizard();
         private ConfigManager macroWizardConf = new ConfigManager();
         private SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -36,12 +37,11 @@ namespace Terrarium
         private Parity com_parity;
         private StopBits com_stopBits;
         private Handshake com_handshake;
-        private SerialClient serClient;
+
+        
         private int RxDataCounter = 0;
         private int TxDataCounter = 0;
         private bool IsOpenBtnClicked = false;
-
-        public SerialClient SerClient { get => serClient; set => serClient = value; }
 
         public MainForm()
         {
@@ -178,7 +178,7 @@ namespace Terrarium
                     if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
                     if (rb_baudRate_custome.Checked) com_baudRate = Convert.ToInt32(tb_baudRateCustome.Text);
 
-                    SerClient?.SetBaudrate(com_baudRate);
+                    serClient.PortBaudRate = com_baudRate;
                 }
             }
         }
@@ -195,7 +195,7 @@ namespace Terrarium
                     if (rb_dataBits_7.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_7.Text);
                     if (rb_dataBits_8.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_8.Text);
 
-                    SerClient?.SetDataBits(com_dataBits);
+                    serClient.PortDataBits = com_dataBits;
                 }
             }
         }
@@ -213,7 +213,7 @@ namespace Terrarium
                     if (rb_parity_mark.Checked) com_parity = Parity.Mark;
                     if (rb_parity_space.Checked) com_parity = Parity.Space;
 
-                    SerClient?.SetParity(com_parity);
+                    serClient.PortParity = com_parity;
                 }
             }
         }
@@ -229,7 +229,7 @@ namespace Terrarium
                     if (rb_stopBits_1_5.Checked) com_stopBits = StopBits.OnePointFive;
                     if (rb_stopBits_2.Checked) com_stopBits = StopBits.Two;
 
-                    SerClient?.SetStopBits(com_stopBits);
+                    serClient.PortStopBits = com_stopBits;
                 }
             }
         }
@@ -245,14 +245,14 @@ namespace Terrarium
                     if (rb_handshake_rts.Checked) com_handshake = Handshake.RequestToSend;
                     if (rb_handshake_xon.Checked) com_handshake = Handshake.XOnXOff;
                     if (rb_handshake_rts_xon.Checked) com_handshake = Handshake.RequestToSendXOnXOff;
-                    if (SerClient != null) SerClient.SetHandshake(com_handshake);
+                    if (serClient != null) serClient.PortHandshake = com_handshake;
                 }
             }
         }
 
         protected void SerialPortError(object sender, EventArgs e)
         {
-            SerClient.Close();
+            serClient.Close();
 
             SetTxtToStatusLable("PORT ERROR", Color.Red);
             this.Invoke(new Action(() =>
@@ -265,8 +265,8 @@ namespace Terrarium
             }));
 
 
-            //cmb_SerialPortList.Enabled = true;
-            //btn_SerialConnect.Enabled = true;
+            cmb_SerialPortList.Enabled = true;
+            btn_SerialConnect.Enabled = true;
             IsOpenBtnClicked = false;
         }
 
@@ -280,8 +280,7 @@ namespace Terrarium
 
             if (com_portName == null) com_portName = "COM1";
 
-            SerClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
-            SerClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
+            serClient = new SerialCom(com_portName);
 
             if (ps.macroPanelConfFileLocation != null && File.Exists(ps.macroPanelConfFileLocation) == true)
             {
@@ -294,12 +293,12 @@ namespace Terrarium
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             SettingsSave();
-            SerClient.Close();
+            serClient.Close();
 
-            SerClient.OnReceiving -= new EventHandler<DataStreamEventArgs>(ReceiveHandler);
-            SerClient.serialError -= new EventHandler(SerialPortError);
+            //serClient.OnSerialReceiving -= ReceiveHandler;
+            //serClient.OnSerialError -= SerialPortError;
 
-            SerClient.Dispose();
+            serClient.Dispose();
         }
 
         private void ReceiveHandler(object sender, DataStreamEventArgs e)
@@ -308,6 +307,7 @@ namespace Terrarium
         }
 
         delegate void SetTextCallback(byte[] data);
+
 
         private void SetText(byte[] data)
         {
@@ -323,7 +323,6 @@ namespace Terrarium
                     if (cb_Sort.Checked == true)
                     {
                         nrtb_Rx.RichTextBox.Text += "\n";
-
                         nrtb_Rx.AppendHex(data);
                     }
                     else
@@ -335,7 +334,11 @@ namespace Terrarium
                 {
                     if (cb_Sort.Checked == true)
                     {
-                        nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
+                        string[] str = TextHelper.StringSplit(Encoding.ASCII.GetString(data), (int)nmn_ByteSort.Value);
+                        foreach (string tmp in str)
+                        {
+                            nrtb_Rx.AppendText(tmp + "\n");
+                        }                       
                     }
                     else
                     {
@@ -477,6 +480,7 @@ namespace Terrarium
             cb_Sort.Checked = ps.cb_Sort;
             nmn_ByteSort.Value = ps.nmn_ByteSort;
             cb_TxMacroSend.Checked = ps.cb_TxMacroSend;
+            cb_Tx_Hex.Checked = ps.cb_Tx_Hex;
         }
 
         private void SettingsSave()
@@ -495,6 +499,7 @@ namespace Terrarium
             ps.cb_Sort = cb_Sort.Checked;
             ps.nmn_ByteSort = nmn_ByteSort.Value;
             ps.cb_TxMacroSend = cb_TxMacroSend.Checked;
+            ps.cb_Tx_Hex = cb_Tx_Hex.Checked;
             ps.Save();
         }
 
@@ -566,18 +571,17 @@ namespace Terrarium
 
             if (IsOpenBtnClicked == false)
             {
-                SerClient.SetPortName(com_portName);
-                SerClient.SetBaudrate(com_baudRate);
-                SerClient.SetParity(com_parity);
-                SerClient.SetDataBits(com_dataBits);
-                SerClient.SetStopBits(com_stopBits);
-                SerClient.SetHandshake(com_handshake);
+                serClient.PortName = com_portName;
+                serClient.PortBaudRate = com_baudRate;
+                serClient.PortParity = com_parity;
+                serClient.PortDataBits = com_dataBits;
+                serClient.PortStopBits = com_stopBits;
+                serClient.PortHandshake = com_handshake;
+                
+                serClient.OnSerialReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
+                serClient.OnSerialError += new EventHandler(SerialPortError);
 
-                SerClient = new SerialClient(com_portName, com_baudRate, com_dataBits, com_parity, com_stopBits, com_handshake);
-                SerClient.OnReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
-                SerClient.serialError += new EventHandler(SerialPortError);
-
-                if (SerClient.Open() == true)
+                if (serClient.Open() == true)
                 {
                     SetTxtToStatusLable("SERIAL OPENED", Color.Aqua);
                     btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Connected_32px;
@@ -588,7 +592,9 @@ namespace Terrarium
                 }
                 else
                 {
-                    SerClient.Close();
+                    serClient.Close();
+                    serClient.OnSerialReceiving -= ReceiveHandler;
+                    serClient.OnSerialError -= SerialPortError;
 
                     SetTxtToStatusLable("SERIAL ERROR", Color.Red);
                     cmb_SerialPortList.Enabled = true;
@@ -599,7 +605,9 @@ namespace Terrarium
             }
             else
             {
-                SerClient.Close();
+                serClient.Close();
+                serClient.OnSerialReceiving -= ReceiveHandler;
+                serClient.OnSerialError -= SerialPortError;
                 SetTxtToStatusLable("SERIAL CLOSED", Color.Aqua);
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 this.Text = "Terrarium ";
@@ -648,7 +656,7 @@ namespace Terrarium
 
         private void btn_SerialPortRefresh_Click(object sender, EventArgs e)
         {
-            if (SerClient.IsOpen() == false)
+            if (serClient.IsOpen() == false)
             {
                 int portCount = SerialPortScan();
                 if (portCount == 0) SetTxtToStatusLable("NO PORTS FOUND", Color.WhiteSmoke);
@@ -672,10 +680,12 @@ namespace Terrarium
             }
         }
 
+
         private void cmb_SerialPortList_SelectedValueChanged(object sender, EventArgs e)
         {
             com_portName = (string)cmb_SerialPortList.SelectedItem;
         }
+
 
         private void rtb_Tx_KeyPress(object sender, KeyPressEventArgs e)  //used for greping chars from rtb_Tx
         {
@@ -683,9 +693,9 @@ namespace Terrarium
 
             byte[] buff = new byte[1];
             buff[0] = Convert.ToByte(c);
-            if (SerClient != null && SerClient.IsOpen() == true)
+            if (serClient != null && serClient.IsOpen() == true)
             {
-                SerClient.Transmit(buff);
+                serClient.Transmit(buff);
                 TxDataCounter += buff.Length;
                 lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }
@@ -696,7 +706,7 @@ namespace Terrarium
 
         public void SerialSendHelper(string tbData, bool cbHex)
         {
-            if (SerClient.IsOpen() == true)
+            if (serClient.IsOpen() == true)
             {
                 byte[] buff;
                 if (cbHex == true)
@@ -712,7 +722,8 @@ namespace Terrarium
                 {
                     buff = Encoding.UTF8.GetBytes(tbData);
                 }
-                SerClient.Transmit(buff);
+                serClient.Transmit(buff);
+
                 TxDataCounter += buff.Length;
                 lbl_TxCounter.Text = "Tx: " + TxDataCounter.ToString();
             }

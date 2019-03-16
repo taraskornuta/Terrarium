@@ -314,6 +314,7 @@
             this.cb_Loging.AutoSize = true;
             this.cb_Loging.Checked = true;
             this.cb_Loging.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_Loging.Enabled = false;
             this.cb_Loging.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_Loging.Location = new System.Drawing.Point(7, 72);
             this.cb_Loging.Name = "cb_Loging";

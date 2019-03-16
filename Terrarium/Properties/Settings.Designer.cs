@@ -237,5 +237,17 @@ namespace Terrarium.Properties {
                 this["cb_TxMacroSend"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool cb_Tx_Hex {
+            get {
+                return ((bool)(this["cb_Tx_Hex"]));
+            }
+            set {
+                this["cb_Tx_Hex"] = value;
+            }
+        }
     }
 }
