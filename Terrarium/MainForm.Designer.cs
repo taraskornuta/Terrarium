@@ -97,10 +97,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnl_PortName = new System.Windows.Forms.Panel();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
+            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btn_Transmiting = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pnl_Transmiting = new System.Windows.Forms.Panel();
             this.cb_Tx_Hex = new System.Windows.Forms.CheckBox();
             this.cb_TxMacroSend = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -110,13 +112,11 @@
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.nrtb_Rx = new Terrarium.NumberedRTB();
+            this.macroPannel = new Terrarium.MacroPanel();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnl_Transmiting = new System.Windows.Forms.Panel();
-            this.nrtb_Rx = new Terrarium.NumberedRTB();
-            this.macroPannel = new Terrarium.MacroPanel();
-            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -137,9 +137,9 @@
             this.pnl_PortName.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.pnl_Transmiting.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.pnl_Transmiting.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnl_ToolBar
@@ -400,7 +400,6 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Terrarium.Properties.Resources.icons8_Download_22px;
-            this.pictureBox3.InitialImage = global::Terrarium.Properties.Resources.icons8_RS_232_Male_16px;
             this.pictureBox3.Location = new System.Drawing.Point(0, 0);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox3.Name = "pictureBox3";
@@ -925,7 +924,6 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Terrarium.Properties.Resources.icons8_Wrench_22px;
-            this.pictureBox2.InitialImage = global::Terrarium.Properties.Resources.icons8_RS_232_Male_16px;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
@@ -958,7 +956,6 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Terrarium.Properties.Resources.icons8_RS_232_Male_22px;
-            this.pictureBox1.InitialImage = global::Terrarium.Properties.Resources.icons8_RS_232_Male_16px;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
@@ -990,6 +987,22 @@
             this.btn_SerialPortRefresh.TabIndex = 6;
             this.btn_SerialPortRefresh.UseVisualStyleBackColor = false;
             this.btn_SerialPortRefresh.Click += new System.EventHandler(this.btn_SerialPortRefresh_Click);
+            // 
+            // cmb_SerialPortList
+            // 
+            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cmb_SerialPortList.FormattingEnabled = true;
+            this.cmb_SerialPortList.Location = new System.Drawing.Point(3, 6);
+            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
+            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
+            this.cmb_SerialPortList.TabIndex = 8;
+            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
             // 
             // panel8
             // 
@@ -1029,13 +1042,23 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Terrarium.Properties.Resources.icons8_Upload_22px;
-            this.pictureBox4.InitialImage = global::Terrarium.Properties.Resources.icons8_RS_232_Male_16px;
             this.pictureBox4.Location = new System.Drawing.Point(0, 0);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(20, 20);
             this.pictureBox4.TabIndex = 2;
             this.pictureBox4.TabStop = false;
+            // 
+            // pnl_Transmiting
+            // 
+            this.pnl_Transmiting.Controls.Add(this.cb_Tx_Hex);
+            this.pnl_Transmiting.Controls.Add(this.cb_TxMacroSend);
+            this.pnl_Transmiting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_Transmiting.Location = new System.Drawing.Point(0, 528);
+            this.pnl_Transmiting.Margin = new System.Windows.Forms.Padding(0);
+            this.pnl_Transmiting.Name = "pnl_Transmiting";
+            this.pnl_Transmiting.Size = new System.Drawing.Size(225, 155);
+            this.pnl_Transmiting.TabIndex = 7;
             // 
             // cb_Tx_Hex
             // 
@@ -1152,32 +1175,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 659);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // propertysToolStripMenuItem
-            // 
-            this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
-            this.propertysToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // copyToolStripMenuItem1
-            // 
-            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
-            // 
-            // pnl_Transmiting
-            // 
-            this.pnl_Transmiting.Controls.Add(this.cb_Tx_Hex);
-            this.pnl_Transmiting.Controls.Add(this.cb_TxMacroSend);
-            this.pnl_Transmiting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_Transmiting.Location = new System.Drawing.Point(0, 528);
-            this.pnl_Transmiting.Margin = new System.Windows.Forms.Padding(0);
-            this.pnl_Transmiting.Name = "pnl_Transmiting";
-            this.pnl_Transmiting.Size = new System.Drawing.Size(225, 136);
-            this.pnl_Transmiting.TabIndex = 7;
-            // 
             // nrtb_Rx
             // 
             this.nrtb_Rx.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
@@ -1225,21 +1222,20 @@
             this.macroPannel.TabIndex = 4;
             this.macroPannel.VisibleMacroButtons = false;
             // 
-            // cmb_SerialPortList
+            // copyToolStripMenuItem
             // 
-            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cmb_SerialPortList.FormattingEnabled = true;
-            this.cmb_SerialPortList.Location = new System.Drawing.Point(3, 6);
-            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
-            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
-            this.cmb_SerialPortList.TabIndex = 8;
-            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // propertysToolStripMenuItem
+            // 
+            this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
+            this.propertysToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // copyToolStripMenuItem1
+            // 
+            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
             // 
             // MainForm
             // 
@@ -1290,11 +1286,11 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.pnl_Transmiting.ResumeLayout(false);
+            this.pnl_Transmiting.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.pnl_Transmiting.ResumeLayout(false);
-            this.pnl_Transmiting.PerformLayout();
             this.ResumeLayout(false);
 
         }
