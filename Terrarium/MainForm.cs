@@ -23,9 +23,6 @@ namespace Terrarium
         private int panelPortSettingsHeight;
 
 
-
-
-
         private SerialCom serClient = new SerialCom("COM1");
         private MacroPanelWizard macroWizard = new MacroPanelWizard();
         private ConfigManager macroWizardConf = new ConfigManager();
@@ -508,9 +505,9 @@ namespace Terrarium
             ps.SerialPortParity = Convert.ToString(com_parity);
             ps.isPanelSettingsHiden = isPanelSettingsHiden;
             ps.isPanelMacroHiden = isPanelMacroHiden;
-            ps.isBtnPannelPortSettingsHiden = isBtnPannelPortSettingsHiden;
-            ps.isBtnPanelReceivingHiden = isBtnPanelReceivingHiden;
-            ps.isBtnPanelTransmitingHiden = isBtnPanelTransmitingHiden;
+            ps.isBtnPannelPortSettingsHiden = dropDownPanelSettings.PanelOpened;
+            ps.isBtnPanelReceivingHiden = dropDownPanelReceiving.PanelOpened;
+            ps.isBtnPanelTransmitingHiden = dropDownPanelTransmiting.PanelOpened;
             ps.rtb_Rx_AutoScroll = cb_RxAutoscroll.Checked;
             ps.cb_Rx_Hex = cb_Rx_Hex.Checked;
             ps.cb_Sort = cb_Sort.Checked;
@@ -531,9 +528,9 @@ namespace Terrarium
             com_parity = (Parity)Enum.Parse(typeof(Parity), ps.SerialPortParity);
             isPanelSettingsHiden = ps.isPanelSettingsHiden;
             isPanelMacroHiden = ps.isPanelMacroHiden;
-            isBtnPannelPortSettingsHiden = ps.isBtnPannelPortSettingsHiden;
-            isBtnPanelReceivingHiden = ps.isBtnPanelReceivingHiden;
-            isBtnPanelTransmitingHiden = ps.isBtnPanelTransmitingHiden;
+            dropDownPanelSettings.PanelOpened = ps.isBtnPannelPortSettingsHiden;
+            dropDownPanelReceiving.PanelOpened = ps.isBtnPanelReceivingHiden;
+            dropDownPanelTransmiting.PanelOpened = ps.isBtnPanelTransmitingHiden;
         }
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
@@ -1005,48 +1002,47 @@ namespace Terrarium
         private void btn_m20_TextChange(object sender, EventArgs e) => macroPannel.btn_m20.Text = macroWizard.MP20_ButtonText;
 
 
+
         private void btn_PanelPortSettings_Click(object sender, EventArgs e)
         {
-            if (dropDownPanelSettings.PanelOpened == true)
+            if (dropDownPanelSettings.PanelOpened == false)
             {
-                mainLayoutPanelSettings.RowStyles[3].Height = 0F;
-                pnl_PortSettings.Size = new Size(225, 0);
+                mainLayoutPanelSettings.RowStyles[3].Height = 0F;               
             }
             else
             {
                 mainLayoutPanelSettings.RowStyles[3].Height = 317F;
-                pnl_PortSettings.Size = new Size(225, 317);              
             }
+            pnl_PortSettings.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[3].Height);
             dropDownPanelSettings.PanelOpened ^= true;
+         
         }
 
         private void btn_PanelReceiving_Click(object sender, EventArgs e)
         {
-            if (dropDownPanelReceiving.PanelOpened == true)
+            if (dropDownPanelReceiving.PanelOpened == false)
             {
-                mainLayoutPanelSettings.RowStyles[5].Height = 0F;
-                pnl_Receiving.Size = new Size(225, 0);
+                mainLayoutPanelSettings.RowStyles[5].Height = 0F;            
             }
             else
             {
                 mainLayoutPanelSettings.RowStyles[5].Height = 65F;
-                pnl_Receiving.Size = new Size(225, 65);
             }
+            pnl_Receiving.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[5].Height);
             dropDownPanelReceiving.PanelOpened ^= true;
         }
 
         private void btn_PanelTransmiting_Click(object sender, EventArgs e)
         {
-            if (dropDownPanelTransmiting.PanelOpened == true)
+            if (dropDownPanelTransmiting.PanelOpened == false)
             {
                 mainLayoutPanelSettings.RowStyles[7].Height = 0F;
-                pnl_Transmiting.Size = new Size(225, 0);
             }
             else
             {
-                mainLayoutPanelSettings.RowStyles[7].Height = 61F;
-                pnl_Transmiting.Size = new Size(225, 61);
+                mainLayoutPanelSettings.RowStyles[7].Height = 61F;               
             }
+            pnl_Transmiting.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[7].Height);
             dropDownPanelTransmiting.PanelOpened ^= true;
         }
     }
