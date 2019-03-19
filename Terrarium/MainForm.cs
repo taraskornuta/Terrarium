@@ -818,7 +818,11 @@ namespace Terrarium
         private void btn_SaveConfig_Click(object sender, EventArgs e)
         {
             saveFileDialog.Filter = "Terrarium macro(*.tmc)|*.tmc|All files(*.*)|*.*";
-            saveFileDialog.ShowDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+                
             string[] text = new string[20];
             text[0] = macroWizard.MP1_Text;
             text[1] = macroWizard.MP2_Text;
