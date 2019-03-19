@@ -57,6 +57,12 @@
       <DependentUpon>ButtonTextbox.cs</DependentUpon>
     </Compile>
     <Compile Include="ConfigManager.cs" />
+    <Compile Include="DropDownPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DropDownPanel.Designer.cs">
+      <DependentUpon>DropDownPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FlattenCombo.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     <Compile Include="TextHelper.cs" />
     <EmbeddedResource Include="ButtonTextbox.resx">
       <DependentUpon>ButtonTextbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DropDownPanel.resx">
+      <DependentUpon>DropDownPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MacroField.resx">
       <DependentUpon>MacroField.cs</DependentUpon>
@@ -144,6 +153,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_Integrated_Circuit.ico" />
+    <None Include="Resorces\icons8_Upload_22px.png" />
+    <None Include="Resorces\icons8_Download_22px.png" />
+    <None Include="Resorces\icons8_Wrench_22px.png" />
+    <None Include="Resorces\icons8_RS-232_Male_22px.png" />
+    <None Include="Resorces\icons8_Sort_Down_16px.png" />
+    <None Include="Resorces\icons8_Sort_Left_16px.png" />
     <None Include="Resorces\icons8_Settings_32px.png" />
     <None Include="Resorces\icons8_Refresh_22px.png" />
     <None Include="Resorces\icons8_Trash_32px.png" />

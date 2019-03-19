@@ -20,9 +20,8 @@ namespace Terrarium
     public partial class MainForm : Form
     {
         private int panelSettingsWidth;
-        private bool panelSettingsHiden;
 
-        private bool panelMacroHiden;
+
         private SerialCom serClient = new SerialCom("COM1");
         private MacroPanelWizard macroWizard = new MacroPanelWizard();
         private ConfigManager macroWizardConf = new ConfigManager();
@@ -37,11 +36,15 @@ namespace Terrarium
         private Parity com_parity;
         private StopBits com_stopBits;
         private Handshake com_handshake;
-
-        
+       
         private int RxDataCounter = 0;
         private int TxDataCounter = 0;
-        private bool IsOpenBtnClicked = false;
+
+        private bool isPanelMacroHiden;
+        private bool isPanelSettingsHiden;
+
+
+        private bool isBtnOpenPress = false;
 
         public MainForm()
         {
@@ -49,6 +52,9 @@ namespace Terrarium
 
             panelSettingsWidth = pnl_Settings.Width;
             SettingsGet();
+            btn_PanelPortSettings_Click(null, null);  //perform click to apply settings
+            btn_PanelReceiving_Click(null, null);
+            btn_PanelTransmiting_Click(null, null);
 
             rb_baudRate_4800.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
             rb_baudRate_9600.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
@@ -153,7 +159,9 @@ namespace Terrarium
 
             macroWizard.BtnSaveConfigClick += new EventHandler(btn_SaveConfig_Click);
             macroWizard.BtnLoadConfigClick += new EventHandler(btn_LoadConfig_Click);
-
+            dropDownPanelSettings.ButtonEvent += new EventHandler(btn_PanelPortSettings_Click);
+            dropDownPanelReceiving.ButtonEvent += new EventHandler(btn_PanelReceiving_Click);
+            dropDownPanelTransmiting.ButtonEvent += new EventHandler(btn_PanelTransmiting_Click);
         }
 
 
@@ -260,14 +268,14 @@ namespace Terrarium
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 cmb_SerialPortList.Enabled = true;
                 btn_SerialConnect.Enabled = true;
-                IsOpenBtnClicked = false;
+                isBtnOpenPress = false;
 
             }));
 
 
             cmb_SerialPortList.Enabled = true;
             btn_SerialConnect.Enabled = true;
-            IsOpenBtnClicked = false;
+            isBtnOpenPress = false;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -473,7 +481,7 @@ namespace Terrarium
                     break;
             }
 
-            if (ps.sidePannelHide == true) pnl_Settings.Width = 0;
+            if (ps.isPanelSettingsHiden == true) pnl_Settings.Width = 0;
 
             cb_RxAutoscroll.Checked = ps.rtb_Rx_AutoScroll;
             cb_Rx_Hex.Checked = ps.cb_Rx_Hex;
@@ -492,8 +500,11 @@ namespace Terrarium
             ps.SerialStopBits = Convert.ToString(com_stopBits);
             ps.SerialHandshake = Convert.ToString(com_handshake);
             ps.SerialPortParity = Convert.ToString(com_parity);
-            ps.sidePannelHide = panelSettingsHiden;
-            ps.panelMacroStatus = panelMacroHiden;
+            ps.isPanelSettingsHiden = isPanelSettingsHiden;
+            ps.isPanelMacroHiden = isPanelMacroHiden;
+            ps.isBtnPannelPortSettingsHiden = dropDownPanelSettings.PanelOpened;
+            ps.isBtnPanelReceivingHiden = dropDownPanelReceiving.PanelOpened;
+            ps.isBtnPanelTransmitingHiden = dropDownPanelTransmiting.PanelOpened;
             ps.rtb_Rx_AutoScroll = cb_RxAutoscroll.Checked;
             ps.cb_Rx_Hex = cb_Rx_Hex.Checked;
             ps.cb_Sort = cb_Sort.Checked;
@@ -512,8 +523,11 @@ namespace Terrarium
             com_stopBits = (StopBits)Enum.Parse(typeof(StopBits), ps.SerialStopBits);
             com_handshake = (Handshake)Enum.Parse(typeof(Handshake), ps.SerialHandshake);
             com_parity = (Parity)Enum.Parse(typeof(Parity), ps.SerialPortParity);
-            panelSettingsHiden = ps.sidePannelHide;
-            panelMacroHiden = ps.panelMacroStatus;
+            isPanelSettingsHiden = ps.isPanelSettingsHiden;
+            isPanelMacroHiden = ps.isPanelMacroHiden;
+            dropDownPanelSettings.PanelOpened = ps.isBtnPannelPortSettingsHiden;
+            dropDownPanelReceiving.PanelOpened = ps.isBtnPanelReceivingHiden;
+            dropDownPanelTransmiting.PanelOpened = ps.isBtnPanelTransmitingHiden;
         }
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
@@ -537,14 +551,14 @@ namespace Terrarium
 
         private void tmr_MenuSlide_Tick(object sender, EventArgs e)
         {
-            if (panelSettingsHiden == true)
+            if (isPanelSettingsHiden == true)
             {
                 pnl_Settings.Width += 50;
                 if (pnl_Settings.Width >= panelSettingsWidth)
                 {
                     pnl_Settings.Width = panelSettingsWidth;
                     tmr_MenuSlide.Stop();
-                    panelSettingsHiden = false;
+                    isPanelSettingsHiden = false;
                     this.Refresh();
                 }
             }
@@ -555,7 +569,7 @@ namespace Terrarium
                 {
                     pnl_Settings.Width = 0;
                     tmr_MenuSlide.Stop();
-                    panelSettingsHiden = true;
+                    isPanelSettingsHiden = true;
                     this.Refresh();
                 }
             }
@@ -569,7 +583,7 @@ namespace Terrarium
                 return;
             }
 
-            if (IsOpenBtnClicked == false)
+            if (isBtnOpenPress == false)
             {
                 serClient.PortName = com_portName;
                 serClient.PortBaudRate = com_baudRate;
@@ -599,7 +613,7 @@ namespace Terrarium
                     SetTxtToStatusLable("SERIAL ERROR", Color.Red);
                     cmb_SerialPortList.Enabled = true;
                     btn_SerialConnect.Enabled = true;
-                    IsOpenBtnClicked = false;
+                    isBtnOpenPress = false;
                     return;
                 }
             }
@@ -614,7 +628,7 @@ namespace Terrarium
                 cmb_SerialPortList.Enabled = true;
                 btn_SerialConnect.Enabled = true;
             }
-            IsOpenBtnClicked ^= true;
+            isBtnOpenPress ^= true;
         }
 
         private void btn_CleanTxField_Click(object sender, EventArgs e)
@@ -952,6 +966,7 @@ namespace Terrarium
 
         private void btn_LoadConfig_Click(object sender, EventArgs e)
         {
+            openFileDialog.Filter = "Terrarium macro(*.tmc)|*.tmc|All files(*.*)|*.*";
             if (openFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
 
@@ -959,7 +974,6 @@ namespace Terrarium
             ps.Save();
             macroWizardConf.LoadConfig(ps.macroPanelConfFileLocation);
             macroWizardFillConfigs();
-
         }
 
 
@@ -984,7 +998,48 @@ namespace Terrarium
         private void btn_m19_TextChange(object sender, EventArgs e) => macroPannel.btn_m19.Text = macroWizard.MP19_ButtonText;
         private void btn_m20_TextChange(object sender, EventArgs e) => macroPannel.btn_m20.Text = macroWizard.MP20_ButtonText;
 
+
+
+        private void btn_PanelPortSettings_Click(object sender, EventArgs e)
+        {
+            if (dropDownPanelSettings.PanelOpened == false)
+            {
+                mainLayoutPanelSettings.RowStyles[3].Height = 0F;               
+            }
+            else
+            {
+                mainLayoutPanelSettings.RowStyles[3].Height = 317F;
+            }
+            pnl_PortSettings.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[3].Height);
         
+        }
+
+        private void btn_PanelReceiving_Click(object sender, EventArgs e)
+        {
+            if (dropDownPanelReceiving.PanelOpened == false)
+            {
+                mainLayoutPanelSettings.RowStyles[5].Height = 0F;            
+            }
+            else
+            {
+                mainLayoutPanelSettings.RowStyles[5].Height = 65F;
+            }
+            pnl_Receiving.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[5].Height);
+
+        }
+
+        private void btn_PanelTransmiting_Click(object sender, EventArgs e)
+        {
+            if (dropDownPanelTransmiting.PanelOpened == false)
+            {
+                mainLayoutPanelSettings.RowStyles[7].Height = 0F;
+            }
+            else
+            {
+                mainLayoutPanelSettings.RowStyles[7].Height = 61F;               
+            }
+            pnl_Transmiting.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[7].Height);
+        }
     }
 }
 

@@ -110,15 +110,61 @@ namespace Terrarium.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool sidePannelHide {
+        public bool isPanelSettingsHiden
+        {
             get {
-                return ((bool)(this["sidePannelHide"]));
+                return ((bool)(this["isPanelSettingsHiden"]));
             }
             set {
-                this["sidePannelHide"] = value;
+                this["isPanelSettingsHiden"] = value;
             }
         }
-        
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isBtnPannelPortSettingsHiden
+        {
+            get
+            {
+                return ((bool)(this["isBtnPannelPortSettingsHiden"]));
+            }
+            set
+            {
+                this["isBtnPannelPortSettingsHiden"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isBtnPanelReceivingHiden
+        {
+            get
+            {
+                return ((bool)(this["isBtnPanelReceivingHiden"]));
+            }
+            set
+            {
+                this["isBtnPanelReceivingHiden"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isBtnPanelTransmitingHiden
+        {
+            get
+            {
+                return ((bool)(this["isBtnPanelTransmitingHiden"]));
+            }
+            set
+            {
+                this["isBtnPanelTransmitingHiden"] = value;
+            }
+        }
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -205,12 +251,13 @@ namespace Terrarium.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool panelMacroStatus {
+        public bool isPanelMacroHiden
+        {
             get {
-                return ((bool)(this["panelMacroStatus"]));
+                return ((bool)(this["isPanelMacroHiden"]));
             }
             set {
-                this["panelMacroStatus"] = value;
+                this["isPanelMacroHiden"] = value;
             }
         }
         
