@@ -323,13 +323,13 @@ namespace Terrarium
             SettingsSave();
             serClient.Close();
 
-            //serClient.OnSerialReceiving -= ReceiveHandler;
+            //serClient.OnSerialReceiving -= SerialReceiveHandler;
             //serClient.OnSerialError -= SerialPortError;
 
             serClient.Dispose();
         }
 
-        private void ReceiveHandler(object sender, DataStreamEventArgs e)
+        private void SerialReceiveHandler(object sender, DataStreamEventArgs e)
         {
             SetText(e.Response);
         }
@@ -615,7 +615,7 @@ namespace Terrarium
                 serClient.PortStopBits = com_stopBits;
                 serClient.PortHandshake = com_handshake;
                 
-                serClient.OnSerialReceiving += new EventHandler<DataStreamEventArgs>(ReceiveHandler);
+                serClient.OnSerialReceiving += new EventHandler<DataStreamEventArgs>(SerialReceiveHandler);
                 serClient.OnSerialError += new EventHandler(SerialPortError);
 
                 if (serClient.Open() == true)
@@ -630,7 +630,7 @@ namespace Terrarium
                 else
                 {
                     serClient.Close();
-                    serClient.OnSerialReceiving -= ReceiveHandler;
+                    serClient.OnSerialReceiving -= SerialReceiveHandler;
                     serClient.OnSerialError -= SerialPortError;
 
                     SetTxtToStatusLable("SERIAL ERROR", Color.Red);
@@ -643,7 +643,7 @@ namespace Terrarium
             else
             {
                 serClient.Close();
-                serClient.OnSerialReceiving -= ReceiveHandler;
+                serClient.OnSerialReceiving -= SerialReceiveHandler;
                 serClient.OnSerialError -= SerialPortError;
                 SetTxtToStatusLable("SERIAL CLOSED", Color.Aqua);
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
