@@ -32,19 +32,29 @@ namespace Terrarium
             set
             {
                 panelOpened = value;
-                if (panelOpened == false)
-                {
-
-                    btn_Open.Image = Properties.Resources.icons8_Sort_Left_16px;
-                }
-                else
-                {
-                    btn_Open.Image = Properties.Resources.icons8_Sort_Down_16px;
-                }
+                switchIcon(panelOpened);
             }
         }
 
-        private void btn_Open_Click(object sender, EventArgs e) => this.ButtonEvent?.Invoke(this, e);
+
+        private void switchIcon(bool state)
+        {
+            if (state == false)
+            {
+                btn_Open.Image = Properties.Resources.icons8_Sort_Left_16px;
+            }
+            else
+            {
+                btn_Open.Image = Properties.Resources.icons8_Sort_Down_16px;
+            }     
+        }
+
+        private void btn_Open_Click(object sender, EventArgs e)
+        {
+            panelOpened ^= true;
+            switchIcon(panelOpened);        
+            this.ButtonEvent?.Invoke(this, e);            
+        }
 
 
     }

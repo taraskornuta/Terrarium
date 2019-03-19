@@ -20,7 +20,6 @@ namespace Terrarium
     public partial class MainForm : Form
     {
         private int panelSettingsWidth;
-        private int panelPortSettingsHeight;
 
 
         private SerialCom serClient = new SerialCom("COM1");
@@ -43,9 +42,7 @@ namespace Terrarium
 
         private bool isPanelMacroHiden;
         private bool isPanelSettingsHiden;
-        private bool isBtnPannelPortSettingsHiden;
-        private bool isBtnPanelReceivingHiden;
-        private bool isBtnPanelTransmitingHiden;
+
 
         private bool isBtnOpenPress = false;
 
@@ -55,9 +52,9 @@ namespace Terrarium
 
             panelSettingsWidth = pnl_Settings.Width;
             SettingsGet();
-            //btn_PanelPortSettings_Click(null, null);  //perform click to apply settings
-            //btn_PanelReceiving_Click(null, null);
-            //btn_PanelTransmiting_Click(null, null);
+            btn_PanelPortSettings_Click(null, null);  //perform click to apply settings
+            btn_PanelReceiving_Click(null, null);
+            btn_PanelTransmiting_Click(null, null);
 
             rb_baudRate_4800.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
             rb_baudRate_9600.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
@@ -1014,8 +1011,7 @@ namespace Terrarium
                 mainLayoutPanelSettings.RowStyles[3].Height = 317F;
             }
             pnl_PortSettings.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[3].Height);
-            dropDownPanelSettings.PanelOpened ^= true;
-         
+        
         }
 
         private void btn_PanelReceiving_Click(object sender, EventArgs e)
@@ -1029,7 +1025,7 @@ namespace Terrarium
                 mainLayoutPanelSettings.RowStyles[5].Height = 65F;
             }
             pnl_Receiving.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[5].Height);
-            dropDownPanelReceiving.PanelOpened ^= true;
+
         }
 
         private void btn_PanelTransmiting_Click(object sender, EventArgs e)
@@ -1043,7 +1039,6 @@ namespace Terrarium
                 mainLayoutPanelSettings.RowStyles[7].Height = 61F;               
             }
             pnl_Transmiting.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[7].Height);
-            dropDownPanelTransmiting.PanelOpened ^= true;
         }
     }
 }
