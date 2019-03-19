@@ -184,7 +184,27 @@ namespace Terrarium
                     if (rb_baudRate_128000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_128000.Text);
                     if (rb_baudRate_256000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_256000.Text);
                     if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
-                    if (rb_baudRate_custome.Checked) com_baudRate = Convert.ToInt32(tb_baudRateCustome.Text);
+
+                    if (rb_baudRate_custome.Checked)
+                    {
+                        tb_baudRateCustome.Enabled = true;
+                        if (String.IsNullOrEmpty(tb_baudRateCustome.Text) ||
+                            String.IsNullOrWhiteSpace(tb_baudRateCustome.Text) ||
+                            "0" == tb_baudRateCustome.Text)
+                        {
+                            tb_baudRateCustome.Text = "1";
+                            MessageBox.Show("Baudrate should have positive value", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        else
+                        {
+                            com_baudRate = Convert.ToInt32(tb_baudRateCustome.Text);
+                        }
+                    }
+                    else                                    // if custome Baudrate radio button not checked, tb_baudRateCustome disabled
+                    {
+                        tb_baudRateCustome.Enabled = false;
+                    }
 
                     serClient.PortBaudRate = com_baudRate;
                 }
@@ -532,11 +552,14 @@ namespace Terrarium
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
         {
-            if (TextHelper.IsNumberEntered(tb_baudRateCustome.Text))
+            if (TextHelper.IsNumberEntered(tb_baudRateCustome.Text) || "0" == tb_baudRateCustome.Text)
             {
-                MessageBox.Show("Please enter only numbers.");
+                MessageBox.Show("Please enter only digits.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tb_baudRateCustome.Text = tb_baudRateCustome.Text.Remove(tb_baudRateCustome.Text.Length - 1);
+                tb_baudRateCustome.Text = "1";
             }
+            
+
             else
             {
                 try
@@ -544,7 +567,7 @@ namespace Terrarium
                     com_baudRateCustome = Convert.ToInt32(tb_baudRateCustome.Text);
                 }
                 catch (Exception) { }
-             }   
+            }   
         }
 
         private void btn_Settings_Click(object sender, EventArgs e) => tmr_MenuSlide.Start();
@@ -727,7 +750,7 @@ namespace Terrarium
                 {
                     if (TextHelper.IsHexEntered(tbData))
                     {
-                        MessageBox.Show("Please enter only numbers in HEX format XX");
+                        MessageBox.Show("Please enter only numbers in HEX format XX", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                     buff = TextHelper.StringToHex(tbData);

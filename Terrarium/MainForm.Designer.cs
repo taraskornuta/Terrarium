@@ -95,6 +95,7 @@
             this.dropDownPanelSettings = new Terrarium.DropDownPanel();
             this.dropDownPanelReceiving = new Terrarium.DropDownPanel();
             this.dropDownPanelTransmiting = new Terrarium.DropDownPanel();
+            this.dropDownPanel4 = new Terrarium.DropDownPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_TxCounter = new System.Windows.Forms.Label();
             this.lbl_RxCounter = new System.Windows.Forms.Label();
@@ -107,7 +108,6 @@
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dropDownPanel4 = new Terrarium.DropDownPanel();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.mainLayoutPanelSettings.SuspendLayout();
@@ -723,6 +723,7 @@
             // tb_baudRateCustome
             // 
             this.tb_baudRateCustome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.tb_baudRateCustome.Enabled = false;
             this.tb_baudRateCustome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tb_baudRateCustome.ForeColor = System.Drawing.Color.White;
             this.tb_baudRateCustome.Location = new System.Drawing.Point(139, 78);
@@ -984,6 +985,19 @@
             this.dropDownPanelTransmiting.Size = new System.Drawing.Size(225, 20);
             this.dropDownPanelTransmiting.TabIndex = 10;
             // 
+            // dropDownPanel4
+            // 
+            this.dropDownPanel4.ButtonEnable = false;
+            this.dropDownPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dropDownPanel4.Location = new System.Drawing.Point(0, 0);
+            this.dropDownPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.dropDownPanel4.Name = "dropDownPanel4";
+            this.dropDownPanel4.PanelIcon = global::Terrarium.Properties.Resources.icons8_RS_232_Male_22px;
+            this.dropDownPanel4.PanelOpened = false;
+            this.dropDownPanel4.PanelText = "Port";
+            this.dropDownPanel4.Size = new System.Drawing.Size(225, 20);
+            this.dropDownPanel4.TabIndex = 11;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -1131,19 +1145,6 @@
             // 
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
             this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
-            // 
-            // dropDownPanel4
-            // 
-            this.dropDownPanel4.ButtonEnable = false;
-            this.dropDownPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dropDownPanel4.Location = new System.Drawing.Point(0, 0);
-            this.dropDownPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.dropDownPanel4.Name = "dropDownPanel4";
-            this.dropDownPanel4.PanelIcon = global::Terrarium.Properties.Resources.icons8_RS_232_Male_22px;
-            this.dropDownPanel4.PanelOpened = false;
-            this.dropDownPanel4.PanelText = "Port";
-            this.dropDownPanel4.Size = new System.Drawing.Size(225, 20);
-            this.dropDownPanel4.TabIndex = 11;
             // 
             // MainForm
             // 
