@@ -355,7 +355,9 @@ namespace Terrarium
                     }
                     else
                     {
-                        nrtb_Rx.AppendHex(data);
+                        //nrtb_Rx.AppendHex(data);
+
+                        TextHelper.ByteToString(nrtb_Rx.RichTextBox, data);
                     }
                 }
                 else
