@@ -336,6 +336,12 @@ namespace Terrarium
 
         delegate void SetTextCallback(byte[] data);
 
+        private int counter = 0;
+
+        private void resetChunkCounter()
+        {
+            counter = 0;
+        }
 
         private void SetText(byte[] data)
         {
@@ -348,27 +354,57 @@ namespace Terrarium
             {
                 if (cb_Rx_Hex.Checked)
                 {
-                    if (cb_Sort.Checked == true)
-                    {
-                        nrtb_Rx.RichTextBox.Text += "\n";
-                        nrtb_Rx.AppendHex(data);
-                    }
-                    else
-                    {
-                        //nrtb_Rx.AppendHex(data);
+                    //if (cb_Sort.Checked == true)
+                    //{
+                    //    nrtb_Rx.RichTextBox.Text += "\n";
+                    //    nrtb_Rx.AppendHex(data);
+                    //}
+                    //else
+                    //{
+                    //    nrtb_Rx.AppendHex(data);                       
+                    //}
 
-                        TextHelper.ByteToString(nrtb_Rx.RichTextBox, data);
-                    }
+                    TextHelper.ByteToAscii(nrtb_Rx.RichTextBox, data);
+
                 }
                 else
                 {
                     if (cb_Sort.Checked == true)
                     {
-                        string[] str = TextHelper.StringSplit(Encoding.ASCII.GetString(data), (int)nmn_ByteSort.Value);
-                        foreach (string tmp in str)
-                        {
-                            nrtb_Rx.AppendText(tmp + "\n");
-                        }                       
+                        //string[] str = TextHelper.StringSplit(Encoding.ASCII.GetString(data), (int)nmn_ByteSort.Value);
+                        //foreach (string tmp in str)
+                        //{
+                        //    nrtb_Rx.AppendText(tmp + "\n");
+                        //} 
+
+                        //byte 
+                        //byte[] array = TextHelper.ByteSplit(data, (int)nmn_ByteSort.Value);
+                        //foreach (byte tmp in array)
+                        //{
+
+                        //}
+                        int dataLength = 0;
+                        while (dataLength < data.Length)
+                        {                    
+                            if (counter == (int)nmn_ByteSort.Value)
+                            {
+                                counter = 0;
+                                nrtb_Rx.AppendText("\n" + "PIzda");
+                            }
+                            byte[] arr = new byte[1];
+                            arr[0] = data[dataLength];
+
+                            nrtb_Rx.AppendText(Encoding.ASCII.GetString(arr));
+
+                            dataLength++;
+                            counter++;
+                        }
+
+                        
+
+
+
+
                     }
                     else
                     {
@@ -662,7 +698,12 @@ namespace Terrarium
             macroPannel.tb_Tx.Clear();
         }
 
-        private void btn_CleanRxField_Click(object sender, EventArgs e) => nrtb_Rx.RichTextBox.Clear();
+        private void btn_CleanRxField_Click(object sender, EventArgs e)
+        {
+            nrtb_Rx.RichTextBox.Clear();
+            resetChunkCounter();
+        }
+     
 
         private int SerialPortScan()
         {

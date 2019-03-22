@@ -85,6 +85,8 @@ namespace Terrarium
         }
 
 
+       
+
         //Contains the substition strings for the characters. A char --> string mapping.
         private static Dictionary<byte, string> lSpecialDict = new Dictionary<byte, string>() 
         {
@@ -101,37 +103,29 @@ namespace Terrarium
             {0x1E, "RS"  }, {0x1F, "US"  }, {0x7F, "DEL" },
         };
 
-        public static void ByteToString(this RichTextBox box, byte[] data)
+
+        public static void ByteToAscii(this RichTextBox box, byte[] data)
         {
+            byte[] arr = new byte[1];
             for (int i = 0; i < data.Length; i++)
             {
                 if (lSpecialDict.ContainsKey(data[i]))
                 {
                     string replacement;
                     lSpecialDict.TryGetValue(data[i], out replacement);
-                    if (replacement != null)
-                    {
-                        box.AppendText(" [" + replacement + "] ", Color.LightGray, Color.Firebrick);
-
-                    }
-                    //else
-                    //{
-                    //    box.AppendText(data[i].ToString());
-                    //}
-                        
+                    box.AppendText("[" + replacement + "]", Color.LightGray, Color.Firebrick);     
                 }
                 else
-                {
-                    byte[] arr = new byte[1];
+                {                   
                     arr[0] = data[i];
 
-                    if (i > 127)
+                    if (data[i] > 127)
                     {
-                        box.AppendText(" [" + HexToString(arr) + "] ", Color.LightGray, Color.Firebrick);
+                        box.AppendText("[" + HexToString(arr) + "]", Color.LightGray, Color.Firebrick);
                     }
                     else
                     {
-                        box.AppendText(Encoding.ASCII.GetString(arr) + " ");
+                        box.AppendText(Encoding.ASCII.GetString(arr) + "");
                     }
 
                 }
@@ -146,7 +140,7 @@ namespace Terrarium
 
             var saved = box.SelectionBackColor;
             var saved2 = box.SelectionColor;
-            box.SelectionBackColor = bgcolor;
+            //box.SelectionBackColor = bgcolor;
             box.SelectionColor = fontcolor;
             box.AppendText(text);
             box.SelectionBackColor = saved;
@@ -154,4 +148,37 @@ namespace Terrarium
         }
 
     }
+
+    public static class ByteHelper
+    {
+        private static int dataLength = 0;
+        private static int counter = 0;
+
+        public static void ResetChunkCounter()
+        {
+            counter = 0;
+        }
+
+
+        public static void DivideByChunk(this RichTextBox box, byte[] data, int chunkSize)
+        {
+            byte[] arr = new byte[1];
+            while (dataLength < data.Length)
+            {
+                if (counter == chunkSize)
+                {
+                    counter = 0;
+                    box.AppendText("\n");  // print \n to move to next line
+                }
+                
+                arr[0] = data[dataLength];
+                box.AppendText(Encoding.ASCII.GetString(arr));  // @TODO should print ASCII, HEX, DEC, BIN or both
+
+                dataLength++;
+                counter++;
+            }
+        }
+
+    }
+
 }
