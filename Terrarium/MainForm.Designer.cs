@@ -104,7 +104,7 @@
             this.nrtb_Rx = new Terrarium.NumberedRTB();
             this.macroPannel = new Terrarium.MacroPanel();
             this.cmb_SerialPortList = new Terrarium.FlattenCombo();
-            this.dataFormatPanel1 = new Terrarium.DataFormatPanel();
+            this.dataFormaterSwitch1 = new Terrarium.DataFormaterSwitch();
             this.dropDownPanelSettings = new Terrarium.DropDownPanel();
             this.dropDownPanelReceiving = new Terrarium.DropDownPanel();
             this.dropDownPanelTransmiting = new Terrarium.DropDownPanel();
@@ -894,7 +894,7 @@
             // 
             // pnl_Transmiting
             // 
-            this.pnl_Transmiting.Controls.Add(this.dataFormatPanel1);
+            this.pnl_Transmiting.Controls.Add(this.dataFormaterSwitch1);
             this.pnl_Transmiting.Controls.Add(this.cb_Tx_Hex);
             this.pnl_Transmiting.Controls.Add(this.cb_TxMacroSend);
             this.pnl_Transmiting.Location = new System.Drawing.Point(0, 500);
@@ -1096,12 +1096,15 @@
             this.cmb_SerialPortList.TabIndex = 8;
             this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
             // 
-            // dataFormatPanel1
+            // dataFormaterSwitch1
             // 
-            this.dataFormatPanel1.Location = new System.Drawing.Point(4, 40);
-            this.dataFormatPanel1.Name = "dataFormatPanel1";
-            this.dataFormatPanel1.Size = new System.Drawing.Size(225, 30);
-            this.dataFormatPanel1.TabIndex = 5;
+            this.dataFormaterSwitch1.BtnState = Terrarium.eButtonState.ASCIIDEC;
+            this.dataFormaterSwitch1.DoubleClickInterval = 50;
+            this.dataFormaterSwitch1.Location = new System.Drawing.Point(0, 6);
+            this.dataFormaterSwitch1.Margin = new System.Windows.Forms.Padding(0);
+            this.dataFormaterSwitch1.Name = "dataFormaterSwitch1";
+            this.dataFormaterSwitch1.Size = new System.Drawing.Size(225, 30);
+            this.dataFormaterSwitch1.TabIndex = 5;
             // 
             // dropDownPanelSettings
             // 
@@ -1280,7 +1283,7 @@
         private DropDownPanel dropDownPanelReceiving;
         private DropDownPanel dropDownPanelTransmiting;
         private DropDownPanel dropDownPanel4;
-        private DataFormatPanel dataFormatPanel1;
+        private DataFormaterSwitch dataFormaterSwitch1;
     }
 }
 
