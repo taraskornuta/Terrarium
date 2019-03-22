@@ -104,11 +104,11 @@
             this.nrtb_Rx = new Terrarium.NumberedRTB();
             this.macroPannel = new Terrarium.MacroPanel();
             this.cmb_SerialPortList = new Terrarium.FlattenCombo();
-            this.dataFormaterSwitch1 = new Terrarium.DataFormaterSwitch();
             this.dropDownPanelSettings = new Terrarium.DropDownPanel();
             this.dropDownPanelReceiving = new Terrarium.DropDownPanel();
             this.dropDownPanelTransmiting = new Terrarium.DropDownPanel();
             this.dropDownPanel4 = new Terrarium.DropDownPanel();
+            this.dataFormaterSwitch1 = new Terrarium.DataFormaterSwitch();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.mainLayoutPanelSettings.SuspendLayout();
@@ -136,7 +136,7 @@
             this.pnl_ToolBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_ToolBar.Location = new System.Drawing.Point(844, 0);
             this.pnl_ToolBar.Name = "pnl_ToolBar";
-            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 616);
+            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 590);
             this.pnl_ToolBar.TabIndex = 1;
             // 
             // btn_CleanRxField
@@ -146,7 +146,7 @@
             this.btn_CleanRxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanRxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanRxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanRxField.Image")));
-            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 452);
+            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 426);
             this.btn_CleanRxField.Name = "btn_CleanRxField";
             this.btn_CleanRxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanRxField.TabIndex = 5;
@@ -160,7 +160,7 @@
             this.btn_CleanTxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanTxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanTxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanTxField.Image")));
-            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 529);
+            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 503);
             this.btn_CleanTxField.Name = "btn_CleanTxField";
             this.btn_CleanTxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanTxField.TabIndex = 4;
@@ -186,7 +186,7 @@
             this.btn_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_Settings.Image = global::Terrarium.Properties.Resources.icons8_Settings_32px;
-            this.btn_Settings.Location = new System.Drawing.Point(2, 570);
+            this.btn_Settings.Location = new System.Drawing.Point(2, 544);
             this.btn_Settings.Name = "btn_Settings";
             this.btn_Settings.Size = new System.Drawing.Size(37, 41);
             this.btn_Settings.TabIndex = 0;
@@ -200,7 +200,7 @@
             this.pnl_Settings.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_Settings.Location = new System.Drawing.Point(619, 0);
             this.pnl_Settings.Name = "pnl_Settings";
-            this.pnl_Settings.Size = new System.Drawing.Size(225, 616);
+            this.pnl_Settings.Size = new System.Drawing.Size(225, 590);
             this.pnl_Settings.TabIndex = 2;
             // 
             // mainLayoutPanelSettings
@@ -210,11 +210,11 @@
             this.mainLayoutPanelSettings.Controls.Add(this.pnl_Receiving, 0, 5);
             this.mainLayoutPanelSettings.Controls.Add(this.pnl_PortSettings, 0, 3);
             this.mainLayoutPanelSettings.Controls.Add(this.pnl_PortName, 0, 1);
-            this.mainLayoutPanelSettings.Controls.Add(this.pnl_Transmiting, 0, 7);
             this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanelSettings, 0, 2);
             this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanelReceiving, 0, 4);
-            this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanelTransmiting, 0, 6);
             this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanel4, 0, 0);
+            this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanelTransmiting, 0, 6);
+            this.mainLayoutPanelSettings.Controls.Add(this.pnl_Transmiting, 0, 7);
             this.mainLayoutPanelSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainLayoutPanelSettings.Location = new System.Drawing.Point(0, 0);
             this.mainLayoutPanelSettings.Margin = new System.Windows.Forms.Padding(0);
@@ -225,14 +225,15 @@
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 317F));
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 164F));
-            this.mainLayoutPanelSettings.Size = new System.Drawing.Size(225, 616);
+            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.mainLayoutPanelSettings.Size = new System.Drawing.Size(225, 590);
             this.mainLayoutPanelSettings.TabIndex = 16;
             // 
             // pnl_Receiving
             // 
+            this.pnl_Receiving.Controls.Add(this.dataFormaterSwitch1);
             this.pnl_Receiving.Controls.Add(this.nmn_ByteSort);
             this.pnl_Receiving.Controls.Add(this.cb_RxAutoscroll);
             this.pnl_Receiving.Controls.Add(this.cb_Sort);
@@ -242,7 +243,7 @@
             this.pnl_Receiving.Location = new System.Drawing.Point(0, 415);
             this.pnl_Receiving.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Receiving.Name = "pnl_Receiving";
-            this.pnl_Receiving.Size = new System.Drawing.Size(225, 65);
+            this.pnl_Receiving.Size = new System.Drawing.Size(225, 99);
             this.pnl_Receiving.TabIndex = 5;
             // 
             // nmn_ByteSort
@@ -251,7 +252,7 @@
             this.nmn_ByteSort.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.nmn_ByteSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nmn_ByteSort.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nmn_ByteSort.Location = new System.Drawing.Point(56, 34);
+            this.nmn_ByteSort.Location = new System.Drawing.Point(56, 76);
             this.nmn_ByteSort.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -278,7 +279,7 @@
             this.cb_RxAutoscroll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_RxAutoscroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_RxAutoscroll.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_RxAutoscroll.Location = new System.Drawing.Point(128, 3);
+            this.cb_RxAutoscroll.Location = new System.Drawing.Point(128, 45);
             this.cb_RxAutoscroll.Name = "cb_RxAutoscroll";
             this.cb_RxAutoscroll.Size = new System.Drawing.Size(72, 17);
             this.cb_RxAutoscroll.TabIndex = 2;
@@ -292,7 +293,7 @@
             this.cb_Sort.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_Sort.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_Sort.Location = new System.Drawing.Point(4, 35);
+            this.cb_Sort.Location = new System.Drawing.Point(4, 77);
             this.cb_Sort.Name = "cb_Sort";
             this.cb_Sort.Size = new System.Drawing.Size(45, 17);
             this.cb_Sort.TabIndex = 6;
@@ -307,7 +308,7 @@
             this.cb_Rx_Hex.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_Rx_Hex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_Rx_Hex.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_Rx_Hex.Location = new System.Drawing.Point(3, 3);
+            this.cb_Rx_Hex.Location = new System.Drawing.Point(3, 45);
             this.cb_Rx_Hex.Name = "cb_Rx_Hex";
             this.cb_Rx_Hex.Size = new System.Drawing.Size(48, 17);
             this.cb_Rx_Hex.TabIndex = 3;
@@ -322,7 +323,7 @@
             this.cb_Loging.Enabled = false;
             this.cb_Loging.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_Loging.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_Loging.Location = new System.Drawing.Point(128, 36);
+            this.cb_Loging.Location = new System.Drawing.Point(128, 78);
             this.cb_Loging.Name = "cb_Loging";
             this.cb_Loging.Size = new System.Drawing.Size(44, 17);
             this.cb_Loging.TabIndex = 5;
@@ -336,7 +337,7 @@
             this.cb_LinesNum.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_LinesNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_LinesNum.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_LinesNum.Location = new System.Drawing.Point(128, 19);
+            this.cb_LinesNum.Location = new System.Drawing.Point(128, 61);
             this.cb_LinesNum.Name = "cb_LinesNum";
             this.cb_LinesNum.Size = new System.Drawing.Size(91, 17);
             this.cb_LinesNum.TabIndex = 4;
@@ -894,13 +895,12 @@
             // 
             // pnl_Transmiting
             // 
-            this.pnl_Transmiting.Controls.Add(this.dataFormaterSwitch1);
             this.pnl_Transmiting.Controls.Add(this.cb_Tx_Hex);
             this.pnl_Transmiting.Controls.Add(this.cb_TxMacroSend);
-            this.pnl_Transmiting.Location = new System.Drawing.Point(0, 500);
+            this.pnl_Transmiting.Location = new System.Drawing.Point(0, 535);
             this.pnl_Transmiting.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Transmiting.Name = "pnl_Transmiting";
-            this.pnl_Transmiting.Size = new System.Drawing.Size(225, 89);
+            this.pnl_Transmiting.Size = new System.Drawing.Size(225, 56);
             this.pnl_Transmiting.TabIndex = 7;
             // 
             // cb_Tx_Hex
@@ -939,7 +939,7 @@
             this.panel1.Controls.Add(this.lbl_RxCounter);
             this.panel1.Controls.Add(this.lbl_Status);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 592);
+            this.panel1.Location = new System.Drawing.Point(0, 566);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(619, 24);
             this.panel1.TabIndex = 3;
@@ -991,7 +991,7 @@
             this.rtb_Tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_Tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rtb_Tx.ForeColor = System.Drawing.Color.White;
-            this.rtb_Tx.Location = new System.Drawing.Point(0, 422);
+            this.rtb_Tx.Location = new System.Drawing.Point(0, 396);
             this.rtb_Tx.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_Tx.Name = "rtb_Tx";
             this.rtb_Tx.Size = new System.Drawing.Size(619, 70);
@@ -1015,7 +1015,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 592);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 566);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // copyToolStripMenuItem
@@ -1042,7 +1042,7 @@
             this.nrtb_Rx.Name = "nrtb_Rx";
             this.nrtb_Rx.NumStripAutoscroll = false;
             this.nrtb_Rx.NumStripVisible = true;
-            this.nrtb_Rx.Size = new System.Drawing.Size(619, 422);
+            this.nrtb_Rx.Size = new System.Drawing.Size(619, 396);
             this.nrtb_Rx.TabIndex = 3;
             // 
             // macroPannel
@@ -1071,7 +1071,7 @@
             this.macroPannel.BtnM7Text = "M7";
             this.macroPannel.BtnM8Text = "M8";
             this.macroPannel.BtnM9Text = "M9";
-            this.macroPannel.Location = new System.Drawing.Point(0, 492);
+            this.macroPannel.Location = new System.Drawing.Point(0, 466);
             this.macroPannel.Margin = new System.Windows.Forms.Padding(0);
             this.macroPannel.MaximumSize = new System.Drawing.Size(0, 100);
             this.macroPannel.MinimumSize = new System.Drawing.Size(619, 100);
@@ -1095,16 +1095,6 @@
             this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
             this.cmb_SerialPortList.TabIndex = 8;
             this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
-            // 
-            // dataFormaterSwitch1
-            // 
-            this.dataFormaterSwitch1.BtnState = Terrarium.eButtonState.ASCIIDEC;
-            this.dataFormaterSwitch1.DoubleClickInterval = 50;
-            this.dataFormaterSwitch1.Location = new System.Drawing.Point(0, 6);
-            this.dataFormaterSwitch1.Margin = new System.Windows.Forms.Padding(0);
-            this.dataFormaterSwitch1.Name = "dataFormaterSwitch1";
-            this.dataFormaterSwitch1.Size = new System.Drawing.Size(225, 30);
-            this.dataFormaterSwitch1.TabIndex = 5;
             // 
             // dropDownPanelSettings
             // 
@@ -1134,9 +1124,9 @@
             // 
             // dropDownPanelTransmiting
             // 
+            this.dropDownPanelTransmiting.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dropDownPanelTransmiting.ButtonEnable = true;
-            this.dropDownPanelTransmiting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dropDownPanelTransmiting.Location = new System.Drawing.Point(0, 480);
+            this.dropDownPanelTransmiting.Location = new System.Drawing.Point(0, 515);
             this.dropDownPanelTransmiting.Margin = new System.Windows.Forms.Padding(0);
             this.dropDownPanelTransmiting.Name = "dropDownPanelTransmiting";
             this.dropDownPanelTransmiting.PanelIcon = global::Terrarium.Properties.Resources.icons8_Upload_22px;
@@ -1158,12 +1148,22 @@
             this.dropDownPanel4.Size = new System.Drawing.Size(225, 20);
             this.dropDownPanel4.TabIndex = 11;
             // 
+            // dataFormaterSwitch1
+            // 
+            this.dataFormaterSwitch1.BtnState = Terrarium.eButtonState.ASCII;
+            this.dataFormaterSwitch1.DoubleClickInterval = 50;
+            this.dataFormaterSwitch1.Location = new System.Drawing.Point(0, 2);
+            this.dataFormaterSwitch1.Margin = new System.Windows.Forms.Padding(0);
+            this.dataFormaterSwitch1.Name = "dataFormaterSwitch1";
+            this.dataFormaterSwitch1.Size = new System.Drawing.Size(225, 25);
+            this.dataFormaterSwitch1.TabIndex = 17;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(884, 616);
+            this.ClientSize = new System.Drawing.Size(884, 590);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnl_Settings);

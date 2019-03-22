@@ -54,7 +54,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(225, 30);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(225, 25);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btn_bin
@@ -67,7 +67,7 @@
             this.btn_bin.Location = new System.Drawing.Point(56, 0);
             this.btn_bin.Margin = new System.Windows.Forms.Padding(0);
             this.btn_bin.Name = "btn_bin";
-            this.btn_bin.Size = new System.Drawing.Size(56, 30);
+            this.btn_bin.Size = new System.Drawing.Size(56, 25);
             this.btn_bin.TabIndex = 1;
             this.btn_bin.Text = "BIN";
             this.btn_bin.UseVisualStyleBackColor = false;
@@ -83,7 +83,7 @@
             this.btn_ascii.Location = new System.Drawing.Point(0, 0);
             this.btn_ascii.Margin = new System.Windows.Forms.Padding(0);
             this.btn_ascii.Name = "btn_ascii";
-            this.btn_ascii.Size = new System.Drawing.Size(56, 30);
+            this.btn_ascii.Size = new System.Drawing.Size(56, 25);
             this.btn_ascii.TabIndex = 2;
             this.btn_ascii.Text = "ASCII";
             this.btn_ascii.UseVisualStyleBackColor = false;
@@ -99,7 +99,7 @@
             this.btn_hex.Location = new System.Drawing.Point(168, 0);
             this.btn_hex.Margin = new System.Windows.Forms.Padding(0);
             this.btn_hex.Name = "btn_hex";
-            this.btn_hex.Size = new System.Drawing.Size(57, 30);
+            this.btn_hex.Size = new System.Drawing.Size(57, 25);
             this.btn_hex.TabIndex = 3;
             this.btn_hex.Text = "HEX";
             this.btn_hex.UseVisualStyleBackColor = false;
@@ -115,7 +115,7 @@
             this.btn_dec.Location = new System.Drawing.Point(112, 0);
             this.btn_dec.Margin = new System.Windows.Forms.Padding(0);
             this.btn_dec.Name = "btn_dec";
-            this.btn_dec.Size = new System.Drawing.Size(56, 30);
+            this.btn_dec.Size = new System.Drawing.Size(56, 25);
             this.btn_dec.TabIndex = 4;
             this.btn_dec.Text = "DEC";
             this.btn_dec.UseVisualStyleBackColor = false;
@@ -128,7 +128,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "DataFormaterSwitch";
-            this.Size = new System.Drawing.Size(225, 30);
+            this.Size = new System.Drawing.Size(225, 25);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

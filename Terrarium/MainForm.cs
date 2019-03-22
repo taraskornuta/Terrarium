@@ -1070,7 +1070,7 @@ namespace Terrarium
             }
             else
             {
-                mainLayoutPanelSettings.RowStyles[5].Height = 65F;
+                mainLayoutPanelSettings.RowStyles[5].Height = 100F;
             }
             pnl_Receiving.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[5].Height);
 
@@ -1084,7 +1084,7 @@ namespace Terrarium
             }
             else
             {
-                mainLayoutPanelSettings.RowStyles[7].Height = 61F;               
+                mainLayoutPanelSettings.RowStyles[7].Height = 130F;               
             }
             pnl_Transmiting.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[7].Height);
         }

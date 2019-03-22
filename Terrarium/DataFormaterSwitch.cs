@@ -28,13 +28,18 @@ namespace Terrarium
         private bool isDoubleClick = false;
         private bool combyneKeys = false;
         private int milliseconds = 0;
-        private int doubleClickInterval;
+        private int doubleClickInterval = 1;
         private eButtonState btnState;
 
         public int DoubleClickInterval
         {
             get => doubleClickInterval;
-            set => doubleClickTimer.Interval = doubleClickInterval = value;
+            set
+            {
+                if (value == 0) doubleClickInterval = 1;
+                else doubleClickInterval = value;
+                doubleClickTimer.Interval = doubleClickInterval;
+            }
         }
 
         public eButtonState BtnState
