@@ -336,13 +336,7 @@ namespace Terrarium
 
         delegate void SetTextCallback(byte[] data);
 
-        private int counter = 0;
-
-        private void resetChunkCounter()
-        {
-            counter = 0;
-        }
-
+       
         private void SetText(byte[] data)
         {
             if (nrtb_Rx.RichTextBox.InvokeRequired)
@@ -383,23 +377,7 @@ namespace Terrarium
                         //{
 
                         //}
-                        int dataLength = 0;
-                        while (dataLength < data.Length)
-                        {                    
-                            if (counter == (int)nmn_ByteSort.Value)
-                            {
-                                counter = 0;
-                                nrtb_Rx.AppendText("\n" + "PIzda");
-                            }
-                            byte[] arr = new byte[1];
-                            arr[0] = data[dataLength];
-
-                            nrtb_Rx.AppendText(Encoding.ASCII.GetString(arr));
-
-                            dataLength++;
-                            counter++;
-                        }
-
+                       
                         
 
 
@@ -701,7 +679,7 @@ namespace Terrarium
         private void btn_CleanRxField_Click(object sender, EventArgs e)
         {
             nrtb_Rx.RichTextBox.Clear();
-            resetChunkCounter();
+            ByteHelper.ResetChunkCounter();
         }
      
 

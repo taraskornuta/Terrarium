@@ -88,14 +88,9 @@
             this.rb_baudRate_56000 = new System.Windows.Forms.RadioButton();
             this.pnl_PortName = new System.Windows.Forms.Panel();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
-            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
             this.pnl_Transmiting = new System.Windows.Forms.Panel();
             this.cb_Tx_Hex = new System.Windows.Forms.CheckBox();
             this.cb_TxMacroSend = new System.Windows.Forms.CheckBox();
-            this.dropDownPanelSettings = new Terrarium.DropDownPanel();
-            this.dropDownPanelReceiving = new Terrarium.DropDownPanel();
-            this.dropDownPanelTransmiting = new Terrarium.DropDownPanel();
-            this.dropDownPanel4 = new Terrarium.DropDownPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_TxCounter = new System.Windows.Forms.Label();
             this.lbl_RxCounter = new System.Windows.Forms.Label();
@@ -103,11 +98,17 @@
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.nrtb_Rx = new Terrarium.NumberedRTB();
-            this.macroPannel = new Terrarium.MacroPanel();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nrtb_Rx = new Terrarium.NumberedRTB();
+            this.macroPannel = new Terrarium.MacroPanel();
+            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
+            this.dataFormatPanel1 = new Terrarium.DataFormatPanel();
+            this.dropDownPanelSettings = new Terrarium.DropDownPanel();
+            this.dropDownPanelReceiving = new Terrarium.DropDownPanel();
+            this.dropDownPanelTransmiting = new Terrarium.DropDownPanel();
+            this.dropDownPanel4 = new Terrarium.DropDownPanel();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.mainLayoutPanelSettings.SuspendLayout();
@@ -135,7 +136,7 @@
             this.pnl_ToolBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_ToolBar.Location = new System.Drawing.Point(844, 0);
             this.pnl_ToolBar.Name = "pnl_ToolBar";
-            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 561);
+            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 616);
             this.pnl_ToolBar.TabIndex = 1;
             // 
             // btn_CleanRxField
@@ -145,7 +146,7 @@
             this.btn_CleanRxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanRxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanRxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanRxField.Image")));
-            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 397);
+            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 452);
             this.btn_CleanRxField.Name = "btn_CleanRxField";
             this.btn_CleanRxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanRxField.TabIndex = 5;
@@ -159,7 +160,7 @@
             this.btn_CleanTxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanTxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanTxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanTxField.Image")));
-            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 474);
+            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 529);
             this.btn_CleanTxField.Name = "btn_CleanTxField";
             this.btn_CleanTxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanTxField.TabIndex = 4;
@@ -185,7 +186,7 @@
             this.btn_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_Settings.Image = global::Terrarium.Properties.Resources.icons8_Settings_32px;
-            this.btn_Settings.Location = new System.Drawing.Point(2, 515);
+            this.btn_Settings.Location = new System.Drawing.Point(2, 570);
             this.btn_Settings.Name = "btn_Settings";
             this.btn_Settings.Size = new System.Drawing.Size(37, 41);
             this.btn_Settings.TabIndex = 0;
@@ -199,7 +200,7 @@
             this.pnl_Settings.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_Settings.Location = new System.Drawing.Point(619, 0);
             this.pnl_Settings.Name = "pnl_Settings";
-            this.pnl_Settings.Size = new System.Drawing.Size(225, 561);
+            this.pnl_Settings.Size = new System.Drawing.Size(225, 616);
             this.pnl_Settings.TabIndex = 2;
             // 
             // mainLayoutPanelSettings
@@ -227,7 +228,7 @@
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 164F));
-            this.mainLayoutPanelSettings.Size = new System.Drawing.Size(225, 561);
+            this.mainLayoutPanelSettings.Size = new System.Drawing.Size(225, 616);
             this.mainLayoutPanelSettings.TabIndex = 16;
             // 
             // pnl_Receiving
@@ -891,30 +892,15 @@
             this.btn_SerialPortRefresh.UseVisualStyleBackColor = false;
             this.btn_SerialPortRefresh.Click += new System.EventHandler(this.btn_SerialPortRefresh_Click);
             // 
-            // cmb_SerialPortList
-            // 
-            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cmb_SerialPortList.FormattingEnabled = true;
-            this.cmb_SerialPortList.Location = new System.Drawing.Point(3, 6);
-            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
-            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
-            this.cmb_SerialPortList.TabIndex = 8;
-            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
-            // 
             // pnl_Transmiting
             // 
+            this.pnl_Transmiting.Controls.Add(this.dataFormatPanel1);
             this.pnl_Transmiting.Controls.Add(this.cb_Tx_Hex);
             this.pnl_Transmiting.Controls.Add(this.cb_TxMacroSend);
             this.pnl_Transmiting.Location = new System.Drawing.Point(0, 500);
             this.pnl_Transmiting.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Transmiting.Name = "pnl_Transmiting";
-            this.pnl_Transmiting.Size = new System.Drawing.Size(225, 61);
+            this.pnl_Transmiting.Size = new System.Drawing.Size(225, 89);
             this.pnl_Transmiting.TabIndex = 7;
             // 
             // cb_Tx_Hex
@@ -945,6 +931,177 @@
             this.cb_TxMacroSend.Text = "Macro";
             this.cb_TxMacroSend.UseVisualStyleBackColor = true;
             this.cb_TxMacroSend.CheckedChanged += new System.EventHandler(this.cb_TxMacroSend_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel1.Controls.Add(this.lbl_TxCounter);
+            this.panel1.Controls.Add(this.lbl_RxCounter);
+            this.panel1.Controls.Add(this.lbl_Status);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 592);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(619, 24);
+            this.panel1.TabIndex = 3;
+            // 
+            // lbl_TxCounter
+            // 
+            this.lbl_TxCounter.AutoSize = true;
+            this.lbl_TxCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_TxCounter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_TxCounter.Location = new System.Drawing.Point(212, 5);
+            this.lbl_TxCounter.Name = "lbl_TxCounter";
+            this.lbl_TxCounter.Size = new System.Drawing.Size(36, 13);
+            this.lbl_TxCounter.TabIndex = 2;
+            this.lbl_TxCounter.Text = "Tx: 0";
+            this.lbl_TxCounter.DoubleClick += new System.EventHandler(this.lbl_TxCounter_DoubleClick);
+            // 
+            // lbl_RxCounter
+            // 
+            this.lbl_RxCounter.AutoSize = true;
+            this.lbl_RxCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_RxCounter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_RxCounter.Location = new System.Drawing.Point(139, 5);
+            this.lbl_RxCounter.Name = "lbl_RxCounter";
+            this.lbl_RxCounter.Size = new System.Drawing.Size(37, 13);
+            this.lbl_RxCounter.TabIndex = 1;
+            this.lbl_RxCounter.Text = "Rx: 0";
+            this.lbl_RxCounter.DoubleClick += new System.EventHandler(this.lbl_RxCounter_DoubleClick);
+            // 
+            // lbl_Status
+            // 
+            this.lbl_Status.AutoSize = true;
+            this.lbl_Status.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_Status.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_Status.Location = new System.Drawing.Point(3, 5);
+            this.lbl_Status.Name = "lbl_Status";
+            this.lbl_Status.Size = new System.Drawing.Size(43, 13);
+            this.lbl_Status.TabIndex = 0;
+            this.lbl_Status.Text = "Status";
+            // 
+            // tmr_MenuSlide
+            // 
+            this.tmr_MenuSlide.Interval = 10;
+            this.tmr_MenuSlide.Tick += new System.EventHandler(this.tmr_MenuSlide_Tick);
+            // 
+            // rtb_Tx
+            // 
+            this.rtb_Tx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.rtb_Tx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rtb_Tx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_Tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rtb_Tx.ForeColor = System.Drawing.Color.White;
+            this.rtb_Tx.Location = new System.Drawing.Point(0, 422);
+            this.rtb_Tx.Margin = new System.Windows.Forms.Padding(0);
+            this.rtb_Tx.Name = "rtb_Tx";
+            this.rtb_Tx.Size = new System.Drawing.Size(619, 70);
+            this.rtb_Tx.TabIndex = 1;
+            this.rtb_Tx.Text = "";
+            this.rtb_Tx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtb_Tx_KeyPress);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.nrtb_Rx, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.rtb_Tx, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.macroPannel, 0, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 592);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // propertysToolStripMenuItem
+            // 
+            this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
+            this.propertysToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // copyToolStripMenuItem1
+            // 
+            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
+            // 
+            // nrtb_Rx
+            // 
+            this.nrtb_Rx.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.nrtb_Rx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nrtb_Rx.Location = new System.Drawing.Point(0, 0);
+            this.nrtb_Rx.Margin = new System.Windows.Forms.Padding(0);
+            this.nrtb_Rx.Name = "nrtb_Rx";
+            this.nrtb_Rx.NumStripAutoscroll = false;
+            this.nrtb_Rx.NumStripVisible = true;
+            this.nrtb_Rx.Size = new System.Drawing.Size(619, 422);
+            this.nrtb_Rx.TabIndex = 3;
+            // 
+            // macroPannel
+            // 
+            this.macroPannel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.macroPannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.macroPannel.BtnM10Text = "M10";
+            this.macroPannel.BtnM11Text = "M11";
+            this.macroPannel.BtnM12Text = "M12";
+            this.macroPannel.BtnM13Text = "M13";
+            this.macroPannel.BtnM14Text = "M14";
+            this.macroPannel.BtnM15Text = "M15";
+            this.macroPannel.BtnM16Text = "M16";
+            this.macroPannel.BtnM17Text = "M17";
+            this.macroPannel.BtnM18Text = "M18";
+            this.macroPannel.BtnM19Text = "M19";
+            this.macroPannel.BtnM1Text = "M1";
+            this.macroPannel.BtnM20Text = "M20";
+            this.macroPannel.BtnM2Text = "M2";
+            this.macroPannel.BtnM3Text = "M3";
+            this.macroPannel.BtnM4Text = "M4";
+            this.macroPannel.BtnM5Text = "M5";
+            this.macroPannel.BtnM6Text = "M6";
+            this.macroPannel.BtnM7Text = "M7";
+            this.macroPannel.BtnM8Text = "M8";
+            this.macroPannel.BtnM9Text = "M9";
+            this.macroPannel.Location = new System.Drawing.Point(0, 492);
+            this.macroPannel.Margin = new System.Windows.Forms.Padding(0);
+            this.macroPannel.MaximumSize = new System.Drawing.Size(0, 100);
+            this.macroPannel.MinimumSize = new System.Drawing.Size(619, 100);
+            this.macroPannel.Name = "macroPannel";
+            this.macroPannel.Size = new System.Drawing.Size(619, 100);
+            this.macroPannel.TabIndex = 4;
+            this.macroPannel.VisibleMacroButtons = false;
+            // 
+            // cmb_SerialPortList
+            // 
+            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cmb_SerialPortList.FormattingEnabled = true;
+            this.cmb_SerialPortList.Location = new System.Drawing.Point(3, 6);
+            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
+            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
+            this.cmb_SerialPortList.TabIndex = 8;
+            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
+            // 
+            // dataFormatPanel1
+            // 
+            this.dataFormatPanel1.Location = new System.Drawing.Point(4, 40);
+            this.dataFormatPanel1.Name = "dataFormatPanel1";
+            this.dataFormatPanel1.Size = new System.Drawing.Size(225, 30);
+            this.dataFormatPanel1.TabIndex = 5;
             // 
             // dropDownPanelSettings
             // 
@@ -998,160 +1155,12 @@
             this.dropDownPanel4.Size = new System.Drawing.Size(225, 20);
             this.dropDownPanel4.TabIndex = 11;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.panel1.Controls.Add(this.lbl_TxCounter);
-            this.panel1.Controls.Add(this.lbl_RxCounter);
-            this.panel1.Controls.Add(this.lbl_Status);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 537);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(619, 24);
-            this.panel1.TabIndex = 3;
-            // 
-            // lbl_TxCounter
-            // 
-            this.lbl_TxCounter.AutoSize = true;
-            this.lbl_TxCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_TxCounter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_TxCounter.Location = new System.Drawing.Point(212, 5);
-            this.lbl_TxCounter.Name = "lbl_TxCounter";
-            this.lbl_TxCounter.Size = new System.Drawing.Size(36, 13);
-            this.lbl_TxCounter.TabIndex = 2;
-            this.lbl_TxCounter.Text = "Tx: 0";
-            this.lbl_TxCounter.DoubleClick += new System.EventHandler(this.lbl_TxCounter_DoubleClick);
-            // 
-            // lbl_RxCounter
-            // 
-            this.lbl_RxCounter.AutoSize = true;
-            this.lbl_RxCounter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_RxCounter.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_RxCounter.Location = new System.Drawing.Point(139, 5);
-            this.lbl_RxCounter.Name = "lbl_RxCounter";
-            this.lbl_RxCounter.Size = new System.Drawing.Size(37, 13);
-            this.lbl_RxCounter.TabIndex = 1;
-            this.lbl_RxCounter.Text = "Rx: 0";
-            this.lbl_RxCounter.DoubleClick += new System.EventHandler(this.lbl_RxCounter_DoubleClick);
-            // 
-            // lbl_Status
-            // 
-            this.lbl_Status.AutoSize = true;
-            this.lbl_Status.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_Status.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbl_Status.Location = new System.Drawing.Point(3, 5);
-            this.lbl_Status.Name = "lbl_Status";
-            this.lbl_Status.Size = new System.Drawing.Size(43, 13);
-            this.lbl_Status.TabIndex = 0;
-            this.lbl_Status.Text = "Status";
-            // 
-            // tmr_MenuSlide
-            // 
-            this.tmr_MenuSlide.Interval = 10;
-            this.tmr_MenuSlide.Tick += new System.EventHandler(this.tmr_MenuSlide_Tick);
-            // 
-            // rtb_Tx
-            // 
-            this.rtb_Tx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.rtb_Tx.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rtb_Tx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtb_Tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.rtb_Tx.ForeColor = System.Drawing.Color.White;
-            this.rtb_Tx.Location = new System.Drawing.Point(0, 367);
-            this.rtb_Tx.Margin = new System.Windows.Forms.Padding(0);
-            this.rtb_Tx.Name = "rtb_Tx";
-            this.rtb_Tx.Size = new System.Drawing.Size(619, 70);
-            this.rtb_Tx.TabIndex = 1;
-            this.rtb_Tx.Text = "";
-            this.rtb_Tx.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtb_Tx_KeyPress);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.nrtb_Rx, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rtb_Tx, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.macroPannel, 0, 2);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 537);
-            this.tableLayoutPanel1.TabIndex = 4;
-            // 
-            // nrtb_Rx
-            // 
-            this.nrtb_Rx.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.nrtb_Rx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nrtb_Rx.Location = new System.Drawing.Point(0, 0);
-            this.nrtb_Rx.Margin = new System.Windows.Forms.Padding(0);
-            this.nrtb_Rx.Name = "nrtb_Rx";
-            this.nrtb_Rx.NumStripAutoscroll = false;
-            this.nrtb_Rx.NumStripVisible = true;
-            this.nrtb_Rx.Size = new System.Drawing.Size(619, 367);
-            this.nrtb_Rx.TabIndex = 3;
-            // 
-            // macroPannel
-            // 
-            this.macroPannel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.macroPannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.macroPannel.BtnM10Text = "M10";
-            this.macroPannel.BtnM11Text = "M11";
-            this.macroPannel.BtnM12Text = "M12";
-            this.macroPannel.BtnM13Text = "M13";
-            this.macroPannel.BtnM14Text = "M14";
-            this.macroPannel.BtnM15Text = "M15";
-            this.macroPannel.BtnM16Text = "M16";
-            this.macroPannel.BtnM17Text = "M17";
-            this.macroPannel.BtnM18Text = "M18";
-            this.macroPannel.BtnM19Text = "M19";
-            this.macroPannel.BtnM1Text = "M1";
-            this.macroPannel.BtnM20Text = "M20";
-            this.macroPannel.BtnM2Text = "M2";
-            this.macroPannel.BtnM3Text = "M3";
-            this.macroPannel.BtnM4Text = "M4";
-            this.macroPannel.BtnM5Text = "M5";
-            this.macroPannel.BtnM6Text = "M6";
-            this.macroPannel.BtnM7Text = "M7";
-            this.macroPannel.BtnM8Text = "M8";
-            this.macroPannel.BtnM9Text = "M9";
-            this.macroPannel.Location = new System.Drawing.Point(0, 437);
-            this.macroPannel.Margin = new System.Windows.Forms.Padding(0);
-            this.macroPannel.MaximumSize = new System.Drawing.Size(0, 100);
-            this.macroPannel.MinimumSize = new System.Drawing.Size(619, 100);
-            this.macroPannel.Name = "macroPannel";
-            this.macroPannel.Size = new System.Drawing.Size(619, 100);
-            this.macroPannel.TabIndex = 4;
-            this.macroPannel.VisibleMacroButtons = false;
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // propertysToolStripMenuItem
-            // 
-            this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
-            this.propertysToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // copyToolStripMenuItem1
-            // 
-            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(884, 616);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnl_Settings);
@@ -1271,6 +1280,7 @@
         private DropDownPanel dropDownPanelReceiving;
         private DropDownPanel dropDownPanelTransmiting;
         private DropDownPanel dropDownPanel4;
+        private DataFormatPanel dataFormatPanel1;
     }
 }
 

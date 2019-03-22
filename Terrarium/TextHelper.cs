@@ -154,6 +154,7 @@ namespace Terrarium
         private static int dataLength = 0;
         private static int counter = 0;
 
+        // should be called when screen is cleared
         public static void ResetChunkCounter()
         {
             counter = 0;
@@ -168,7 +169,7 @@ namespace Terrarium
                 if (counter == chunkSize)
                 {
                     counter = 0;
-                    box.AppendText("\n");  // print \n to move to next line
+                    box.AppendText("\n");                       // print \n to move to next line
                 }
                 
                 arr[0] = data[dataLength];
