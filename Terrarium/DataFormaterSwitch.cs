@@ -12,6 +12,7 @@ namespace Terrarium
 {
     public enum eDataFormat
     {
+        NONE,
         ASCII,
         BIN,
         DEC,
@@ -112,6 +113,9 @@ namespace Terrarium
             allBtnsResetBackColor();
             switch (buttonState)
             {
+                case eDataFormat.NONE:
+                    btn_ascii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+                    break;
                 case eDataFormat.ASCII:
                     btn_ascii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))));
                     break;
@@ -147,15 +151,25 @@ namespace Terrarium
             applyState(Format);
         }
 
+        private bool btnAsciiFlag = true;
         private void btn_ascii_Click()
         {
-            combyneKeys = false;
-            Format = eDataFormat.ASCII;
+            if (btnAsciiFlag == true)
+            {
+                Format = eDataFormat.NONE;
+            }
+            else
+            {
+                combyneKeys = false;
+                Format = eDataFormat.ASCII;
+            }
+            btnAsciiFlag ^= true;
             applyState(Format);
         }
 
         private void btn_bin_Click(object sender, EventArgs e)
         {
+            btnAsciiFlag = false;
             if (combyneKeys == false)
             {
                 Format = eDataFormat.BIN;
@@ -169,6 +183,7 @@ namespace Terrarium
 
         private void btn_dec_Click(object sender, EventArgs e)
         {
+            btnAsciiFlag = false;
             if (combyneKeys == false)
             {
                 Format = eDataFormat.DEC;
@@ -182,6 +197,7 @@ namespace Terrarium
 
         private void btn_hex_Click(object sender, EventArgs e)
         {
+            btnAsciiFlag = false;
             if (combyneKeys == false)
             {
                 Format = eDataFormat.HEX;

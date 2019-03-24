@@ -1103,7 +1103,6 @@
             this.nrtb_Rx.Location = new System.Drawing.Point(0, 0);
             this.nrtb_Rx.Margin = new System.Windows.Forms.Padding(0);
             this.nrtb_Rx.Name = "nrtb_Rx";
-            this.nrtb_Rx.NumStripAutoscroll = false;
             this.nrtb_Rx.NumStripVisible = true;
             this.nrtb_Rx.Size = new System.Drawing.Size(619, 396);
             this.nrtb_Rx.TabIndex = 3;

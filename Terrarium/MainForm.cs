@@ -322,10 +322,6 @@ namespace Terrarium
         {
             SettingsSave();
             serClient.Close();
-
-            //serClient.OnSerialReceiving -= SerialReceiveHandler;
-            //serClient.OnSerialError -= SerialPortError;
-
             serClient.Dispose();
         }
 
@@ -346,62 +342,8 @@ namespace Terrarium
             }
             else
             {
-                if (cb_Rx_Hex.Checked)
-                {
-                    //if (cb_Sort.Checked == true)
-                    //{
-                    //    nrtb_Rx.RichTextBox.Text += "\n";
-                    //    nrtb_Rx.AppendHex(data);
-                    //}
-                    //else
-                    //{
-                    //    nrtb_Rx.AppendHex(data);                       
-                    //}
+                TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value, cb_RxAutoscroll.Checked);
 
-                    //TextHelper.ByteToAscii(nrtb_Rx.RichTextBox, data);
-                    TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value);
-                    //nrtb_Rx.RichTextBox.AppendText(TextHelper.ByteToBinaryString(200));
-
-                    //for (int i = 0; i <= 255; i++)
-                    //{
-                    //    nrtb_Rx.RichTextBox.AppendText(TextHelper.ByteToBinaryString((byte)i));
-                    //    nrtb_Rx.RichTextBox.AppendText("\n");
-                    //}
-                    
-
-
-
-                }
-                else
-                {
-                    if (cb_Sort.Checked == true)
-                    {
-                        //string[] str = TextHelper.StringSplit(Encoding.ASCII.GetString(data), (int)nmn_ByteSort.Value);
-                        //foreach (string tmp in str)
-                        //{
-                        //    nrtb_Rx.AppendText(tmp + "\n");
-                        //} 
-
-                        //byte 
-                        //byte[] array = TextHelper.ByteSplit(data, (int)nmn_ByteSort.Value);
-                        //foreach (byte tmp in array)
-                        //{
-
-                        //}
-                       
-                        
-
-
-
-
-                    }
-                    else
-                    {
-                        nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
-                    }
-                }
-
-                nrtb_Rx.NumStripAutoscroll = cb_RxAutoscroll.Checked ? true : false;
                 RxDataCounter += data.Length;
                 lbl_RxCounter.Text = "Rx: " + RxDataCounter.ToString();
             }
@@ -584,9 +526,7 @@ namespace Terrarium
                 MessageBox.Show("Please enter only digits.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tb_baudRateCustome.Text = tb_baudRateCustome.Text.Remove(tb_baudRateCustome.Text.Length - 1);
                 tb_baudRateCustome.Text = "1";
-            }
-            
-
+            }           
             else
             {
                 try

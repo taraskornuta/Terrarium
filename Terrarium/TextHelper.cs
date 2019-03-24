@@ -124,49 +124,41 @@ namespace Terrarium
             {0x1E, "RS"  }, {0x1F, "US"  }, {0x7F, "DEL" },
         };
 
-
-        //public static void ByteToAscii(this RichTextBox box, byte[] data)
-        //{
-        //    byte[] arr = new byte[1];
-        //    for (int i = 0; i < data.Length; i++)
-        //    {
-        //        if (AsciiCtrlCharDict.ContainsKey(data[i]))
-        //        {
-        //            string replacement;
-        //            AsciiCtrlCharDict.TryGetValue(data[i], out replacement);
-        //            box.AppendText("[" + replacement + "]", Color.LightGray, Color.Firebrick);     
-        //        }
-        //        else
-        //        {                   
-        //            arr[0] = data[i];
-
-        //            if (data[i] > 127)
-        //            {
-        //                box.AppendText("[" + ByteToHexString(arr) + "]", Color.LightGray, Color.Firebrick);
-        //            }
-        //            else
-        //            {
-        //                box.AppendText(Encoding.ASCII.GetString(arr) + "");
-        //            }
-
-        //        }
-        //    }
-        //}
-
-
         // should be called when screen is cleared
         public static void ResetChunkCounter()
         {
             counter = 0;
         }
 
-        public static void ByteFormatPrint(this NumberedRTB box, byte[] data, eDataFormat dataFormat, bool isDividedByChunk, int chunkSize)
+        public static void ByteFormatPrint(this NumberedRTB box, byte[] data, eDataFormat dataFormat, bool isDividedByChunk, int chunkSize, bool caretScroll)
         {
             int dataLength = 0;
-            byte[] chunkBuff = new byte[data.Length];
+            byte[] chunkBuff = new byte[1];
 
             switch (dataFormat)
             {
+                case eDataFormat.NONE:
+                {
+                    while (dataLength < data.Length)
+                    {
+                        if (isDividedByChunk == true)
+                        {
+                            if (counter == chunkSize)
+                            {
+                                counter = 0;
+                                box.AppendText("\n");                       // print \n to move to next line
+                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
+                            }
+                            counter++;
+                        }
+                        chunkBuff[0] = data[dataLength];
+                        box.AppendText(Encoding.ASCII.GetString(chunkBuff));
+                        dataLength++;
+                    }
+                    if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                    break;
+                }
+
                 case eDataFormat.ASCII:
                 {
                      while (dataLength < data.Length)
@@ -177,6 +169,7 @@ namespace Terrarium
                              {
                                  counter = 0;
                                  box.AppendText("\n");                       // print \n to move to next line
+                                 if (caretScroll == true) box.RichTextBox.ScrollToCaret();
                              }
                             counter++;
                          }
@@ -185,16 +178,18 @@ namespace Terrarium
                          {
                              string replacement;
                              AsciiCtrlCharDict.TryGetValue(data[dataLength], out replacement);
-                             box.AppendText("[" + replacement + "] ", Color.LightGray, Color.Firebrick);
+                             box.AppendText("[" + replacement + "] ", Color.LightGray, Color.Green);
                          }
                          else
                          {
                              chunkBuff[0] = data[dataLength];
                              box.AppendText(Encoding.ASCII.GetString(chunkBuff));
                          }
+                         
                          dataLength++;                       
-                     } 
-                     break;
+                     }
+                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                        break;
                 }   
                 
                     
@@ -208,6 +203,7 @@ namespace Terrarium
                             {
                                 counter = 0;
                                 box.AppendText("\n");                       // print \n to move to next line
+                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
                             }
                             counter++;
                         }
@@ -215,7 +211,8 @@ namespace Terrarium
                         box.AppendText("[" + ByteToBinaryString(data[dataLength]) + "] ");
                         dataLength++;
                     }
-                    break;
+                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                        break;
                 }
                 
 
@@ -229,13 +226,15 @@ namespace Terrarium
                             {
                                 counter = 0;
                                 box.AppendText("\n");                       // print \n to move to next line
+                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
                             }
                             counter++;
                         }
                         box.AppendText("[" + data[dataLength].ToString() + "] ");
                         dataLength++;
                     }
-                    break;
+                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                        break;
                 }
                 
 
@@ -249,15 +248,16 @@ namespace Terrarium
                             {
                                 counter = 0;
                                 box.AppendText("\n");                       // print \n to move to next line
+                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
                             }
                             counter++;
                         }
                         box.AppendText("[" + ByteToHexString(data[dataLength]) + "] ");
                         dataLength++;
                     }
-                    break;
+                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                        break;
                 }
-
                     
                 case eDataFormat.ASCIIBIN:
                 {
@@ -269,6 +269,7 @@ namespace Terrarium
                             {
                                 counter = 0;
                                 box.AppendText("\n");                       // print \n to move to next line
+                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
                             }
                             counter++;
                         }
@@ -277,52 +278,90 @@ namespace Terrarium
                         {
                             string replacement;
                             AsciiCtrlCharDict.TryGetValue(data[dataLength], out replacement);
-                            box.AppendText("'" + replacement + "'", Color.LightGray, Color.Firebrick);
-                            box.AppendText("[" + ByteToBinaryString(data[dataLength]) + "] ", Color.LightGray, Color.Firebrick);
+                            box.AppendText("'" + replacement + "'", Color.LightGray, Color.Green);
+                            box.AppendText("[" + ByteToBinaryString(data[dataLength]) + "] ", Color.LightGray, Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(190))))));
                         }
                         else
                         {
                             chunkBuff[0] = data[dataLength];
-                            box.AppendText("'" + Encoding.ASCII.GetString(chunkBuff) + "'", Color.LightGray, Color.Firebrick);
-                            box.AppendText("[" + ByteToBinaryString(data[dataLength]) + "] ", Color.LightGray, Color.Firebrick);
+                            box.AppendText("'" + Encoding.ASCII.GetString(chunkBuff) + "'");
+                            box.AppendText("[" + ByteToBinaryString(data[dataLength]) + "] ", Color.LightGray, Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(190))))));
                         }
                         dataLength++;
                     }
-                    break;
+                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                        break;
                 }
 
                 case eDataFormat.ASCIIDEC:
+                {
+                    while (dataLength < data.Length)
+                    {
+                        if (isDividedByChunk == true)
+                        {
+                            if (counter == chunkSize)
+                            {
+                                counter = 0;
+                                box.AppendText("\n");                       // print \n to move to next line
+                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
+                            }
+                            counter++;
+                        }
 
-                    break;
+                        if (AsciiCtrlCharDict.ContainsKey(data[dataLength]))
+                        {
+                            string replacement;
+                            AsciiCtrlCharDict.TryGetValue(data[dataLength], out replacement);
+                            box.AppendText("'" + replacement + "'", Color.LightGray, Color.Green);
+                            box.AppendText("[" + data[dataLength].ToString() + "] ", Color.LightGray, Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(190))))));
+                        }
+                        else
+                        {
+                            chunkBuff[0] = data[dataLength];
+                            box.AppendText("'" + Encoding.ASCII.GetString(chunkBuff) + "'");
+                            box.AppendText("[" + data[dataLength].ToString() + "] ", Color.LightGray, Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(190))))));
+                        }
+                        dataLength++;
+                    }
+                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                        break;
+                }
+
+                    
                 case eDataFormat.ASCIIHEX:
+                {
+                    while (dataLength < data.Length)
+                    {
+                        if (isDividedByChunk == true)
+                        {
+                            if (counter == chunkSize)
+                            {
+                                counter = 0;
+                                box.AppendText("\n");                       // print \n to move to next line
+                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
+                            }
+                            counter++;
+                        }
 
-                    break;
+                        if (AsciiCtrlCharDict.ContainsKey(data[dataLength]))
+                        {
+                            string replacement;
+                            AsciiCtrlCharDict.TryGetValue(data[dataLength], out replacement);
+                            box.AppendText("'" + replacement + "'", Color.LightGray, Color.Green);
+                            box.AppendText("[" + ByteToHexString(data[dataLength]) + "] ", Color.LightGray, Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(190))))));
+                        }
+                        else
+                        {
+                            chunkBuff[0] = data[dataLength];
+                            box.AppendText("'" + Encoding.ASCII.GetString(chunkBuff) + "'");
+                            box.AppendText("[" + ByteToHexString(data[dataLength]) + "] ", Color.LightGray, Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(190))))));
+                        }
+                        dataLength++;
+                    }
+                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                        break;
+                }               
             }
-
-
-
-            //for (int i = 0; i < data.Length; i++)
-            //{
-            //    if (AsciiCtrlCharDict.ContainsKey(data[i]))
-            //    {
-            //        string replacement;
-            //        AsciiCtrlCharDict.TryGetValue(data[i], out replacement);
-            //        box.AppendText("[" + replacement + "]", Color.LightGray, Color.Firebrick);
-            //    }
-                //else
-                //{
-                //    arr[0] = data[i];
-
-                //    if (data[i] > 127)
-                //    {
-                //        box.AppendText("[" + ByteToHexString(arr) + "]", Color.LightGray, Color.Firebrick);
-                //    }
-                //    else
-                //    {
-                //        box.AppendText(Encoding.ASCII.GetString(arr) + "");
-                //    }
-                //}
-           // }
         }
 
 
