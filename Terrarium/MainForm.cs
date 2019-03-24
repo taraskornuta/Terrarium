@@ -358,7 +358,18 @@ namespace Terrarium
                     //    nrtb_Rx.AppendHex(data);                       
                     //}
 
-                    TextHelper.ByteToAscii(nrtb_Rx.RichTextBox, data);
+                    //TextHelper.ByteToAscii(nrtb_Rx.RichTextBox, data);
+                    TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value);
+                    //nrtb_Rx.RichTextBox.AppendText(TextHelper.ByteToBinaryString(200));
+
+                    //for (int i = 0; i <= 255; i++)
+                    //{
+                    //    nrtb_Rx.RichTextBox.AppendText(TextHelper.ByteToBinaryString((byte)i));
+                    //    nrtb_Rx.RichTextBox.AppendText("\n");
+                    //}
+                    
+
+
 
                 }
                 else
@@ -679,7 +690,7 @@ namespace Terrarium
         private void btn_CleanRxField_Click(object sender, EventArgs e)
         {
             nrtb_Rx.RichTextBox.Clear();
-            ByteHelper.ResetChunkCounter();
+            TextHelper.ResetChunkCounter();
         }
      
 
@@ -1056,7 +1067,7 @@ namespace Terrarium
             }
             else
             {
-                mainLayoutPanelSettings.RowStyles[3].Height = 317F;
+                mainLayoutPanelSettings.RowStyles[3].Height = 316F;
             }
             pnl_PortSettings.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[3].Height);
         

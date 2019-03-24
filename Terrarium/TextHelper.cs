@@ -10,6 +10,8 @@ namespace Terrarium
 {
     public static class TextHelper
     {
+        private static int counter = 0;
+
         public static byte[] StringToHex(string hex)
         {
             hex = hex.Replace(" ", "");
@@ -21,11 +23,30 @@ namespace Terrarium
             return raw;
         }
 
-        public static string HexToString(byte[] data)
+        public static string ByteToHexString(byte data)
         {
-            string hexString = BitConverter.ToString(data);
+            byte[] array = new byte[1];
+            array[0] = data;
+            string hexString = BitConverter.ToString(array);
             hexString = hexString.Replace("-", " ");
             return hexString;
+        }
+
+        public static string ByteToBinaryString(byte data)
+        {
+            byte[] array = new byte[8];
+            string result = "";
+            for (byte i = 0; i < array.Length; i++)
+            {
+                array[7 - i] = (byte)(data % 2);
+                data /= 2;
+            }
+
+            for (byte i = 0; i < array.Length; i++)
+            {
+                result += array[i].ToString();
+            }
+            return result;
         }
 
         public static bool IsNumberEntered(string text)
@@ -88,7 +109,7 @@ namespace Terrarium
        
 
         //Contains the substition strings for the characters. A char --> string mapping.
-        private static Dictionary<byte, string> lSpecialDict = new Dictionary<byte, string>() 
+        private static Dictionary<byte, string> AsciiCtrlCharDict = new Dictionary<byte, string>() 
         {
             {0x00, "NUL" }, {0x01, "SOH" }, {0x02, "STX" },
             {0x03, "ETX" }, {0x04, "EOT" }, {0x05, "ENQ" },
@@ -104,55 +125,34 @@ namespace Terrarium
         };
 
 
-        public static void ByteToAscii(this RichTextBox box, byte[] data)
-        {
-            byte[] arr = new byte[1];
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (lSpecialDict.ContainsKey(data[i]))
-                {
-                    string replacement;
-                    lSpecialDict.TryGetValue(data[i], out replacement);
-                    box.AppendText("[" + replacement + "]", Color.LightGray, Color.Firebrick);     
-                }
-                else
-                {                   
-                    arr[0] = data[i];
+        //public static void ByteToAscii(this RichTextBox box, byte[] data)
+        //{
+        //    byte[] arr = new byte[1];
+        //    for (int i = 0; i < data.Length; i++)
+        //    {
+        //        if (AsciiCtrlCharDict.ContainsKey(data[i]))
+        //        {
+        //            string replacement;
+        //            AsciiCtrlCharDict.TryGetValue(data[i], out replacement);
+        //            box.AppendText("[" + replacement + "]", Color.LightGray, Color.Firebrick);     
+        //        }
+        //        else
+        //        {                   
+        //            arr[0] = data[i];
 
-                    if (data[i] > 127)
-                    {
-                        box.AppendText("[" + HexToString(arr) + "]", Color.LightGray, Color.Firebrick);
-                    }
-                    else
-                    {
-                        box.AppendText(Encoding.ASCII.GetString(arr) + "");
-                    }
+        //            if (data[i] > 127)
+        //            {
+        //                box.AppendText("[" + ByteToHexString(arr) + "]", Color.LightGray, Color.Firebrick);
+        //            }
+        //            else
+        //            {
+        //                box.AppendText(Encoding.ASCII.GetString(arr) + "");
+        //            }
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
-
-        public static void AppendText(this RichTextBox box, string text, Color bgcolor, Color fontcolor)
-        {
-            box.SelectionStart = box.TextLength;
-            box.SelectionLength = 0;
-
-            var saved = box.SelectionBackColor;
-            var saved2 = box.SelectionColor;
-            //box.SelectionBackColor = bgcolor;
-            box.SelectionColor = fontcolor;
-            box.AppendText(text);
-            box.SelectionBackColor = saved;
-            box.SelectionColor = saved2;
-        }
-
-    }
-
-    public static class ByteHelper
-    {
-        private static int dataLength = 0;
-        private static int counter = 0;
 
         // should be called when screen is cleared
         public static void ResetChunkCounter()
@@ -160,26 +160,185 @@ namespace Terrarium
             counter = 0;
         }
 
-
-        public static void DivideByChunk(this RichTextBox box, byte[] data, int chunkSize)
+        public static void ByteFormatPrint(this NumberedRTB box, byte[] data, eDataFormat dataFormat, bool isDividedByChunk, int chunkSize)
         {
-            byte[] arr = new byte[1];
-            while (dataLength < data.Length)
+            int dataLength = 0;
+            byte[] chunkBuff = new byte[data.Length];
+
+            switch (dataFormat)
             {
-                if (counter == chunkSize)
+                case eDataFormat.ASCII:
                 {
-                    counter = 0;
-                    box.AppendText("\n");                       // print \n to move to next line
+                     while (dataLength < data.Length)
+                     {
+                         if (isDividedByChunk == true)
+                         {
+                             if (counter == chunkSize)
+                             {
+                                 counter = 0;
+                                 box.AppendText("\n");                       // print \n to move to next line
+                             }
+                            counter++;
+                         }
+
+                         if (AsciiCtrlCharDict.ContainsKey(data[dataLength]))
+                         {
+                             string replacement;
+                             AsciiCtrlCharDict.TryGetValue(data[dataLength], out replacement);
+                             box.AppendText("[" + replacement + "] ", Color.LightGray, Color.Firebrick);
+                         }
+                         else
+                         {
+                             chunkBuff[0] = data[dataLength];
+                             box.AppendText(Encoding.ASCII.GetString(chunkBuff));
+                         }
+                         dataLength++;                       
+                     } 
+                     break;
+                }   
+                
+                    
+                case eDataFormat.BIN:
+                {
+                    while (dataLength < data.Length)
+                    {
+                        if (isDividedByChunk == true)
+                        {
+                            if (counter == chunkSize)
+                            {
+                                counter = 0;
+                                box.AppendText("\n");                       // print \n to move to next line
+                            }
+                            counter++;
+                        }
+
+                        box.AppendText("[" + ByteToBinaryString(data[dataLength]) + "] ");
+                        dataLength++;
+                    }
+                    break;
                 }
                 
-                arr[0] = data[dataLength];
-                box.AppendText(Encoding.ASCII.GetString(arr));  // @TODO should print ASCII, HEX, DEC, BIN or both
 
-                dataLength++;
-                counter++;
+                case eDataFormat.DEC:
+                {
+                    while (dataLength < data.Length)
+                    {
+                        if (isDividedByChunk == true)
+                        {
+                            if (counter == chunkSize)
+                            {
+                                counter = 0;
+                                box.AppendText("\n");                       // print \n to move to next line
+                            }
+                            counter++;
+                        }
+                        box.AppendText("[" + data[dataLength].ToString() + "] ");
+                        dataLength++;
+                    }
+                    break;
+                }
+                
+
+                case eDataFormat.HEX:
+                {
+                    while (dataLength < data.Length)
+                    {
+                        if (isDividedByChunk == true)
+                        {
+                            if (counter == chunkSize)
+                            {
+                                counter = 0;
+                                box.AppendText("\n");                       // print \n to move to next line
+                            }
+                            counter++;
+                        }
+                        box.AppendText("[" + ByteToHexString(data[dataLength]) + "] ");
+                        dataLength++;
+                    }
+                    break;
+                }
+
+                    
+                case eDataFormat.ASCIIBIN:
+                {
+                    while (dataLength < data.Length)
+                    {
+                        if (isDividedByChunk == true)
+                        {
+                            if (counter == chunkSize)
+                            {
+                                counter = 0;
+                                box.AppendText("\n");                       // print \n to move to next line
+                            }
+                            counter++;
+                        }
+
+                        if (AsciiCtrlCharDict.ContainsKey(data[dataLength]))
+                        {
+                            string replacement;
+                            AsciiCtrlCharDict.TryGetValue(data[dataLength], out replacement);
+                            box.AppendText("'" + replacement + "'", Color.LightGray, Color.Firebrick);
+                            box.AppendText("[" + ByteToBinaryString(data[dataLength]) + "] ", Color.LightGray, Color.Firebrick);
+                        }
+                        else
+                        {
+                            chunkBuff[0] = data[dataLength];
+                            box.AppendText("'" + Encoding.ASCII.GetString(chunkBuff) + "'", Color.LightGray, Color.Firebrick);
+                            box.AppendText("[" + ByteToBinaryString(data[dataLength]) + "] ", Color.LightGray, Color.Firebrick);
+                        }
+                        dataLength++;
+                    }
+                    break;
+                }
+
+                case eDataFormat.ASCIIDEC:
+
+                    break;
+                case eDataFormat.ASCIIHEX:
+
+                    break;
             }
+
+
+
+            //for (int i = 0; i < data.Length; i++)
+            //{
+            //    if (AsciiCtrlCharDict.ContainsKey(data[i]))
+            //    {
+            //        string replacement;
+            //        AsciiCtrlCharDict.TryGetValue(data[i], out replacement);
+            //        box.AppendText("[" + replacement + "]", Color.LightGray, Color.Firebrick);
+            //    }
+                //else
+                //{
+                //    arr[0] = data[i];
+
+                //    if (data[i] > 127)
+                //    {
+                //        box.AppendText("[" + ByteToHexString(arr) + "]", Color.LightGray, Color.Firebrick);
+                //    }
+                //    else
+                //    {
+                //        box.AppendText(Encoding.ASCII.GetString(arr) + "");
+                //    }
+                //}
+           // }
         }
 
-    }
 
+
+        public static void AppendText(this NumberedRTB box, string text, Color bgcolor, Color fontcolor)
+        {
+            box.RichTextBox.SelectionStart = box.RichTextBox.TextLength;
+            box.RichTextBox.SelectionLength = 0;
+
+            var saved = box.RichTextBox.SelectionBackColor;
+            var saved2 = box.RichTextBox.SelectionColor;
+            //box.SelectionBackColor = bgcolor;
+            box.RichTextBox.SelectionColor = fontcolor;
+            box.RichTextBox.AppendText(text);
+            box.RichTextBox.SelectionBackColor = saved;
+            box.RichTextBox.SelectionColor = saved2;
+        }
+    } 
 }

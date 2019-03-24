@@ -49,8 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>icons8_Integrated_Circuit.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -191,6 +190,7 @@
     <None Include="Resorces\icons8_Connected_32px.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="icons8_Integrated_Circuit.ico" />
     <Content Include="Resorces\icons8_Integrated_Circuit.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Terrarium
 {
-    public enum eButtonState
+    public enum eDataFormat
     {
         ASCII,
         BIN,
@@ -29,7 +29,7 @@ namespace Terrarium
         private bool combyneKeys = false;
         private int milliseconds = 0;
         private int doubleClickInterval = 1;
-        private eButtonState btnState;
+        private eDataFormat Format;
 
         public int DoubleClickInterval
         {
@@ -42,13 +42,13 @@ namespace Terrarium
             }
         }
 
-        public eButtonState BtnState
+        public eDataFormat DataFormat
         {
-            get => btnState;
+            get => Format;
             set
             {
-                btnState = value;
-                applyState(btnState);
+                Format = value;
+                applyState(Format);
             }
         }
 
@@ -56,7 +56,7 @@ namespace Terrarium
         {
             InitializeComponent();            
             doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
-            applyState(btnState);
+            applyState(Format);
         }
         
         void doubleClickTimer_Tick(object sender, EventArgs e)
@@ -105,34 +105,36 @@ namespace Terrarium
             btn_ascii.BackColor = btn_bin.BackColor = btn_dec.BackColor = btn_hex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
         }
 
-        private void applyState(eButtonState buttonState)
+
+        const byte btnEnabledColor = 100;
+        private void applyState(eDataFormat buttonState)
         {
             allBtnsResetBackColor();
             switch (buttonState)
             {
-                case eButtonState.ASCII:
-                    btn_ascii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+                case eDataFormat.ASCII:
+                    btn_ascii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))));
                     break;
-                case eButtonState.BIN:
-                    btn_bin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+                case eDataFormat.BIN:
+                    btn_bin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))));
                     break;
-                case eButtonState.DEC:
-                    btn_dec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+                case eDataFormat.DEC:
+                    btn_dec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))));
                     break;
-                case eButtonState.HEX:
-                    btn_hex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+                case eDataFormat.HEX:
+                    btn_hex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))));
                     break;
-                case eButtonState.ASCIIBIN:
+                case eDataFormat.ASCIIBIN:
                     btn_ascii.BackColor = Color.Red;
-                    btn_bin.BackColor = Color.Yellow;
+                    btn_bin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(190)))));
                     break;
-                case eButtonState.ASCIIDEC:
+                case eDataFormat.ASCIIDEC:
                     btn_ascii.BackColor = Color.Red;
-                    btn_dec.BackColor = Color.Yellow;
+                    btn_dec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(190)))));
                     break;
-                case eButtonState.ASCIIHEX:
+                case eDataFormat.ASCIIHEX:
                     btn_ascii.BackColor = Color.Red;
-                    btn_hex.BackColor = Color.Yellow;
+                    btn_hex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(190)))));
                     break;
             }
         }
@@ -141,54 +143,54 @@ namespace Terrarium
         private void btn_ascii_DoubleClick()
         {
             combyneKeys = true;
-            btnState = eButtonState.ASCIIBIN;
-            applyState(btnState);
+            Format = eDataFormat.ASCIIBIN;
+            applyState(Format);
         }
 
         private void btn_ascii_Click()
         {
             combyneKeys = false;
-            btnState = eButtonState.ASCII;
-            applyState(btnState);
+            Format = eDataFormat.ASCII;
+            applyState(Format);
         }
 
         private void btn_bin_Click(object sender, EventArgs e)
         {
             if (combyneKeys == false)
             {
-                btnState = eButtonState.BIN;
+                Format = eDataFormat.BIN;
             }
             else
             {
-                btnState = eButtonState.ASCIIBIN;
+                Format = eDataFormat.ASCIIBIN;
             }           
-            applyState(btnState);
+            applyState(Format);
         }
 
         private void btn_dec_Click(object sender, EventArgs e)
         {
             if (combyneKeys == false)
             {
-                btnState = eButtonState.DEC;
+                Format = eDataFormat.DEC;
             }
             else
             {
-                btnState = eButtonState.ASCIIDEC;
+                Format = eDataFormat.ASCIIDEC;
             }
-            applyState(btnState);
+            applyState(Format);
         }
 
         private void btn_hex_Click(object sender, EventArgs e)
         {
             if (combyneKeys == false)
             {
-                btnState = eButtonState.HEX;
+                Format = eDataFormat.HEX;
             }
             else
             {
-                btnState = eButtonState.ASCIIHEX;
+                Format = eDataFormat.ASCIIHEX;
             }
-            applyState(btnState);
+            applyState(Format);
         }
     }
 }

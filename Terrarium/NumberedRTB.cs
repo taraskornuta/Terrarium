@@ -37,11 +37,11 @@ namespace Terrarium
             if (_autoscroll == true) richTextBox.ScrollToCaret();
         }
 
-        public void AppendHex(byte[] data)
-        {
-            richTextBox.AppendText(TextHelper.HexToString(data) + " ");
-            if (_autoscroll == true) richTextBox.ScrollToCaret();
-        }
+        //public void AppendHex(byte[] data)
+        //{
+        //    richTextBox.AppendText(TextHelper.HexToString(data) + " ");
+        //    if (_autoscroll == true) richTextBox.ScrollToCaret();
+        //}
 
         [Category("Appearance")]
         public bool NumStripAutoscroll
