@@ -10,7 +10,6 @@ namespace Terrarium
     public partial class NumberedRTB : UserControl
     {
         private readonly LineNumberStrip _strip;
-        private bool _autoscroll = false;
 
         public NumberedRTB()
         {
@@ -34,24 +33,6 @@ namespace Terrarium
         public void AppendText(string text)
         {
             richTextBox.AppendText(text);
-            if (_autoscroll == true) richTextBox.ScrollToCaret();
-        }
-
-        public void AppendHex(byte[] data)
-        {
-            richTextBox.AppendText(TextHelper.HexToString(data) + " ");
-            if (_autoscroll == true) richTextBox.ScrollToCaret();
-        }
-
-        [Category("Appearance")]
-        public bool NumStripAutoscroll
-        {
-            get { return _autoscroll; }
-            set
-            {
-                _autoscroll = value;
-                Invalidate();
-            }
         }
 
         [Category("Appearance")]

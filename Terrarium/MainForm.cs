@@ -322,10 +322,6 @@ namespace Terrarium
         {
             SettingsSave();
             serClient.Close();
-
-            //serClient.OnSerialReceiving -= SerialReceiveHandler;
-            //serClient.OnSerialError -= SerialPortError;
-
             serClient.Dispose();
         }
 
@@ -336,7 +332,7 @@ namespace Terrarium
 
         delegate void SetTextCallback(byte[] data);
 
-
+       
         private void SetText(byte[] data)
         {
             if (nrtb_Rx.RichTextBox.InvokeRequired)
@@ -346,35 +342,8 @@ namespace Terrarium
             }
             else
             {
-                if (cb_Rx_Hex.Checked)
-                {
-                    if (cb_Sort.Checked == true)
-                    {
-                        nrtb_Rx.RichTextBox.Text += "\n";
-                        nrtb_Rx.AppendHex(data);
-                    }
-                    else
-                    {
-                        nrtb_Rx.AppendHex(data);
-                    }
-                }
-                else
-                {
-                    if (cb_Sort.Checked == true)
-                    {
-                        string[] str = TextHelper.StringSplit(Encoding.ASCII.GetString(data), (int)nmn_ByteSort.Value);
-                        foreach (string tmp in str)
-                        {
-                            nrtb_Rx.AppendText(tmp + "\n");
-                        }                       
-                    }
-                    else
-                    {
-                        nrtb_Rx.AppendText(Encoding.ASCII.GetString(data));
-                    }
-                }
+                TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value, cb_RxAutoscroll.Checked);
 
-                nrtb_Rx.NumStripAutoscroll = cb_RxAutoscroll.Checked ? true : false;
                 RxDataCounter += data.Length;
                 lbl_RxCounter.Text = "Rx: " + RxDataCounter.ToString();
             }
@@ -557,9 +526,7 @@ namespace Terrarium
                 MessageBox.Show("Please enter only digits.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 tb_baudRateCustome.Text = tb_baudRateCustome.Text.Remove(tb_baudRateCustome.Text.Length - 1);
                 tb_baudRateCustome.Text = "1";
-            }
-            
-
+            }           
             else
             {
                 try
@@ -660,7 +627,12 @@ namespace Terrarium
             macroPannel.tb_Tx.Clear();
         }
 
-        private void btn_CleanRxField_Click(object sender, EventArgs e) => nrtb_Rx.RichTextBox.Clear();
+        private void btn_CleanRxField_Click(object sender, EventArgs e)
+        {
+            nrtb_Rx.RichTextBox.Clear();
+            TextHelper.ResetChunkCounter();
+        }
+     
 
         private int SerialPortScan()
         {
@@ -1035,7 +1007,7 @@ namespace Terrarium
             }
             else
             {
-                mainLayoutPanelSettings.RowStyles[3].Height = 317F;
+                mainLayoutPanelSettings.RowStyles[3].Height = 316F;
             }
             pnl_PortSettings.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[3].Height);
         
@@ -1049,7 +1021,7 @@ namespace Terrarium
             }
             else
             {
-                mainLayoutPanelSettings.RowStyles[5].Height = 65F;
+                mainLayoutPanelSettings.RowStyles[5].Height = 100F;
             }
             pnl_Receiving.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[5].Height);
 
@@ -1063,7 +1035,7 @@ namespace Terrarium
             }
             else
             {
-                mainLayoutPanelSettings.RowStyles[7].Height = 61F;               
+                mainLayoutPanelSettings.RowStyles[7].Height = 130F;               
             }
             pnl_Transmiting.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[7].Height);
         }

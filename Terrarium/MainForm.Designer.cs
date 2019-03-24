@@ -38,6 +38,7 @@
             this.pnl_Settings = new System.Windows.Forms.Panel();
             this.mainLayoutPanelSettings = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_Receiving = new System.Windows.Forms.Panel();
+            this.dataFormatPanel = new Terrarium.DataFormaterSwitch();
             this.nmn_ByteSort = new System.Windows.Forms.NumericUpDown();
             this.cb_RxAutoscroll = new System.Windows.Forms.CheckBox();
             this.cb_Sort = new System.Windows.Forms.CheckBox();
@@ -89,13 +90,13 @@
             this.pnl_PortName = new System.Windows.Forms.Panel();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
             this.cmb_SerialPortList = new Terrarium.FlattenCombo();
+            this.dropDownPanelSettings = new Terrarium.DropDownPanel();
+            this.dropDownPanelReceiving = new Terrarium.DropDownPanel();
+            this.dropDownPanel4 = new Terrarium.DropDownPanel();
+            this.dropDownPanelTransmiting = new Terrarium.DropDownPanel();
             this.pnl_Transmiting = new System.Windows.Forms.Panel();
             this.cb_Tx_Hex = new System.Windows.Forms.CheckBox();
             this.cb_TxMacroSend = new System.Windows.Forms.CheckBox();
-            this.dropDownPanelSettings = new Terrarium.DropDownPanel();
-            this.dropDownPanelReceiving = new Terrarium.DropDownPanel();
-            this.dropDownPanelTransmiting = new Terrarium.DropDownPanel();
-            this.dropDownPanel4 = new Terrarium.DropDownPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_TxCounter = new System.Windows.Forms.Label();
             this.lbl_RxCounter = new System.Windows.Forms.Label();
@@ -135,7 +136,7 @@
             this.pnl_ToolBar.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_ToolBar.Location = new System.Drawing.Point(844, 0);
             this.pnl_ToolBar.Name = "pnl_ToolBar";
-            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 561);
+            this.pnl_ToolBar.Size = new System.Drawing.Size(40, 590);
             this.pnl_ToolBar.TabIndex = 1;
             // 
             // btn_CleanRxField
@@ -145,7 +146,7 @@
             this.btn_CleanRxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanRxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanRxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanRxField.Image")));
-            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 397);
+            this.btn_CleanRxField.Location = new System.Drawing.Point(2, 426);
             this.btn_CleanRxField.Name = "btn_CleanRxField";
             this.btn_CleanRxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanRxField.TabIndex = 5;
@@ -159,7 +160,7 @@
             this.btn_CleanTxField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CleanTxField.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_CleanTxField.Image = ((System.Drawing.Image)(resources.GetObject("btn_CleanTxField.Image")));
-            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 474);
+            this.btn_CleanTxField.Location = new System.Drawing.Point(2, 503);
             this.btn_CleanTxField.Name = "btn_CleanTxField";
             this.btn_CleanTxField.Size = new System.Drawing.Size(37, 41);
             this.btn_CleanTxField.TabIndex = 4;
@@ -185,7 +186,7 @@
             this.btn_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_Settings.Image = global::Terrarium.Properties.Resources.icons8_Settings_32px;
-            this.btn_Settings.Location = new System.Drawing.Point(2, 515);
+            this.btn_Settings.Location = new System.Drawing.Point(2, 544);
             this.btn_Settings.Name = "btn_Settings";
             this.btn_Settings.Size = new System.Drawing.Size(37, 41);
             this.btn_Settings.TabIndex = 0;
@@ -199,7 +200,7 @@
             this.pnl_Settings.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_Settings.Location = new System.Drawing.Point(619, 0);
             this.pnl_Settings.Name = "pnl_Settings";
-            this.pnl_Settings.Size = new System.Drawing.Size(225, 561);
+            this.pnl_Settings.Size = new System.Drawing.Size(225, 590);
             this.pnl_Settings.TabIndex = 2;
             // 
             // mainLayoutPanelSettings
@@ -209,11 +210,11 @@
             this.mainLayoutPanelSettings.Controls.Add(this.pnl_Receiving, 0, 5);
             this.mainLayoutPanelSettings.Controls.Add(this.pnl_PortSettings, 0, 3);
             this.mainLayoutPanelSettings.Controls.Add(this.pnl_PortName, 0, 1);
-            this.mainLayoutPanelSettings.Controls.Add(this.pnl_Transmiting, 0, 7);
             this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanelSettings, 0, 2);
             this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanelReceiving, 0, 4);
-            this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanelTransmiting, 0, 6);
             this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanel4, 0, 0);
+            this.mainLayoutPanelSettings.Controls.Add(this.dropDownPanelTransmiting, 0, 6);
+            this.mainLayoutPanelSettings.Controls.Add(this.pnl_Transmiting, 0, 7);
             this.mainLayoutPanelSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainLayoutPanelSettings.Location = new System.Drawing.Point(0, 0);
             this.mainLayoutPanelSettings.Margin = new System.Windows.Forms.Padding(0);
@@ -222,27 +223,39 @@
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 317F));
+            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 316F));
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 164F));
-            this.mainLayoutPanelSettings.Size = new System.Drawing.Size(225, 561);
+            this.mainLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.mainLayoutPanelSettings.Size = new System.Drawing.Size(225, 590);
             this.mainLayoutPanelSettings.TabIndex = 16;
             // 
             // pnl_Receiving
             // 
+            this.pnl_Receiving.Controls.Add(this.dataFormatPanel);
             this.pnl_Receiving.Controls.Add(this.nmn_ByteSort);
             this.pnl_Receiving.Controls.Add(this.cb_RxAutoscroll);
             this.pnl_Receiving.Controls.Add(this.cb_Sort);
             this.pnl_Receiving.Controls.Add(this.cb_Rx_Hex);
             this.pnl_Receiving.Controls.Add(this.cb_Loging);
             this.pnl_Receiving.Controls.Add(this.cb_LinesNum);
-            this.pnl_Receiving.Location = new System.Drawing.Point(0, 415);
+            this.pnl_Receiving.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_Receiving.Location = new System.Drawing.Point(0, 414);
             this.pnl_Receiving.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Receiving.Name = "pnl_Receiving";
-            this.pnl_Receiving.Size = new System.Drawing.Size(225, 65);
+            this.pnl_Receiving.Size = new System.Drawing.Size(225, 100);
             this.pnl_Receiving.TabIndex = 5;
+            // 
+            // dataFormatPanel
+            // 
+            this.dataFormatPanel.DataFormat = Terrarium.eDataFormat.ASCII;
+            this.dataFormatPanel.DoubleClickInterval = 50;
+            this.dataFormatPanel.Location = new System.Drawing.Point(0, 2);
+            this.dataFormatPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.dataFormatPanel.Name = "dataFormatPanel";
+            this.dataFormatPanel.Size = new System.Drawing.Size(225, 25);
+            this.dataFormatPanel.TabIndex = 17;
             // 
             // nmn_ByteSort
             // 
@@ -250,7 +263,7 @@
             this.nmn_ByteSort.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.nmn_ByteSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nmn_ByteSort.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nmn_ByteSort.Location = new System.Drawing.Point(56, 34);
+            this.nmn_ByteSort.Location = new System.Drawing.Point(56, 76);
             this.nmn_ByteSort.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -277,7 +290,7 @@
             this.cb_RxAutoscroll.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_RxAutoscroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_RxAutoscroll.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_RxAutoscroll.Location = new System.Drawing.Point(128, 3);
+            this.cb_RxAutoscroll.Location = new System.Drawing.Point(128, 45);
             this.cb_RxAutoscroll.Name = "cb_RxAutoscroll";
             this.cb_RxAutoscroll.Size = new System.Drawing.Size(72, 17);
             this.cb_RxAutoscroll.TabIndex = 2;
@@ -291,7 +304,7 @@
             this.cb_Sort.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_Sort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_Sort.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_Sort.Location = new System.Drawing.Point(4, 35);
+            this.cb_Sort.Location = new System.Drawing.Point(4, 77);
             this.cb_Sort.Name = "cb_Sort";
             this.cb_Sort.Size = new System.Drawing.Size(45, 17);
             this.cb_Sort.TabIndex = 6;
@@ -306,7 +319,7 @@
             this.cb_Rx_Hex.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_Rx_Hex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_Rx_Hex.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_Rx_Hex.Location = new System.Drawing.Point(3, 3);
+            this.cb_Rx_Hex.Location = new System.Drawing.Point(3, 45);
             this.cb_Rx_Hex.Name = "cb_Rx_Hex";
             this.cb_Rx_Hex.Size = new System.Drawing.Size(48, 17);
             this.cb_Rx_Hex.TabIndex = 3;
@@ -321,7 +334,7 @@
             this.cb_Loging.Enabled = false;
             this.cb_Loging.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_Loging.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_Loging.Location = new System.Drawing.Point(128, 36);
+            this.cb_Loging.Location = new System.Drawing.Point(128, 78);
             this.cb_Loging.Name = "cb_Loging";
             this.cb_Loging.Size = new System.Drawing.Size(44, 17);
             this.cb_Loging.TabIndex = 5;
@@ -335,7 +348,7 @@
             this.cb_LinesNum.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cb_LinesNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cb_LinesNum.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cb_LinesNum.Location = new System.Drawing.Point(128, 19);
+            this.cb_LinesNum.Location = new System.Drawing.Point(128, 61);
             this.cb_LinesNum.Name = "cb_LinesNum";
             this.cb_LinesNum.Size = new System.Drawing.Size(91, 17);
             this.cb_LinesNum.TabIndex = 4;
@@ -354,7 +367,7 @@
             this.pnl_PortSettings.Location = new System.Drawing.Point(0, 78);
             this.pnl_PortSettings.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_PortSettings.Name = "pnl_PortSettings";
-            this.pnl_PortSettings.Size = new System.Drawing.Size(225, 317);
+            this.pnl_PortSettings.Size = new System.Drawing.Size(225, 316);
             this.pnl_PortSettings.TabIndex = 3;
             // 
             // panel11
@@ -365,7 +378,7 @@
             this.panel11.Controls.Add(this.rb_handshake_xon);
             this.panel11.Controls.Add(this.rb_handshake_none);
             this.panel11.Controls.Add(this.rb_handshake_rts);
-            this.panel11.Location = new System.Drawing.Point(0, 221);
+            this.panel11.Location = new System.Drawing.Point(0, 220);
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(225, 96);
@@ -439,7 +452,7 @@
             this.panel10.Controls.Add(this.label4);
             this.panel10.Controls.Add(this.rb_stopBits_1_5);
             this.panel10.Controls.Add(this.rb_stopBits_1);
-            this.panel10.Location = new System.Drawing.Point(148, 111);
+            this.panel10.Location = new System.Drawing.Point(148, 110);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(77, 110);
@@ -503,7 +516,7 @@
             this.panel9.Controls.Add(this.rb_parity_none);
             this.panel9.Controls.Add(this.rb_parity_even);
             this.panel9.Controls.Add(this.rb_parity_odd);
-            this.panel9.Location = new System.Drawing.Point(74, 111);
+            this.panel9.Location = new System.Drawing.Point(74, 110);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(75, 110);
@@ -591,7 +604,7 @@
             this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.rb_dataBits_6);
             this.panel5.Controls.Add(this.rb_dataBits_5);
-            this.panel5.Location = new System.Drawing.Point(0, 111);
+            this.panel5.Location = new System.Drawing.Point(0, 110);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(75, 110);
@@ -681,7 +694,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(225, 112);
+            this.panel3.Size = new System.Drawing.Size(225, 110);
             this.panel3.TabIndex = 14;
             // 
             // label1
@@ -907,14 +920,65 @@
             this.cmb_SerialPortList.TabIndex = 8;
             this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
             // 
+            // dropDownPanelSettings
+            // 
+            this.dropDownPanelSettings.ButtonEnable = true;
+            this.dropDownPanelSettings.Location = new System.Drawing.Point(0, 58);
+            this.dropDownPanelSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.dropDownPanelSettings.Name = "dropDownPanelSettings";
+            this.dropDownPanelSettings.PanelIcon = global::Terrarium.Properties.Resources.icons8_Wrench_22px;
+            this.dropDownPanelSettings.PanelOpened = true;
+            this.dropDownPanelSettings.PanelText = "Port settings";
+            this.dropDownPanelSettings.Size = new System.Drawing.Size(225, 20);
+            this.dropDownPanelSettings.TabIndex = 8;
+            // 
+            // dropDownPanelReceiving
+            // 
+            this.dropDownPanelReceiving.ButtonEnable = true;
+            this.dropDownPanelReceiving.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dropDownPanelReceiving.Location = new System.Drawing.Point(0, 394);
+            this.dropDownPanelReceiving.Margin = new System.Windows.Forms.Padding(0);
+            this.dropDownPanelReceiving.Name = "dropDownPanelReceiving";
+            this.dropDownPanelReceiving.PanelIcon = global::Terrarium.Properties.Resources.icons8_Download_22px;
+            this.dropDownPanelReceiving.PanelOpened = true;
+            this.dropDownPanelReceiving.PanelText = "Receiving";
+            this.dropDownPanelReceiving.Size = new System.Drawing.Size(225, 20);
+            this.dropDownPanelReceiving.TabIndex = 9;
+            // 
+            // dropDownPanel4
+            // 
+            this.dropDownPanel4.ButtonEnable = false;
+            this.dropDownPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dropDownPanel4.Location = new System.Drawing.Point(0, 0);
+            this.dropDownPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.dropDownPanel4.Name = "dropDownPanel4";
+            this.dropDownPanel4.PanelIcon = global::Terrarium.Properties.Resources.icons8_RS_232_Male_22px;
+            this.dropDownPanel4.PanelOpened = false;
+            this.dropDownPanel4.PanelText = "Port";
+            this.dropDownPanel4.Size = new System.Drawing.Size(225, 20);
+            this.dropDownPanel4.TabIndex = 11;
+            // 
+            // dropDownPanelTransmiting
+            // 
+            this.dropDownPanelTransmiting.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dropDownPanelTransmiting.ButtonEnable = true;
+            this.dropDownPanelTransmiting.Location = new System.Drawing.Point(0, 514);
+            this.dropDownPanelTransmiting.Margin = new System.Windows.Forms.Padding(0);
+            this.dropDownPanelTransmiting.Name = "dropDownPanelTransmiting";
+            this.dropDownPanelTransmiting.PanelIcon = global::Terrarium.Properties.Resources.icons8_Upload_22px;
+            this.dropDownPanelTransmiting.PanelOpened = true;
+            this.dropDownPanelTransmiting.PanelText = "Transmiting";
+            this.dropDownPanelTransmiting.Size = new System.Drawing.Size(225, 20);
+            this.dropDownPanelTransmiting.TabIndex = 10;
+            // 
             // pnl_Transmiting
             // 
             this.pnl_Transmiting.Controls.Add(this.cb_Tx_Hex);
             this.pnl_Transmiting.Controls.Add(this.cb_TxMacroSend);
-            this.pnl_Transmiting.Location = new System.Drawing.Point(0, 500);
+            this.pnl_Transmiting.Location = new System.Drawing.Point(0, 534);
             this.pnl_Transmiting.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Transmiting.Name = "pnl_Transmiting";
-            this.pnl_Transmiting.Size = new System.Drawing.Size(225, 61);
+            this.pnl_Transmiting.Size = new System.Drawing.Size(225, 56);
             this.pnl_Transmiting.TabIndex = 7;
             // 
             // cb_Tx_Hex
@@ -946,58 +1010,6 @@
             this.cb_TxMacroSend.UseVisualStyleBackColor = true;
             this.cb_TxMacroSend.CheckedChanged += new System.EventHandler(this.cb_TxMacroSend_CheckedChanged);
             // 
-            // dropDownPanelSettings
-            // 
-            this.dropDownPanelSettings.ButtonEnable = true;
-            this.dropDownPanelSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dropDownPanelSettings.Location = new System.Drawing.Point(0, 58);
-            this.dropDownPanelSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.dropDownPanelSettings.Name = "dropDownPanelSettings";
-            this.dropDownPanelSettings.PanelIcon = global::Terrarium.Properties.Resources.icons8_Wrench_22px;
-            this.dropDownPanelSettings.PanelOpened = true;
-            this.dropDownPanelSettings.PanelText = "Port settings";
-            this.dropDownPanelSettings.Size = new System.Drawing.Size(225, 20);
-            this.dropDownPanelSettings.TabIndex = 8;
-            // 
-            // dropDownPanelReceiving
-            // 
-            this.dropDownPanelReceiving.ButtonEnable = true;
-            this.dropDownPanelReceiving.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dropDownPanelReceiving.Location = new System.Drawing.Point(0, 395);
-            this.dropDownPanelReceiving.Margin = new System.Windows.Forms.Padding(0);
-            this.dropDownPanelReceiving.Name = "dropDownPanelReceiving";
-            this.dropDownPanelReceiving.PanelIcon = global::Terrarium.Properties.Resources.icons8_Download_22px;
-            this.dropDownPanelReceiving.PanelOpened = true;
-            this.dropDownPanelReceiving.PanelText = "Receiving";
-            this.dropDownPanelReceiving.Size = new System.Drawing.Size(225, 20);
-            this.dropDownPanelReceiving.TabIndex = 9;
-            // 
-            // dropDownPanelTransmiting
-            // 
-            this.dropDownPanelTransmiting.ButtonEnable = true;
-            this.dropDownPanelTransmiting.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dropDownPanelTransmiting.Location = new System.Drawing.Point(0, 480);
-            this.dropDownPanelTransmiting.Margin = new System.Windows.Forms.Padding(0);
-            this.dropDownPanelTransmiting.Name = "dropDownPanelTransmiting";
-            this.dropDownPanelTransmiting.PanelIcon = global::Terrarium.Properties.Resources.icons8_Upload_22px;
-            this.dropDownPanelTransmiting.PanelOpened = true;
-            this.dropDownPanelTransmiting.PanelText = "Transmiting";
-            this.dropDownPanelTransmiting.Size = new System.Drawing.Size(225, 20);
-            this.dropDownPanelTransmiting.TabIndex = 10;
-            // 
-            // dropDownPanel4
-            // 
-            this.dropDownPanel4.ButtonEnable = false;
-            this.dropDownPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dropDownPanel4.Location = new System.Drawing.Point(0, 0);
-            this.dropDownPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.dropDownPanel4.Name = "dropDownPanel4";
-            this.dropDownPanel4.PanelIcon = global::Terrarium.Properties.Resources.icons8_RS_232_Male_22px;
-            this.dropDownPanel4.PanelOpened = false;
-            this.dropDownPanel4.PanelText = "Port";
-            this.dropDownPanel4.Size = new System.Drawing.Size(225, 20);
-            this.dropDownPanel4.TabIndex = 11;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
@@ -1005,7 +1017,7 @@
             this.panel1.Controls.Add(this.lbl_RxCounter);
             this.panel1.Controls.Add(this.lbl_Status);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 537);
+            this.panel1.Location = new System.Drawing.Point(0, 566);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(619, 24);
             this.panel1.TabIndex = 3;
@@ -1057,7 +1069,7 @@
             this.rtb_Tx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_Tx.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rtb_Tx.ForeColor = System.Drawing.Color.White;
-            this.rtb_Tx.Location = new System.Drawing.Point(0, 367);
+            this.rtb_Tx.Location = new System.Drawing.Point(0, 396);
             this.rtb_Tx.Margin = new System.Windows.Forms.Padding(0);
             this.rtb_Tx.Name = "rtb_Tx";
             this.rtb_Tx.Size = new System.Drawing.Size(619, 70);
@@ -1081,7 +1093,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 537);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 566);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // nrtb_Rx
@@ -1091,9 +1103,8 @@
             this.nrtb_Rx.Location = new System.Drawing.Point(0, 0);
             this.nrtb_Rx.Margin = new System.Windows.Forms.Padding(0);
             this.nrtb_Rx.Name = "nrtb_Rx";
-            this.nrtb_Rx.NumStripAutoscroll = false;
             this.nrtb_Rx.NumStripVisible = true;
-            this.nrtb_Rx.Size = new System.Drawing.Size(619, 367);
+            this.nrtb_Rx.Size = new System.Drawing.Size(619, 396);
             this.nrtb_Rx.TabIndex = 3;
             // 
             // macroPannel
@@ -1122,7 +1133,7 @@
             this.macroPannel.BtnM7Text = "M7";
             this.macroPannel.BtnM8Text = "M8";
             this.macroPannel.BtnM9Text = "M9";
-            this.macroPannel.Location = new System.Drawing.Point(0, 437);
+            this.macroPannel.Location = new System.Drawing.Point(0, 466);
             this.macroPannel.Margin = new System.Windows.Forms.Padding(0);
             this.macroPannel.MaximumSize = new System.Drawing.Size(0, 100);
             this.macroPannel.MinimumSize = new System.Drawing.Size(619, 100);
@@ -1151,7 +1162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(884, 590);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnl_Settings);
@@ -1271,6 +1282,7 @@
         private DropDownPanel dropDownPanelReceiving;
         private DropDownPanel dropDownPanelTransmiting;
         private DropDownPanel dropDownPanel4;
+        private DataFormaterSwitch dataFormatPanel;
     }
 }
 
