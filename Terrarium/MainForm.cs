@@ -637,6 +637,7 @@ namespace Terrarium
         private int SerialPortScan()
         {
             serialPortList = SerialPort.GetPortNames();
+            serialPortList = serialPortList.Distinct().ToArray();
             Array.Sort(serialPortList, (x, y) => x.CompareTo(y));
 
             string tmpPortName = com_portName;
