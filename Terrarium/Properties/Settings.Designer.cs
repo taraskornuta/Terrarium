@@ -12,7 +12,7 @@ namespace Terrarium.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -110,61 +110,15 @@ namespace Terrarium.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool isPanelSettingsHiden
-        {
+        public bool sidePannelHide {
             get {
-                return ((bool)(this["isPanelSettingsHiden"]));
+                return ((bool)(this["sidePannelHide"]));
             }
             set {
-                this["isPanelSettingsHiden"] = value;
+                this["sidePannelHide"] = value;
             }
         }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool isBtnPannelPortSettingsHiden
-        {
-            get
-            {
-                return ((bool)(this["isBtnPannelPortSettingsHiden"]));
-            }
-            set
-            {
-                this["isBtnPannelPortSettingsHiden"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool isBtnPanelReceivingHiden
-        {
-            get
-            {
-                return ((bool)(this["isBtnPanelReceivingHiden"]));
-            }
-            set
-            {
-                this["isBtnPanelReceivingHiden"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool isBtnPanelTransmitingHiden
-        {
-            get
-            {
-                return ((bool)(this["isBtnPanelTransmitingHiden"]));
-            }
-            set
-            {
-                this["isBtnPanelTransmitingHiden"] = value;
-            }
-        }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -251,13 +205,12 @@ namespace Terrarium.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool isPanelMacroHiden
-        {
+        public bool panelMacroStatus {
             get {
-                return ((bool)(this["isPanelMacroHiden"]));
+                return ((bool)(this["panelMacroStatus"]));
             }
             set {
-                this["isPanelMacroHiden"] = value;
+                this["panelMacroStatus"] = value;
             }
         }
         
@@ -294,6 +247,66 @@ namespace Terrarium.Properties {
             }
             set {
                 this["cb_Tx_Hex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isPanelSettingsHiden {
+            get {
+                return ((bool)(this["isPanelSettingsHiden"]));
+            }
+            set {
+                this["isPanelSettingsHiden"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isPanelMacroHiden {
+            get {
+                return ((bool)(this["isPanelMacroHiden"]));
+            }
+            set {
+                this["isPanelMacroHiden"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isBtnPannelPortSettingsHiden {
+            get {
+                return ((bool)(this["isBtnPannelPortSettingsHiden"]));
+            }
+            set {
+                this["isBtnPannelPortSettingsHiden"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isBtnPanelReceivingHiden {
+            get {
+                return ((bool)(this["isBtnPanelReceivingHiden"]));
+            }
+            set {
+                this["isBtnPanelReceivingHiden"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isBtnPanelTransmitingHiden {
+            get {
+                return ((bool)(this["isBtnPanelTransmitingHiden"]));
+            }
+            set {
+                this["isBtnPanelTransmitingHiden"] = value;
             }
         }
     }
