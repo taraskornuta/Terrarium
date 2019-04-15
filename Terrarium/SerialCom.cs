@@ -68,7 +68,7 @@ namespace Terrarium
             return true;
         }
 
-        private void HabndleError(object sender, SerialErrorReceivedEventArgs e)
+        private void HandleError(object sender, SerialErrorReceivedEventArgs e)
         {
             OnSerialErrorAccure(EventArgs.Empty);
         }
@@ -84,9 +84,9 @@ namespace Terrarium
         {
             if (serialPort != null && serialPort.IsOpen)
             {
-                serialPort.Close();
-                
+                serialPort.Close();               
             }
+
             serialPort.DataReceived -= DataReceivedHandler;
             return serialPort.IsOpen;
         }
@@ -107,6 +107,11 @@ namespace Terrarium
             try
             {
                 count = serialPort.BytesToRead;
+                if (count == 0) return;
+
+                byte[] buf = new byte[count];
+                serialPort.Read(buf, 0, count);
+                OnSerialReceiving?.Invoke(this, new DataStreamEventArgs(buf));
             }
             catch (Exception ex)
             {
@@ -115,38 +120,12 @@ namespace Terrarium
                     OnSerialErrorAccure(EventArgs.Empty);
                 }
             }
-
-            /*Form The Packet in The Buffer*/
-            byte[] buf = new byte[count];
-            int readBytes = Receive(buf, 0, count);
-
-            if (readBytes > 0)
-            {
-                OnSerialReceive(buf);
-            }
-
         }
 
         public void Transmit(byte[] packet)
         {
             serialPort.Write(packet, 0, packet.Length);
         }
-
-        private int Receive(byte[] bytes, int offset, int count)
-        {
-            int readBytes = 0;
-            if (count > 0)
-            {
-                readBytes = serialPort.Read(bytes, offset, count);
-            }
-            return readBytes;
-        }
-
-        private void OnSerialReceive(byte[] res)
-        {
-            OnSerialReceiving?.Invoke(this, new DataStreamEventArgs(res));
-        }
-
 
         private void OnSerialErrorAccure(EventArgs e)
         {

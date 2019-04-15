@@ -134,6 +134,7 @@ namespace Terrarium
         {
             int dataLength = 0;
             byte[] chunkBuff = new byte[1];
+            string strBuild = "";
 
             switch (dataFormat)
             {
@@ -146,16 +147,17 @@ namespace Terrarium
                             if (counter == chunkSize)
                             {
                                 counter = 0;
-                                box.AppendText("\n");                       // print \n to move to next line
-                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
+                                strBuild += "\n";
                             }
                             counter++;
                         }
                         chunkBuff[0] = data[dataLength];
-                        box.AppendText(Encoding.ASCII.GetString(chunkBuff));
+                        strBuild += Encoding.ASCII.GetString(chunkBuff);
                         dataLength++;
                     }
-                    if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+
+                    box.AppendText(strBuild);
+                    if ((isDividedByChunk == false) || (caretScroll == true)) box.RichTextBox.ScrollToCaret();
                     break;
                 }
 
@@ -188,8 +190,8 @@ namespace Terrarium
                          
                          dataLength++;                       
                      }
-                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
-                        break;
+                     if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                     break;
                 }   
                 
                     
@@ -202,17 +204,17 @@ namespace Terrarium
                             if (counter == chunkSize)
                             {
                                 counter = 0;
-                                box.AppendText("\n");                       // print \n to move to next line
-                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
+                                strBuild += "\n";                       // print \n to move to next line
                             }
                             counter++;
                         }
 
-                        box.AppendText("[" + ByteToBinaryString(data[dataLength]) + "] ");
+                        strBuild += "[" + ByteToBinaryString(data[dataLength]) + "] ";
                         dataLength++;
                     }
-                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
-                        break;
+                    box.AppendText(strBuild);
+                    if ((isDividedByChunk == false) || (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                    break;
                 }
                 
 
@@ -225,16 +227,16 @@ namespace Terrarium
                             if (counter == chunkSize)
                             {
                                 counter = 0;
-                                box.AppendText("\n");                       // print \n to move to next line
-                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
+                                strBuild += "\n";                       // print \n to move to next line
                             }
                             counter++;
                         }
-                        box.AppendText("[" + data[dataLength].ToString() + "] ");
+                        strBuild += "[" + data[dataLength].ToString() + "] ";
                         dataLength++;
                     }
-                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
-                        break;
+                    box.AppendText(strBuild);
+                    if ((isDividedByChunk == false) || (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                    break;
                 }
                 
 
@@ -247,16 +249,16 @@ namespace Terrarium
                             if (counter == chunkSize)
                             {
                                 counter = 0;
-                                box.AppendText("\n");                       // print \n to move to next line
-                                if (caretScroll == true) box.RichTextBox.ScrollToCaret();
+                                strBuild += "\n";                       // print \n to move to next line
                             }
                             counter++;
                         }
-                        box.AppendText("[" + ByteToHexString(data[dataLength]) + "] ");
+                        strBuild += "[" + ByteToHexString(data[dataLength]) + "] ";
                         dataLength++;
                     }
-                        if ((isDividedByChunk == false) && (caretScroll == true)) box.RichTextBox.ScrollToCaret();
-                        break;
+                    box.AppendText(strBuild);
+                    if ((isDividedByChunk == false) || (caretScroll == true)) box.RichTextBox.ScrollToCaret();
+                    break;
                 }
                     
                 case eDataFormat.ASCIIBIN:

@@ -342,7 +342,13 @@ namespace Terrarium
             }
             else
             {
-                TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value, cb_RxAutoscroll.Checked);
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+
+
+                TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value, cb_RxAutoscroll.Checked); watch.Stop();
+                var elapsedMs = watch.ElapsedMilliseconds;
+
+                //TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value, cb_RxAutoscroll.Checked);
 
                 RxDataCounter += data.Length;
                 lbl_RxCounter.Text = "Rx: " + RxDataCounter.ToString();
