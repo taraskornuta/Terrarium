@@ -114,9 +114,11 @@ namespace Terrarium
             switch (buttonState)
             {
                 case eDataFormat.NONE:
+                    btnAsciiFlag = false;
                     btn_ascii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
                     break;
                 case eDataFormat.ASCII:
+                    btnAsciiFlag = true;
                     btn_ascii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))), ((int)(((byte)(btnEnabledColor)))));
                     break;
                 case eDataFormat.BIN:
@@ -151,7 +153,7 @@ namespace Terrarium
             applyState(Format);
         }
 
-        private bool btnAsciiFlag = true;
+        private bool btnAsciiFlag;
         private void btn_ascii_Click()
         {
             if (btnAsciiFlag == true)
