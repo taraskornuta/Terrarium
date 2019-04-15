@@ -133,13 +133,13 @@ namespace Terrarium.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool cb_Rx_Hex {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public byte dfp_Rx_State {
             get {
-                return ((bool)(this["cb_Rx_Hex"]));
+                return ((byte)(this["dfp_Rx_State"]));
             }
             set {
-                this["cb_Rx_Hex"] = value;
+                this["dfp_Rx_State"] = value;
             }
         }
         

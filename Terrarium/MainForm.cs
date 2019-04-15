@@ -473,7 +473,7 @@ namespace Terrarium
             if (ps.isPanelSettingsHiden == true) pnl_Settings.Width = 0;
 
             cb_RxAutoscroll.Checked = ps.rtb_Rx_AutoScroll;
-            cb_Rx_Hex.Checked = ps.cb_Rx_Hex;
+            dataFormatPanel.DataFormat = (eDataFormat)ps.dfp_Rx_State;
             cb_Sort.Checked = ps.cb_Sort;
             nmn_ByteSort.Value = ps.nmn_ByteSort;
             cb_TxMacroSend.Checked = ps.cb_TxMacroSend;
@@ -495,7 +495,7 @@ namespace Terrarium
             ps.isBtnPanelReceivingHiden = dropDownPanelReceiving.PanelOpened;
             ps.isBtnPanelTransmitingHiden = dropDownPanelTransmiting.PanelOpened;
             ps.rtb_Rx_AutoScroll = cb_RxAutoscroll.Checked;
-            ps.cb_Rx_Hex = cb_Rx_Hex.Checked;
+            ps.dfp_Rx_State = (byte)dataFormatPanel.DataFormat;
             ps.cb_Sort = cb_Sort.Checked;
             ps.nmn_ByteSort = nmn_ByteSort.Value;
             ps.cb_TxMacroSend = cb_TxMacroSend.Checked;

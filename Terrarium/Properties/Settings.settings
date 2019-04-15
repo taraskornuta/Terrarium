@@ -29,8 +29,8 @@
     <Setting Name="rtb_Rx_AutoScroll" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="cb_Rx_Hex" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+    <Setting Name="dfp_Rx_State" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="rtb_Rx_FontColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)" />
