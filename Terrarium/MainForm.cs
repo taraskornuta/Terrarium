@@ -1046,6 +1046,11 @@ namespace Terrarium
             }
             pnl_Transmiting.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[7].Height);
         }
+
+        private void cmb_SerialPortList_Hover(object sender, HoverEventArgs e)
+        {
+            lbl_PortInfo.Text = ((FlattenCombo)sender).Items[e.itemIndex].ToString();
+        }
     }
 }
 

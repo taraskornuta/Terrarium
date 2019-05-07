@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Terrarium
 {
@@ -29,10 +30,105 @@ namespace Terrarium
         }
 
 
+        private int yPos = 0;
+        private int xPos = 0;
+        private int scrollPos = 0;
+        private int xFactor = -1;
+        private int simpleOffset = 0;
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern int GetScrollInfo(IntPtr hWnd, int n, ref ScrollInfoStruct lpScrollInfo);
+
+        // Win32 constants
+        private const int SB_VERT = 1;
+        private const int SIF_TRACKPOS = 0x10;
+        private const int SIF_RANGE = 0x1;
+        private const int SIF_POS = 0x4;
+        private const int SIF_PAGE = 0x2;
+        private const int SIF_ALL = SIF_RANGE | SIF_PAGE | SIF_POS | SIF_TRACKPOS;
+
+        private const int SCROLLBAR_WIDTH = 17;
+        private const int LISTBOX_YOFFSET = 21;
+
+        // Return structure for the GetScrollInfo method
+        [StructLayout(LayoutKind.Sequential)]
+        private struct ScrollInfoStruct
+        {
+            public int cbSize;
+            public int fMask;
+            public int nMin;
+            public int nMax;
+            public int nPage;
+            public int nPos;
+            public int nTrackPos;
+        }
+
+        public event HoverEventHandler Hover;
+
+        protected virtual void OnHover(HoverEventArgs e)
+        {
+            HoverEventHandler handler = Hover;
+            if (handler != null)
+            {
+                // Invokes the delegates. 
+                handler(this, e);
+            }
+        }
+
 
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
+
+            if ((m.Msg == 308) || (m.Msg == 32))
+            {
+                int onScreenIndex = 0;
+
+                // Get the mouse position relative to this control
+                Point LocalMousePosition = this.PointToClient(Cursor.Position);
+                xPos = LocalMousePosition.X;
+
+                yPos = LocalMousePosition.Y - this.Size.Height - 1;
+                int oldYPos = yPos;
+
+                while (yPos >= this.ItemHeight)
+                {
+                    yPos -= this.ItemHeight;
+                    onScreenIndex++;
+                }
+
+                ScrollInfoStruct si = new ScrollInfoStruct();
+                si.fMask = SIF_ALL;
+                si.cbSize = Marshal.SizeOf(si);
+
+                int getScrollInfoResult = 0;
+                getScrollInfoResult = GetScrollInfo(m.LParam, SB_VERT, ref si);
+
+                if (getScrollInfoResult > 0)
+                {
+                    onScreenIndex += si.nTrackPos;
+
+                    if (this.DropDownStyle == ComboBoxStyle.Simple)
+                    {
+                        simpleOffset = si.nTrackPos;
+                    }
+                }
+
+                if (!(xPos > this.Width - SCROLLBAR_WIDTH || xPos < 1 || oldYPos < 0 || ((oldYPos > this.ItemHeight * this.MaxDropDownItems) && this.DropDownStyle != ComboBoxStyle.Simple)))
+                {
+                    HoverEventArgs e = new HoverEventArgs();
+                    e.itemIndex = (onScreenIndex > this.Items.Count - 1) ? this.Items.Count - 1 : onScreenIndex;
+                    OnHover(e);
+
+                    if (scrollPos != si.nPos)
+                    {
+                        Cursor.Position = new Point(Cursor.Position.X + xFactor, Cursor.Position.Y);
+                        xFactor = -xFactor;
+                    }
+                }
+                scrollPos = si.nPos;
+
+            }
 
             if (m.Msg == WM_PAINT)
             {
@@ -111,4 +207,31 @@ namespace Terrarium
             this.Invalidate();
         }
     }
+
+
+    /// <summary>
+    /// Class that contains data for the hover event 
+    /// </summary>
+    public class HoverEventArgs : EventArgs
+    {
+        private int _itemIndex = 0;
+        public int itemIndex
+        {
+            get
+            {
+                return _itemIndex;
+            }
+            set
+            {
+                _itemIndex = value;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Delegate declaration 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public delegate void HoverEventHandler(object sender, HoverEventArgs e);
 }
