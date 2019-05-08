@@ -1097,6 +1097,9 @@
             this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.cmb_SerialPortList.FormattingEnabled = true;
+            this.cmb_SerialPortList.Items.AddRange(new object[] {
+            "COM1",
+            "COM2"});
             this.cmb_SerialPortList.Location = new System.Drawing.Point(3, 6);
             this.cmb_SerialPortList.Name = "cmb_SerialPortList";
             this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);

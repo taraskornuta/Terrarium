@@ -131,8 +131,7 @@ namespace Terrarium
             }
 
             if (m.Msg == WM_PAINT)
-            {
-            
+            {            
                 Graphics g = this.CreateGraphics();
                 Pen p = new Pen(Color.Black);
                 //g.FillRectangle(BorderBrush, this.ClientRectangle);
@@ -162,9 +161,7 @@ namespace Terrarium
                 }
 
                 //Draw the arrow
-                g.FillPath(ArrowBrush, pth);
-
-           
+                g.FillPath(ArrowBrush, pth);           
             }
         }
 

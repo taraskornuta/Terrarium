@@ -28,7 +28,7 @@ namespace Terrarium
         private SaveFileDialog saveFileDialog = new SaveFileDialog();
         private OpenFileDialog openFileDialog = new OpenFileDialog();
         private Properties.Settings ps = Properties.Settings.Default;
-        private string[] serialPortList;
+        private List<SerialInfo> serialPortList = new List<SerialInfo>();;
         private string com_portName;
         private int com_baudRate;
         private int com_baudRateCustome;
@@ -573,7 +573,7 @@ namespace Terrarium
 
         private void btn_SerialConnect_Click(object sender, EventArgs e)
         {
-            if (serialPortList.Length == 0)
+            if (serialPortList.PortName.Length == 0)
             {
                 SetTxtToStatusLable("CHOSE PORT FIRST", Color.Red);
                 return;
@@ -638,28 +638,78 @@ namespace Terrarium
             nrtb_Rx.RichTextBox.Clear();
             TextHelper.ResetChunkCounter();
         }
-     
+
+        //-----------------------------------------------------------------------------------------------
+        //private int SerialPortScan()
+        //{
+        //    serialPortList = SerialPort.GetPortNames();
+        //    serialPortList = serialPortList.Distinct().ToArray();
+        //    Array.Sort(serialPortList, (x, y) => x.CompareTo(y));
+
+        //    string tmpPortName = com_portName;
+
+        //    if (serialPortList.Contains(tmpPortName))
+        //    {
+        //        //cmb_SerialPortList.Items.Clear();
+        //        foreach (string item in serialPortList)
+        //        {
+        //            cmb_SerialPortList.Items.Add(item);
+        //            cmb_SerialPortList.SelectedIndex = cmb_SerialPortList.Items.IndexOf(tmpPortName);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        //cmb_SerialPortList.Items.Clear();
+        //        foreach (string item in serialPortList)
+        //        {
+        //            cmb_SerialPortList.Items.Add(item);
+        //            cmb_SerialPortList.SelectedIndex = 0;
+        //        }
+        //    }
+        //    com_portName = (string)cmb_SerialPortList.SelectedItem;
+        //    return serialPortList.Length;
+        //}
+
 
         private int SerialPortScan()
         {
-            serialPortList = SerialPort.GetPortNames();
-            serialPortList = serialPortList.Distinct().ToArray();
-            Array.Sort(serialPortList, (x, y) => x.CompareTo(y));
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_PnPEntity");
 
-            string tmpPortName = com_portName;
-
-            if (serialPortList.Contains(tmpPortName))
+            try
             {
-                cmb_SerialPortList.Items.Clear();
-                foreach (string item in serialPortList)
+                 
+                foreach (ManagementObject queryObj in searcher.Get())
                 {
-                    cmb_SerialPortList.Items.Add(item);
-                    cmb_SerialPortList.SelectedIndex = cmb_SerialPortList.Items.IndexOf(tmpPortName);
+                    if ((queryObj["Caption"] != null) && queryObj["Caption"].ToString().Contains("(COM"))
+                    {
+                        string[] tmpPortName = queryObj["Caption"].ToString().Split('(', ')');
+                        serialPortList.Add(new SerialInfo() { PortName = tmpPortName[0], PartDescription = queryObj["Caption"].ToString());
+                    }
+
+                }
+            }
+            catch (ManagementException e)
+            {
+                
+            }
+
+            //string tmpPortName = com_portName;
+
+            if (serialPortList.PortName.Contains(tmpPortName))
+            {
+                //cmb_SerialPortList.Items.Clear();
+                foreach (ManagementObject queryObj in searcher.Get())
+                {
+                    if ((queryObj["Caption"] != null) && queryObj["Caption"].ToString().Contains("(COM"))
+                    {
+                        cmb_SerialPortList.Items.Add(queryObj["Caption"].ToString().Split('(', ')'));
+                        cmb_SerialPortList.SelectedIndex = cmb_SerialPortList.Items.IndexOf(tmpPortName);
+                    }                     
                 }
             }
             else
             {
-                cmb_SerialPortList.Items.Clear();
+                //cmb_SerialPortList.Items.Clear();
                 foreach (string item in serialPortList)
                 {
                     cmb_SerialPortList.Items.Add(item);
@@ -669,6 +719,9 @@ namespace Terrarium
             com_portName = (string)cmb_SerialPortList.SelectedItem;
             return serialPortList.Length;
         }
+
+
+
 
         private void btn_SerialPortRefresh_Click(object sender, EventArgs e)
         {
@@ -680,6 +733,12 @@ namespace Terrarium
             }
         }
 
+        private void cmb_SerialPortList_Hover(object sender, HoverEventArgs e)
+        {
+            lbl_PortInfo.Text = ((FlattenCombo)sender).Items[e.itemIndex].ToString();
+        }
+
+//-----------------------------------------------------------------------------------------------
         delegate void SetTextStatusLableCallback(string text, Color color);
 
         public void SetTxtToStatusLable(string data, Color color)
@@ -1047,10 +1106,7 @@ namespace Terrarium
             pnl_Transmiting.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[7].Height);
         }
 
-        private void cmb_SerialPortList_Hover(object sender, HoverEventArgs e)
-        {
-            lbl_PortInfo.Text = ((FlattenCombo)sender).Items[e.itemIndex].ToString();
-        }
+       
     }
 }
 
