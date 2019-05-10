@@ -157,10 +157,13 @@ namespace Terrarium
         public int CompareTo(SerialInfo comparePort)
         {
             if (comparePort == null)
+            {
                 return 1;
-
+            }              
             else
+            {
                 return this.PartDescription.CompareTo(comparePort.PartDescription);
+            }               
         }
 
         public bool Equals(SerialInfo other)
