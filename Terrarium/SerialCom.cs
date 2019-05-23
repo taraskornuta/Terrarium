@@ -147,29 +147,5 @@ namespace Terrarium
             get { return _bytes; }
         }
 
-    }
-
-    public class SerialInfo : IEquatable<SerialInfo>, IComparable<SerialInfo>
-    {
-        public string PortName { get; set; }
-        public string PartDescription { get; set; }
-
-        public int CompareTo(SerialInfo comparePort)
-        {
-            if (comparePort == null)
-            {
-                return 1;
-            }              
-            else
-            {
-                return this.PartDescription.CompareTo(comparePort.PartDescription);
-            }               
-        }
-
-        public bool Equals(SerialInfo other)
-        {
-            if (other == null) return false;
-            return (this.PartDescription.Equals(other.PartDescription));
-        }
-    }
+    }  
 }
