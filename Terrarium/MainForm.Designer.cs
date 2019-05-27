@@ -97,6 +97,7 @@
             this.cb_Tx_Hex = new System.Windows.Forms.CheckBox();
             this.cb_TxMacroSend = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_PortInfo = new System.Windows.Forms.Label();
             this.lbl_TxCounter = new System.Windows.Forms.Label();
             this.lbl_RxCounter = new System.Windows.Forms.Label();
             this.lbl_Status = new System.Windows.Forms.Label();
@@ -898,10 +899,15 @@
             this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.cmb_SerialPortList.FormattingEnabled = true;
+            this.cmb_SerialPortList.Items.AddRange(new object[] {
+            "COM1",
+            "COM2"});
             this.cmb_SerialPortList.Location = new System.Drawing.Point(3, 6);
             this.cmb_SerialPortList.Name = "cmb_SerialPortList";
             this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
             this.cmb_SerialPortList.TabIndex = 8;
+            this.cmb_SerialPortList.Hover += new Terrarium.HoverEventHandler(this.cmb_SerialPortList_Hover);
+            this.cmb_SerialPortList.DropDownClosed += new System.EventHandler(this.cmb_SerialPortList_DropDownClosed);
             this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
             // 
             // dropDownPanelSettings
@@ -997,6 +1003,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.panel1.Controls.Add(this.lbl_PortInfo);
             this.panel1.Controls.Add(this.lbl_TxCounter);
             this.panel1.Controls.Add(this.lbl_RxCounter);
             this.panel1.Controls.Add(this.lbl_Status);
@@ -1005,6 +1012,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(619, 24);
             this.panel1.TabIndex = 3;
+            // 
+            // lbl_PortInfo
+            // 
+            this.lbl_PortInfo.AutoSize = true;
+            this.lbl_PortInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_PortInfo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_PortInfo.Location = new System.Drawing.Point(285, 6);
+            this.lbl_PortInfo.Name = "lbl_PortInfo";
+            this.lbl_PortInfo.Size = new System.Drawing.Size(52, 13);
+            this.lbl_PortInfo.TabIndex = 3;
+            this.lbl_PortInfo.Text = "PortInfo";
             // 
             // lbl_TxCounter
             // 
@@ -1266,6 +1284,7 @@
         private DropDownPanel dropDownPanelTransmiting;
         private DropDownPanel dropDownPanel4;
         private DataFormaterSwitch dataFormatPanel;
+        private System.Windows.Forms.Label lbl_PortInfo;
     }
 }
 

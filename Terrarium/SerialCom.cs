@@ -147,5 +147,5 @@ namespace Terrarium
             get { return _bytes; }
         }
 
-    } 
+    }  
 }
