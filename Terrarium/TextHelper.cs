@@ -105,9 +105,6 @@ namespace Terrarium
             return result;
         }
 
-
-       
-
         //Contains the substition strings for the characters. A char --> string mapping.
         private static Dictionary<byte, string> AsciiCtrlCharDict = new Dictionary<byte, string>() 
         {

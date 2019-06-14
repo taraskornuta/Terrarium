@@ -256,6 +256,9 @@ namespace Terrarium
         public decimal MP20_RepeatTime { get => macroField20.RepeatTimeValue; set => macroField20.RepeatTimeValue = value; }
         public bool MP20_Repeat { get => macroField20.RepeatActive; set => macroField20.RepeatActive = value; }
         public string MP20_ButtonText { get => macroField20.ButtonText; set => macroField20.ButtonText = value; }
+
+        public string ConfigFileLable{ get => lbl_FileName.Text; set => lbl_FileName.Text = value; }
+            
         #endregion
 
         #region Functions

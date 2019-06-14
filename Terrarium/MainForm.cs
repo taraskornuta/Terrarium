@@ -56,6 +56,8 @@ namespace Terrarium
             btn_PanelReceiving_Click(null, null);
             btn_PanelTransmiting_Click(null, null);
 
+            #region EventHandlersInit 
+
             rb_baudRate_4800.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
             rb_baudRate_9600.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
             rb_baudRate_14400.CheckedChanged += new EventHandler(rb_baudRate_CheckedChanged);
@@ -162,141 +164,111 @@ namespace Terrarium
             dropDownPanelSettings.ButtonEvent += new EventHandler(btn_PanelPortSettings_Click);
             dropDownPanelReceiving.ButtonEvent += new EventHandler(btn_PanelReceiving_Click);
             dropDownPanelTransmiting.ButtonEvent += new EventHandler(btn_PanelTransmiting_Click);
+            #endregion
         }
 
-
+        #region SidePanelSettings
         private void rb_baudRate_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            if (rb != null)
+            if (rb != null && rb.Checked)
             {
-                if (rb.Checked)
+                if (rb_baudRate_4800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_4800.Text);
+                if (rb_baudRate_9600.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_9600.Text);
+                if (rb_baudRate_14400.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_14400.Text);
+                if (rb_baudRate_19200.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_19200.Text);
+                if (rb_baudRate_28800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_28800.Text);
+                if (rb_baudRate_38400.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_38400.Text);
+                if (rb_baudRate_56000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_56000.Text);
+                if (rb_baudRate_57600.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_57600.Text);
+                if (rb_baudRate_115200.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_115200.Text);
+                if (rb_baudRate_128000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_128000.Text);
+                if (rb_baudRate_256000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_256000.Text);
+                if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
+
+                if (rb_baudRate_custome.Checked)
                 {
-                    if (rb_baudRate_4800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_4800.Text);
-                    if (rb_baudRate_9600.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_9600.Text);
-                    if (rb_baudRate_14400.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_14400.Text);
-                    if (rb_baudRate_19200.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_19200.Text);
-                    if (rb_baudRate_28800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_28800.Text);
-                    if (rb_baudRate_38400.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_38400.Text);
-                    if (rb_baudRate_56000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_56000.Text);
-                    if (rb_baudRate_57600.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_57600.Text);
-                    if (rb_baudRate_115200.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_115200.Text);
-                    if (rb_baudRate_128000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_128000.Text);
-                    if (rb_baudRate_256000.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_256000.Text);
-                    if (rb_baudRate_460800.Checked) com_baudRate = Convert.ToInt32(rb_baudRate_460800.Text);
-
-                    if (rb_baudRate_custome.Checked)
+                    tb_baudRateCustome.Enabled = true;
+                    if 
+                    (
+                        String.IsNullOrEmpty(tb_baudRateCustome.Text) ||
+                        String.IsNullOrWhiteSpace(tb_baudRateCustome.Text) ||
+                        "0" == tb_baudRateCustome.Text)
                     {
-                        tb_baudRateCustome.Enabled = true;
-                        if (String.IsNullOrEmpty(tb_baudRateCustome.Text) ||
-                            String.IsNullOrWhiteSpace(tb_baudRateCustome.Text) ||
-                            "0" == tb_baudRateCustome.Text)
-                        {
-                            tb_baudRateCustome.Text = "1";
-                            MessageBox.Show("Baudrate should have positive value", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
-                        else
-                        {
-                            com_baudRate = Convert.ToInt32(tb_baudRateCustome.Text);
-                        }
+                        tb_baudRateCustome.Text = "1";
+                        MessageBox.Show("Baudrate should have positive value", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
-                    else                                    // if custome Baudrate radio button not checked, tb_baudRateCustome disabled
+                    else
                     {
-                        tb_baudRateCustome.Enabled = false;
+                        com_baudRate = Convert.ToInt32(tb_baudRateCustome.Text);
                     }
-
-                    serClient.PortBaudRate = com_baudRate;
                 }
+                else                                    // if custome Baudrate radio button not checked, tb_baudRateCustome disabled
+                {
+                    tb_baudRateCustome.Enabled = false;
+                }
+
+                serClient.PortBaudRate = com_baudRate;              
             }
         }
 
         private void rb_dataBits_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            if (rb != null)
+            if (rb != null && rb.Checked)
             {
-                if (rb.Checked)
-                {
-                    if (rb_dataBits_5.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_5.Text);
-                    if (rb_dataBits_6.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_6.Text);
-                    if (rb_dataBits_7.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_7.Text);
-                    if (rb_dataBits_8.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_8.Text);
+                if (rb_dataBits_5.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_5.Text);
+                if (rb_dataBits_6.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_6.Text);
+                if (rb_dataBits_7.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_7.Text);
+                if (rb_dataBits_8.Checked) com_dataBits = Convert.ToInt32(rb_dataBits_8.Text);
 
-                    serClient.PortDataBits = com_dataBits;
-                }
+                serClient.PortDataBits = com_dataBits;               
             }
         }
 
         private void rb_parity_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            if (rb != null)
+            if (rb != null && rb.Checked)
             {
-                if (rb.Checked)
-                {
-                    if (rb_parity_none.Checked) com_parity = Parity.None;
-                    if (rb_parity_odd.Checked) com_parity = Parity.Odd;
-                    if (rb_parity_even.Checked) com_parity = Parity.Even;
-                    if (rb_parity_mark.Checked) com_parity = Parity.Mark;
-                    if (rb_parity_space.Checked) com_parity = Parity.Space;
+                 if (rb_parity_none.Checked) com_parity = Parity.None;
+                 if (rb_parity_odd.Checked) com_parity = Parity.Odd;
+                 if (rb_parity_even.Checked) com_parity = Parity.Even;
+                 if (rb_parity_mark.Checked) com_parity = Parity.Mark;
+                 if (rb_parity_space.Checked) com_parity = Parity.Space;
 
-                    serClient.PortParity = com_parity;
-                }
+                 serClient.PortParity = com_parity;             
             }
         }
 
         private void rb_stopBits_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            if (rb != null)
+            if (rb != null && rb.Checked)
             {
-                if (rb.Checked)
-                {
-                    if (rb_stopBits_1.Checked) com_stopBits = StopBits.One;
-                    if (rb_stopBits_1_5.Checked) com_stopBits = StopBits.OnePointFive;
-                    if (rb_stopBits_2.Checked) com_stopBits = StopBits.Two;
+                if (rb_stopBits_1.Checked) com_stopBits = StopBits.One;
+                if (rb_stopBits_1_5.Checked) com_stopBits = StopBits.OnePointFive;
+                if (rb_stopBits_2.Checked) com_stopBits = StopBits.Two;
 
-                    serClient.PortStopBits = com_stopBits;
-                }
+                serClient.PortStopBits = com_stopBits;              
             }
         }
 
         private void rb_handshake_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton rb = sender as RadioButton;
-            if (rb != null)
+            if (rb != null && rb.Checked)
             {
-                if (rb.Checked)
-                {
-                    if (rb_handshake_none.Checked) com_handshake = Handshake.None;
-                    if (rb_handshake_rts.Checked) com_handshake = Handshake.RequestToSend;
-                    if (rb_handshake_xon.Checked) com_handshake = Handshake.XOnXOff;
-                    if (rb_handshake_rts_xon.Checked) com_handshake = Handshake.RequestToSendXOnXOff;
-                    if (serClient != null) serClient.PortHandshake = com_handshake;
-                }
+                if (rb_handshake_none.Checked) com_handshake = Handshake.None;
+                if (rb_handshake_rts.Checked) com_handshake = Handshake.RequestToSend;
+                if (rb_handshake_xon.Checked) com_handshake = Handshake.XOnXOff;
+                if (rb_handshake_rts_xon.Checked) com_handshake = Handshake.RequestToSendXOnXOff;
+                if (serClient != null) serClient.PortHandshake = com_handshake;
             }
         }
 
-        protected void SerialPortError(object sender, EventArgs e)
-        {
-            serClient.Close();
-
-            SetTxtToStatusLable("PORT ERROR", Color.Red);
-            this.Invoke(new Action(() =>
-            {
-                btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
-                cmb_SerialPortList.Enabled = true;
-                btn_SerialConnect.Enabled = true;
-                isBtnOpenPress = false;
-
-            }));
-
-
-            cmb_SerialPortList.Enabled = true;
-            btn_SerialConnect.Enabled = true;
-            isBtnOpenPress = false;
-        }
+        #endregion
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -315,7 +287,6 @@ namespace Terrarium
                 macroWizardConf.LoadConfig(ps.macroPanelConfFileLocation);
                 macroWizardFillConfigs();
             }
-
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -323,6 +294,26 @@ namespace Terrarium
             SettingsSave();
             serClient.Close();
             serClient.Dispose();
+        }
+
+        protected void SerialErrorHandler(object sender, EventArgs e)
+        {
+            serClient.Close();
+
+            SetTxtToStatusLable("PORT ERROR", Color.Red);
+            this.Invoke(new Action(() =>
+            {
+                btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
+                cmb_SerialPortList.Enabled = true;
+                btn_SerialConnect.Enabled = true;
+                isBtnOpenPress = false;
+
+            }));
+
+
+            cmb_SerialPortList.Enabled = true;
+            btn_SerialConnect.Enabled = true;
+            isBtnOpenPress = false;
         }
 
         private void SerialReceiveHandler(object sender, DataStreamEventArgs e)
@@ -344,17 +335,16 @@ namespace Terrarium
             {
                 var watch = System.Diagnostics.Stopwatch.StartNew();
 
-
-                TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value, cb_RxAutoscroll.Checked); watch.Stop();
+                TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value, cb_RxAutoscroll.Checked);
+                watch.Stop();
                 var elapsedMs = watch.ElapsedMilliseconds;
-
-                //TextHelper.ByteFormatPrint(nrtb_Rx, data, dataFormatPanel.DataFormat, cb_Sort.Checked, (int)nmn_ByteSort.Value, cb_RxAutoscroll.Checked);
 
                 RxDataCounter += data.Length;
                 lbl_RxCounter.Text = "Rx: " + RxDataCounter.ToString();
             }
         }
 
+        #region AppSettings
         private void FillControlValues()
         {
             tb_baudRateCustome.Text = ps.SerialBaudCustome.ToString();
@@ -524,6 +514,7 @@ namespace Terrarium
             dropDownPanelReceiving.PanelOpened = ps.isBtnPanelReceivingHiden;
             dropDownPanelTransmiting.PanelOpened = ps.isBtnPanelTransmitingHiden;
         }
+        #endregion
 
         private void tb_baudRateCustome_TextChanged(object sender, EventArgs e)   //prevent from entering chars instead numbers
         {
@@ -543,6 +534,7 @@ namespace Terrarium
             }   
         }
 
+        #region RightPanel
         private void btn_Settings_Click(object sender, EventArgs e) => tmr_MenuSlide.Start();
 
         private void tmr_MenuSlide_Tick(object sender, EventArgs e)
@@ -589,7 +581,7 @@ namespace Terrarium
                 serClient.PortHandshake = com_handshake;
                 
                 serClient.OnSerialReceiving += new EventHandler<DataStreamEventArgs>(SerialReceiveHandler);
-                serClient.OnSerialError += new EventHandler(SerialPortError);
+                serClient.OnSerialError += new EventHandler(SerialErrorHandler);
 
                 if (serClient.Open() == true)
                 {
@@ -604,7 +596,7 @@ namespace Terrarium
                 {
                     serClient.Close();
                     serClient.OnSerialReceiving -= SerialReceiveHandler;
-                    serClient.OnSerialError -= SerialPortError;
+                    serClient.OnSerialError -= SerialErrorHandler;
 
                     SetTxtToStatusLable("SERIAL ERROR", Color.Red);
                     cmb_SerialPortList.Enabled = true;
@@ -617,7 +609,7 @@ namespace Terrarium
             {
                 serClient.Close();
                 serClient.OnSerialReceiving -= SerialReceiveHandler;
-                serClient.OnSerialError -= SerialPortError;
+                serClient.OnSerialError -= SerialErrorHandler;
                 SetTxtToStatusLable("SERIAL CLOSED", Color.Aqua);
                 btn_SerialConnect.Image = Terrarium.Properties.Resources.icons8_Disconnected_32px;
                 this.Text = "Terrarium ";
@@ -626,6 +618,7 @@ namespace Terrarium
             }
             isBtnOpenPress ^= true;
         }
+        #endregion
 
         private void btn_CleanTxField_Click(object sender, EventArgs e)
         {
@@ -639,6 +632,7 @@ namespace Terrarium
             TextHelper.ResetChunkCounter();
         }
 
+        #region SerialPortScan
         //-----------------------------------------------------------------------------------------------
 
         private int SerialPortScan()
@@ -719,6 +713,7 @@ namespace Terrarium
             }
         }
 
+        #endregion
         //-----------------------------------------------------------------------------------------------
         delegate void SetTextStatusLableCallback(string text, Color color);
 
@@ -737,11 +732,7 @@ namespace Terrarium
         }
 
 
-        private void cmb_SerialPortList_SelectedValueChanged(object sender, EventArgs e)
-        {
-            com_portName = (string)cmb_SerialPortList.SelectedItem;
-        }
-
+       
 
         private void rtb_Tx_KeyPress(object sender, KeyPressEventArgs e)  //used for greping chars from rtb_Tx
         {
@@ -833,8 +824,13 @@ namespace Terrarium
             }
         }
 
-        private void btn_MacroPanelWizard_Click(object sender, EventArgs e) => macroWizard.Show();
+        private void cmb_SerialPortList_SelectedValueChanged(object sender, EventArgs e)
+        {
+            com_portName = (string)cmb_SerialPortList.SelectedItem;
+        }
 
+        #region MacroPanelWizard
+        private void btn_MacroPanelWizard_Click(object sender, EventArgs e) => macroWizard.Show();
 
         private void btn_m1_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP1_Text, macroWizard.MP1_HexMode);
         private void btn_m2_Click(object sender, EventArgs e) => SerialSendHelper(macroWizard.MP2_Text, macroWizard.MP2_HexMode);
@@ -934,8 +930,11 @@ namespace Terrarium
             hexMode[19] = macroWizard.MP20_HexMode;
             macroWizardConf.Config.HexMode = hexMode;
 
+            macroWizard.ConfigFileLable = macroWizardConf.GetFileName(saveFileDialog.FileName);
             macroWizardConf.SaveConfig(saveFileDialog.FileName);
             ps.macroPanelConfFileLocation = saveFileDialog.FileName;
+            macroWizardConf.GetFileName(saveFileDialog.FileName);
+
         }
 
         private void macroWizardFillConfigs()
@@ -1008,7 +1007,10 @@ namespace Terrarium
             macroWizard.MP18_HexMode = hexMode[17];
             macroWizard.MP19_HexMode = hexMode[18];
             macroWizard.MP20_HexMode = hexMode[19];
+
+            macroWizard.ConfigFileLable = macroWizardConf.GetFileName(ps.macroPanelConfFileLocation);
         }
+        #endregion
 
         private void btn_LoadConfig_Click(object sender, EventArgs e)
         {
@@ -1018,10 +1020,11 @@ namespace Terrarium
 
             ps.macroPanelConfFileLocation = openFileDialog.FileName;
             ps.Save();
+
             macroWizardConf.LoadConfig(ps.macroPanelConfFileLocation);
+            macroWizard.ConfigFileLable = macroWizardConf.GetFileName(ps.macroPanelConfFileLocation);
             macroWizardFillConfigs();
         }
-
 
         private void btn_m1_TextChange(object sender, EventArgs e) => macroPannel.btn_m1.Text = macroWizard.MP1_ButtonText;
         private void btn_m2_TextChange(object sender, EventArgs e) => macroPannel.btn_m2.Text = macroWizard.MP2_ButtonText;
@@ -1056,8 +1059,7 @@ namespace Terrarium
             {
                 mainLayoutPanelSettings.RowStyles[3].Height = 316F;
             }
-            pnl_PortSettings.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[3].Height);
-        
+            pnl_PortSettings.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[3].Height);       
         }
 
         private void btn_PanelReceiving_Click(object sender, EventArgs e)

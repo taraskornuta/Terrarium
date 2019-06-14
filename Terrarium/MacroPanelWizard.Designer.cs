@@ -30,7 +30,7 @@
         {
             this.btn_SaveSettings = new System.Windows.Forms.Button();
             this.btn_LoadSettings = new System.Windows.Forms.Button();
-            this.lbl_FileLocation = new System.Windows.Forms.Label();
+            this.lbl_FileName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -82,16 +82,16 @@
             this.btn_LoadSettings.Text = "Load";
             this.btn_LoadSettings.UseVisualStyleBackColor = false;
             // 
-            // lbl_FileLocation
+            // lbl_FileName
             // 
-            this.lbl_FileLocation.AutoSize = true;
-            this.lbl_FileLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_FileLocation.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lbl_FileLocation.Location = new System.Drawing.Point(165, 7);
-            this.lbl_FileLocation.Name = "lbl_FileLocation";
-            this.lbl_FileLocation.Size = new System.Drawing.Size(87, 16);
-            this.lbl_FileLocation.TabIndex = 2;
-            this.lbl_FileLocation.Text = "File not found";
+            this.lbl_FileName.AutoSize = true;
+            this.lbl_FileName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_FileName.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbl_FileName.Location = new System.Drawing.Point(165, 7);
+            this.lbl_FileName.Name = "lbl_FileName";
+            this.lbl_FileName.Size = new System.Drawing.Size(87, 16);
+            this.lbl_FileName.TabIndex = 2;
+            this.lbl_FileName.Text = "File not found";
             // 
             // panel1
             // 
@@ -100,7 +100,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btn_SaveSettings);
-            this.panel1.Controls.Add(this.lbl_FileLocation);
+            this.panel1.Controls.Add(this.lbl_FileName);
             this.panel1.Controls.Add(this.btn_LoadSettings);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -585,7 +585,7 @@
         private MacroField macroField13;
         private System.Windows.Forms.Button btn_SaveSettings;
         private System.Windows.Forms.Button btn_LoadSettings;
-        private System.Windows.Forms.Label lbl_FileLocation;
+        private System.Windows.Forms.Label lbl_FileName;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

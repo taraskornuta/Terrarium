@@ -65,5 +65,11 @@ namespace Terrarium
                 swWriter.Close();
             }
         }
+
+        // Returns file name from path
+        public string GetFileName(string filePath)
+        {
+            return System.IO.Path.GetFileName(filePath);
+        }
     }
 }
