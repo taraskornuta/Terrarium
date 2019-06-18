@@ -38,7 +38,6 @@
             this.pnl_Settings = new System.Windows.Forms.Panel();
             this.mainLayoutPanelSettings = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_Receiving = new System.Windows.Forms.Panel();
-            this.dataFormatPanel = new Terrarium.DataFormaterSwitch();
             this.nmn_ByteSort = new System.Windows.Forms.NumericUpDown();
             this.cb_RxAutoscroll = new System.Windows.Forms.CheckBox();
             this.cb_Sort = new System.Windows.Forms.CheckBox();
@@ -88,11 +87,6 @@
             this.rb_baudRate_56000 = new System.Windows.Forms.RadioButton();
             this.pnl_PortName = new System.Windows.Forms.Panel();
             this.btn_SerialPortRefresh = new System.Windows.Forms.Button();
-            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
-            this.dropDownPanelSettings = new Terrarium.DropDownPanel();
-            this.dropDownPanelReceiving = new Terrarium.DropDownPanel();
-            this.dropDownPanel4 = new Terrarium.DropDownPanel();
-            this.dropDownPanelTransmiting = new Terrarium.DropDownPanel();
             this.pnl_Transmiting = new System.Windows.Forms.Panel();
             this.cb_Tx_Hex = new System.Windows.Forms.CheckBox();
             this.cb_TxMacroSend = new System.Windows.Forms.CheckBox();
@@ -104,11 +98,17 @@
             this.tmr_MenuSlide = new System.Windows.Forms.Timer(this.components);
             this.rtb_Tx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.nrtb_Rx = new Terrarium.NumberedRTB();
-            this.macroPannel = new Terrarium.MacroPanel();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nrtb_Rx = new Terrarium.NumberedRTB();
+            this.macroPannel = new Terrarium.MacroPanel();
+            this.dataFormatPanel = new Terrarium.DataFormaterSwitch();
+            this.cmb_SerialPortList = new Terrarium.FlattenCombo();
+            this.dropDownPanelSettings = new Terrarium.DropDownPanel();
+            this.dropDownPanelReceiving = new Terrarium.DropDownPanel();
+            this.dropDownPanel4 = new Terrarium.DropDownPanel();
+            this.dropDownPanelTransmiting = new Terrarium.DropDownPanel();
             this.pnl_ToolBar.SuspendLayout();
             this.pnl_Settings.SuspendLayout();
             this.mainLayoutPanelSettings.SuspendLayout();
@@ -245,16 +245,6 @@
             this.pnl_Receiving.Name = "pnl_Receiving";
             this.pnl_Receiving.Size = new System.Drawing.Size(225, 100);
             this.pnl_Receiving.TabIndex = 5;
-            // 
-            // dataFormatPanel
-            // 
-            this.dataFormatPanel.DataFormat = Terrarium.eDataFormat.ASCII;
-            this.dataFormatPanel.DoubleClickInterval = 50;
-            this.dataFormatPanel.Location = new System.Drawing.Point(0, 2);
-            this.dataFormatPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.dataFormatPanel.Name = "dataFormatPanel";
-            this.dataFormatPanel.Size = new System.Drawing.Size(225, 25);
-            this.dataFormatPanel.TabIndex = 17;
             // 
             // nmn_ByteSort
             // 
@@ -889,78 +879,6 @@
             this.btn_SerialPortRefresh.UseVisualStyleBackColor = false;
             this.btn_SerialPortRefresh.Click += new System.EventHandler(this.btn_SerialPortRefresh_Click);
             // 
-            // cmb_SerialPortList
-            // 
-            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
-            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
-            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
-            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cmb_SerialPortList.FormattingEnabled = true;
-            this.cmb_SerialPortList.Items.AddRange(new object[] {
-            "COM1",
-            "COM2"});
-            this.cmb_SerialPortList.Location = new System.Drawing.Point(3, 6);
-            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
-            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
-            this.cmb_SerialPortList.TabIndex = 8;
-            this.cmb_SerialPortList.Hover += new Terrarium.HoverEventHandler(this.cmb_SerialPortList_Hover);
-            this.cmb_SerialPortList.DropDownClosed += new System.EventHandler(this.cmb_SerialPortList_DropDownClosed);
-            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
-            // 
-            // dropDownPanelSettings
-            // 
-            this.dropDownPanelSettings.ButtonEnable = true;
-            this.dropDownPanelSettings.Location = new System.Drawing.Point(0, 58);
-            this.dropDownPanelSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.dropDownPanelSettings.Name = "dropDownPanelSettings";
-            this.dropDownPanelSettings.PanelIcon = global::Terrarium.Properties.Resources.icons8_Wrench_22px;
-            this.dropDownPanelSettings.PanelOpened = true;
-            this.dropDownPanelSettings.PanelText = "Port settings";
-            this.dropDownPanelSettings.Size = new System.Drawing.Size(225, 20);
-            this.dropDownPanelSettings.TabIndex = 8;
-            // 
-            // dropDownPanelReceiving
-            // 
-            this.dropDownPanelReceiving.ButtonEnable = true;
-            this.dropDownPanelReceiving.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dropDownPanelReceiving.Location = new System.Drawing.Point(0, 394);
-            this.dropDownPanelReceiving.Margin = new System.Windows.Forms.Padding(0);
-            this.dropDownPanelReceiving.Name = "dropDownPanelReceiving";
-            this.dropDownPanelReceiving.PanelIcon = global::Terrarium.Properties.Resources.icons8_Download_22px;
-            this.dropDownPanelReceiving.PanelOpened = true;
-            this.dropDownPanelReceiving.PanelText = "Receiving";
-            this.dropDownPanelReceiving.Size = new System.Drawing.Size(225, 20);
-            this.dropDownPanelReceiving.TabIndex = 9;
-            // 
-            // dropDownPanel4
-            // 
-            this.dropDownPanel4.ButtonEnable = false;
-            this.dropDownPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dropDownPanel4.Location = new System.Drawing.Point(0, 0);
-            this.dropDownPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.dropDownPanel4.Name = "dropDownPanel4";
-            this.dropDownPanel4.PanelIcon = global::Terrarium.Properties.Resources.icons8_RS_232_Male_22px;
-            this.dropDownPanel4.PanelOpened = false;
-            this.dropDownPanel4.PanelText = "Port";
-            this.dropDownPanel4.Size = new System.Drawing.Size(225, 20);
-            this.dropDownPanel4.TabIndex = 11;
-            // 
-            // dropDownPanelTransmiting
-            // 
-            this.dropDownPanelTransmiting.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dropDownPanelTransmiting.ButtonEnable = true;
-            this.dropDownPanelTransmiting.Location = new System.Drawing.Point(0, 514);
-            this.dropDownPanelTransmiting.Margin = new System.Windows.Forms.Padding(0);
-            this.dropDownPanelTransmiting.Name = "dropDownPanelTransmiting";
-            this.dropDownPanelTransmiting.PanelIcon = global::Terrarium.Properties.Resources.icons8_Upload_22px;
-            this.dropDownPanelTransmiting.PanelOpened = true;
-            this.dropDownPanelTransmiting.PanelText = "Transmiting";
-            this.dropDownPanelTransmiting.Size = new System.Drawing.Size(225, 20);
-            this.dropDownPanelTransmiting.TabIndex = 10;
-            // 
             // pnl_Transmiting
             // 
             this.pnl_Transmiting.Controls.Add(this.cb_Tx_Hex);
@@ -1098,6 +1016,21 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(619, 567);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // propertysToolStripMenuItem
+            // 
+            this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
+            this.propertysToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            // 
+            // copyToolStripMenuItem1
+            // 
+            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
+            // 
             // nrtb_Rx
             // 
             this.nrtb_Rx.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
@@ -1144,20 +1077,87 @@
             this.macroPannel.TabIndex = 4;
             this.macroPannel.VisibleMacroButtons = false;
             // 
-            // copyToolStripMenuItem
+            // dataFormatPanel
             // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.dataFormatPanel.DataFormat = Terrarium.eDataFormat.ASCII;
+            this.dataFormatPanel.DoubleClickInterval = 50;
+            this.dataFormatPanel.Location = new System.Drawing.Point(0, 2);
+            this.dataFormatPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.dataFormatPanel.Name = "dataFormatPanel";
+            this.dataFormatPanel.Size = new System.Drawing.Size(225, 25);
+            this.dataFormatPanel.TabIndex = 17;
             // 
-            // propertysToolStripMenuItem
+            // cmb_SerialPortList
             // 
-            this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
-            this.propertysToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.cmb_SerialPortList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(31)))), ((int)(((byte)(31)))));
+            this.cmb_SerialPortList.BorderStyle = System.Windows.Forms.ButtonBorderStyle.Solid;
+            this.cmb_SerialPortList.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(91)))), ((int)(((byte)(91)))));
+            this.cmb_SerialPortList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_SerialPortList.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_SerialPortList.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cmb_SerialPortList.FormattingEnabled = true;
+            this.cmb_SerialPortList.Items.AddRange(new object[] {
+            "COM1",
+            "COM2"});
+            this.cmb_SerialPortList.Location = new System.Drawing.Point(3, 6);
+            this.cmb_SerialPortList.Name = "cmb_SerialPortList";
+            this.cmb_SerialPortList.Size = new System.Drawing.Size(87, 23);
+            this.cmb_SerialPortList.TabIndex = 8;
+            this.cmb_SerialPortList.Hover += new Terrarium.HoverEventHandler(this.cmb_SerialPortList_Hover);
+            this.cmb_SerialPortList.DropDownClosed += new System.EventHandler(this.cmb_SerialPortList_DropDownClosed);
+            this.cmb_SerialPortList.SelectedValueChanged += new System.EventHandler(this.cmb_SerialPortList_SelectedValueChanged);
             // 
-            // copyToolStripMenuItem1
+            // dropDownPanelSettings
             // 
-            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(32, 19);
+            this.dropDownPanelSettings.ButtonEnable = true;
+            this.dropDownPanelSettings.Location = new System.Drawing.Point(0, 58);
+            this.dropDownPanelSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.dropDownPanelSettings.Name = "dropDownPanelSettings";
+            this.dropDownPanelSettings.PanelIcon = global::Terrarium.Properties.Resources.icons8_Wrench_22px;
+            this.dropDownPanelSettings.PanelOpened = true;
+            this.dropDownPanelSettings.PanelText = "Port settings";
+            this.dropDownPanelSettings.Size = new System.Drawing.Size(225, 20);
+            this.dropDownPanelSettings.TabIndex = 8;
+            // 
+            // dropDownPanelReceiving
+            // 
+            this.dropDownPanelReceiving.ButtonEnable = true;
+            this.dropDownPanelReceiving.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dropDownPanelReceiving.Location = new System.Drawing.Point(0, 394);
+            this.dropDownPanelReceiving.Margin = new System.Windows.Forms.Padding(0);
+            this.dropDownPanelReceiving.Name = "dropDownPanelReceiving";
+            this.dropDownPanelReceiving.PanelIcon = global::Terrarium.Properties.Resources.icons8_Download_22px;
+            this.dropDownPanelReceiving.PanelOpened = true;
+            this.dropDownPanelReceiving.PanelText = "Receiving";
+            this.dropDownPanelReceiving.Size = new System.Drawing.Size(225, 20);
+            this.dropDownPanelReceiving.TabIndex = 9;
+            // 
+            // dropDownPanel4
+            // 
+            this.dropDownPanel4.ButtonEnable = false;
+            this.dropDownPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dropDownPanel4.Location = new System.Drawing.Point(0, 0);
+            this.dropDownPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.dropDownPanel4.Name = "dropDownPanel4";
+            this.dropDownPanel4.PanelIcon = global::Terrarium.Properties.Resources.icons8_RS_232_Male_22px;
+            this.dropDownPanel4.PanelOpened = false;
+            this.dropDownPanel4.PanelText = "Port";
+            this.dropDownPanel4.Size = new System.Drawing.Size(225, 20);
+            this.dropDownPanel4.TabIndex = 11;
+            // 
+            // dropDownPanelTransmiting
+            // 
+            this.dropDownPanelTransmiting.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dropDownPanelTransmiting.ButtonEnable = true;
+            this.dropDownPanelTransmiting.Location = new System.Drawing.Point(0, 514);
+            this.dropDownPanelTransmiting.Margin = new System.Windows.Forms.Padding(0);
+            this.dropDownPanelTransmiting.Name = "dropDownPanelTransmiting";
+            this.dropDownPanelTransmiting.PanelIcon = global::Terrarium.Properties.Resources.icons8_Upload_22px;
+            this.dropDownPanelTransmiting.PanelOpened = true;
+            this.dropDownPanelTransmiting.PanelText = "Transmiting";
+            this.dropDownPanelTransmiting.Size = new System.Drawing.Size(225, 20);
+            this.dropDownPanelTransmiting.TabIndex = 10;
             // 
             // MainForm
             // 

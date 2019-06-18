@@ -94,6 +94,7 @@ namespace Terrarium
                         this.Font = fd.Font;
                     }
                     break;
+
                 case "Font Color":
                     cm.Hide();
                     ColorDialog cd = new ColorDialog();

@@ -85,6 +85,12 @@
     <Compile Include="DropDownPanel.Designer.cs">
       <DependentUpon>DropDownPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="FindForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindForm.Designer.cs">
+      <DependentUpon>FindForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FlattenCombo.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DropDownPanel.resx">
       <DependentUpon>DropDownPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindForm.resx">
+      <DependentUpon>FindForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MacroField.resx">
       <DependentUpon>MacroField.cs</DependentUpon>

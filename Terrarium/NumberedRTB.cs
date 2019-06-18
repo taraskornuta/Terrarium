@@ -54,6 +54,39 @@ namespace Terrarium
                 richTextBox.BackColor = color.Color;
             }
         }
+
+        private void textColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog color = new ColorDialog();
+            if (color.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                richTextBox.ForeColor = color.Color;
+            }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.richTextBox.SelectedText != "") //null check
+            {
+                Clipboard.SetText(this.richTextBox.SelectedText);
+            }
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.richTextBox.SelectAll();
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            this.richTextBox.Clear();
+        }
+
+        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form find = new FindForm();
+            find.Show();
+        }
     }
 
     public enum LineNumberStyle { None, OffsetColors, Boxed };
@@ -73,6 +106,28 @@ namespace Terrarium
         private const int _DRAWING_OFFSET = 1;
         private int _lastLineCount;
         private int _scrollingLineIncrement = 5, _numPadding = 3;
+
+        private void HighlightWords(string[] words)
+        {
+            //foreach (string word in words)
+            //{
+            //    int startIndex = 0;
+            //    while (startIndex < rich.TextLength)
+            //    {
+
+            //        int wordStartIndex = rich.Find(word, startIndex, RichTextBoxFinds.None);
+            //        if (wordStartIndex != -1)
+            //        {
+            //            rich.SelectionStart = wordStartIndex;
+            //            rich.SelectionLength = word.Length;
+            //            rich.SelectionBackColor = Color.Yellow;
+            //        }
+            //        else
+            //            break;
+            //        startIndex += wordStartIndex + word.Length;
+            //    }
+            //}
+        }
 
         /// <summary>
         /// We need to pass in the MainForm so we can check the form state, Do not
