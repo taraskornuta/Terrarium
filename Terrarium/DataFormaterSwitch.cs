@@ -28,9 +28,16 @@ namespace Terrarium
         private bool isFirstClick = true;
         private bool isDoubleClick = false;
         private bool combyneKeys = false;
+        private bool isCombyneKeysAllow = false;
         private int milliseconds = 0;
         private int doubleClickInterval = 1;
         private eDataFormat Format;
+
+        public bool AllowCombyneKeys
+        {
+            get => isCombyneKeysAllow;
+            set => isCombyneKeysAllow = value;
+        }
 
         public int DoubleClickInterval
         {
@@ -68,7 +75,7 @@ namespace Terrarium
             {
                 doubleClickTimer.Stop();
 
-                if (isDoubleClick)
+                if (isDoubleClick && isCombyneKeysAllow)
                 {
                     btn_ascii_DoubleClick();
                 }

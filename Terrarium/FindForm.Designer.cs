@@ -51,8 +51,9 @@
             // 
             // dataFormaterSwitch1
             // 
-            this.dataFormaterSwitch1.DataFormat = Terrarium.eDataFormat.ASCII;
-            this.dataFormaterSwitch1.DoubleClickInterval = 1;
+            this.dataFormaterSwitch1.AllowCombyneKeys = false;
+            this.dataFormaterSwitch1.DataFormat = Terrarium.eDataFormat.NONE;
+            this.dataFormaterSwitch1.DoubleClickInterval = 50;
             this.dataFormaterSwitch1.Location = new System.Drawing.Point(3, 30);
             this.dataFormaterSwitch1.Margin = new System.Windows.Forms.Padding(0);
             this.dataFormaterSwitch1.Name = "dataFormaterSwitch1";
