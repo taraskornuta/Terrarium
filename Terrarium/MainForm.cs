@@ -21,7 +21,6 @@ namespace Terrarium
     {
         private int panelSettingsWidth;
 
-
         private SerialCom serClient = new SerialCom("COM1");
         private MacroPanelWizard macroWizard = new MacroPanelWizard();
         private ConfigManager macroWizardConf = new ConfigManager();
@@ -164,7 +163,14 @@ namespace Terrarium
             dropDownPanelSettings.ButtonEvent += new EventHandler(btn_PanelPortSettings_Click);
             dropDownPanelReceiving.ButtonEvent += new EventHandler(btn_PanelReceiving_Click);
             dropDownPanelTransmiting.ButtonEvent += new EventHandler(btn_PanelTransmiting_Click);
+
+            nrtb_Rx.FindMenuEventHandler += new EventHandler(menuFind_Click);
             #endregion
+        }
+
+        public eDataFormat GetDataFormatPanel
+        {
+            get => dataFormatPanel.DataFormat;
         }
 
         #region SidePanelSettings
@@ -651,7 +657,7 @@ namespace Terrarium
                     }
                 }
             }
-            catch (ManagementException e)
+            catch (ManagementException)
             {
 
             }
@@ -1089,7 +1095,20 @@ namespace Terrarium
             pnl_Transmiting.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[7].Height);
         }
 
-        
+        private FindForm findForm;
+        private void menuFind_Click(object sender, EventArgs e)
+        {
+            findForm = new FindForm(dataFormatPanel.DataFormat);
+            findForm.Show();
+        }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            if (findForm != null)
+            {
+                findForm.FormOpacity = 10;
+            }
+        }
     }
 }
 

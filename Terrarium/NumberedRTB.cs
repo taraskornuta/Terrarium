@@ -9,6 +9,8 @@ namespace Terrarium
 {
     public partial class NumberedRTB : UserControl
     {
+        public event EventHandler FindMenuEventHandler;
+
         private readonly LineNumberStrip _strip;
 
         public NumberedRTB()
@@ -82,11 +84,8 @@ namespace Terrarium
             this.richTextBox.Clear();
         }
 
-        private void findToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form find = new FindForm();
-            find.Show();
-        }
+        private void findToolStripMenuItem_Click(object sender, EventArgs e) => this.FindMenuEventHandler?.Invoke(this, e);
+
     }
 
     public enum LineNumberStyle { None, OffsetColors, Boxed };

@@ -12,9 +12,16 @@ namespace Terrarium
 {
     public partial class FindForm : Form
     {
-        public FindForm()
+        public FindForm(eDataFormat dataFormat)
         {
             InitializeComponent();
+            this.dataFormatSwitch.DataFormat = dataFormat;
+        }
+
+        public double FormOpacity
+        {          
+            get => this.Opacity;
+            set => this.Opacity = value;
         }
     }
 }
