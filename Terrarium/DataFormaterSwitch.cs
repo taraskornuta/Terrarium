@@ -12,14 +12,14 @@ namespace Terrarium
 {
     public enum eDataFormat
     {
-        NONE,
+        NONE,     
         ASCII,
         BIN,
         DEC,
         HEX,
         ASCIIBIN,
         ASCIIDEC,
-        ASCIIHEX
+        ASCIIHEX 
     }
 
     public partial class DataFormaterSwitch : UserControl
@@ -62,8 +62,17 @@ namespace Terrarium
 
         public DataFormaterSwitch()
         {
-            InitializeComponent();            
+            InitializeComponent();
             doubleClickTimer.Tick += new EventHandler(doubleClickTimer_Tick);
+
+            if (DataFormat <= eDataFormat.HEX || DataFormat == eDataFormat.NONE)
+            {
+                combyneKeys = false;
+            }
+            else
+            {
+                combyneKeys = true;
+            }
             applyState(Format);
         }
         

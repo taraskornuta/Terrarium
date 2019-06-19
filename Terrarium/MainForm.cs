@@ -28,6 +28,7 @@ namespace Terrarium
         private OpenFileDialog openFileDialog = new OpenFileDialog();
         private Properties.Settings ps = Properties.Settings.Default;
         private Dictionary<string, string> serialPortList = new Dictionary<string, string>();
+        private FindForm findForm;
         private string com_portName;
         private int com_baudRate;
         private int com_baudRateCustome;
@@ -1095,20 +1096,29 @@ namespace Terrarium
             pnl_Transmiting.Size = new Size(225, (int)mainLayoutPanelSettings.RowStyles[7].Height);
         }
 
-        private FindForm findForm;
+        #region RightMouseClickMenu
         private void menuFind_Click(object sender, EventArgs e)
         {
-            findForm = new FindForm(dataFormatPanel.DataFormat);
-            findForm.Show();
+            if (findForm != null && !findForm.IsDisposed)
+            {
+                findForm.Focus();
+            }
+            else if(findForm == null || findForm.IsDisposed)
+            {
+                findForm = new FindForm(dataFormatPanel.DataFormat);
+               // findForm.Owner = this;
+                findForm.Show(this);                
+            }                     
         }
 
         private void MainForm_Activated(object sender, EventArgs e)
         {
             if (findForm != null)
             {
-                findForm.FormOpacity = 10;
+                //findForm.FormOpacity = 0.40D;
             }
         }
+        #endregion
     }
 }
 

@@ -74,11 +74,12 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FindForm";
-            this.Opacity = 0.6D;
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FindForm";
             this.TopMost = true;
+            this.Activated += new System.EventHandler(this.FindForm_Activated);
+            this.Load += new System.EventHandler(this.FindForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
