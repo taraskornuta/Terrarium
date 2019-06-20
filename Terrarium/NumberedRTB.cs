@@ -106,27 +106,6 @@ namespace Terrarium
         private int _lastLineCount;
         private int _scrollingLineIncrement = 5, _numPadding = 3;
 
-        private void HighlightWords(string[] words)
-        {
-            //foreach (string word in words)
-            //{
-            //    int startIndex = 0;
-            //    while (startIndex < rich.TextLength)
-            //    {
-
-            //        int wordStartIndex = rich.Find(word, startIndex, RichTextBoxFinds.None);
-            //        if (wordStartIndex != -1)
-            //        {
-            //            rich.SelectionStart = wordStartIndex;
-            //            rich.SelectionLength = word.Length;
-            //            rich.SelectionBackColor = Color.Yellow;
-            //        }
-            //        else
-            //            break;
-            //        startIndex += wordStartIndex + word.Length;
-            //    }
-            //}
-        }
 
         /// <summary>
         /// We need to pass in the MainForm so we can check the form state, Do not

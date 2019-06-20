@@ -28,7 +28,7 @@ namespace Terrarium
         private OpenFileDialog openFileDialog = new OpenFileDialog();
         private Properties.Settings ps = Properties.Settings.Default;
         private Dictionary<string, string> serialPortList = new Dictionary<string, string>();
-        private FindForm findForm;
+        private FindForm findForm = new FindForm();
         private string com_portName;
         private int com_baudRate;
         private int com_baudRateCustome;
@@ -166,6 +166,7 @@ namespace Terrarium
             dropDownPanelTransmiting.ButtonEvent += new EventHandler(btn_PanelTransmiting_Click);
 
             nrtb_Rx.FindMenuEventHandler += new EventHandler(menuFind_Click);
+            findForm.BtnFindEventHandler += new EventHandler(btnFind_Click);
             #endregion
         }
 
@@ -1099,24 +1100,38 @@ namespace Terrarium
         #region RightMouseClickMenu
         private void menuFind_Click(object sender, EventArgs e)
         {
-            if (findForm != null && !findForm.IsDisposed)
+            if (Form.ActiveForm == findForm && findForm.IsDisposed)            // second run or form on not active
             {
+                if (nrtb_Rx.RichTextBox.SelectedText != "")
+                {
+                    findForm.SearchData = nrtb_Rx.RichTextBox.SelectedText;
+                }
+
                 findForm.Focus();
             }
-            else if(findForm == null || findForm.IsDisposed)
+            else if (Form.ActiveForm != findForm)  // first run of this form
             {
-                findForm = new FindForm(dataFormatPanel.DataFormat);
-               // findForm.Owner = this;
+                if (findForm.IsDisposed)
+                {
+                    findForm = new FindForm();
+                    findForm.BtnFindEventHandler += new EventHandler(btnFind_Click);
+                }
+
+                findForm.DataFormat = dataFormatPanel.DataFormat;
+
+                if (nrtb_Rx.RichTextBox.SelectedText != "")
+                {
+                    findForm.SearchData = nrtb_Rx.RichTextBox.SelectedText;
+                }
+
                 findForm.Show(this);                
             }                     
         }
 
-        private void MainForm_Activated(object sender, EventArgs e)
+        private void btnFind_Click(object sender, EventArgs e)
         {
-            if (findForm != null)
-            {
-                //findForm.FormOpacity = 0.40D;
-            }
+            String[] tmp = new String[] { findForm.SearchData };         
+            TextHelper.HighlightWords(nrtb_Rx, tmp);
         }
         #endregion
     }

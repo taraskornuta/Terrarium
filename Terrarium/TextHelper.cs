@@ -378,5 +378,28 @@ namespace Terrarium
             box.RichTextBox.SelectionBackColor = saved;
             box.RichTextBox.SelectionColor = saved2;
         }
+
+        public static void HighlightWords(this NumberedRTB box, string[] words)
+        {
+            foreach (string word in words)
+            {
+                int startIndex = 0;
+                while (startIndex < box.RichTextBox.TextLength)
+                {
+
+                    int wordStartIndex = box.RichTextBox.Find(word, startIndex, RichTextBoxFinds.None);
+                    if (wordStartIndex != -1)
+                    {
+                        box.RichTextBox.SelectionStart = wordStartIndex;
+                        box.RichTextBox.SelectionLength = word.Length;
+                        box.RichTextBox.SelectionBackColor = Color.Yellow;
+                        
+                    }
+                    else
+                        break;
+                    startIndex += wordStartIndex + word.Length;
+                }
+            }
+        }
     } 
 }
