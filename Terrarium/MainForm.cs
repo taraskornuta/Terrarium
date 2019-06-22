@@ -167,6 +167,7 @@ namespace Terrarium
 
             nrtb_Rx.FindMenuEventHandler += new EventHandler(menuFind_Click);
             findForm.BtnFindEventHandler += new EventHandler(btnFind_Click);
+            findForm.FindFormClosedEventHandler += new FormClosedEventHandler(findClosed_Handler);
             #endregion
         }
 
@@ -1130,8 +1131,15 @@ namespace Terrarium
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            String[] tmp = new String[] { findForm.SearchData };         
-            TextHelper.HighlightWords(nrtb_Rx, tmp);
+            int count = TextHelper.HighlightWords(nrtb_Rx, findForm.SearchData);
+            findForm.WordsCountLabel = "Found: " + count + " maches";
+        }
+ 
+        private void findClosed_Handler(object sender, FormClosedEventArgs e)
+        {
+            nrtb_Rx.RichTextBox.SelectAll();
+            nrtb_Rx.RichTextBox.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            nrtb_Rx.RichTextBox.DeselectAll();
         }
         #endregion
     }

@@ -13,6 +13,7 @@ namespace Terrarium
     public partial class FindForm : Form
     {
         public event EventHandler BtnFindEventHandler;
+        public event FormClosedEventHandler FindFormClosedEventHandler;
 
         public FindForm()
         {
@@ -49,6 +50,8 @@ namespace Terrarium
 
         private void btn_Find_Click(object sender, EventArgs e) => this.BtnFindEventHandler?.Invoke(this, e);
 
+        private void FindForm_FormClosed(object sender, FormClosedEventArgs e) => this.FindFormClosedEventHandler?.Invoke(this, e);
+
 
         #endregion
 
@@ -66,6 +69,12 @@ namespace Terrarium
             set => this.txb_Find.Text = value;
         }
 
+        public string WordsCountLabel
+        {
+            get => this.lbl_FindCount.Text;
+            set => this.lbl_FindCount.Text = value;
+        }
+
         public eDataFormat DataFormat
         {
             get => this.dataFormatSwitch.DataFormat;
@@ -81,8 +90,9 @@ namespace Terrarium
                 }
             }               
         }
+
         #endregion
 
-
+       
     }
 }

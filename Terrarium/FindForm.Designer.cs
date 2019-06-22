@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.txb_Find = new System.Windows.Forms.TextBox();
-            this.dataFormatSwitch = new Terrarium.DataFormaterSwitch();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_GetFromClipbrd = new System.Windows.Forms.Button();
             this.btn_Find = new System.Windows.Forms.Button();
+            this.lbl_FindCount = new System.Windows.Forms.Label();
+            this.dataFormatSwitch = new Terrarium.DataFormaterSwitch();
             this.SuspendLayout();
             // 
             // txb_Find
@@ -43,17 +44,6 @@
             this.txb_Find.Name = "txb_Find";
             this.txb_Find.Size = new System.Drawing.Size(225, 24);
             this.txb_Find.TabIndex = 0;
-            // 
-            // dataFormatSwitch
-            // 
-            this.dataFormatSwitch.AllowCombyneKeys = false;
-            this.dataFormatSwitch.DataFormat = Terrarium.eDataFormat.NONE;
-            this.dataFormatSwitch.DoubleClickInterval = 50;
-            this.dataFormatSwitch.Location = new System.Drawing.Point(1, 28);
-            this.dataFormatSwitch.Margin = new System.Windows.Forms.Padding(0);
-            this.dataFormatSwitch.Name = "dataFormatSwitch";
-            this.dataFormatSwitch.Size = new System.Drawing.Size(225, 25);
-            this.dataFormatSwitch.TabIndex = 2;
             // 
             // btn_Delete
             // 
@@ -103,12 +93,34 @@
             this.btn_Find.UseVisualStyleBackColor = false;
             this.btn_Find.Click += new System.EventHandler(this.btn_Find_Click);
             // 
+            // lbl_FindCount
+            // 
+            this.lbl_FindCount.AutoSize = true;
+            this.lbl_FindCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_FindCount.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lbl_FindCount.Location = new System.Drawing.Point(5, 59);
+            this.lbl_FindCount.Name = "lbl_FindCount";
+            this.lbl_FindCount.Size = new System.Drawing.Size(0, 13);
+            this.lbl_FindCount.TabIndex = 6;
+            // 
+            // dataFormatSwitch
+            // 
+            this.dataFormatSwitch.AllowCombyneKeys = false;
+            this.dataFormatSwitch.DataFormat = Terrarium.eDataFormat.NONE;
+            this.dataFormatSwitch.DoubleClickInterval = 50;
+            this.dataFormatSwitch.Location = new System.Drawing.Point(1, 28);
+            this.dataFormatSwitch.Margin = new System.Windows.Forms.Padding(0);
+            this.dataFormatSwitch.Name = "dataFormatSwitch";
+            this.dataFormatSwitch.Size = new System.Drawing.Size(225, 25);
+            this.dataFormatSwitch.TabIndex = 2;
+            // 
             // FindForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.ClientSize = new System.Drawing.Size(318, 80);
+            this.Controls.Add(this.lbl_FindCount);
             this.Controls.Add(this.btn_Find);
             this.Controls.Add(this.btn_GetFromClipbrd);
             this.Controls.Add(this.btn_Delete);
@@ -125,6 +137,7 @@
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.FindForm_Activated);
             this.Deactivate += new System.EventHandler(this.FindForm_Deactivate);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindForm_FormClosed);
             this.Load += new System.EventHandler(this.FindForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -138,5 +151,6 @@
         public System.Windows.Forms.Button btn_Delete;
         public System.Windows.Forms.Button btn_GetFromClipbrd;
         public System.Windows.Forms.Button btn_Find;
+        private System.Windows.Forms.Label lbl_FindCount;
     }
 }

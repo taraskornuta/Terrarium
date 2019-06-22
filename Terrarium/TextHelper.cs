@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -379,27 +380,23 @@ namespace Terrarium
             box.RichTextBox.SelectionColor = saved2;
         }
 
-        public static void HighlightWords(this NumberedRTB box, string[] words)
+        public static int HighlightWords(this NumberedRTB box, string word)
         {
-            foreach (string word in words)
-            {
-                int startIndex = 0;
-                while (startIndex < box.RichTextBox.TextLength)
-                {
+            int findWords = 0;
+            if (word == string.Empty)
+                return 0;
+            var reg = new Regex(@"\b" + word + @"(\b|s\b)", RegexOptions.IgnoreCase);
 
-                    int wordStartIndex = box.RichTextBox.Find(word, startIndex, RichTextBoxFinds.None);
-                    if (wordStartIndex != -1)
-                    {
-                        box.RichTextBox.SelectionStart = wordStartIndex;
-                        box.RichTextBox.SelectionLength = word.Length;
-                        box.RichTextBox.SelectionBackColor = Color.Yellow;
-                        
-                    }
-                    else
-                        break;
-                    startIndex += wordStartIndex + word.Length;
-                }
+            foreach (Match match in reg.Matches(box.RichTextBox.Text))
+            {
+                box.RichTextBox.Select(match.Index, match.Length);
+                box.RichTextBox.SelectionBackColor = Color.Green;
+                findWords++;
             }
+
+            box.RichTextBox.SelectionLength = 0;
+            box.RichTextBox.SelectionBackColor = Color.Black;
+            return findWords;
         }
     } 
 }
