@@ -63,6 +63,16 @@ namespace Terrarium.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Clipboard_22px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Clipboard_22px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Connected_32px {
             get {
                 object obj = ResourceManager.GetObject("icons8_Connected_32px", resourceCulture);
@@ -146,6 +156,16 @@ namespace Terrarium.Properties {
         internal static System.Drawing.Bitmap icons8_Sort_Left_16px {
             get {
                 object obj = ResourceManager.GetObject("icons8_Sort_Left_16px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Trash_22px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Trash_22px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

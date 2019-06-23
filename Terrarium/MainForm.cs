@@ -1101,31 +1101,27 @@ namespace Terrarium
         #region RightMouseClickMenu
         private void menuFind_Click(object sender, EventArgs e)
         {
-            if (Form.ActiveForm == findForm && findForm.IsDisposed)            // second run or form on not active
+            if (Form.ActiveForm != findForm)
             {
-                if (nrtb_Rx.RichTextBox.SelectedText != "")
-                {
-                    findForm.SearchData = nrtb_Rx.RichTextBox.SelectedText;
-                }
-
-                findForm.Focus();
-            }
-            else if (Form.ActiveForm != findForm)  // first run of this form
-            {
-                if (findForm.IsDisposed)
+                if (findForm.IsDisposed == true)
                 {
                     findForm = new FindForm();
                     findForm.BtnFindEventHandler += new EventHandler(btnFind_Click);
+                    findForm.FindFormClosedEventHandler += new FormClosedEventHandler(findClosed_Handler);
                 }
 
+                if (findForm.Visible == false)
+                {
+                    findForm.Show(this);
+                }
+               
+                findForm.Focus();
                 findForm.DataFormat = dataFormatPanel.DataFormat;
 
                 if (nrtb_Rx.RichTextBox.SelectedText != "")
                 {
                     findForm.SearchData = nrtb_Rx.RichTextBox.SelectedText;
-                }
-
-                findForm.Show(this);                
+                }              
             }                     
         }
 

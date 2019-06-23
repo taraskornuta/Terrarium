@@ -383,19 +383,26 @@ namespace Terrarium
         public static int HighlightWords(this NumberedRTB box, string word)
         {
             int findWords = 0;
-            if (word == string.Empty)
-                return 0;
-            var reg = new Regex(@"\b" + word + @"(\b|s\b)", RegexOptions.IgnoreCase);
-
-            foreach (Match match in reg.Matches(box.RichTextBox.Text))
+            if (word != string.Empty)
             {
-                box.RichTextBox.Select(match.Index, match.Length);
-                box.RichTextBox.SelectionBackColor = Color.Green;
-                findWords++;
-            }
+                // @TODO Add Case sensitivity
+                // @TODO Add search piese of word in word
+                // @TODO Add search few words
+                Regex reg = new Regex(@"\b" + word + @"(\b|s\b)", RegexOptions.IgnoreCase);
 
-            box.RichTextBox.SelectionLength = 0;
-            box.RichTextBox.SelectionBackColor = Color.Black;
+                box.RichTextBox.SelectAll();
+                box.RichTextBox.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+
+                foreach (Match match in reg.Matches(box.RichTextBox.Text))
+                {
+                    box.RichTextBox.Select(match.Index, match.Length);
+                    box.RichTextBox.SelectionBackColor = Color.Green;
+                    findWords++;
+                }
+
+                box.RichTextBox.SelectionLength = 0;
+                box.RichTextBox.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            }
             return findWords;
         }
     } 

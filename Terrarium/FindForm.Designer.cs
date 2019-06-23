@@ -52,12 +52,12 @@
             this.btn_Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_Delete.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_Delete.Image = global::Terrarium.Properties.Resources.icons8_Trash_22px;
             this.btn_Delete.Location = new System.Drawing.Point(228, 1);
             this.btn_Delete.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(44, 25);
             this.btn_Delete.TabIndex = 3;
-            this.btn_Delete.Text = "Dl";
             this.btn_Delete.UseVisualStyleBackColor = false;
             this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
@@ -68,12 +68,12 @@
             this.btn_GetFromClipbrd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_GetFromClipbrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_GetFromClipbrd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_GetFromClipbrd.Image = global::Terrarium.Properties.Resources.icons8_Clipboard_22px;
             this.btn_GetFromClipbrd.Location = new System.Drawing.Point(274, 1);
             this.btn_GetFromClipbrd.Margin = new System.Windows.Forms.Padding(0);
             this.btn_GetFromClipbrd.Name = "btn_GetFromClipbrd";
             this.btn_GetFromClipbrd.Size = new System.Drawing.Size(41, 25);
             this.btn_GetFromClipbrd.TabIndex = 4;
-            this.btn_GetFromClipbrd.Text = "Cb";
             this.btn_GetFromClipbrd.UseVisualStyleBackColor = false;
             this.btn_GetFromClipbrd.Click += new System.EventHandler(this.btn_GetFromClipbrd_Click);
             // 
@@ -133,7 +133,7 @@
             this.Name = "FindForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FindForm";
+            this.Text = "Find";
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.FindForm_Activated);
             this.Deactivate += new System.EventHandler(this.FindForm_Deactivate);

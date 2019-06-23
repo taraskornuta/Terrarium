@@ -201,7 +201,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icons8_Integrated_Circuit.ico" />
+    <None Include="Resorces\icons8_Clipboard_22px.png" />
     <Content Include="Resorces\icons8_Integrated_Circuit.ico" />
+    <None Include="Resorces\icons8_Trash_22px.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

@@ -49,7 +49,7 @@ namespace Terrarium
         }
 
         private void btn_Find_Click(object sender, EventArgs e) => this.BtnFindEventHandler?.Invoke(this, e);
-
+              
         private void FindForm_FormClosed(object sender, FormClosedEventArgs e) => this.FindFormClosedEventHandler?.Invoke(this, e);
 
 
@@ -90,6 +90,7 @@ namespace Terrarium
                 }
             }               
         }
+
 
         #endregion
 
