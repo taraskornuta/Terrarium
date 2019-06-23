@@ -34,9 +34,7 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.propertysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.beckgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,66 +58,82 @@
             // 
             // cm_RightMouse
             // 
+            this.cm_RightMouse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.cm_RightMouse.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.selectAllToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.toolStripSeparator1,
             this.findToolStripMenuItem,
-            this.toolStripSeparator2,
             this.propertysToolStripMenuItem});
             this.cm_RightMouse.Name = "cm_RightMouse";
-            this.cm_RightMouse.Size = new System.Drawing.Size(181, 148);
+            this.cm_RightMouse.Size = new System.Drawing.Size(181, 136);
             // 
             // toolStripMenuItem1
             // 
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toolStripMenuItem1.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem1.Image = global::Terrarium.Properties.Resources.icon8_Copy_22px;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "Copy";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // selectAllToolStripMenuItem
             // 
+            this.selectAllToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.selectAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.selectAllToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.selectAllToolStripMenuItem.Image = global::Terrarium.Properties.Resources.icon8_Select_All_22px;
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.selectAllToolStripMenuItem.Text = "Select all";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
+            this.toolStripMenuItem2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripMenuItem2.ForeColor = System.Drawing.Color.White;
+            this.toolStripMenuItem2.Image = global::Terrarium.Properties.Resources.icon8_Clear_22px;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "Clear screen";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
             // findToolStripMenuItem
             // 
+            this.findToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.findToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.findToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.findToolStripMenuItem.Image = global::Terrarium.Properties.Resources.icon8_Search_22px;
             this.findToolStripMenuItem.Name = "findToolStripMenuItem";
+            this.findToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.findToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.findToolStripMenuItem.Text = "Find";
             this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
             // propertysToolStripMenuItem
             // 
+            this.propertysToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
             this.propertysToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.beckgroundColorToolStripMenuItem,
             this.textColorToolStripMenuItem});
+            this.propertysToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.propertysToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.propertysToolStripMenuItem.Image = global::Terrarium.Properties.Resources.icon8_Property_22px;
             this.propertysToolStripMenuItem.Name = "propertysToolStripMenuItem";
             this.propertysToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.propertysToolStripMenuItem.Text = "Properties";
             // 
             // beckgroundColorToolStripMenuItem
             // 
+            this.beckgroundColorToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.beckgroundColorToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.beckgroundColorToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.beckgroundColorToolStripMenuItem.Name = "beckgroundColorToolStripMenuItem";
             this.beckgroundColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.beckgroundColorToolStripMenuItem.Text = "Beckground color";
@@ -127,6 +141,9 @@
             // 
             // textColorToolStripMenuItem
             // 
+            this.textColorToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.textColorToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.textColorToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.textColorToolStripMenuItem.Name = "textColorToolStripMenuItem";
             this.textColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.textColorToolStripMenuItem.Text = "Text color";
@@ -150,9 +167,7 @@
         private System.Windows.Forms.ContextMenuStrip cm_RightMouse;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem propertysToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem beckgroundColorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textColorToolStripMenuItem;

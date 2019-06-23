@@ -139,6 +139,12 @@
   <data name="icons8_Download_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resorces\icons8_Download_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon8_Select All_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resorces\icon8_Select All_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_Clipboard_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resorces\icons8_Clipboard_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_Sort_Left_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resorces\icons8_Sort_Left_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,16 +154,25 @@
   <data name="icons8_Settings_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resorces\icons8_Settings_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon8_Clear_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resorces\icon8_Clear_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_Trash_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resorces\icons8_Trash_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_Trash_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resorces\icons8_Trash_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icon8_Copy_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resorces\icon8_Copy_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8_Sent_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resorces\icons8_Sent_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8_Clipboard_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resorces\icons8_Clipboard_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon8_Search_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resorces\icon8_Search_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon8_Property_22px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resorces\icon8_Property_22px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
